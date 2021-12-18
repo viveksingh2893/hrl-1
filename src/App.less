@@ -1,15 +1,34 @@
-@import '~antd/dist/antd.less';
+@import "~antd/dist/antd.less";
 
-.logo{
-  height:cal(100px-2vh);
+.logo {
+  height: cal(100px-2vh);
   width: cal(100px-vw);
-  
 }
 
-.title{
-font-size:3.5vw;
-text-align:center;
-border:2px solid black;
+.title {
+  font-size: 3.5vw;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.video-container {
+  overflow: hidden;
+  position: relative;
+  width: 60%;
+}
+
+.video-container::after {
+  padding-top: 56.25%;
+  display: block;
+  content: "";
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 /* .App {
   text-align: center;

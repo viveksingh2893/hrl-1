@@ -1,5 +1,5 @@
 import {Menu,Layout,Button,Image, Typography} from 'antd'
-import img2 from '../assets/image/img1.jpg'
+import img2 from '../assets/image/IMG 0.4.png'
 import '../App.less';
 
 const ConceptW=()=>{
@@ -7,9 +7,10 @@ const ConceptW=()=>{
 
     return(
 
-        <div style={{display:'flex',flex:1,width:'100vw',margin:5,flexWrap:'wrap',display:'flex',backgroundColor:'#FFFFFF',flexDirection:'row',justifyContent:'space-around'}}>
-            <div style={{display:'flex',flex:1,flexBasis:300,justifyContent:'center',alignItem:'center'}}>
+        <div style={{display:'flex',flex:1,width:'100vw',margin:5,flexWrap:'wrap',display:'flex',padding:20,backgroundColor:'#ffdb4d',flexDirection:'row',justifyContent:'space-around'}}>
+            <div style={{display:'flex',flex:1,flexBasis:300,justifyContent:'flex-end',alignItems:'center',padding:5}}>
            <Image
+           height={300}
          
              src={img2}
            />
