@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import {Image, Layout,Typography} from 'antd'
-import conceptimg from '../assets/image/img2.webp';
+import conceptimg from '../assets/image/IMG00.2A.jpeg';
 import '../App.less'
 
 const Concept=()=>{
@@ -10,10 +10,9 @@ const Concept=()=>{
 
     return (
        <Layout>
-           <Content>
-               <Image
+           <Content style={{display:'flex',justifyContent:'center',backgroundColor:'#DBEC1B',}}>
                
-
+               <Image
                src={conceptimg}/>  
                
            </Content>
