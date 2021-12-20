@@ -12,6 +12,8 @@ const Home = () => {
         width:'100vw',
         alignItems: "center",
         justifyContent: "center",
+        marginTop:'10vh',
+
         display: "flex",
         flexDirection: "column",
       }}
