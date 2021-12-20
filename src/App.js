@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import { Menu, Layout, Button, Image, Typography } from "antd";
 import img2 from "./assets/image/img2.webp";
+import imglogo from "./assets/image/IMG 0.1.png";
 import "./App.less";
 
 import {
@@ -42,12 +43,30 @@ function App() {
   ];
 
   return (
-    <Layout>
+    <Layout style={{ backgroundColor: "white" }}>
+      <div
+        style={{
+          height: "calc(100px+1.5vw)",
+          padding: "10px",
+          width: "calc(60px+1.5vw)",
+          backgroundColor: "#ffcc00",
+          position: "absolute",
+          left: "2vw",
+          borderRadius: "15px",
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+          zIndex: 5,
+        }}
+      >
+        <Image src={imglogo} style={{ height: "90px", width: "50px" }} />
+      </div>
       <Header
         style={{
           justifyContent: "space-around",
           alignItems: "center",
           backgroundColor: "#ffcc00",
+          marginBottom: "1vw",
         }}
       >
         {/* <div className='logo'>Hello</div> */}
@@ -89,9 +108,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/concept" element={<Concept />} />
       </Routes>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
-      </Footer>
+      <Footer style={{ textAlign: "center" }}>Destratum Solutions ©2021</Footer>
     </Layout>
   );
 }
