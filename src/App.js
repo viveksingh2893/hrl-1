@@ -46,20 +46,17 @@ function App() {
     <Layout style={{ backgroundColor: "white" }}>
       <div
         style={{
-          height: "calc(100px+1.5vw)",
-          padding: "10px",
-          width: "calc(60px+1.5vw)",
-          backgroundColor: "#ffcc00",
+          border: "20px solid #666",
+          backgroundColor: "#666",
           position: "absolute",
           left: "2vw",
-          borderRadius: "15px",
           justifyContent: "center",
           alignItems: "center",
           display: "flex",
           zIndex: 5,
         }}
       >
-        <Image src={imglogo} style={{ height: "90px", width: "50px" }} />
+        <Image src={imglogo} style={{ height: "10vw", width: "5vw" }} />
       </div>
       <Header
         style={{
