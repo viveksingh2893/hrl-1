@@ -19,6 +19,7 @@ const Concept = () => {
         alignItems: "center",
         justifyContent: "center",
         display: "flex",
+        marginTop:'12vh',
         flexDirection: "column",}}>
              <Image width="100vw"  preview={true} src={conceptimg} />
 
@@ -30,7 +31,7 @@ const Concept = () => {
           width: "50vw",
           textAlign: "center",
           padding: "1.5vw",
-          fontSize: "2.5vw",
+          fontSize: "2.5vh",
         }}
       >
         "Lorem Ipsum is simply dummy text of the printing and typesetting
