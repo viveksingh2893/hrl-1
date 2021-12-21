@@ -22,7 +22,7 @@ function App() {
     <div>
       <Headbar/>
       
-          <Layout>
+      <Layout style={{width:'100vw'}}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog page="blog" />} />
@@ -30,7 +30,7 @@ function App() {
         <Route path="/concept" element={<Concept />} />
       </Routes>
       <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
+         ©2021 Created by Destratum
       </Footer>
       </Layout>
     </div>
