@@ -4,15 +4,14 @@ import "../App.less";
 
 const ConceptB = () => {
   const { Title, Text } = Typography;
+  const {Content} =Layout
 
   return (
-    <div
+    <Content
       style={{
         display: "flex",
         flex: 1,
-        width: "100vw",
-        padding:20,
-        margin: 5,
+        
         flexWrap: "wrap",
         display: "flex",
         backgroundColor: "#FFFFFF",
@@ -66,9 +65,9 @@ const ConceptB = () => {
           justifyContent: "center",
         }}
       >
-        <Image height={300} src={img2} />
+        <Image height="40vh" src={img2} />
       </div>
-    </div>
+    </Content>
   );
 };
 
