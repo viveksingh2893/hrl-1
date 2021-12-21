@@ -4,18 +4,20 @@ import '../App.less';
 
 const ConceptW=()=>{
     const {Title,Text} =Typography
+    
 
     return(
 
-        <div style={{display:'flex',flex:1,width:'100vw',margin:5,flexWrap:'wrap',display:'flex',padding:20,backgroundColor:'#ffdb4d',flexDirection:'row',justifyContent:'space-around'}}>
+        <Layout.Content style={{display:'flex',flex:1,margin:5,flexWrap:'wrap',display:'flex',backgroundColor:'#ffdb4d',flexDirection:'row',justifyContent:'space-around'}}>
             <div style={{display:'flex',flex:1,flexBasis:300,justifyContent:'flex-end',alignItems:'center',padding:5}}>
            <Image
-           height={300}
+           height="20vh"
+           
          
              src={img2}
            />
        </div> 
-        <div style={{display:'flex',flex:1,flexShrink:1, flexBasis:300,justifyContent:'flex-start',alignItem:'center',flexDirection:'column',margin:20}}>  
+        <div style={{display:'flex',flex:1,flexShrink:1, flexBasis:300,justifyContent:'flex-start',alignItem:'center',flexDirection:'column'}}>  
            <Title level={3} style={{display:'flex',justifyContent:'center'}}>
              Mith.AI
            </Title>
@@ -35,7 +37,7 @@ const ConceptW=()=>{
         </div> 
         
       
-        </div>
+        </Layout.Content>
     )
 }
 
