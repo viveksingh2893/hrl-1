@@ -1,21 +1,73 @@
-import { useLocation } from "react-router-dom";
 import { Image, Layout, Typography, Space, Card } from "antd";
 import conceptimg from "../assets/image/IMG 2.1.png";
 import "../App.less";
 import Descard from "../components/descard";
+import Videobox from "../components/videobox";
+import Linkcard from "../components/linkcard";
+import { useNavigate } from "react-router-dom";
 
 const Concept = () => {
-  const location = useLocation();
-  const { Content } = Layout;
-  const { Title, Text } = Typography;
-  const what_data = `WHAT- ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  const data = {
+    what: `WHAT- ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-  nisi ut aliquip ex ea commodo consequat.`;
+  nisi ut aliquip ex ea commodo consequat.`,
+    imgloc: "dummy",
+    video: "https://www.youtube.com/watch?v=ctJFwgh4yds",
+    why: [
+      {
+        id: "",
+        photo:
+          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        title: "First Card",
+        description: "Random Description",
+      },
+    ],
+    how: [
+      {
+        id: "",
+        photo:
+          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        title: "First Card",
+        description: "Random Description",
+      },
+    ],
+    new: [
+      {
+        id: "",
+        photo:
+          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        title: "First Card",
+        description: "Random Description",
+      },
+    ],
+    model: [
+      {
+        id: "",
+        photo:
+          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        title: "First Card",
+        description: "Random Description",
+      },
+    ],
+    where: [
+      {
+        id: "",
+        photo:
+          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        title: "First Card",
+        description: "Random Description",
+      },
+    ],
+  };
+
+  const navigate = useNavigate();
+  const {Content}=Layout
+  const {Title}=Typography
+
 
   return (
-    <Layout>
 
-        <Content style={{ width:'100vw',
+    <Content style={{ width:'100vw',
         alignItems: "center",
         justifyContent: "center",
         display: "flex",
@@ -37,11 +89,8 @@ const Concept = () => {
         "Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. "
       </Title>
-
-      <Layout>
-          <Content style={{display:'flex',flexDirection:'row',justifyContent:'center',flexWrap:'wrap',}}>
-
-              <Card style={{display:'flex',flex: 1,justifyContent:'center',
+      <div style={{display:'flex',flexDirection:'row',justifyContent:'center',flexWrap:'wrap'}}>
+      <Card style={{display:'flex',flex: 1,justifyContent:'center',
           flexShrink: 1,
           flexBasis: 300}}>
               <Image preview={true} src={conceptimg} />
@@ -58,6 +107,7 @@ const Concept = () => {
                         flexBasis: 300}}>
               <Image preview={true} src={conceptimg} />
               </Card>
+        </div>
               <Title
         level={4}
         style={{
@@ -66,38 +116,30 @@ const Concept = () => {
           width: "50vw",
           textAlign: "center",
           padding: "1.5vw",
-          fontSize: "2.5vw",
+          fontSize: "2.5vh",
         }}
       >
         "Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. "
       </Title>
-          </Content>
-      </Layout>
 
-
-        </Content>
       <Space direction="vertical">
-        {/* <div
+      <div
           style={{
             display: "flex",
             width: "100vw",
-            height: "40vw",
-            // background: `url("${conceptimg}")`,
-            // backgroundSize: "cover",
+            height: "30vw",
             justifyContent: "center",
-            // backgroundSize: "cover",
             backgroundColor: "white",
+            marginTop: "2vw",
           }}
         >
           <Image
             src={conceptimg}
-            style={{ width: "100vw", height: "40vw", objectFit: "cover" }}
+            style={{ width: "90vw", height: "30vw", objectFit: "cover" }}
           />
-        </div> */}
-
-
-        <Descard txt={what_data}></Descard>
+        </div>
+        <Descard txt={data.what}></Descard>
         <div
           style={{
             display: "flex",
@@ -107,23 +149,152 @@ const Concept = () => {
             marginTop: "1vw",
           }}
         >
-          <div
-            style={{
-              width: "70vw",
+          <Videobox width="60vh" link={data.video}></Videobox>
+        </div>
+    
+        <div
+          style={{
+            display: "flex",
+            width: "100vw",
+            flexDirection: "row",
+            flexWrap:'wrap',
+            marginTop: "2vw",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            
+          }}
+        >
+          <Linkcard
+            action={() => {
+              navigate("/");
             }}
-            class="video-container"
-          >
-            <iframe
-              src="https://www.youtube.com/embed/ctJFwgh4yds"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
+            width="45vh"
+           
+            id={data.why[0].id}
+            image={data.why[0].photo}
+            title={data.why[0].title}
+            description={data.why[0].description}
+          />
+           <Linkcard
+            action={() => {
+              navigate("/");
+            }}
+            width="45vh"
+           
+            id={data.why[0].id}
+            image={data.why[0].photo}
+            title={data.why[0].title}
+            description={data.why[0].description}
+          />
+           <Linkcard
+            action={() => {
+              navigate("/");
+            }}
+            width="45vh"
+           
+            id={data.why[0].id}
+            image={data.why[0].photo}
+            title={data.why[0].title}
+            description={data.why[0].description}
+          />
         </div>
       </Space>
-    </Layout>
+      </Content>
+
+    // <Layout>
+        
+    //   <Layout>
+    //       <Content style={{display:'flex',flexDirection:'row',justifyContent:'center',flexWrap:'wrap',}}>
+
+    //           <Card style={{display:'flex',flex: 1,justifyContent:'center',
+    //       flexShrink: 1,
+    //       flexBasis: 300}}>
+    //           <Image preview={true} src={conceptimg} />
+    //           </Card>
+    //           <Card  
+    //         style={{display:'flex',flex: 1,justifyContent:'center',
+    //             flexShrink: 1,
+    //             flexBasis: 300}}>
+    //           <Image preview={true} src={conceptimg} />
+    //           </Card>
+    //           <Card  
+    //           style={{display:'flex',flex: 1,justifyContent:'center',
+    //                     flexShrink: 1,
+    //                     flexBasis: 300}}>
+    //           <Image preview={true} src={conceptimg} />
+    //           </Card>
+    //           <Title
+    //     level={4}
+    //     style={{
+    //       flexWrap: "wrap",
+    //       fontWeight: "normal",
+    //       width: "50vw",
+    //       textAlign: "center",
+    //       padding: "1.5vw",
+    //       fontSize: "2.5vw",
+    //     }}
+    //   >
+    //     "Lorem Ipsum is simply dummy text of the printing and typesetting
+    //     industry. "
+    //   </Title>
+    //       </Content>
+    //   </Layout>
+
+
+    //     </Content>
+    //   <Space direction="vertical">
+    //     <div
+    //       style={{
+    //         display: "flex",
+    //         width: "100vw",
+    //         height: "30vw",
+    //         justifyContent: "center",
+    //         backgroundColor: "white",
+    //         marginTop: "2vw",
+    //       }}
+    //     >
+    //       <Image
+    //         src={conceptimg}
+    //         style={{ width: "90vw", height: "30vw", objectFit: "cover" }}
+    //       />
+    //     </div>
+    //     <Descard txt={data.what}></Descard>
+    //     <div
+    //       style={{
+    //         display: "flex",
+    //         width: "100vw",
+    //         alignItems: "flex-start",
+    //         justifyContent: "center",
+    //         marginTop: "1vw",
+    //       }}
+    //     >
+    //       <Videobox width="80vw" link={data.video}></Videobox>
+    //     </div>
+    //     <div
+    //       style={{
+    //         display: "flex",
+    //         width: "100vw",
+    //         flexDirection: "row",
+    //         marginTop: "2vw",
+    //         justifyContent: "flex-start",
+    //         alignItems: "center",
+    //         padding: "5vw",
+    //       }}
+    //     >
+    //       <Linkcard
+    //         action={() => {
+    //           navigate("/");
+    //         }}
+    //         width="30vw"
+    //         marginRight="2vw"
+    //         id={data.why[0].id}
+    //         image={data.why[0].photo}
+    //         title={data.why[0].title}
+    //         description={data.why[0].description}
+    //       />
+    //     </div>
+    //   </Space>
+    // </Layout>
   );
 };
 
