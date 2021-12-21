@@ -10,10 +10,14 @@ const Linkcard = (props) => {
         id={props.id}
         onClick={props.action}
         hoverable
+        bodyStyle={{fontSize:'50px'}}
         style={{
           width: props.width,
+          padding:0,
+          fontSize:60,
           marginRight: props.marginRight,
           marginLeft: props.marginLeft,
+
         }}
         cover={<img alt="unavailable" src={props.image} />}
       >

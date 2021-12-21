@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import { Image, Layout, Typography, Space, Card } from "antd";
 import conceptimg from "../assets/image/IMG 2.1.png";
 import "../App.less";
@@ -62,12 +61,70 @@ const Concept = () => {
   };
 
   const navigate = useNavigate();
-  const { Meta } = Card;
+  const {Content}=Layout
+  const {Title}=Typography
+
 
   return (
-    <Layout style={{ backgroundColor: "white" }}>
+
+    <Content style={{ width:'100vw',
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex",
+        marginTop:'12vh',
+        flexDirection: "column",}}>
+             <Image width="100vw"  preview={true} src={conceptimg} />
+
+             <Title
+        level={4}
+        style={{
+          flexWrap: "wrap",
+          fontWeight: "normal",
+          width: "50vw",
+          textAlign: "center",
+          padding: "1.5vw",
+          fontSize: "2.5vh",
+        }}
+      >
+        "Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. "
+      </Title>
+      <div style={{display:'flex',flexDirection:'row',justifyContent:'center',flexWrap:'wrap'}}>
+      <Card style={{display:'flex',flex: 1,justifyContent:'center',
+          flexShrink: 1,
+          flexBasis: 300}}>
+              <Image preview={true} src={conceptimg} />
+              </Card>
+              <Card  
+            style={{display:'flex',flex: 1,justifyContent:'center',
+                flexShrink: 1,
+                flexBasis: 300}}>
+              <Image preview={true} src={conceptimg} />
+              </Card>
+              <Card  
+              style={{display:'flex',flex: 1,justifyContent:'center',
+                        flexShrink: 1,
+                        flexBasis: 300}}>
+              <Image preview={true} src={conceptimg} />
+              </Card>
+        </div>
+              <Title
+        level={4}
+        style={{
+          flexWrap: "wrap",
+          fontWeight: "normal",
+          width: "50vw",
+          textAlign: "center",
+          padding: "1.5vw",
+          fontSize: "2.5vh",
+        }}
+      >
+        "Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. "
+      </Title>
+
       <Space direction="vertical">
-        <div
+      <div
           style={{
             display: "flex",
             width: "100vw",
@@ -92,25 +149,49 @@ const Concept = () => {
             marginTop: "1vw",
           }}
         >
-          <Videobox width="80vw" link={data.video}></Videobox>
+          <Videobox width="60vh" link={data.video}></Videobox>
         </div>
+    
         <div
           style={{
             display: "flex",
             width: "100vw",
             flexDirection: "row",
+            flexWrap:'wrap',
             marginTop: "2vw",
             justifyContent: "flex-start",
             alignItems: "center",
-            padding: "5vw",
+            
           }}
         >
           <Linkcard
             action={() => {
               navigate("/");
             }}
-            width="30vw"
-            marginRight="2vw"
+            width="45vh"
+           
+            id={data.why[0].id}
+            image={data.why[0].photo}
+            title={data.why[0].title}
+            description={data.why[0].description}
+          />
+           <Linkcard
+            action={() => {
+              navigate("/");
+            }}
+            width="45vh"
+           
+            id={data.why[0].id}
+            image={data.why[0].photo}
+            title={data.why[0].title}
+            description={data.why[0].description}
+          />
+           <Linkcard
+            action={() => {
+              navigate("/");
+            }}
+            width="45vh"
+           
             id={data.why[0].id}
             image={data.why[0].photo}
             title={data.why[0].title}
@@ -118,7 +199,102 @@ const Concept = () => {
           />
         </div>
       </Space>
-    </Layout>
+      </Content>
+
+    // <Layout>
+        
+    //   <Layout>
+    //       <Content style={{display:'flex',flexDirection:'row',justifyContent:'center',flexWrap:'wrap',}}>
+
+    //           <Card style={{display:'flex',flex: 1,justifyContent:'center',
+    //       flexShrink: 1,
+    //       flexBasis: 300}}>
+    //           <Image preview={true} src={conceptimg} />
+    //           </Card>
+    //           <Card  
+    //         style={{display:'flex',flex: 1,justifyContent:'center',
+    //             flexShrink: 1,
+    //             flexBasis: 300}}>
+    //           <Image preview={true} src={conceptimg} />
+    //           </Card>
+    //           <Card  
+    //           style={{display:'flex',flex: 1,justifyContent:'center',
+    //                     flexShrink: 1,
+    //                     flexBasis: 300}}>
+    //           <Image preview={true} src={conceptimg} />
+    //           </Card>
+    //           <Title
+    //     level={4}
+    //     style={{
+    //       flexWrap: "wrap",
+    //       fontWeight: "normal",
+    //       width: "50vw",
+    //       textAlign: "center",
+    //       padding: "1.5vw",
+    //       fontSize: "2.5vw",
+    //     }}
+    //   >
+    //     "Lorem Ipsum is simply dummy text of the printing and typesetting
+    //     industry. "
+    //   </Title>
+    //       </Content>
+    //   </Layout>
+
+
+    //     </Content>
+    //   <Space direction="vertical">
+    //     <div
+    //       style={{
+    //         display: "flex",
+    //         width: "100vw",
+    //         height: "30vw",
+    //         justifyContent: "center",
+    //         backgroundColor: "white",
+    //         marginTop: "2vw",
+    //       }}
+    //     >
+    //       <Image
+    //         src={conceptimg}
+    //         style={{ width: "90vw", height: "30vw", objectFit: "cover" }}
+    //       />
+    //     </div>
+    //     <Descard txt={data.what}></Descard>
+    //     <div
+    //       style={{
+    //         display: "flex",
+    //         width: "100vw",
+    //         alignItems: "flex-start",
+    //         justifyContent: "center",
+    //         marginTop: "1vw",
+    //       }}
+    //     >
+    //       <Videobox width="80vw" link={data.video}></Videobox>
+    //     </div>
+    //     <div
+    //       style={{
+    //         display: "flex",
+    //         width: "100vw",
+    //         flexDirection: "row",
+    //         marginTop: "2vw",
+    //         justifyContent: "flex-start",
+    //         alignItems: "center",
+    //         padding: "5vw",
+    //       }}
+    //     >
+    //       <Linkcard
+    //         action={() => {
+    //           navigate("/");
+    //         }}
+    //         width="30vw"
+    //         marginRight="2vw"
+    //         id={data.why[0].id}
+    //         image={data.why[0].photo}
+    //         title={data.why[0].title}
+    //         description={data.why[0].description}
+    //       />
+    //     </div>
+    //   </Space>
+    // </Layout>
   );
 };
 
