@@ -1,20 +1,20 @@
 import { Menu, Layout, Button, Image, Typography } from "antd";
-import img2 from "../assets/image/img1.jpg";
+import img2 from "../assets/image/IMG 0.3.png";
 import "../App.less";
 
 const ConceptB = () => {
   const { Title, Text } = Typography;
+  const {Content} =Layout
 
   return (
-    <div
+    <Content
       style={{
         display: "flex",
         flex: 1,
-        width: "100vw",
-        margin: 5,
+        
         flexWrap: "wrap",
         display: "flex",
-        backgroundColor: "#5D5FEF",
+        backgroundColor: "#FFFFFF",
         flexDirection: "row",
         justifyContent: "space-around",
       }}
@@ -61,13 +61,13 @@ const ConceptB = () => {
           display: "flex",
           flex: 1,
           flexBasis: 300,
+          height:300,
           justifyContent: "center",
-          alignItem: "center",
         }}
       >
-        <Image src={img2} />
+        <Image height="40vh" src={img2} />
       </div>
-    </div>
+    </Content>
   );
 };
 
