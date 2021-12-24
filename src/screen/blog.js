@@ -46,12 +46,12 @@ const Blog = () => {
       <Wordcloud data={keywords}></Wordcloud>
       <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
       <div className="card-container">
-        {/* <Linkcard
+        <Linkcard
           title="This is a Title"
           description="A very long description is not being given here, this is just for testing purpose."
           image="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/Man-of-Steel-Everett-H-2021.jpg"
           marginRight="1vh"
-        ></Linkcard> */}
+        ></Linkcard>
       </div>
     </div>
   );

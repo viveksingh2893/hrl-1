@@ -61,77 +61,29 @@ const Concept = () => {
   };
 
   const navigate = useNavigate();
-  const {Content}=Layout
-  const {Title}=Typography
-
+  const { Content } = Layout;
+  const { Title } = Typography;
 
   return (
-
-    <Content style={{ width:'100vw',
+    <Content
+      style={{
+        width: "100vw",
         alignItems: "center",
         justifyContent: "center",
         display: "flex",
-        marginTop:'12vh',
-        flexDirection: "column",}}>
-             <Image width="100vw"  preview={true} src={conceptimg} />
-
-             <Title
-        level={4}
-        style={{
-          flexWrap: "wrap",
-          fontWeight: "normal",
-          width: "50vw",
-          textAlign: "center",
-          padding: "1.5vw",
-          fontSize: "2.5vh",
-        }}
-      >
-        "Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. "
-      </Title>
-      <div style={{display:'flex',flexDirection:'row',justifyContent:'center',flexWrap:'wrap'}}>
-      <Card style={{display:'flex',flex: 1,justifyContent:'center',
-          flexShrink: 1,
-          flexBasis: 300}}>
-              <Image preview={true} src={conceptimg} />
-              </Card>
-              <Card  
-            style={{display:'flex',flex: 1,justifyContent:'center',
-                flexShrink: 1,
-                flexBasis: 300}}>
-              <Image preview={true} src={conceptimg} />
-              </Card>
-              <Card  
-              style={{display:'flex',flex: 1,justifyContent:'center',
-                        flexShrink: 1,
-                        flexBasis: 300}}>
-              <Image preview={true} src={conceptimg} />
-              </Card>
-        </div>
-              <Title
-        level={4}
-        style={{
-          flexWrap: "wrap",
-          fontWeight: "normal",
-          width: "50vw",
-          textAlign: "center",
-          padding: "1.5vw",
-          fontSize: "2.5vh",
-        }}
-      >
-        "Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. "
-      </Title>
-
+        marginTop: "12vh",
+        flexDirection: "column",
+        backgroundColor: "white",
+      }}
+    >
       <Space direction="vertical">
-      <div
+        <div
           style={{
             display: "flex",
             width: "100vw",
             height: "30vw",
             justifyContent: "center",
             backgroundColor: "white",
-            marginTop: "2vw",
           }}
         >
           <Image
@@ -149,19 +101,18 @@ const Concept = () => {
             marginTop: "1vw",
           }}
         >
-          <Videobox width="60vh" link={data.video}></Videobox>
+          <Videobox width="80vw" link={data.video}></Videobox>
         </div>
-    
+
         <div
           style={{
             display: "flex",
             width: "100vw",
             flexDirection: "row",
-            flexWrap:'wrap',
+            flexWrap: "wrap",
             marginTop: "2vw",
             justifyContent: "flex-start",
             alignItems: "center",
-            
           }}
         >
           <Linkcard
@@ -169,29 +120,26 @@ const Concept = () => {
               navigate("/");
             }}
             width="45vh"
-           
             id={data.why[0].id}
             image={data.why[0].photo}
             title={data.why[0].title}
             description={data.why[0].description}
           />
-           <Linkcard
+          <Linkcard
             action={() => {
               navigate("/");
             }}
             width="45vh"
-           
             id={data.why[0].id}
             image={data.why[0].photo}
             title={data.why[0].title}
             description={data.why[0].description}
           />
-           <Linkcard
+          <Linkcard
             action={() => {
               navigate("/");
             }}
             width="45vh"
-           
             id={data.why[0].id}
             image={data.why[0].photo}
             title={data.why[0].title}
@@ -199,10 +147,10 @@ const Concept = () => {
           />
         </div>
       </Space>
-      </Content>
+    </Content>
 
     // <Layout>
-        
+
     //   <Layout>
     //       <Content style={{display:'flex',flexDirection:'row',justifyContent:'center',flexWrap:'wrap',}}>
 
@@ -211,13 +159,13 @@ const Concept = () => {
     //       flexBasis: 300}}>
     //           <Image preview={true} src={conceptimg} />
     //           </Card>
-    //           <Card  
+    //           <Card
     //         style={{display:'flex',flex: 1,justifyContent:'center',
     //             flexShrink: 1,
     //             flexBasis: 300}}>
     //           <Image preview={true} src={conceptimg} />
     //           </Card>
-    //           <Card  
+    //           <Card
     //           style={{display:'flex',flex: 1,justifyContent:'center',
     //                     flexShrink: 1,
     //                     flexBasis: 300}}>
@@ -239,7 +187,6 @@ const Concept = () => {
     //   </Title>
     //       </Content>
     //   </Layout>
-
 
     //     </Content>
     //   <Space direction="vertical">
