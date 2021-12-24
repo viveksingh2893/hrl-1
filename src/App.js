@@ -15,6 +15,8 @@ import Gallery from "./screen/gallery";
 import Blog from "./screen/blog";
 import Home from "./screen/home";
 import Concept from "./screen/concept";
+import Login from "./screen/login";
+import Admin from "./screen/admin";
 // import Home from './screen/home';
 
 function App() {
@@ -38,7 +40,7 @@ function App() {
       link: ["blog", "gallery", "news"],
       item: ["BLOG", "GALLERY", "NEWS"],
     },
-    { title: "LOGIN/REGISTER", link: [], item: [] },
+    { title: "LOGIN/REGISTER", link: ["login"], item: ["LOGIN"] },
   ];
 
   return (
@@ -88,9 +90,11 @@ function App() {
         <Route path="/blog" element={<Blog page="blog" />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/concept" element={<Concept />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
+      <Footer style={{ textAlign: "center" ,backgroundColor:'#ffcc00'}}>
+       Website designed and maintained by Destratum Solutions Pvt Ltd ©2021.
       </Footer>
     </Layout>
   );
