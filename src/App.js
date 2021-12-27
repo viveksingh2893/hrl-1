@@ -22,7 +22,7 @@ function App() {
     <div>
       <Headbar/>
       
-      <Layout style={{width:'100vw'}}>
+      <Layout style={{width:'100vw',background:'#ffffff'}}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog page="blog" />} />
