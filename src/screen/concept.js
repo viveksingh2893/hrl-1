@@ -191,30 +191,26 @@ const Concept = () => {
               navigate("/");
             }}
             width="45vh"
-            
-           
             id={data.why[0].id}
             image={data.why[0].photo}
             title={data.why[0].title}
             description={data.why[0].description}
           />
-           <Linkcard
+          <Linkcard
             action={() => {
               navigate("/");
             }}
             width="45vh"
-           
             id={data.why[0].id}
             image={data.why[0].photo}
             title={data.why[0].title}
             description={data.why[0].description}
           />
-           <Linkcard
+          <Linkcard
             action={() => {
               navigate("/");
             }}
             width="45vh"
-           
             id={data.why[0].id}
             image={data.why[0].photo}
             title={data.why[0].title}

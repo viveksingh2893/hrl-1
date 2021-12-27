@@ -1,6 +1,7 @@
 import { Card,Image } from "antd";
 import { useEffect, useState } from "react";
 import "../App.less";
+import { useEffect, useState } from "react";
 
 const Linkcard = (props) => {
   const [width,setWidth]=useState(0)
@@ -14,6 +15,14 @@ const Linkcard = (props) => {
      console.log("height",window.innerHeight)
     })},[])
   const { Meta } = Card;
+  const [viewPortWidth, setWidth] = useState(0);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener("resize", (e) => {
+      console.log("size", e.target);
+      setWidth(window.innerWidth);
+    });
+  }, []);
 
   return (
     <div style={{marginRight:5}}>

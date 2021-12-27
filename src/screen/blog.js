@@ -1,20 +1,60 @@
-import '../App.less'
-import { Carousel } from "antd";
-import CaraImage from '../components/imageCarousel';
+import React, { Component } from "react";
+import "../App.less";
+import { useEffect, useState } from "react";
+import Wordcloud from "../components/wordcloud";
+import Searchbar from "../components/searchbar";
+import Linkcard from "../components/linkcard";
 
+const Blog = () => {
+  const onSearch = (value) => console.log(value);
 
-const Blog=(props)=>{
-    const contentStyle = {
-        height: '400px',
-        color: '#fff',
-        lineHeight: '160px',
-        textAlign: 'center',
-        background: '#364d79',
-      };
+  const keywords = [
+    { id: 1, keyword: "word1" },
+    { id: 1, keyword: "word2" },
+    { id: 1, keyword: "word3" },
+    { id: 1, keyword: "word4" },
+    { id: 1, keyword: "word5" },
+    { id: 1, keyword: "word6" },
+    { id: 1, keyword: "word7" },
+    { id: 1, keyword: "word8" },
+    { id: 1, keyword: "word9" },
+    { id: 1, keyword: "word10" },
+    { id: 1, keyword: "word1" },
+    { id: 1, keyword: "word2" },
+    { id: 1, keyword: "word3" },
+    { id: 1, keyword: "word4" },
+    { id: 1, keyword: "word5" },
+    { id: 1, keyword: "word6" },
+    { id: 1, keyword: "word7" },
+    { id: 1, keyword: "word8" },
+    { id: 1, keyword: "word9" },
+    { id: 1, keyword: "word10" },
+    { id: 1, keyword: "word1" },
+    { id: 1, keyword: "word2" },
+    { id: 1, keyword: "word3" },
+    { id: 1, keyword: "word4" },
+    { id: 1, keyword: "word5" },
+    { id: 1, keyword: "word6" },
+    { id: 1, keyword: "word7" },
+    { id: 1, keyword: "word8" },
+    { id: 1, keyword: "word9" },
+    { id: 1, keyword: "word10" },
+  ];
 
-    return (
-        <CaraImage/>
-    )
-}
+  return (
+    <div className="container-layout">
+      <Wordcloud data={keywords}></Wordcloud>
+      <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+      <div className="card-container">
+        <Linkcard
+          title="This is a Title"
+          description="A very long description is not being given here, this is just for testing purpose."
+          image="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/Man-of-Steel-Everett-H-2021.jpg"
+          marginRight="1vh"
+        ></Linkcard>
+      </div>
+    </div>
+  );
+};
 
 export default Blog;

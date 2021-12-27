@@ -1,10 +1,11 @@
 import logo from "../assets/image/logo.jpeg";
-import { Layout,Drawer, Image } from "antd";
+import { Layout, Drawer, Image } from "antd";
 
-import {MenuOutlined}  from '@ant-design/icons'
+import { MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import NavMenu from "./NavMenu";
 import { useNavigate } from "react-router-dom";
+
 
 
 const Headbar=()=>{
@@ -58,71 +59,85 @@ const Headbar=()=>{
 
       
 
-        <Header
+      
 
+      <Header
         style={{
-          display:'flex',
-          height:'10vh',
-          width:"100vw",
-          
-          flexDirection:'row',
-          justifyContent:'space-evenly',
-         
+          display: "flex",
+          height: "10vh",
+          width: "100vw",
 
-   
-   
-         
-         
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+
           alignItems: "center",
           backgroundColor: "#ffcc00",
         }}
-      >{viewPortWidth<500?<div  onClick={()=>navigate('/')} style={{position:'absolute',display:'flex',flex:1,zIndex:2,top:0,left:'10vw',border:'1vh solid #666666',background:'#666666'}}>
+      >
+        {viewPortWidth < 500 ? (
+          <div
+            onClick={() => navigate("/")}
+            style={{
+              position: "absolute",
+              display: "flex",
+              flex: 1,
+              zIndex: 2,
+              top: 0,
+              left: "10vw",
+              border: "1vh solid #666666",
+              background: "#666666",
+            }}
+          >
+            <Image
+              height="8vh"
+              width="6vh"
+              preview={false}
+              style={{ aspectRatio: 1 }}
+              src={logo}
+            />
+          </div>
+        ) : null}
 
-       
-      <Image
-      height='8vh'
-      width='6vh'
-      preview={false}
-      style={{aspectRatio:1}}
-      
-     
-      src={logo}
-    
-      />
-       </div>:null}
-     
-        
-        <div style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-       {viewPortWidth>500? <NavMenu viewPortWidth={viewPortWidth}/>:
-        <div style={{display:'flex',justifyContent:'flex-end'}}>
-           <MenuOutlined  onClick={openDraw}style={{ fontSize: '16px',justifyContent: "flex-end",color: '#666666' }} /></div>
-        }
-          
+        <div
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          {viewPortWidth > 500 ? (
+            <NavMenu viewPortWidth={viewPortWidth} />
+          ) : (
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <MenuOutlined
+                onClick={openDraw}
+                style={{
+                  fontSize: "16px",
+                  justifyContent: "flex-end",
+                  color: "#666666",
+                }}
+              />
+            </div>
+          )}
         </div>
         <Drawer
-         placement="right"
-         width='50vw'
-        
-         closable={false}
-         visible={visible}
-         onClose={onClose}
+          placement="right"
+          width="50vw"
+          closable={false}
+          visible={visible}
+          onClose={onClose}
         >
-        <NavMenu viewPortWidth={viewPortWidth} 
-        
-         style={{
-            fontSize:'14px',
-            fontWeight:'600',
-            color:'#666666',
-            fontFamily:'Calibri',
-            justifyContent: "flex-end",
-            backgroundColor: "#ffcc00",
-          }}/>
-
-
-          </Drawer>
+          <NavMenu
+            viewPortWidth={viewPortWidth}
+            style={{
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "#666666",
+              fontFamily: "Calibri",
+              justifyContent: "flex-end",
+              backgroundColor: "#ffcc00",
+            }}
+          />
+        </Drawer>
       </Header>
-      </div>
-    )
-}
+    </div>
+  );
+};
 
-export default Headbar
+export default Headbar;
