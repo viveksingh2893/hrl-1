@@ -29,7 +29,7 @@ const Headbar=()=>{
      
        },[])
     return(
-      <div style={{ position: 'fixed', zIndex: 1,backgroundColor:'#ffffff'}}>
+      <div style={{ position: 'fixed', zIndex: 5 ,backgroundColor:'#ffffff'}}>
         {viewPortWidth>500?<div style={{width:'100vw',height:'2.5vh'}}>
 
           

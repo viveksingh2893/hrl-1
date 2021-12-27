@@ -7,6 +7,7 @@ const Videobox = (props) => {
     <div
       style={{
         width: `${props.width}`,
+        height:props.height
       }}
       class="video-container"
     >
