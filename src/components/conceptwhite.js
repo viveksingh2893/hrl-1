@@ -8,10 +8,12 @@ const ConceptW=()=>{
 
     return(
 
-        <Layout.Content style={{display:'flex',flex:1,margin:5,flexWrap:'wrap',display:'flex',backgroundColor:'#ffdb4d',flexDirection:'row',justifyContent:'space-around'}}>
+        <Layout.Content >
+            <div style={{display:'flex',flex:1,flexWrap:'wrap',display:'flex',flexDirection:'row',justifyContent:'space-around',backgroundColor:'#ffd633',width:'80vw'}}>
+            
             <div style={{display:'flex',flex:1,flexBasis:300,justifyContent:'flex-end',alignItems:'center',padding:5}}>
            <Image
-           height="20vh"
+           height="40vh"
            
          
              src={img2}
@@ -35,6 +37,7 @@ const ConceptW=()=>{
            </Text>
            <Button>Read More</Button>
         </div> 
+        </div>
         
       
         </Layout.Content>

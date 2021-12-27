@@ -8,17 +8,22 @@ const ConceptB = () => {
 
   return (
     <Content
-      style={{
+     
+    >
+      <div
+       style={{
         display: "flex",
         flex: 1,
+        width:'80vw',
+   
         
         flexWrap: "wrap",
         display: "flex",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#474747 ",
         flexDirection: "row",
         justifyContent: "space-around",
-      }}
-    >
+    
+      }}>
       <div
         style={{
           display: "flex",
@@ -34,17 +39,6 @@ const ConceptB = () => {
         <Title level={3} style={{ display: "flex", justifyContent: "center" }}>
           Mith.AI
         </Title>
-        <Text
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            fontSize: "16px",
-          }}
-        >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam,
-        </Text>
         <Text style={{ display: "flex", justifyContent: "center" }}>
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -66,6 +60,7 @@ const ConceptB = () => {
         }}
       >
         <Image height="40vh" src={img2} />
+      </div>
       </div>
     </Content>
   );
