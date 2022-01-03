@@ -52,6 +52,18 @@ const Blog = () => {
           image="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/Man-of-Steel-Everett-H-2021.jpg"
           marginRight="1vh"
         ></Linkcard>
+         <Linkcard
+          title="This is a Title"
+          description="A very long description is not being given here, this is just for testing purpose."
+          image="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/Man-of-Steel-Everett-H-2021.jpg"
+          marginRight="1vh"
+        ></Linkcard>
+         <Linkcard
+          title="This is a Title"
+          description="A very long description is not being given here, this is just for testing purpose."
+          image="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/Man-of-Steel-Everett-H-2021.jpg"
+          marginRight="1vh"
+        ></Linkcard>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const ConceptW=()=>{
         <Layout.Content >
             <div style={{display:'flex',flex:1,flexWrap:'wrap',display:'flex',flexDirection:'row',justifyContent:'space-around',backgroundColor:'#ffd633',width:'80vw'}}>
             
-            <div style={{display:'flex',flex:1,flexBasis:300,justifyContent:'flex-end',alignItems:'center',padding:5}}>
+            <div style={{display:'flex',flexBasis:300,justifyContent:'center',alignItems:'center',padding:5}}>
            <Image
            height="40vh"
            
@@ -19,7 +19,7 @@ const ConceptW=()=>{
              src={img2}
            />
        </div> 
-        <div style={{display:'flex',flex:1,flexShrink:1, flexBasis:300,justifyContent:'flex-start',alignItem:'center',flexDirection:'column'}}>  
+        <div style={{display:'flex',flexShrink:1, flexBasis:300,justifyContent:'flex-start',alignItem:'center',flexDirection:'column'}}>  
            <Title level={3} style={{display:'flex',justifyContent:'center'}}>
              Mith.AI
            </Title>

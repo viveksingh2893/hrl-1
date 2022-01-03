@@ -1,3 +1,4 @@
+import React,{useEffect} from 'react'
 import { Menu, Layout, Button, Image, Typography } from "antd";
 import img2 from "../assets/image/IMG 0.2A.jpeg";
 import '../assets/css/style.css'
@@ -6,7 +7,23 @@ import ConceptW from "../components/conceptwhite";
 import ConceptB from "../components/conceptblue";
 const Home = () => {
   const { Sider, Content, Header, Footer } = Layout;
-  const { Title } = Typography;
+
+  const getData= async ()=>{
+   const result=await fetch('http://192.168.29.54:8000/homepage',{
+    mode: 'no-cors',
+      method: 'GET',
+    }
+    )
+   
+    console.log(result)
+  }
+
+  useEffect(()=>{
+
+    getData();
+  },[])
+
+
   return (
     <Content
       style={{

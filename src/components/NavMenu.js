@@ -4,11 +4,11 @@ const NavMenu=(props)=>{
     const { SubMenu } = Menu;
     const navigate = useNavigate();
     const DEFAULTSTYLE={
-      fontSize:'16px',
+      fontSize:'calc(10px + 0.5vw)',
       fontWeight:'bolder',
+      height:'60px',
       color:'#666666',
       fontFamily:'Calibri',
-      height:'6vh',
       justifyContent: "flex-end",
       backgroundColor: "#ffcc00",
     }
@@ -29,18 +29,19 @@ const NavMenu=(props)=>{
           link: ["blog", "gallery", "news"],
           item: ["BLOG", "GALLERY", "NEWS"],
         },
-        { title: "LOGIN/REGISTER", link: [], item: [] },
+        // { title: "LOGIN/REGISTER", link: ['login'], item: ['LOGIN'] },
       ];
     return (
 
         <Menu
-          theme="dark"
-          mode= {props.viewPortWidth>500?"horizontal":"inline"}
+        theme="dark"
+          
+          mode= {props.viewPortWidth>700?"horizontal":"inline"}
           style={navstyle}
         >
           {data.map((val, ind) => {
             return (
-              <SubMenu key={`${ind}`} title={val.title}>
+              <SubMenu  key={`${ind}`} title={val.title}>
                 {val.item.map((newVal, index) => {
                   return (
                     <Menu.Item key={`${newVal+index}`}
@@ -53,9 +54,16 @@ const NavMenu=(props)=>{
                     </Menu.Item>
                   );
                 })}
+                
               </SubMenu>
+                
             );
           })}
+          <SubMenu key={`login`} title='LOGIN'
+                onTitleClick={() =>
+                  navigate(`/login`)
+                }
+              ></SubMenu>
         </Menu>
 
     )

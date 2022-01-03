@@ -31,11 +31,11 @@ const Headbar=()=>{
        },[])
     return(
       <div style={{ position: 'fixed', zIndex: 5 ,backgroundColor:'#ffffff'}}>
-        {viewPortWidth>500?<div style={{width:'100vw',height:'2.5vh'}}>
+        {viewPortWidth>700?<div style={{width:'100vw',height:'2.5vh'}}>
 
           
         </div>:null}
-        {viewPortWidth>500?<div 
+        {viewPortWidth>700?<div 
         onClick={()=>navigate('/')}
         style={{position:'absolute',
         display:'flex',
@@ -64,7 +64,7 @@ const Headbar=()=>{
       <Header
         style={{
           display: "flex",
-          height: "10vh",
+          height: "60px",
           width: "100vw",
 
           flexDirection: "row",
@@ -74,23 +74,26 @@ const Headbar=()=>{
           backgroundColor: "#ffcc00",
         }}
       >
-        {viewPortWidth < 500 ? (
+        {viewPortWidth <700? (
           <div
             onClick={() => navigate("/")}
             style={{
               position: "absolute",
               display: "flex",
               flex: 1,
+              height:60,
               zIndex: 2,
               top: 0,
               left: "10vw",
-              border: "1vh solid #666666",
+              justifyContent:'center',
+              alignItems:'center',
+              border: "10px solid #666666",
               background: "#666666",
             }}
           >
             <Image
-              height="8vh"
-              width="6vh"
+              height="45px"
+              // width="6vh"
               preview={false}
               style={{ aspectRatio: 1 }}
               src={logo}
@@ -101,8 +104,18 @@ const Headbar=()=>{
         <div
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          {viewPortWidth > 500 ? (
-            <NavMenu viewPortWidth={viewPortWidth} />
+          {viewPortWidth >700? (
+            <NavMenu viewPortWidth={viewPortWidth} 
+            style={{
+              fontSize:'calc(10px + 0.5vw)',
+              fontWeight: "600",
+              height:'60px',
+              color: "#666666",
+              fontFamily: "Calibri",
+              justifyContent: "flex-end",
+              backgroundColor: "#ffcc00",
+            }}
+            />
           ) : (
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
               <MenuOutlined
@@ -126,7 +139,7 @@ const Headbar=()=>{
           <NavMenu
             viewPortWidth={viewPortWidth}
             style={{
-              fontSize: "14px",
+              fontSize: "12px",
               fontWeight: "600",
               color: "#666666",
               fontFamily: "Calibri",

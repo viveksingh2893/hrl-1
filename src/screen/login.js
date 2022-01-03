@@ -1,6 +1,7 @@
 import { Input, Space,Card,Button } from 'antd';
 import {useState} from 'react'
 import {useNavigate} from "react-router-dom";
+
 const Login=()=>{
     const navigate = useNavigate();
     const [email,setEmail]=useState('')
@@ -16,15 +17,23 @@ const updateEmail = (event) => {
     setPasswrd(event.target.value);
   };
     return(
-        <Card style={{ width: 250 ,alignSelf:'center',margin:'15%',backgroundColor:'#ffcc00'}}>
+        <div style={{display:'flex', width: "25vw" ,
+        height:"25vw",
+        boxShadow:'1vw 1vw  #ffcc00 , -1vw -1vw #1f1f1f',
+        alignSelf:'center',
+        margin:'10vw',
+        // backgroundColor:'#e0e0e0',
+        justifyContent:'center',
+        alignItems:'center'}}>
         <Space direction="vertical">
-    <Input placeholder="Enter your Email" value={email} onChange={updateEmail}/>
-    <Input.Password placeholder="input password" value={passwrd} onChange={updatePasswrd} />
-    <Button type="primary" block onClick={sendData}>
+   
+    <Input  style={{fontFamily:'Calibri',fontSize:16,width:'20vw',border:'2px solid #000000'}}placeholder="Email" value={email} onChange={updateEmail}/>
+    <Input.Password style={{fontFamily:'Calibri',fontSize:16,width:'20vw',border:'2px solid #000000'}} placeholder="Password" value={passwrd} onChange={updatePasswrd} />
+    <Button  block onClick={sendData} style={{color:'yellow',backgroundColor:'#1f1f1f',fontFamily:'Calibri',fontSize:16,fontWeight:'bold'}}>
       Login
     </Button>
   </Space>
-  </Card>
+  </div>
     )
 }
 export default Login;
