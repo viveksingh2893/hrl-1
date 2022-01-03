@@ -3,12 +3,13 @@ import "../App.less";
 import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
-import { Typography } from "antd";
+import { Typography,Divider } from "antd";
 import { List } from "antd";
 import ProfileCard from "../components/profilecard";
 
 const Blog = () => {
   const onSearch = (value) => console.log(value);
+
   const data = [];
   const keywords = [];
   for (let i = 0; i < 21; i++) {
@@ -26,11 +27,15 @@ const Blog = () => {
       keyword: `word ${String(i)}`,
     });
   }
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
 
   return (
     <div className="container-layout">
       <Wordcloud data={keywords}></Wordcloud>
       <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+      <Divider></Divider>
       <List
         bordered
         style={{ padding: 100, borderWidth: 0 }}

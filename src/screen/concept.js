@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import conceptimg from "../assets/image/IMG 2.1.png";
 import "../App.less";
 import '../assets/css/style.css'
@@ -76,7 +76,10 @@ const Concept = () => {
   function onChange(a, b, c) {
     console.log(a, b, c);
   }
-
+  
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
 
   return (
 

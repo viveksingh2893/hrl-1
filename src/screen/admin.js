@@ -15,7 +15,7 @@ import {
   PicLeftOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 const { Content,  Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -23,6 +23,10 @@ const { SubMenu } = Menu;
 const Admin=()=> {
   const [state,setState]=useState({collapsed:false})
   const [key,setKey]=useState(1)
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const onCollapse = (collapsed) => {
     console.log(collapsed);
     setState({ collapsed });
@@ -33,7 +37,7 @@ console.log(event.key,'event')
 }
     const { collapsed } = state;
     return (
-      <Layout style={{ minHeight: '100vh' ,marginTop:'calc(60px + 3vh )'}}>
+      <Layout style={{ minHeight: '100vh' ,marginTop:'calc(80px + 3vh )'}}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">

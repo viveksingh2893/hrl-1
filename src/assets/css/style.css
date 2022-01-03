@@ -6,8 +6,8 @@
 .T1{
     width: 100vw;
     font-size:calc(14px + 0.5vw);
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
     line-height: calc(14px + 0.5);
     font-family:Calibri;
     font-weight:normal;

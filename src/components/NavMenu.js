@@ -6,7 +6,7 @@ const NavMenu=(props)=>{
     const DEFAULTSTYLE={
       fontSize:'calc(10px + 0.5vw)',
       fontWeight:'bolder',
-      height:'60px',
+      height:'80px',
       color:'#666666',
       fontFamily:'Calibri',
       justifyContent: "flex-end",

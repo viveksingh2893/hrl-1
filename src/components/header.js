@@ -64,7 +64,7 @@ const Headbar=()=>{
       <Header
         style={{
           display: "flex",
-          height: "60px",
+          height: "80px",
           width: "100vw",
 
           flexDirection: "row",
@@ -81,7 +81,7 @@ const Headbar=()=>{
               position: "absolute",
               display: "flex",
               flex: 1,
-              height:60,
+              height:80,
               zIndex: 2,
               top: 0,
               left: "10vw",
@@ -92,7 +92,7 @@ const Headbar=()=>{
             }}
           >
             <Image
-              height="45px"
+              height="60px"
               // width="6vh"
               preview={false}
               style={{ aspectRatio: 1 }}
@@ -109,10 +109,11 @@ const Headbar=()=>{
             style={{
               fontSize:'calc(10px + 0.5vw)',
               fontWeight: "600",
-              height:'60px',
+              height:'80px',
               color: "#666666",
               fontFamily: "Calibri",
               justifyContent: "flex-end",
+              alignItems:'center',
               backgroundColor: "#ffcc00",
             }}
             />

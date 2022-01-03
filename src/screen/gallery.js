@@ -5,9 +5,13 @@ import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
 import Linkcard from "../components/linkcard";
 import Mapbox from "../components/Mapbox";
+import { Card, Divider } from "antd";
 
 const Gallery = () => {
   const onSearch = (value) => console.log(value);
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
 
   const keywords = [
     { id: 1, keyword: "word1" },
@@ -54,7 +58,10 @@ const Gallery = () => {
           marginRight="1vh"
         ></Linkcard>
       </div> */}
+     <Divider></Divider>
+       
       <Mapbox></Mapbox>
+   
     </div>
   );
 };
