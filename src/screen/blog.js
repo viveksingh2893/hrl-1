@@ -1,70 +1,65 @@
 import React, { Component } from "react";
 import "../App.less";
-import { useEffect, useState } from "react";
 import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
-import Linkcard from "../components/linkcard";
+import { useEffect, useState } from "react";
+import { Typography } from "antd";
+import { List } from "antd";
+import ProfileCard from "../components/profilecard";
 
 const Blog = () => {
   const onSearch = (value) => console.log(value);
-
-  const keywords = [
-    { id: 1, keyword: "word1" },
-    { id: 1, keyword: "word2" },
-    { id: 1, keyword: "word3" },
-    { id: 1, keyword: "word4" },
-    { id: 1, keyword: "word5" },
-    { id: 1, keyword: "word6" },
-    { id: 1, keyword: "word7" },
-    { id: 1, keyword: "word8" },
-    { id: 1, keyword: "word9" },
-    { id: 1, keyword: "word10" },
-    { id: 1, keyword: "word1" },
-    { id: 1, keyword: "word2" },
-    { id: 1, keyword: "word3" },
-    { id: 1, keyword: "word4" },
-    { id: 1, keyword: "word5" },
-    { id: 1, keyword: "word6" },
-    { id: 1, keyword: "word7" },
-    { id: 1, keyword: "word8" },
-    { id: 1, keyword: "word9" },
-    { id: 1, keyword: "word10" },
-    { id: 1, keyword: "word1" },
-    { id: 1, keyword: "word2" },
-    { id: 1, keyword: "word3" },
-    { id: 1, keyword: "word4" },
-    { id: 1, keyword: "word5" },
-    { id: 1, keyword: "word6" },
-    { id: 1, keyword: "word7" },
-    { id: 1, keyword: "word8" },
-    { id: 1, keyword: "word9" },
-    { id: 1, keyword: "word10" },
-  ];
+  const data = [];
+  const keywords = [];
+  for (let i = 0; i < 21; i++) {
+    data.push({
+      href: "https://ant.design",
+      name: `ant design part ${i}`,
+      avatar: "https://joeschmoe.io/api/v1/random",
+      description:
+        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      content:
+        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+    });
+    keywords.push({
+      id: i,
+      keyword: `word ${String(i)}`,
+    });
+  }
 
   return (
     <div className="container-layout">
       <Wordcloud data={keywords}></Wordcloud>
       <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
-      <div className="card-container">
-        <Linkcard
-          title="This is a Title"
-          description="A very long description is not being given here, this is just for testing purpose."
-          image="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/Man-of-Steel-Everett-H-2021.jpg"
-          marginRight="1vh"
-        ></Linkcard>
-         <Linkcard
-          title="This is a Title"
-          description="A very long description is not being given here, this is just for testing purpose."
-          image="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/Man-of-Steel-Everett-H-2021.jpg"
-          marginRight="1vh"
-        ></Linkcard>
-         <Linkcard
-          title="This is a Title"
-          description="A very long description is not being given here, this is just for testing purpose."
-          image="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/Man-of-Steel-Everett-H-2021.jpg"
-          marginRight="1vh"
-        ></Linkcard>
-      </div>
+      <List
+        bordered
+        style={{ padding: 100, borderWidth: 0 }}
+        grid={{
+          gutter: 16,
+          // xs: 1,
+          // sm: 2,
+          // md: 4,
+          // lg: 4,
+          // xl: 5,
+          //xxl: 4,
+          //   // md: `${Object.keys(data).length < 3 ? 2 : 4}`,
+          //   // lg: `${Object.keys(data).length < 3 ? 2 : 4}`,
+          //   // xl: `${Object.keys(data).length < 3 ? 2 : 5}`,
+          //   // xxl: `${Object.keys(data).length < 3 ? 2 : 5}`,
+        }}
+        pagination={{
+          onChange: (page) => {
+            console.log(page);
+          },
+          pageSize: 4,
+        }}
+        dataSource={data}
+        renderItem={(item) => (
+          <List.Item>
+            <ProfileCard name={item.name}></ProfileCard>
+          </List.Item>
+        )}
+      />
     </div>
   );
 };
