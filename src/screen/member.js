@@ -1,8 +1,15 @@
 import React from "react";
 import "../App.less";
+import Credentials from "../components/credentials";
 import { useEffect, useState } from "react";
 import { Image, Typography } from "antd";
 import { Text } from "react";
+import { Button } from "antd";
+import {
+  LeftOutlined,
+  RightOutlined,
+  DownloadOutlined,
+} from "@ant-design/icons";
 
 const Member = () => {
   const { Title, Text } = Typography;
@@ -13,6 +20,54 @@ const Member = () => {
     desig: "Researcher",
     email: "researcher@hirapidlab.com",
     phone: "+xx-xxxxxxxxxx",
+    bio: `Contact dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
+    edu: `Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
+    pres: `Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
+    prev: `Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
+    proj: `Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
+    pat: `Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
+    pub: `Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
+    eve: `Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
+    art: `Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.Dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.`,
   };
   const [viewPortWidth, setWidth] = useState(0);
   useEffect(() => {
@@ -22,6 +77,14 @@ const Member = () => {
       setWidth(window.innerWidth);
     });
   }, []);
+
+  const prevdata = () => {
+    console.log("Fetch previous member");
+  };
+
+  const nextdata = () => {
+    console.log("Fetch next member");
+  };
 
   return (
     <div>
@@ -45,17 +108,24 @@ const Member = () => {
             display: "flex",
             flex: 1,
             flexShrink: 1,
-            flexBasis: 300,
+            flexBasis: 405,
             justifyContent: "center",
             alignItems: "center",
           }}
         >
+          <Button
+            type="primary"
+            icon={<LeftOutlined />}
+            shape="circle"
+            onClick={prevdata}
+          />
           <div
             style={{
-              padding: 5,
+              padding: 3,
               backgroundColor: "black",
               display: "flex",
               justifyContent: "center",
+              margin: 5,
             }}
           >
             <Image
@@ -63,6 +133,12 @@ const Member = () => {
               width={`${viewPortWidth > 500 ? "20vw" : "40vw"}`}
             />
           </div>
+          <Button
+            type="primary"
+            icon={<RightOutlined />}
+            shape="circle"
+            onClick={nextdata}
+          />
         </div>
         <div
           style={{
@@ -70,7 +146,7 @@ const Member = () => {
             margin: 5,
             flex: 1,
             // flexShrink: 1,
-            flexBasis: 300,
+            flexBasis: 405,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -118,13 +194,38 @@ const Member = () => {
           >
             <Text style={{ fontSize: "20px", margin: 10 }}>
               <b>Bio-Sketch: </b>
-              ”CONTACT LINK dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.”
+              {memberdata.bio}
             </Text>
           </div>
+          <Button
+            type="primary"
+            shape="round"
+            icon={<DownloadOutlined />}
+            size="large"
+            style={{ margin: 20 }}
+          >
+            Download CV
+          </Button>
         </div>
+      </div>
+      <div
+        style={{
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 10,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Credentials Title="EDUCATION" txt={memberdata.edu} />
+        <Credentials Title="PRESENT POSITIONS" txt={memberdata.pres} />
+        <Credentials Title="PREVIOUS POSITIONS" txt={memberdata.prev} />
+        <Credentials Title="PROJECTS" txt={memberdata.proj} />
+        <Credentials Title="PATENTS" txt={memberdata.pat} />
+        <Credentials Title="PUBLICATIONS" txt={memberdata.pub} />
+        <Credentials Title="EVENTS" txt={memberdata.eve} />
+        <Credentials Title="ARTICLES" txt={memberdata.art} />
       </div>
     </div>
   );
