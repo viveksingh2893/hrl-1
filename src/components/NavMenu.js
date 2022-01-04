@@ -29,7 +29,7 @@ const NavMenu=(props)=>{
           link: ["blog", "gallery", "news"],
           item: ["BLOG", "GALLERY", "NEWS"],
         },
-        { title: "LOGIN/REGISTER", link: [], item: [] },
+        { title: "LOGIN/REGISTER", link: ["login"], item: ["LOGIN"] },
       ];
     return (
 
