@@ -1,71 +1,62 @@
 import { Menu, Layout, Button, Image, Typography } from "antd";
-import img2 from "../assets/image/IMG 0.3.png";
+import '../assets/css/style.css'
+
 import "../App.less";
 
-const ConceptB = () => {
+const ConceptB = (props) => {
   const { Title, Text } = Typography;
   const {Content} =Layout
 
   return (
     <Content
-      style={{
+     
+    >
+      <div
+       style={{
         display: "flex",
         flex: 1,
-        
-        flexWrap: "wrap",
-        display: "flex",
-        backgroundColor: "#FFFFFF",
+        width:'100vw',
+        padding:'2vw',
+        flexWrap: "wrap", 
+        backgroundColor: "#666666 ",
         flexDirection: "row",
         justifyContent: "space-around",
-      }}
-    >
+    
+      }}>
       <div
         style={{
           display: "flex",
-          flex: 1,
+          flex: props.flexsize,
           flexShrink: 1,
           flexBasis: 300,
           justifyContent: "center",
           alignItem: "center",
           flexDirection: "column",
-          margin: 20,
+          
         }}
       >
-        <Title level={3} style={{ display: "flex", justifyContent: "center" }}>
-          Mith.AI
+        <Title level={2} style={{ display: "flex", justifyContent: "center",color:'#ffffff' }}>
+          {props.title}
         </Title>
-        <Text
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            fontSize: "16px",
-          }}
-        >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam,
+        <Text style={{display:'flex',justifyContent:'center',fontSize:'calc(11px + 0.5vw)',fontFamily:'Calibri',color:'#ffffff'}}>
+          {props.text}
         </Text>
-        <Text style={{ display: "flex", justifyContent: "center" }}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam,
-        </Text>
-        <Text style={{ display: "flex", justifyContent: "center" }}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam,
-        </Text>
+       
+        <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+           <Button onClick={props.navigation} style={{width:'calc(100px + 1vw)',margin:'0.5vw',fontFamily:'Calibri',fontWeight:'600',backgroundColor:'#ffcc00'}}>{props.btitle}</Button>
+           </div>
       </div>
       <div
         style={{
           display: "flex",
-          flex: 1,
-          flexBasis: 300,
+          flex:1,
+          flexBasis: 200,
           height:300,
           justifyContent: "center",
         }}
       >
-        <Image height="40vh" src={img2} />
+        <Image height="40vh" src={props.img} />
+      </div>
       </div>
     </Content>
   );

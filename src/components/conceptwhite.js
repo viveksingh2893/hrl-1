@@ -1,40 +1,51 @@
 import {Menu,Layout,Button,Image, Typography} from 'antd'
-import img2 from '../assets/image/IMG 0.4.png'
-import '../App.less';
 
-const ConceptW=()=>{
+import '../App.less';
+import '../assets/css/style.css'
+
+const ConceptW=(props)=>{
     const {Title,Text} =Typography
     
 
     return(
 
-        <Layout.Content style={{display:'flex',flex:1,margin:5,flexWrap:'wrap',display:'flex',backgroundColor:'#ffdb4d',flexDirection:'row',justifyContent:'space-around'}}>
-            <div style={{display:'flex',flex:1,flexBasis:300,justifyContent:'flex-end',alignItems:'center',padding:5}}>
+        <Layout.Content >
+            <div style=
+            {{display:'flex',flex:1,flexWrap:'wrap',display:'flex',padding:'2vw',justifyContent:'space-around',
+            backgroundColor:'#ffd633',width:'100vw'}}>
+            
+            <div style={{display:'flex',flex:1,flexBasis:200,justifyContent:'center',alignItems:'center'}}>
            <Image
-           height="20vh"
+           height="40vh"
            
          
-             src={img2}
+             src={props.img}
            />
        </div> 
-        <div style={{display:'flex',flex:1,flexShrink:1, flexBasis:300,justifyContent:'flex-start',alignItem:'center',flexDirection:'column'}}>  
-           <Title level={3} style={{display:'flex',justifyContent:'center'}}>
-             Mith.AI
+        <div 
+        style={{
+          display: "flex",
+          flex: props.flexsize,
+          flexShrink: 1,
+          flexBasis: 300,
+          justifyContent: "center",
+          alignItem: "center",
+          flexDirection: "column",
+          
+        }}>  
+           <Title level={2} style={{display:'flex',justifyContent:'center'}}>
+            {props.title}
            </Title>
-           <Text style={{display:'flex',justifyContent:'center'}}>
-           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-           labore et dolore magna aliqua. Ut enim ad minim veniam,
+           <Text style={{display:'flex',justifyContent:'center',fontSize:'calc(11px + 0.5vw)',fontFamily:'Calibri'}}>
+          {props.text}
            </Text>
-           <Text style={{display:'flex',justifyContent:'center'}}>
-           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-           labore et dolore magna aliqua. Ut enim ad minim veniam,
-           </Text>
-           <Text style={{display:'flex',justifyContent:'center'}}>
-           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-           labore et dolore magna aliqua. Ut enim ad minim veniam,
-           </Text>
-           <Button>Read More</Button>
+        
+
+           <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+           <Button onClick={props.navigation} style={{width:'calc(100px + 1vw)',margin:'0.5vw',fontFamily:'Calibri',fontWeight:'600',backgroundColor:'#666666',color:'#ffcc00'}}>{props.btitle}</Button>
+           </div>
         </div> 
+        </div>
         
       
         </Layout.Content>

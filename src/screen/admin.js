@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb, Statistic } from 'antd';
+import { Layout, Menu, Card } from 'antd';
 import StatisticData from "../components/statistic";
 import AddUser from "../components/adduser";
 import HomePage from "../components/homepage";
@@ -15,7 +15,7 @@ import {
   PicLeftOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 const { Content,  Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -23,6 +23,10 @@ const { SubMenu } = Menu;
 const Admin=()=> {
   const [state,setState]=useState({collapsed:false})
   const [key,setKey]=useState(1)
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const onCollapse = (collapsed) => {
     console.log(collapsed);
     setState({ collapsed });
@@ -33,7 +37,7 @@ console.log(event.key,'event')
 }
     const { collapsed } = state;
     return (
-      <Layout style={{ minHeight: '100vh' }}>
+      <Layout style={{ minHeight: '100vh' ,marginTop:'calc(80px + 3vh )'}}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
@@ -63,7 +67,7 @@ console.log(event.key,'event')
               Add New Concepts +
             </Menu.Item>
             <Menu.Item key="11" icon={<LogoutOutlined />} onClick={menuclick}>
-              Logout
+            <a href="http://127.0.0.1:8000/admin" target="_blank">Logout</a>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -79,7 +83,7 @@ console.log(event.key,'event')
         {key==8?<ProductPage color='lightyellow'/>:null}
         {key==9?<ProductPage color='lightgreen'/>:null}
         {key==10?<ProductPage color='lightpink'/>:null}
-        {key==11?<b>LogOut Page</b>:null}
+        {key==11?<b>LogOut</b>:null}
             
           </Content>
         </Layout>

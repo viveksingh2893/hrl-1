@@ -9,14 +9,18 @@ import Concept from "./screen/concept";
 import Headbar from "./components/header";
 import Login from "./screen/login";
 import Admin from "./screen/admin";
+import Team from "./screen/team";
+import Member from "./screen/member";
+
 function App() {
   const { Footer } = Layout;
 
   return (
     <div>
-      <Headbar />
+  
 
-      <Layout style={{ width: "100vw", backgroundColor: "white" }}>
+      <Layout style={{ backgroundColor: "white" }}>
+      <Headbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog page="blog" />} />
@@ -24,11 +28,15 @@ function App() {
           <Route path="/concept" element={<Concept />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/member" element={<Member />} />
         </Routes>
-        <Footer style={{ textAlign: "center" }}>
+        <Footer style={{ position:'relative',textAlign: "center", }}>
           ©2021 Created by Destratum
         </Footer>
-      </Layout>
+      
+      </Layout> 
+  
     </div>
   );
 }
