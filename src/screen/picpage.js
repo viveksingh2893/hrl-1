@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import "../App.less";
+import { useEffect, useState } from "react";
 import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
-import { useEffect, useState } from "react";
-import { Typography, Divider } from "antd";
-import { List } from "antd";
-import ProfileCard from "../components/profilecard";
+import { Divider } from "antd";
 
-const Blog = () => {
+const Picpage = () => {
+  const [viewPortWidth, setWidth] = useState(0);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener("resize", (e) => {
+      console.log("size", e.target);
+      setWidth(window.innerWidth);
+    });
+  }, []);
   const onSearch = (value) => console.log(value);
-
   const data = [];
   const keywords = [];
   for (let i = 0; i < 21; i++) {
@@ -27,36 +32,14 @@ const Blog = () => {
       keyword: `word ${String(i)}`,
     });
   }
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div className="container-layout">
       <Wordcloud data={keywords}></Wordcloud>
       <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
       <Divider></Divider>
-      <List
-        bordered
-        style={{ padding: 100, borderWidth: 0 }}
-        grid={{
-          gutter: 16,
-        }}
-        pagination={{
-          onChange: (page) => {
-            console.log(page);
-          },
-          pageSize: 4,
-        }}
-        dataSource={data}
-        renderItem={(item) => (
-          <List.Item>
-            <ProfileCard name={item.name} avatar={item.avatar}></ProfileCard>
-          </List.Item>
-        )}
-      />
     </div>
   );
 };
 
-export default Blog;
+export default Picpage;

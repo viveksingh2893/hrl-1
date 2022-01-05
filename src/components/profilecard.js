@@ -18,7 +18,7 @@ const ProfileCard = (props) => {
     <Card
       hoverable
       onClick={props.action}
-      cover={<img alt="example" src={props.avatar} height="180vw" />}
+      cover={<img alt="example" src={props.avatar} />}
     >
       <Meta title={props.name} description="This is the description" />
     </Card>
