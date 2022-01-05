@@ -4,13 +4,13 @@ import React from 'react';
 // import { useEffect} from 'react';
 const { Paragraph } = Typography;
 const BlogEdit = (props) => {
-    console.log(props,'props')
+    // console.log(props,'props')
     const removeText=(val)=>{
         console.log(val,'textdata')
         props.delete(val)
     }
     const editText=(e)=>{
-console.log(e,'e')
+// console.log(e,'e')
 props.edit(props.data.id,e,props.data.type)
     }
  if (props.type=='text') {return (

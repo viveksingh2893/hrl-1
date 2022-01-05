@@ -29,11 +29,7 @@ const NavMenu=(props)=>{
           link: ["blog", "gallery", "news"],
           item: ["BLOG", "GALLERY", "NEWS"],
         },
-<<<<<<< HEAD
-        { title: "LOGIN/REGISTER", link: ["login"], item: ["LOGIN"] },
-=======
         // { title: "LOGIN/REGISTER", link: ['login'], item: ['LOGIN'] },
->>>>>>> 198f8c74caab60acb10674147958b630b2f4f27d
       ];
     return (
 
