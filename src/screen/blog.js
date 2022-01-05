@@ -3,8 +3,9 @@ import "../App.less";
 import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
-import { Typography,Divider } from "antd";
+import { Typography,Divider ,Image} from "antd";
 import { List } from "antd";
+import img1 from '../assets/image/IMG 2.4C.jpg'
 import ProfileCard from "../components/profilecard";
 
 const Blog = () => {
@@ -33,14 +34,22 @@ const Blog = () => {
 
   return (
     <div className="container-layout">
+      <div>
       <Wordcloud data={keywords}></Wordcloud>
+      </div>
+      <div>
       <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+      </div>
       <Divider></Divider>
+      <div style={{width:'80vw'}}>
       <List
-        bordered
-        style={{ padding: 100, borderWidth: 0 }}
+        
+        itemLayout='vertical'
+        
+  
         grid={{
-          gutter: 16,
+        
+          column:1,
           // xs: 1,
           // sm: 2,
           // md: 4,
@@ -60,11 +69,34 @@ const Blog = () => {
         }}
         dataSource={data}
         renderItem={(item) => (
-          <List.Item>
-            <ProfileCard name={item.name}></ProfileCard>
+          <List.Item
+              
+      >  
+      <div style={{display:'flex',justifyContent:'center',alignItems:'flex-start',flexWrap:'wrap'}}>
+       
+          <Image
+              width={272}
+            
+              alt="logo"
+              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"/>
+              <Divider type="vertical"></Divider>
+            <List.Item.Meta
+                style={{display:'flex',flexBasis:400}}
+                title={<Typography.Title level={4} href={item.href}>Hello World</Typography.Title>}
+                description={<Typography.Text>{item.description+item.description}</Typography.Text>}
+          />
+        
+      </div>
+     
+    
+   
+  
+      
+            {/* <ProfileCard name={item.name} avatar={img1}></ProfileCard> */}
           </List.Item>
         )}
       />
+      </div>
     </div>
   );
 };

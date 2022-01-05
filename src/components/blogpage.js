@@ -4,6 +4,7 @@ import { useState} from 'react';
 import React from 'react';
 import uuid from 'react-uuid';
 import BlogEdit from "../components/blogedit";
+import axios from 'axios';
 const layout = {
   labelCol: {
     span: 2,
@@ -106,6 +107,22 @@ const editBox=(id,content,type)=>{
      const preview = await getBase64(fileList[imglen].originFileObj);
     addText('image',preview,fileList[imglen].uid)}
     setImglen(fileList.length)
+    const formData = new FormData();
+    formData.append("image", fileList[fileList.length-1]);
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/imgupload',
+      data: formData,
+      headers: {'Content-Type': 'multipart/form-data' }
+      })
+      .then(function (response) {
+          //handle success
+          console.log(response);
+      })
+      .catch(function (response) {
+          //handle error
+          console.log(response);
+      });
   };
   const handleRemove = (e) => {
     const textArr= textBlock.filter(item=>item.id!=e.uid)

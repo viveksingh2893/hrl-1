@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import { Menu, Layout, Button, Image, Typography } from "antd";
 import { useNavigate } from 'react-router-dom';
-import img1 from "../assets/image/IMG 0.2A.jpeg";
+import img1 from "../assets/image/IMG 0.2A.jpg";
 import img2 from '../assets/image/IMG 0.4.png'
 import img3 from "../assets/image/IMG 0.3.png";
 import img4 from "../assets/image/Skybridge.png";
@@ -9,6 +9,7 @@ import img5 from "../assets/image/blog.jpg";
 import img6 from "../assets/image/news.jpg";
 import img7 from "../assets/image/GALLERY-Icon.png";
 import '../assets/css/style.css'
+import axios from 'axios'
 
 import ConceptW from "../components/conceptwhite";
 import ConceptB from "../components/conceptblue";
@@ -21,19 +22,17 @@ const Home = () => {
   },[])
 
   const getData= async ()=>{
-  //  const result=await fetch('http://192.168.29.54:8000/homepage',{
-  //   mode: 'no-cors',
-  //     method: 'GET',
-  //   }
-  //   )
-   
-  //   console.log(result)
+  const data=await axios.get('http://192.168.29.198:8000/homepage'
+    ).then(response=>response.data).catch(error=>console.log(error))
+
+    console.log(data)
+  
   }
 
-  // useEffect(()=>{
+  useEffect(()=>{
 
-  //   getData();
-  // },[])
+    getData();
+  },[])
 
 
   return (

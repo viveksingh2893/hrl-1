@@ -1,4 +1,4 @@
-import logo from "../assets/image/logo.jpeg";
+import logo from "../assets/image/IMG 0.1.png";
 import { Layout, Drawer, Image } from "antd";
 
 import { MenuOutlined } from "@ant-design/icons";
@@ -31,32 +31,7 @@ const Headbar=()=>{
        },[])
     return(
       <div style={{ position: 'fixed', zIndex: 5 ,backgroundColor:'#ffffff'}}>
-        {viewPortWidth>700?<div style={{width:'100vw',height:'2.5vh'}}>
-
-          
-        </div>:null}
-        {viewPortWidth>700?<div 
-        onClick={()=>navigate('/')}
-        style={{position:'absolute',
-        display:'flex',
-        flex:1,
-        zIndex:2,
-        top:0,left:'10vw',border:'2vh solid #666666',background:'#666666'}}>
-
-       
-        <Image
-        height='12vh'
-        width='8vh'
-        preview={false}
-        style={{aspectRatio:1}}
-        
-       
-        src={logo}
-      
-        />
-         </div>:null}
-       
-
+    
       
 
       
@@ -65,6 +40,7 @@ const Headbar=()=>{
         style={{
           display: "flex",
           height: "80px",
+          padding:'2vw',
           width: "100vw",
 
           flexDirection: "row",
@@ -74,6 +50,31 @@ const Headbar=()=>{
           backgroundColor: "#ffcc00",
         }}
       >
+         {viewPortWidth>700?<div 
+        onClick={()=>navigate('/')}
+        style={{
+          position:'absolute',
+
+          
+          
+        display:'flex',
+        flex:1,
+        zIndex:2,
+        top:0,left:'10vw'}}>
+
+       
+        <Image
+        height='15.3vh'
+        width='8vh'
+        preview={false}
+        
+        style={{aspectRatio:1,backgroundColor:'#666666'}}
+        
+       
+        src={logo}
+      
+        />
+         </div>:null}
         {viewPortWidth <700? (
           <div
             onClick={() => navigate("/")}
