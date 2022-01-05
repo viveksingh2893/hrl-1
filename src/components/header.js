@@ -119,7 +119,7 @@ const Headbar=()=>{
             }}
             />
           ) : (
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ display: "flex",marginRight:'5vw' ,justifyContent: "flex-end" }}>
               <MenuOutlined
                 onClick={openDraw}
                 style={{

@@ -26,7 +26,7 @@ const Wordcloud = (props) => {
   return (
     <div
       className="app-outer"
-      style={{ height: `${viewPortWidth > 800 ? "55vh" : "40vh"}` }}
+      style={{ height: `${viewPortWidth > 800 ? "45vh" : "45vh"}` }}
     >
       <div className="app-inner">
         <TagCloud

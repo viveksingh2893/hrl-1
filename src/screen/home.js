@@ -41,7 +41,7 @@ const Home = () => {
         
         alignItems: "center",
         justifyContent: "center",
-        marginTop:'calc(20px + 2.5vw )',
+        marginTop:80,
         width:"100vw",
 
         display: "flex",
