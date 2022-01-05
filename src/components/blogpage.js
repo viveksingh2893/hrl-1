@@ -1,4 +1,4 @@
-import { Form, Card, Button,Upload ,Input,Divider} from 'antd';
+import { Form, Card, Button,Upload ,Input,Divider,Modal, Alert} from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import { useState} from 'react';
 import React from 'react';
@@ -17,9 +17,11 @@ const layout = {
 /* eslint-enable no-template-curly-in-string */
 const BlogPage = (props) => {
 
-    const [img,setImg]=useState()
+    const [img,setImg]=useState([])
     const [imglen,setImglen]=useState(0)
     const [textBlock,setTextBlock]=useState([])
+    const [caption,setCaption]=useState('')
+    const [visible0,setVisible0]=useState(false)
 // useEffect(()=>{
 //     // if (img!=undefined){
 //     //   console.log('image added',img[img.length-1].thumbUrl,img.length)
@@ -28,7 +30,8 @@ const BlogPage = (props) => {
 //     console.log('1')
 // },[textBlock]);
   const onFinish = (values) => {
-    console.log(values);
+    console.log(values,'vahhh');
+    console.log(img,'vahhh');
 var formdata = new FormData();
 console.log(img.length,'length of image list')
 for (let i = 0; i < img.length; i++) {
@@ -62,7 +65,7 @@ setTextBlock([...textBlock,{
 type:val,content:'',id:uuid()
 }])}else if(val=='image'){
     // console.log(img[0].originFileObj.name,'image name')
-    console.log('data3333',e)
+    // console.log('data3333',e)
     setTextBlock([...textBlock,{
         type:val,image:e,id:uid
         }])
@@ -101,28 +104,25 @@ const editBox=(id,content,type)=>{
       reader.onerror = error => reject(error);
     });
   }
+  const Demo=()=>{
+    console.log(img,'image',caption)
+    // const data = new FormData();
+    // data.append("posterimage0", img[img.length-1].originFileObj);
+    console.log(caption,'before send')
+    if (!caption==''){setVisible0(false);setCaption('')}
+    setCaption('')
+  }
  const handleUpload = async({ fileList }) => {
     setImg(fileList)
+    console.log(fileList,'ind upload',fileList.length,imglen)
     if(fileList.length>imglen){
-     const preview = await getBase64(fileList[imglen].originFileObj);
-    addText('image',preview,fileList[imglen].uid)}
+     const preview =  await getBase64(fileList[imglen].originFileObj);
+    addText('image',preview,fileList[imglen].uid)
+    setVisible0(true)}
     setImglen(fileList.length)
-    const formData = new FormData();
-    formData.append("image", fileList[fileList.length-1]);
-    axios({
-      method: 'post',
-      url: 'http://localhost:8000/imgupload',
-      data: formData,
-      headers: {'Content-Type': 'multipart/form-data' }
-      })
-      .then(function (response) {
-          //handle success
-          console.log(response);
-      })
-      .catch(function (response) {
-          //handle error
-          console.log(response);
-      });
+    
+    
+  
   };
   const handleRemove = (e) => {
     const textArr= textBlock.filter(item=>item.id!=e.uid)
@@ -130,6 +130,7 @@ const editBox=(id,content,type)=>{
   };
   return (
     <Card style={{ alignSelf:'center'  ,backgroundColor: props.color }}>
+      <Modal centered={true} closable={false} destroyOnClose={true} visible={visible0} cancelButtonProps={{ style: { display: 'none' } }} onOk={Demo}><Input placeholder='Enter image caption' onChange={e=>{setCaption(e.target.value)}}/></Modal>
     <Form {...layout} name="nest-messages" onFinish={onFinish}>
     <Form.Item
         label="Title"
