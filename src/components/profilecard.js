@@ -18,10 +18,14 @@ const ProfileCard = (props) => {
     <Card
       hoverable
       onClick={props.action}
-      cover={<img alt="example" src={props.avatar} />}
+      cover={<img alt="example" src={props.avatar} width="60vw" />}
     >
-      <Meta style={{textAlign: 'center'}}title={props.name} description="This is the description. 
-       I am the Tech Lead of the company." />
+      <Meta
+        style={{ textAlign: "center" }}
+        title={props.name}
+        description="This is the description. 
+       I am the Tech Lead of the company."
+      />
     </Card>
   );
 };
