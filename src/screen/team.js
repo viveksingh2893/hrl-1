@@ -61,6 +61,7 @@ const Team = () => {
         style={{ padding: 100 }}
         grid={{
           gutter: 16,
+          column:4,
 
           // xs: 1,
           // sm: 2,

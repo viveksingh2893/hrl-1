@@ -20,7 +20,8 @@ const ProfileCard = (props) => {
       onClick={props.action}
       cover={<img alt="example" src={props.avatar} />}
     >
-      <Meta title={props.name} description="This is the description" />
+      <Meta style={{textAlign: 'center'}}title={props.name} description="This is the description. 
+       I am the Tech Lead of the company." />
     </Card>
   );
 };

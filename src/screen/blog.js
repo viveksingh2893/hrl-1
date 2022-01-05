@@ -3,8 +3,9 @@ import "../App.less";
 import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
-import { Typography, Divider } from "antd";
+import { Typography, Divider, Image } from "antd";
 import { List } from "antd";
+import img1 from "../assets/image/IMG 2.4C.jpg";
 import ProfileCard from "../components/profilecard";
 
 const Blog = () => {
@@ -33,28 +34,72 @@ const Blog = () => {
 
   return (
     <div className="container-layout">
-      <Wordcloud data={keywords}></Wordcloud>
-      <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+      <div>
+        <Wordcloud data={keywords}></Wordcloud>
+      </div>
+      <div>
+        <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+      </div>
       <Divider></Divider>
-      <List
-        bordered
-        style={{ padding: 100, borderWidth: 0 }}
-        grid={{
-          gutter: 16,
-        }}
-        pagination={{
-          onChange: (page) => {
-            console.log(page);
-          },
-          pageSize: 4,
-        }}
-        dataSource={data}
-        renderItem={(item) => (
-          <List.Item>
-            <ProfileCard name={item.name} avatar={item.avatar}></ProfileCard>
-          </List.Item>
-        )}
-      />
+      <div style={{ width: "80vw" }}>
+        <List
+          itemLayout="vertical"
+          grid={{
+            column: 1,
+            // xs: 1,
+            // sm: 2,
+            // md: 4,
+            // lg: 4,
+            // xl: 5,
+            //xxl: 4,
+            //   // md: `${Object.keys(data).length < 3 ? 2 : 4}`,
+            //   // lg: `${Object.keys(data).length < 3 ? 2 : 4}`,
+            //   // xl: `${Object.keys(data).length < 3 ? 2 : 5}`,
+            //   // xxl: `${Object.keys(data).length < 3 ? 2 : 5}`,
+          }}
+          pagination={{
+            onChange: (page) => {
+              console.log(page);
+            },
+            pageSize: 4,
+          }}
+          dataSource={data}
+          renderItem={(item) => (
+            <List.Item>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                  flexWrap: "wrap",
+                }}
+              >
+                <Image
+                  width={272}
+                  alt="logo"
+                  src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                />
+                <Divider type="vertical"></Divider>
+                <List.Item.Meta
+                  style={{ display: "flex", flexBasis: 400 }}
+                  title={
+                    <Typography.Title level={4} href={item.href}>
+                      Hello World
+                    </Typography.Title>
+                  }
+                  description={
+                    <Typography.Text>
+                      {item.description + item.description}
+                    </Typography.Text>
+                  }
+                />
+              </div>
+
+              {/* <ProfileCard name={item.name} avatar={img1}></ProfileCard> */}
+            </List.Item>
+          )}
+        />
+      </div>
     </div>
   );
 };
