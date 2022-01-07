@@ -2,7 +2,7 @@ import React from "react";
 import "../App.less";
 import Credentials from "../components/credentials";
 import { useEffect, useState } from "react";
-import { Image, Typography } from "antd";
+import { Divider, Image, Typography } from "antd";
 import { Text } from "react";
 import { Button } from "antd";
 import {
@@ -10,13 +10,14 @@ import {
   RightOutlined,
   DownloadOutlined,
 } from "@ant-design/icons";
+import Paragraph from "antd/lib/skeleton/Paragraph";
 
 const Member = () => {
-  const { Title, Text } = Typography;
+  const { Title, Text,Paragraph } = Typography;
   const memberdata = {
     image:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    membname: "Lorem Ipsum",
+    "https://images.pexels.com/photos/1493111/pexels-photo-1493111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    membname: "ROHIT JHA",
     desig: "Researcher",
     email: "researcher@hirapidlab.com",
     phone: "+xx-xxxxxxxxxx",
@@ -87,130 +88,113 @@ const Member = () => {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          width: "100vw",
-          // backgroundColor: "orange",
-          marginTop: `${viewPortWidth > 500 ? "14.5vh" : "12vh"}`,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          alignItems: "flex-start",
-          padding: 20,
-        }}
+    <div style={{
+      width: "100vw",
+      // backgroundColor: "orange",
+      marginTop:'80px',
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      // flexWrap: "wrap",
+      alignItems: "center",
+      
+    }}>
+      <div style={{display:'flex',
+      width:'75vw',
+      flexWrap:'wrap',
+      paddingTop:'1vw',
+      justifyContent:'flex-start',
+      alignItems:'flex-start',
+     
+      flexDirection:'row'}}
+        
       >
-        <div
-          style={{
-            width: "40%",
-            margin: 5,
-            display: "flex",
-            flex: 1,
-            flexShrink: 1,
-            flexBasis: 405,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            type="primary"
-            icon={<LeftOutlined />}
-            shape="circle"
-            onClick={prevdata}
-          />
+ 
+          
+         
+           
           <div
             style={{
-              padding: 3,
+             
+              flexbasis:'400px',
+              
               backgroundColor: "black",
               display: "flex",
               justifyContent: "center",
-              margin: 5,
+              alignItems:'flex-start'
+              
+              
             }}
-          >
-            <Image
-              src={memberdata.image}
-              width={`${viewPortWidth > 500 ? "20vw" : "40vw"}`}
-            />
+          > 
+          <Image
+          src={memberdata.image}
+          width={`${viewPortWidth > 500 ? "20vw" : "75vw"}`}
+        />
+          
           </div>
-          <Button
-            type="primary"
-            icon={<RightOutlined />}
-            shape="circle"
-            onClick={nextdata}
-          />
-        </div>
-        <div
-          style={{
-            width: "40%",
-            margin: 5,
-            flex: 1,
-            // flexShrink: 1,
-            flexBasis: 405,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Title level={2}>{memberdata.membname}</Title>
           <div
             style={{
-              width: `${viewPortWidth > 850 ? "70%" : "90%"}`,
+              flexbasis:'400px',
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "flex-start",
               backgroundColor: "white",
-              marginTop: 5,
-              borderRadius: "1vw",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-              padding: 10,
+              marginLeft:'1vw',
+             
+              // borderRadius: "1vw",
+              // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              // padding: 10,
             }}
           >
-            <Text style={{ fontSize: "20px", margin: 10 }}>
+            <Title level={2} style={{fontFamily:'Calibri',color:'#333333'}}>{memberdata.membname}</Title>
+            <Text style={{fontFamily:'Calibri',color:'#333333'}}>
               <b>Designation:</b> {memberdata.desig}
             </Text>
-            <Text style={{ fontSize: "20px", margin: 10 }}>
+            <Text>
               <b>Email:</b> {memberdata.email}
             </Text>
-            <Text style={{ fontSize: "20px", margin: 10 }}>
+            <Text>
               <b>Phone Number:</b> {memberdata.phone}
             </Text>
-          </div>
-          <div
-            style={{
-              width: `${viewPortWidth > 850 ? "70%" : "90%"}`,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "flex-start",
-              backgroundColor: "white",
-              marginTop: 20,
-              borderRadius: "1vw",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-              padding: 10,
-            }}
-          >
-            <Text style={{ fontSize: "20px", margin: 10 }}>
-              <b>Bio-Sketch: </b>
-              {memberdata.bio}
-            </Text>
-          </div>
+            <Divider></Divider>
           <Button
-            type="primary"
-            shape="round"
+            style={{
+              border:'none',
+              fontFamily:'Calibri',
+              fontWeight:'600',
+              backgroundColor:'#666666',
+            color:'#ffffff'}}
             icon={<DownloadOutlined />}
-            size="large"
-            style={{ margin: 20 }}
+            size="large" 
           >
             Download CV
           </Button>
+          </div>
+          
+    
+        <div
+          style={{
+            
+         
+          
+            // flexShrink: 1,
+            flexBasis: 405,
+            display: "flex",
+            // justifyContent: "flex-start",
+            alignItems: "flex-start",
+            flexDirection: "column",
+        
+          }}
+        >
+          
+       
+         
         </div>
       </div>
       <div
         style={{
-          width: "100%",
+          width: "80vw",
           justifyContent: "center",
           alignItems: "center",
           padding: 10,
@@ -218,14 +202,26 @@ const Member = () => {
           flexDirection: "column",
         }}
       >
-        <Credentials Title="EDUCATION" txt={memberdata.edu} />
-        <Credentials Title="PRESENT POSITIONS" txt={memberdata.pres} />
-        <Credentials Title="PREVIOUS POSITIONS" txt={memberdata.prev} />
-        <Credentials Title="PROJECTS" txt={memberdata.proj} />
-        <Credentials Title="PATENTS" txt={memberdata.pat} />
-        <Credentials Title="PUBLICATIONS" txt={memberdata.pub} />
-        <Credentials Title="EVENTS" txt={memberdata.eve} />
-        <Credentials Title="ARTICLES" txt={memberdata.art} />
+         <Divider></Divider>
+       
+        <Credentials title="BIOSKETCH" txt={memberdata.bio} />
+          <Divider></Divider>
+        <Credentials title="EDUCATION" txt={memberdata.edu} />
+        <Divider></Divider>
+        <Credentials title="PRESENT POSITIONS" txt={memberdata.pres} />
+         <Divider></Divider>
+        <Credentials title="PREVIOUS POSITIONS" txt={memberdata.prev} />
+         <Divider></Divider>
+        <Credentials title="PROJECTS" txt={memberdata.proj} />
+         <Divider></Divider>
+        <Credentials title="PATENTS" txt={memberdata.pat} />
+         <Divider></Divider>
+        <Credentials title="PUBLICATIONS" txt={memberdata.pub} />
+         <Divider></Divider>
+        <Credentials title="EVENTS" txt={memberdata.eve} />
+         <Divider></Divider>
+        <Credentials title="ARTICLES" txt={memberdata.art} />
+         
       </div>
     </div>
   );
