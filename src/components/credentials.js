@@ -7,55 +7,32 @@ import { Button } from "antd";
 import { LeftOutlined, RightOutlined, IdcardFilled } from "@ant-design/icons";
 
 const Credentials = (props) => {
-  const { Text } = Typography;
+  const { Title,Paragraph } = Typography;
   return (
     <div
-      style={{
-        width: "80%",
-        backgroundColor: "white",
-        borderStyle: "solid",
-        borderWidth: 5,
-        borderColor: "#ffcc00",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        flexDirection: "column",
-        // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-        margin: 10,
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: "#ffcc00",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-start",
-          alignItems: "center",
-        }}
-      >
-        <IdcardFilled style={{ color: "white", fontSize: 40 }}></IdcardFilled>
-        <Text
-          style={{
-            color: "white",
-            marginLeft: 20,
-            fontWeight: "bold",
-            fontSize: "20px",
-          }}
-        >
-          {props.Title}
-        </Text>
-      </div>
-      <div style={{ width: "100%", padding: 5 }}>
-        <Text
-          style={{
-            fontSize: "20px",
-          }}
-        >
-          {props.txt}
-        </Text>
-      </div>
-    </div>
+    style={{
+      // width: `${viewPortWidth > 850 ? "70%" : "90%"}`,
+      width:'75vw',
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "flex-start",
+      backgroundColor: "white",
+      overflowY:'scroll'
+     
+      // borderRadius: "1vw",
+      // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+      // padding: 10,
+    }}
+  >
+    <Title level={4}>
+      {props.title}
+    </Title>
+   
+    <Paragraph >
+      {props.txt}
+    </Paragraph>
+  </div>
   );
 };
 export default Credentials;
