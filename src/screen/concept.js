@@ -90,7 +90,7 @@ const Concept = () => {
         background:'#fffbeb',
         display: "flex",
         flex:1,
-        marginTop:'12vh',
+        marginTop:80,
         flexDirection: "column",}}>
          
     

@@ -1,0 +1,6 @@
+const ReadBlog=()=>{
+
+    return(
+        <PreviewModel/>
+    )
+}

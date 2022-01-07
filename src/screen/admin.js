@@ -5,6 +5,7 @@ import HomePage from "../components/homepage";
 import BlogPage from "../components/blogpage";
 import GalleryPage1 from "../components/gallerypage.js";
 import ProductPage from '../components/productpage';
+import BioForm from '../components/biopage';
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -37,36 +38,28 @@ console.log(event.key,'event')
 }
     const { collapsed } = state;
     return (
-      <Layout style={{ minHeight: '100vh' ,marginTop:'calc(80px + 3vh )'}}>
+      <Layout style={{ minHeight: '100vh' ,marginTop:'80px'}}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1" icon={<PieChartOutlined />} onClick={menuclick} >
               Statistics
             </Menu.Item>
-            <Menu.Item key="2" icon={<TeamOutlined /> } onClick={menuclick}>
-              Add User
-            </Menu.Item>
-            <Menu.Item key="3" icon={<LayoutOutlined />} onClick={menuclick}>
-              Home Page
-            </Menu.Item>
+            <Menu.Item key="2" onClick={menuclick}>Edit Bio</Menu.Item>
+              <Menu.Item key="3" onClick={menuclick}>Write Blog</Menu.Item>
+              <Menu.Item key="4" onClick={menuclick}>Add News</Menu.Item>
+              
            
-            <SubMenu key="sub1" icon={<PicLeftOutlined />} title="Blog & News">
-              <Menu.Item key="4" onClick={menuclick}>Blogs</Menu.Item>
-              <Menu.Item key="5" onClick={menuclick}>News</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="6" icon={<FileImageOutlined/>} onClick={menuclick}>
-              Gallery
-            </Menu.Item>
-            <SubMenu key="sub2" icon={<DesktopOutlined />} title="Concepts">
+           
+            {/* <SubMenu key="sub2" icon={<DesktopOutlined />} title="Concepts">
               <Menu.Item key="7" onClick={menuclick}>Mith.AI</Menu.Item>
               <Menu.Item key="8" onClick={menuclick}>Dhara</Menu.Item>
               <Menu.Item key="9" onClick={menuclick}>Sky Bridge</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="10" icon={<FormOutlined />} onClick={menuclick}>
+            </SubMenu> */}
+            {/* <Menu.Item key="10" icon={<FormOutlined />} onClick={menuclick}>
               Add New Concepts +
-            </Menu.Item>
-            <Menu.Item key="11" icon={<LogoutOutlined />} onClick={menuclick}>
+            </Menu.Item> */}
+            <Menu.Item key="5" icon={<LogoutOutlined />} onClick={menuclick}>
             <a href="http://127.0.0.1:8000/admin" target="_blank">Logout</a>
             </Menu.Item>
           </Menu>
@@ -74,16 +67,17 @@ console.log(event.key,'event')
         <Layout className="site-layout">
           <Content style={{ margin: '0 16px' }}>
         {key==1?<StatisticData/>:null}
-        {key==2?<AddUser/>:null}
-        {key==3?<HomePage/>:null}
-        {key==4?<BlogPage color='#FFDB4D'/>:null}
-        {key==5?<BlogPage color='lightblue'/>:null}
-        {key==6?<GalleryPage1 color='lightblue'/>:null}
+        {/* {key==2?<AddUser/>:null} */}
+        {/* {key==3?<HomePage/>:null} */}
+        {key==2?<BioForm/>:null}
+        {key==3?<BlogPage />:null}
+        {key==4?<BlogPage/>:null}
+        {/* {key==6?<GalleryPage1 color='lightblue'/>:null}
         {key==7?<ProductPage color='lightblue'/>:null}
         {key==8?<ProductPage color='lightyellow'/>:null}
         {key==9?<ProductPage color='lightgreen'/>:null}
-        {key==10?<ProductPage color='lightpink'/>:null}
-        {key==11?<b>LogOut</b>:null}
+        {key==10?<ProductPage color='lightpink'/>:null} */}
+        {key==4?<b>LogOut</b>:null}
             
           </Content>
         </Layout>
