@@ -12,32 +12,43 @@ const ConceptW=(props)=>{
      
             <div 
             style=
-            {{display:'flex',flex:1,flexWrap:'wrap',display:'flex',justifyContent:'space-around',
+            {{display:'flex',
+            flex:1,
+            flexWrap:'wrap',
+            justifyContent:'space-around',
+            
+
+           
             width:'80vw'}}>
             
-            <div style={{display:'flex',flex:1,flexBasis:200,justifyContent:'center',alignItems:'center'}}>
+            {/* <div style={{display:'flex',flex:1,
+            flexBasis:200,
+            justifyContent:'center',
+            alignItems:'flex-end',
+            border:'1px solid green'}}> */}
            <Image
-           width="30vw"
+         width={props.width>700?"30vw":'80vw'}
            
          
              src={props.img}
            />
-       </div> 
+       {/* </div>  */}
         <div 
         style={{
           display: "flex",
           flex: props.flexsize,
           flexShrink: 1,
           flexBasis: 300,
-          justifyContent: "center",
+          padding:'2vw',
+          justifyContent: "flex-start",
           alignItem: "center",
           flexDirection: "column",
           
         }}>  
-           <Title level={2} style={{display:'flex',justifyContent:'center'}}>
+           <Title level={2} style={{display:'flex',justifyContent:'flex-start'}}>
             {props.title}
            </Title>
-           <Text style={{display:'flex',justifyContent:'center',fontSize:'calc(11px + 0.5vw)',fontFamily:'Calibri'}}>
+           <Text style={{display:'flex',justifyContent:'center'}}>
           {props.text}
            </Text>
         

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Menu, Layout, Button, Image, Typography,Divider } from "antd";
 import { useNavigate } from 'react-router-dom';
 import img1 from "../assets/image/IMG 0.2A.jpg";
@@ -12,15 +12,18 @@ import '../assets/css/style.css'
 import axios from 'axios'
 
 import ConceptW from "../components/conceptwhite";
-import ConceptB from "../components/conceptblue";
+import ConceptB from "../components/conceptY";
 
 const Home = () => {
+  const [width,,setWidth]=useState(0)
   const { Sider, Content, Header, Footer } = Layout;
+ 
   const navigate=useNavigate()
   useEffect(()=>{
     window.scrollTo(0,0)
-  },[])
 
+  },[])
+ 
   const getData= async ()=>{
   const data=await axios.get('http://192.168.29.198:8000/homepage'
     ).then(response=>response.data).catch(error=>console.log(error))
@@ -55,7 +58,7 @@ const Home = () => {
 
       
   
-      <Typography.Title level={4}style={{width:'80vw',margin:10,fontWeight:'400'}}>
+      <Typography.Title level={4}style={{width:'80vw',margin:"2vw",fontWeight:'400'}}>
       Hi Rapid Lab proposes to shift the primary health care model from  “people coming to a facility for treatment” to “@ home primary health care service” model. The origin of the present primary health care system (PHCS) dates back to the 1940’s Bhore Committee report recommendations. Although several revisions have been made over the period of years, the concept of “people coming to a facility for treatment” has largely remained unchanged and PHC based service remains synonymous with “ inaccessibility, inadequacy and inefficiency”. Hi Rapid Lab believes a local person trained with our AI led, smart mobility supported digital platform can deliver universal primary health care service "@ home" and make primary health care "accessible, adequate and efficient". 
 
       </Typography.Title>
@@ -101,16 +104,24 @@ const Home = () => {
       <ConceptW title='News'
        text='Checkout our News collection.'
       flexsize={1}
-      img={img6}
+      img={img5}
       btitle='Discover More'
        navigation={()=>{navigate('news',{state:'mith'})}}/>
      <Divider/>
       <ConceptB title='Gallery'
        text='Checkout our Gallery colections.'
       flexsize={1}
-      img={img7}
+      img={img4}
       btitle='Discover More'
        navigation={()=>{navigate('gallery',{state:'mith'})}}/>
+      
+<Divider></Divider>
+      <ConceptW title='News'
+       text='Checkout our News collection.'
+      flexsize={1}
+      img={img5}
+      btitle='Discover More'
+       navigation={()=>{navigate('news',{state:'mith'})}}/>
     </Content>
   );
 };
