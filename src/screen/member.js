@@ -100,7 +100,7 @@ const Member = () => {
       
     }}>
       <div style={{display:'flex',
-      width:'75vw',
+      width:'80vw',
       flexWrap:'wrap',
       paddingTop:'1vw',
       justifyContent:'flex-start',
@@ -116,7 +116,7 @@ const Member = () => {
           <div
             style={{
              
-              flexbasis:'400px',
+              flexbasis:'300px',
               
               backgroundColor: "black",
               display: "flex",
@@ -134,7 +134,7 @@ const Member = () => {
           </div>
           <div
             style={{
-              flexbasis:'400px',
+              flexbasis:'300px',
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
@@ -172,14 +172,14 @@ const Member = () => {
           </Button>
           </div>
           
-    
+              <Divider/>
         <div
           style={{
             
          
           
             // flexShrink: 1,
-            flexBasis: 405,
+            flexBasis: 305,
             display: "flex",
             // justifyContent: "flex-start",
             alignItems: "flex-start",
@@ -196,13 +196,56 @@ const Member = () => {
         style={{
           width: "80vw",
           justifyContent: "center",
-          alignItems: "center",
-          padding: 10,
+          alignItems: "flex-start",
+      
           display: "flex",
           flexDirection: "column",
-        }}
+                  }}
       >
-         <Divider></Divider>
+        
+      
+         <div style={{display:'flex',
+         justifyContent:'flex-start',
+         alignItems:'stretch',
+         
+         
+        
+         }}>
+         <div 
+         style={{
+            display:'flex',
+            width:viewPortWidth > 500 ? "20vw" : "80vw",
+            
+            justifyContent:'space-between',
+            alignItems:'flex-start',
+           
+         }}>
+        <Button 
+                  size='small'
+                  type="primary"
+                  icon={<LeftOutlined/>}
+                  style={{
+                    border:'none',
+                    backgroundColor:'#666666'
+                  }}>
+                
+        </Button>
+        <Button 
+                size='small'
+                type="primary"
+                icon={<RightOutlined/>}
+                style={{
+                    border:'none',
+                    backgroundColor:'#666666'
+                }}>
+               
+        </Button>
+
+
+
+      </div>
+      </div>
+      <Divider></Divider>
        
         <Credentials title="BIOSKETCH" txt={memberdata.bio} />
           <Divider></Divider>

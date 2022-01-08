@@ -9,14 +9,15 @@ const ConceptW=(props)=>{
 
     return(
 
-        <Layout.Content >
-            <div style=
-            {{display:'flex',flex:1,flexWrap:'wrap',display:'flex',padding:'2vw',justifyContent:'space-around',
-            backgroundColor:'#ffd633',width:'100vw'}}>
+     
+            <div 
+            style=
+            {{display:'flex',flex:1,flexWrap:'wrap',display:'flex',justifyContent:'space-around',
+            width:'80vw'}}>
             
             <div style={{display:'flex',flex:1,flexBasis:200,justifyContent:'center',alignItems:'center'}}>
            <Image
-           height="40vh"
+           width="30vw"
            
          
              src={props.img}
@@ -42,13 +43,22 @@ const ConceptW=(props)=>{
         
 
            <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-           <Button onClick={props.navigation} style={{width:'calc(100px + 1vw)',margin:'0.5vw',fontFamily:'Calibri',fontWeight:'600',backgroundColor:'#666666',color:'#ffcc00'}}>{props.btitle}</Button>
+           <Button onClick={props.navigation} 
+             type="primary"
+             size='large'
+             style={{border:'none',
+             fontFamily:'Calibri',
+             fontWeight:'600',
+             backgroundColor:'#666666'
+             }}>
+             {props.btitle.toUpperCase()}
+          </Button>
            </div>
         </div> 
         </div>
         
       
-        </Layout.Content>
+      
     )
 }
 

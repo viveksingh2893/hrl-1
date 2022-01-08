@@ -47,7 +47,7 @@ const Headbar=()=>{
           justifyContent: "space-evenly",
 
           alignItems: "center",
-          backgroundColor: "#ffcc00",
+          backgroundColor: "#666666",
         }}
       >
          {viewPortWidth>700?<div 
@@ -64,13 +64,8 @@ const Headbar=()=>{
 
        
         <Image
-        height='15.3vh'
-        width='8vh'
+        height='80px'
         preview={false}
-        
-        style={{aspectRatio:1,backgroundColor:'#666666'}}
-        
-       
         src={logo}
       
         />
@@ -94,7 +89,6 @@ const Headbar=()=>{
           >
             <Image
               height="60px"
-              // width="6vh"
               preview={false}
               style={{ aspectRatio: 1 }}
               src={logo}
@@ -115,7 +109,7 @@ const Headbar=()=>{
               fontFamily: "Calibri",
               justifyContent: "flex-end",
               alignItems:'center',
-              backgroundColor: "#ffcc00",
+              backgroundColor: "#666666",
             }}
             />
           ) : (

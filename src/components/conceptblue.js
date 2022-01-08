@@ -1,4 +1,4 @@
-import { Menu, Layout, Button, Image, Typography } from "antd";
+import { Menu, Layout, Button, Image, Typography, Divider } from "antd";
 import '../assets/css/style.css'
 
 import "../App.less";
@@ -8,17 +8,13 @@ const ConceptB = (props) => {
   const {Content} =Layout
 
   return (
-    <Content
-     
-    >
+
       <div
        style={{
         display: "flex",
         flex: 1,
-        width:'100vw',
-        padding:'2vw',
+        width:'80vw',
         flexWrap: "wrap", 
-        backgroundColor: "#666666 ",
         flexDirection: "row",
         justifyContent: "space-around",
     
@@ -29,21 +25,33 @@ const ConceptB = (props) => {
           flex: props.flexsize,
           flexShrink: 1,
           flexBasis: 300,
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItem: "center",
+          
           flexDirection: "column",
           
         }}
       >
-        <Title level={2} style={{ display: "flex", justifyContent: "center",color:'#ffffff' }}>
+        <Title level={2} style={{marginBottom:0,marginTop:10}} >
           {props.title}
         </Title>
-        <Text style={{display:'flex',justifyContent:'center',fontSize:'calc(11px + 0.5vw)',fontFamily:'Calibri',color:'#ffffff'}}>
+        <Divider style={{marginTop:0,backgroundColor:'#fff5cc'}}></Divider>
+        <Text 
+        style={{display:'flex',fontSize:'1.2rem',fontFamily:'Calibri'}}>
           {props.text}
         </Text>
        
         <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-           <Button onClick={props.navigation} style={{width:'calc(100px + 1vw)',margin:'0.5vw',fontFamily:'Calibri',fontWeight:'600',backgroundColor:'#ffcc00'}}>{props.btitle}</Button>
+           <Button onClick={props.navigation} 
+             type="primary"
+             size='large'
+             style={{border:'none',
+             fontFamily:'Calibri',
+             fontWeight:'600',
+             backgroundColor:'#666666'
+             }}>
+             {props.btitle.toUpperCase()}
+          </Button>
            </div>
       </div>
       <div
@@ -51,14 +59,13 @@ const ConceptB = (props) => {
           display: "flex",
           flex:1,
           flexBasis: 200,
-          height:300,
           justifyContent: "center",
         }}
       >
-        <Image height="40vh" src={props.img} />
+        <Image width="30vw" src={props.img} />
       </div>
       </div>
-    </Content>
+    
   );
 };
 

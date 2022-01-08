@@ -10,7 +10,7 @@ const NavMenu=(props)=>{
       color:'#666666',
       fontFamily:'Calibri',
       justifyContent: "flex-end",
-      backgroundColor: "#ffcc00",
+      backgroundColor: "#666666",
     }
     const navstyle= props.style?props.style:DEFAULTSTYLE
     const data = [

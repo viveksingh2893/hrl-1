@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 
 const Wordcloud = (props) => {
   const data = props.data;
-  const initalState = 0;
-  const [count, setCount] = useState(initalState);
+  // const initalState = 0;
+  // const [count, setCount] = useState(initalState);
 
-  useEffect(() => {
-    setInterval(() => {
-      setCount((old) => old + 1);
-    }, 3000);
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setCount((old) => old + 1);
+  //   }, 3000);
+  // }, []);
 
   const [viewPortWidth, setWidth] = useState(0);
   useEffect(() => {

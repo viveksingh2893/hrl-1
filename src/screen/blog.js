@@ -3,21 +3,50 @@ import "../App.less";
 import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
-import { Typography,Divider ,Image} from "antd";
+import { Typography, Divider, Image, Button } from "antd";
 import { List } from "antd";
-import img1 from '../assets/image/IMG 2.4C.jpg'
+import img1 from "../assets/image/IMG 2.4C.jpg";
 import ProfileCard from "../components/profilecard";
 
 const Blog = () => {
-  const onSearch = (value) => console.log(value);
-
+  const [viewPortWidth, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener("resize", (e) => {
+      console.log("size", e.target);
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight)
+    });
+  }, []);
+  const [srchres, setSrchres] = useState("none");
+  const onSearch = (value) => {
+    setSrchres(value);
+    setSearchShow(true);
+  };
+  const clearSearch = () => {
+    setSearchShow(false);
+  };
+  const { Title, Text } = Typography;
+  const [searchshow, setSearchShow] = useState(false);
   const data = [];
   const keywords = [];
+  const searchdata = [];
+  function txtlvl() {
+    if (viewPortWidth > 600) {
+      return 3;
+    } else {
+      return 5;
+    }
+  }
+
+  let tlvl = txtlvl();
+
   for (let i = 0; i < 21; i++) {
     data.push({
       href: "https://ant.design",
       name: `ant design part ${i}`,
-      avatar: "https://joeschmoe.io/api/v1/random",
+      avatar: `https://picsum.photos/id/${i}/300/200`,
       description:
         "Ant Design, a design language for background applications, is refined by Ant UED Team.",
       content:
@@ -27,21 +56,59 @@ const Blog = () => {
       id: i,
       keyword: `word ${String(i)}`,
     });
+    searchdata.push({
+      href: "https://ant.design",
+      name: `ant design part ${i}`,
+      avatar: `https://picsum.photos/id/${i + 100}/300/200`,
+      description:
+        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      content:
+        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+    });
   }
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="container-layout">
       <div>
-      <Wordcloud data={keywords}></Wordcloud>
+        <Wordcloud data={keywords}></Wordcloud>
       </div>
       <div>
-      <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+        <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
       </div>
-      <Divider></Divider>
-      <div style={{width:'80vw',border:'1px solid black'}}>
+      {searchshow ? (
+        <div
+          style={{
+            width: "100vw",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "5vw",
+            flexDirection: "column",
+          }}
+        >
+          <Typography.Title
+            // style={{ marginLeft: "10vw" }}
+            level={tlvl}
+            style={{ fontFamily: "calibri" }}
+          >{`${searchdata.length} SEARCH RESULTS FOR "${srchres}"`}</Typography.Title>
+          <Button
+            type="primary"
+            shape="round"
+            size="small"
+            onClick={clearSearch}
+          >
+            Clear Results
+          </Button>
+        </div>
+      ) : (
+        <div></div>
+      )}
+      
+      <div style={{width:'80vw'}}>
       <List
         
         itemLayout='vertical'
@@ -61,34 +128,37 @@ const Blog = () => {
           <List.Item
               
       >  
+      <Divider></Divider>
       <div 
       style={{
           display:'flex',
           justifyContent:'flex-start',
-          border:'1px solid black',
           flexWrap:'wrap',
           alignItems:'flex-start'
       }}>
-          <div style={{display:'flex',flex:1,flexBasis:'300px',border:'1px solid black',justifyContent:'center',alignItems:'center'}}>
+          <div style={{display:'flex',flexBasis:'300px',justifyContent:'center',alignItems:'center'}}>
           <Image
-              width='20vw'
+              width={viewPortWidth>500?'20vw':'80vw'}
               alt="logo"
               src="https://images.pexels.com/photos/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
 
           </div>
-          <div style={{display:'flex',flex:1,width:'40vw',border:'1px solid black',flexDirection:'column'}}>
+          <div style={{display:'flex',width:viewPortWidth>500?'30vw':'80vw',paddingLeft:'1vw',flexDirection:'column'}}>
             <Typography.Title level={4}>
               Quartz is no longer developing or supporting Atlas. 
-              Thank you for your support over the last four years!
+             
             </Typography.Title>
-            <Typography.Text style={{fontSize:'1.2rem'}}>
+            <Typography.Text style={{fontSize:'1.1rem'}}>
               Typography is the art and technique of arranging type 
               to make written language legible, 
-              readable and appealing when displayed. 
-              The arrangement of type involves selecting typefaces, 
-              point sizes, line lengths, line-spacing (leading), and letter-spacing (tracking), as well as adjusting the space between pairs of letters (kerning)
+              readable and appealing when displayed.
+             
             </Typography.Text>
+            
+
           </div>
+
+          
           
             
             
@@ -99,7 +169,7 @@ const Blog = () => {
    
   
       
-            {/* <ProfileCard name={item.name} avatar={img1}></ProfileCard> */}
+           
           </List.Item>
         )}
       />
