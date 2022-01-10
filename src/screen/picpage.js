@@ -12,58 +12,46 @@ import {
   RightOutlined,
   DownloadOutlined,
 } from "@ant-design/icons";
+import { useParams } from "react-router-dom";
 
 
 const Picpage = () => {
+  const params=useParams();
+  
+  const idgallery=params.id;
+  console.log(idgallery,'aaaaaaaa')
   const [viewPortWidth, setWidth] = useState(0);
+  const [newdata, setNewData] = useState();
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
-      console.log("size", e.target);
+      // console.log("size", e.target);
       setWidth(window.innerWidth);
     });
   }, []);
   const { Title, Text } = Typography;
   const prevdata = () => {
     console.log("Fetch previous member");
+    setNewData({image:`https://picsum.photos/id/${idgallery+100}/300/200`})
   };
 
   const nextdata = () => {
     console.log("Fetch next member");
   };
 
-  const onSearch = (value) => console.log(value);
-  const data = [];
   const picdata = {
     location: "Hyderabad, India",
-    avatar: `https://picsum.photos/id/45/600/400`,
+    avatar: `https://picsum.photos/id/${idgallery}/600/400`,
     description:
       "Ant Design, a design language for background applications, is refined by Ant UED Team.",
     kword:
-      "We supply series design principles practical patterns ",
-          date: "12/10/2020 9:30 AM",
+      "hello,my frnd, enjoy,nature ",
   };
-  const keywords = [];
-  for (let i = 0; i < 21; i++) {
-    data.push({
-      href: "https://ant.design",
-      name: `ant design part ${i}`,
-      avatar: `https://picsum.photos/id/${i}/600/400`,
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      content:
-        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-    });
-    keywords.push({
-      id: i,
-      keyword: `word ${String(i)}`,
-    });
-  }
+  
 
   return (
     <div className="container-layout">
-      <Wordcloud data={keywords}></Wordcloud>
-      <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+      <Wordcloud data={['hjh','ghgh','hggj']}></Wordcloud>
       <Divider></Divider>
       <div style={{display:'flex',
       width:viewPortWidth > 500 ? "80vw" : "80vw",
@@ -132,7 +120,7 @@ const Picpage = () => {
             </Text >
           <Row >
               {
-              picdata.kword.split(' ').map((item,indx)=>{
+              picdata.kword.split(',').map((item,indx)=>{
 
                 return(
                
@@ -188,7 +176,8 @@ const Picpage = () => {
                   fontWeight:'600',
                   alignItems:'center',
                   backgroundColor:'#666666'
-                  }}>
+                  }}
+                  onClick={prevdata}>
                 
         </Button>
         <Button 
@@ -201,7 +190,8 @@ const Picpage = () => {
                 fontWeight:'600',
                 alignItems:'center',
                 backgroundColor:'#666666'
-                }}>
+                }}
+                onClick={nextdata}>
                
         </Button>
 

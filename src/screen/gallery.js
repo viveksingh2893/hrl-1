@@ -16,7 +16,7 @@ const Gallery = () => {
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
-      console.log("size", e.target);
+      // console.log("size", e.target);
       setWidth(window.innerWidth);
     });
   }, []);
@@ -104,13 +104,15 @@ const Gallery = () => {
       <List
  
         grid={{
-          gutter:16,
-         column:viewPortWidth>500?4:1}}
+          gutter:5,
+          xs:1,
+          sm:4
+         }}
         pagination={{
           onChange: (page) => {
             console.log(page);
           },
-          pageSize: 16,
+          pageSize: 10,
         }}
         dataSource={searchshow ? searchdata : data}
         renderItem={(item) => (
@@ -119,7 +121,7 @@ const Gallery = () => {
               name={item.name}
               avatar={item.image}
               action={() => {
-                navigate("/picpage");
+                navigate("/picpage",{ id: item.id });
               }}
             ></ProfileCard>
           </List.Item>
