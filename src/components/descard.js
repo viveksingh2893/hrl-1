@@ -17,7 +17,7 @@ const Descard = (props) => {
       }}
     >
       
-    <Typography.Title level={3} style={{fontWeight:'400'}}>
+    <Typography.Title level={4} style={{fontWeight:'400',textAlign:'center'}}>
       {props.txt}
     </Typography.Title>
       

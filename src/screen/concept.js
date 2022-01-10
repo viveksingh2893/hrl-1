@@ -3,7 +3,8 @@ import conceptimg from "../assets/image/IMG 2.1.png";
 import "../App.less";
 import '../assets/css/style.css'
 import DATA from '../assets/jsn/data'
-import { Image, Layout, Typography,Carousel, Divider } from "antd";
+import { Image, Layout,List, Typography,Carousel, Divider } from "antd";
+import ProfileCard from "../components/profilecard";
 
 import Descard from "../components/descard";
 import Videobox from "../components/videobox";
@@ -12,7 +13,34 @@ import { useNavigate } from "react-router-dom";
 import CaraImage from "../components/imageCarousel";
 
 
+
 const Concept = () => {
+  const galdata=[{
+    href: "https://ant.design",
+    name: `ant design part 1`,
+    avatar: `https://picsum.photos/id/1/300/200`,
+    description:
+      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+    content:
+      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+  },{
+    href: "https://ant.design",
+    name: `ant design part 1`,
+    avatar: `https://picsum.photos/id/1/300/200`,
+    description:
+      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+    content:
+      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+  },{
+    href: "https://ant.design",
+    name: `ant design part 1`,
+    avatar: `https://picsum.photos/id/1/300/200`,
+    description:
+      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+    content:
+      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+  }]
+  const keywords=[]
   const data = {
     what: `WHAT- ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -79,7 +107,10 @@ const Concept = () => {
   
   useEffect(()=>{
     window.scrollTo(0,0)
+    
   },[])
+
+  
 
   return (
 
@@ -106,7 +137,7 @@ const Concept = () => {
             alignItems: "flex-start",
             justifyContent: "center",
             alignItems:'center',
-            marginTop: "1vw",
+            
           }}
         >
           <Videobox width="80vw" height='40vw' link={data.video}></Videobox>
@@ -159,14 +190,12 @@ const Concept = () => {
         <div
           style={{
             display: "flex",
-            border:'2px solid black',
-            width: "100vw",
-           
-            height: "30vw",
+    
+            width: "80vw",
             justifyContent: "center",
             alignItems:'center',
             backgroundColor: "white",
-            marginTop: "2vw",
+            marginTop: "1vw",
           }}
         >
           <Image
@@ -185,7 +214,8 @@ const Concept = () => {
             display: "flex",
             width: "80vw",
             flexDirection: "row",
-            marginTop: "1vw",
+            marginTop:'1vw',
+            
             justifyContent: "space-between",
             alignItems: "center",
             overflow :'auto',
@@ -238,14 +268,14 @@ const Concept = () => {
                       }}
 
         >
-        <div style={{display:'flex',width:'100vw',justifyContent:'center',alignItems:'center'}}>
+        <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
         <Descard txt={data.what}></Descard>
         </div>
         
           <Image
             src={conceptimg}
             preview={false}
-            style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
+            style={{ width: "80vw", objectFit: "cover" ,marginTop:'1vw'}}
           />
         </div>
       
@@ -271,8 +301,61 @@ const Concept = () => {
           <Image
             src={conceptimg}
             preview={false}
-            style={{ width: "80vw", height: "30vw" }}
+            style={{ width: "80vw"}}
           />
+         </div>
+        
+         </div>
+         <Divider></Divider>
+        <div 
+        style={{display:'flex',
+        flexDirection:'column',
+        justifyContent:'center',
+        alignItems:'center'}}>
+       
+        
+        <Descard txt={data.what}></Descard>
+        
+        <div
+          style={{
+            display: "flex",
+            flexDirection:'column',
+            width: "80vw",
+            marginTop:'1vw',
+            
+            justifyContent: "center",
+          
+          }}
+        >
+      <List
+ 
+      grid={{
+        gutter:16,
+        xs:1,
+      sm:1,
+      md:3,
+      lg:4
+    }}
+      pagination={{
+        onChange: (page) => {
+          console.log(page);
+        },
+        pageSize: 16,
+      }}
+      dataSource={galdata}
+      renderItem={(item) => (
+        <List.Item>
+          <ProfileCard
+            name={item.name}
+            avatar={item.avatar}
+            action={() => {
+              navigate("/picpage");
+            }}
+     ></ProfileCard>
+   </List.Item>
+ )}
+/>
+
          </div>
         
          </div>

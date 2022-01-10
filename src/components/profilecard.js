@@ -18,7 +18,7 @@ const ProfileCard = (props) => {
     <Card
       hoverable
       onClick={props.action}
-      style={{width:viewPortWidth>500?'18vw':'80vw '}}
+      style={{width:viewPortWidth>576?'18vw':'80vw '}}
       cover={<img alt="example" src={props.avatar} />}
     >
       <Meta
