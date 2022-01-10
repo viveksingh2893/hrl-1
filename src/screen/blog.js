@@ -44,27 +44,21 @@ const Blog = () => {
 
   for (let i = 0; i < 21; i++) {
     data.push({
-      href: "https://ant.design",
-      name: `ant design part ${i}`,
-      avatar: `https://picsum.photos/id/${i}/300/200`,
+      title: `ant design part ${i}`,
+      image: {url:`https://images.pexels.com/photos/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`,caption:'caption of image'},
       description:
         "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      content:
-        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-    });
+      });
     keywords.push({
       id: i,
       keyword: `word ${String(i)}`,
     });
     searchdata.push({
-      href: "https://ant.design",
-      name: `ant design part ${i}`,
-      avatar: `https://picsum.photos/id/${i + 100}/300/200`,
+      title: `ant design search data ${i}`,
+      image: {url:`https://images.pexels.com/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`,caption:'caption of image'},
       description:
         "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      content:
-        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-    });
+      });
   }
 
   useEffect(() => {
@@ -79,8 +73,7 @@ const Blog = () => {
       <div>
         <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
       </div>
-      {searchshow ? (
-        <div
+      <div
           style={{
             width: "100vw",
             display: "flex",
@@ -90,30 +83,29 @@ const Blog = () => {
             flexDirection: "column",
           }}
         >
+          <div style={{width:'80vw'}}>
+      {searchshow ? (
+        
+            
+          <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <Typography.Title
             // style={{ marginLeft: "10vw" }}
             level={tlvl}
             style={{ fontFamily: "calibri" }}
           >{`${searchdata.length} SEARCH RESULTS FOR "${srchres}"`}</Typography.Title>
-          <Button
-            type="primary"
-            shape="round"
-            size="small"
-            onClick={clearSearch}
-          >
+          <Button onClick={clearSearch} 
+             type="primary"
+             size='large'
+             style={{border:'none',
+             fontFamily:'Calibri',
+             fontWeight:'600',
+             backgroundColor:'#666666'
+             }}>
             Clear Results
-          </Button>
-        </div>
-      ) : (
-        <div></div>
-      )}
-      
-      <div style={{width:'80vw'}}>
+          </Button></div>):null}
+        
       <List
-        
         itemLayout='vertical'
-        
-  
         grid={{
           column:1,
         }}
@@ -121,14 +113,14 @@ const Blog = () => {
           onChange: (page) => {
             console.log(page);
           },
-          pageSize: 4,
+          pageSize: 5,
         }}
-        dataSource={data}
+        dataSource={searchshow?searchdata:data}
         renderItem={(item) => (
-          <List.Item
-              
-      >  
+          
+          <List.Item>  
       <Divider></Divider>
+      
       <div 
       style={{
           display:'flex',
@@ -139,41 +131,24 @@ const Blog = () => {
           <div style={{display:'flex',flexBasis:'300px',justifyContent:'center',alignItems:'center'}}>
           <Image
               width={viewPortWidth>500?'20vw':'80vw'}
-              alt="logo"
-              src="https://images.pexels.com/photos/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
-
+              alt={item.image.caption}
+              src={item.image.url}/>
           </div>
           <div style={{display:'flex',width:viewPortWidth>500?'30vw':'80vw',paddingLeft:'1vw',flexDirection:'column'}}>
             <Typography.Title level={4}>
-              Quartz is no longer developing or supporting Atlas. 
-             
+             {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-              Typography is the art and technique of arranging type 
-              to make written language legible, 
-              readable and appealing when displayed.
-             
+              {item.description}
             </Typography.Text>
-            
-
           </div>
-
-          
-          
-            
-            
-        
       </div>
-     
-    
-   
-  
-      
-           
-          </List.Item>
+      </List.Item>
         )}
       />
       </div>
+        </div>
+      
     </div>
   );
 };

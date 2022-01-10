@@ -46,27 +46,23 @@ const Gallery = () => {
 
   for (let i = 0; i < 21; i++) {
     data.push({
-      href: "https://ant.design",
+      id:{i},
       name: `ant design part ${i}`,
-      avatar: `https://picsum.photos/id/${i}/300/200`,
+      image: `https://picsum.photos/id/${i}/300/200`,
       description:
         "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      content:
-        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-    });
+     });
     keywords.push({
       id: i,
       keyword: `word ${String(i)}`,
     });
     searchdata.push({
-      href: "https://ant.design",
+      id:{i},
       name: `ant design part ${i}`,
-      avatar: `https://picsum.photos/id/${i + 100}/300/200`,
+      image: `https://picsum.photos/id/${i + 100}/300/200`,
       description:
         "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      content:
-        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-    });
+      });
   }
 
   return (
@@ -74,7 +70,7 @@ const Gallery = () => {
       <Wordcloud data={keywords}></Wordcloud>
 
       <Mapbox></Mapbox>
-      <Divider></Divider>
+      <Divider/>
       <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
       {searchshow ? (
         <div
@@ -88,27 +84,27 @@ const Gallery = () => {
           }}
         >
           <Typography.Title
-            // style={{ marginLeft: "10vw" }}
             level={tlvl}
             style={{ fontFamily: "calibri" }}
           >{`${searchdata.length} SEARCH RESULTS FOR "${srchres}"`}</Typography.Title>
-          <Button
-            type="primary"
-            shape="round"
-            size="small"
-            onClick={clearSearch}
-          >
+          <Button onClick={clearSearch} 
+             type="primary"
+             size='large'
+             style={{border:'none',
+             fontFamily:'Calibri',
+             fontWeight:'600',
+             backgroundColor:'#666666'
+             }}>
             Clear Results
           </Button>
         </div>
-      ) : (
-        <div></div>
-      )}
+      ) : null}
+     <Divider/>
       <List
         bordered
-        style={{ padding: 100, borderWidth: 0 }}
+        // style={{ padding: 100, borderWidth: 0 }}
         grid={{
-          gutter: 10,
+         column:1
         }}
         pagination={{
           onChange: (page) => {
@@ -116,12 +112,12 @@ const Gallery = () => {
           },
           pageSize: 5,
         }}
-        dataSource={searchshow == false ? data : searchdata}
+        dataSource={searchshow ? searchdata : data}
         renderItem={(item) => (
           <List.Item>
             <ProfileCard
               name={item.name}
-              avatar={item.avatar}
+              avatar={item.image}
               action={() => {
                 navigate("/picpage");
               }}

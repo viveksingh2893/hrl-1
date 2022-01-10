@@ -15,10 +15,10 @@ const Searchbar = (props) => {
   }, []);
   return (
     <Search
-      style={{ width: `${viewPortWidth > 900 ? "40vw" : "70vw"}` }}
+      style={{ width: `${viewPortWidth > 900 ? "40vw" : "70vw"}`}}
       placeholder="Enter the keyword here"
       onSearch={props.onSearch}
-      enterButton
+      // enterButton
     />
   );
 };

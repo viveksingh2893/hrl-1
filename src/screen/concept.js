@@ -14,10 +14,10 @@ import CaraImage from "../components/imageCarousel";
 
 const Concept = () => {
   const data = {
+    posterimage:'',
     what: `WHAT- ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
   nisi ut aliquip ex ea commodo consequat.`,
-    imgloc: "dummy",
     video: "https://www.youtube.com/watch?v=ctJFwgh4yds",
     why: [
       {
@@ -25,7 +25,7 @@ const Concept = () => {
         photo:
           "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
         title: "First Card",
-        description: "Random Description",
+        description: "OP index as measure of Primary Health Care service uptake is 0.4 for India versus 13 for ad",
       },
     ],
     how: [
@@ -67,7 +67,6 @@ const Concept = () => {
   };
 
   const navigate = useNavigate();
-  const {Content}=Layout
   const {Title}=Typography
   const {newdata}=DATA[0]
   console.log('data',newdata)
