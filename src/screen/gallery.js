@@ -98,19 +98,19 @@ const Gallery = () => {
             Clear Results
           </Button>
         </div>
-      ) : null}
-     <Divider/>
+      ) :null}
+      <Divider></Divider>
+      <div  style={{display:'flex',justifyContent:'center',alignItems:'center',width:'80vw'}}>
       <List
-        bordered
-        // style={{ padding: 100, borderWidth: 0 }}
+ 
         grid={{
-         column:1
-        }}
+          gutter:16,
+         column:viewPortWidth>500?4:1}}
         pagination={{
           onChange: (page) => {
             console.log(page);
           },
-          pageSize: 5,
+          pageSize: 16,
         }}
         dataSource={searchshow ? searchdata : data}
         renderItem={(item) => (
@@ -125,6 +125,7 @@ const Gallery = () => {
           </List.Item>
         )}
       />
+      </div>
     </div>
   );
 };

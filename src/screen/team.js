@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.less";
 import { useEffect, useState } from "react";
-import { Typography, List } from "antd";
+import { Typography, List, Divider } from "antd";
 import ProfileCard from "../components/profilecard";
 import { useNavigate } from "react-router-dom";
 
@@ -30,12 +30,16 @@ const Team = () => {
     });
   }, []);
   return (
+    <div style={{display:'flex',width:'100vw',border:'2px solid red',
+    justifyContent: "center",
+    alignItems: "center",}}>
     <div
       style={{
-        width: "100vw",
+        width: "80vw",
         marginTop: `${viewPortWidth > 500 ? "12.5vh" : "10vh"}`,
         display: "flex",
         flexDirection: "column",
+        border:'2px solid black',
         justifyContent: "center",
         alignItems: "center",
         padding: 10,
@@ -47,21 +51,14 @@ const Team = () => {
       >
         Our Team
       </Title>
-      {/* <div
-        style={{
-          width: `${viewPortWidth > 600 ? "70vw" : "40vw"}`,
-          justifyContent: "center",
-          alignItems: "center",
-          display: "flex",
-
-          backgroundColor: "orange",
-        }}
-      > */}
-      <List
-        style={{ padding: 100 }}
+      <Divider></Divider>
+   
+      <List 
+     
+      
         grid={{
           gutter: 16,
-          column:4,
+          column:viewPortWidth>500?4:1,
 
           // xs: 1,
           // sm: 2,
@@ -78,11 +75,11 @@ const Team = () => {
           onChange: (page) => {
             console.log(page);
           },
-          pageSize: 10,
+          pageSize: 8,
         }}
         dataSource={data}
         renderItem={(item) => (
-          <List.Item>
+          <List.Item >
             <ProfileCard
               name={item.name}
               avatar={item.avatar}
@@ -94,7 +91,7 @@ const Team = () => {
         )}
       />
     </div>
-    // </div>
+     </div>
   );
 };
 

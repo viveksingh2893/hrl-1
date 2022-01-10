@@ -12,36 +12,36 @@ const ConceptB = (props) => {
       <div
        style={{
         display: "flex",
-        flex: 1,
         width:'80vw',
-        flexWrap: "wrap", 
+        flexWrap: "wrap-reverse", 
         flexDirection: "row",
+        backgroundColor:'#ECF87F',
+        
+        
         justifyContent: "space-around",
     
       }}>
-      <div
+      <div 
         style={{
           display: "flex",
           flex: props.flexsize,
           flexShrink: 1,
           flexBasis: 300,
+          padding:'2vw',
           justifyContent: "flex-start",
           alignItem: "center",
-          
           flexDirection: "column",
           
-        }}
-      >
-        <Title level={2} style={{marginBottom:0,marginTop:10}} >
-          {props.title}
-        </Title>
-        <Divider style={{marginTop:0,backgroundColor:'#fff5cc'}}></Divider>
-        <Text 
-        style={{display:'flex',fontSize:'1.2rem',fontFamily:'Calibri'}}>
+        }}>  
+           <Title level={2} style={{display:'flex',justifyContent:'flex-start'}}>
+            {props.title}
+           </Title>
+           <Text style={{display:'flex',justifyContent:'center'}}>
           {props.text}
-        </Text>
-       
-        <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+           </Text>
+        
+
+           <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
            <Button onClick={props.navigation} 
              type="primary"
              size='large'
@@ -54,17 +54,10 @@ const ConceptB = (props) => {
           </Button>
            </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          flex:1,
-          flexBasis: 200,
-          justifyContent: "center",
-        }}
-      >
-        <Image width="30vw" src={props.img} />
+    
+        <Image width={props.width>600?"40vw":'80vw'} src={props.img} />
       </div>
-      </div>
+    
     
   );
 };

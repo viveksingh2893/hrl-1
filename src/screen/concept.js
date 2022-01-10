@@ -3,7 +3,7 @@ import conceptimg from "../assets/image/IMG 2.1.png";
 import "../App.less";
 import '../assets/css/style.css'
 import DATA from '../assets/jsn/data'
-import { Image, Layout, Typography,Carousel } from "antd";
+import { Image, Layout, Typography,Carousel, Divider } from "antd";
 
 import Descard from "../components/descard";
 import Videobox from "../components/videobox";
@@ -90,6 +90,7 @@ const Concept = () => {
         display: "flex",
         flex:1,
         marginTop:80,
+        alignItems:'center',
         flexDirection: "column",}}>
          
     
@@ -109,7 +110,7 @@ const Concept = () => {
         >
           <Videobox width="80vw" height='40vw' link={data.video}></Videobox>
         </div>
-        {/* <Descard txt={data.what}></Descard> */}
+        <Divider></Divider>
         <div
           style={{
             display: "flex",
@@ -118,7 +119,6 @@ const Concept = () => {
             marginLeft:'10vw',
             flexDirection: "row",
             // flexWrap:'wrap',
-            marginTop: "1vw",
             justifyContent: "space-between",
             alignItems: "center",
            
@@ -130,6 +130,7 @@ const Concept = () => {
             
           }}
         >
+         
           {newdata.why.map((item,indx)=>{
             return(
               <Linkcard
@@ -149,7 +150,9 @@ const Concept = () => {
           })}
         
         </div>
+        <Divider></Divider>
         <div style={{display:'flex',width:'100vw',justifyContent:'center',alignItems:'center'}}>
+        
         <Descard txt={data.what}></Descard>
         </div>
         <div
@@ -171,10 +174,11 @@ const Concept = () => {
             style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
           />
         </div>
+        <Divider></Divider>
         <div style={{display:'flex',width:'100vw',justifyContent:'center',alignItems:'center'}}>
         <Descard txt={data.what}></Descard>
         </div>
-        <div style={{display:'flex',width:'100vw',justifyContent:'center',alignItems:'center'}}>
+        
         <div 
           style={{
             display: "flex",
@@ -219,124 +223,57 @@ const Concept = () => {
             description={data.why[0].description}
           />
         </div>
-        </div>
-        <div  style={{marginLeft:'10vw'}}>
 
+        
+          <Divider></Divider>
+    
+        <div
+          style={{
+            // display: "flex",
+            width: "80vw",
+           alignItems:'center',
+            justifyContent: "center",
+            backgroundColor: "white",
+                      }}
+
+        >
+        <div style={{display:'flex',width:'100vw',justifyContent:'center',alignItems:'center'}}>
+        <Descard txt={data.what}></Descard>
+        </div>
+        
+          <Image
+            src={conceptimg}
+            preview={false}
+            style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
+          />
+        </div>
       
-        <Carousel autoplay>
-        <div
-          style={{
-            width: "80vw",
-            height: "30vw",
-            justifyContent: "center",
-            backgroundColor: "white",
-            marginTop: "1vw",
-          }}
-        >
-          <Image
-            src={conceptimg}
-            preview={false}
-            style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
-          />
-        </div>
-        <div
-          style={{
-            // display: "flex",
-            width: "80vw",
-           
-            height: "30vw",
-            justifyContent: "center",
-            backgroundColor: "white",
-            marginTop: "1vw",
-          }}
-        >
-          <Image
-            src={conceptimg}
-            preview={false}
-            style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
-          />
-        </div>
-        <div
-          style={{
-            width: "80vw",
-            height: "30vw",
-            justifyContent: "center",
-            backgroundColor: "white",
-            marginTop: "1vw",
-          }}
-        >
-          <Image
-            src={conceptimg}
-            preview={false}
-            style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
-          />
-        </div>
-        <div
-          style={{
-            // display: "flex",
-            width: "80vw",
-           
-            height: "30vw",
-            justifyContent: "center",
-            backgroundColor: "white",
-            marginTop: "1vw",
-          }}
-        >
-          <Image
-            src={conceptimg}
-            preview={false}
-            style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
-          />
-        </div>
-        </Carousel>
-        </div>
+        <Divider></Divider>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
        
         
         <Descard txt={data.what}></Descard>
+        
         <div
           style={{
-            position:'relative',
             display: "flex",
-            border:'2px solid black',
+            flexDirection:'column',
             width: "80vw",
-           
-            height: "30vw",
+            marginTop:'1vw',
+            
             justifyContent: "center",
-            backgroundColor: "white",
-            marginTop: "1vw",
+          
           }}
         >
+       
         
           <Image
             src={conceptimg}
             preview={false}
-            style={{ width: "80vw", height: "30vw", objectFit: "cover",zIndex:1 }}
-          >
-          <Descard txt={data.what}></Descard>
-
-     
-            </Image>
-            <Title level={2}style={{position:'absolute',justifyContent:'center',top:'40%',widows:'100%',alignItems:'center',textAlign:'center',color:'#ffebeb',fontSize:'3vw'}}>
-          "Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. "
-
-          </Title>
-
-         
+            style={{ width: "80vw", height: "30vw" }}
+          />
          </div>
-         <div style={{display:"flex",flexDirection:'row',justifyContent:'space-between',width:'80vw',overflow:'auto', marginTop:'1vw',scrollbarWidth:'none'}}>
-           <Linkcard  width="20vh"  image={data.why[0].photo}
-            title={data.why[0].title} />
-           <Linkcard  width="20vh"  image={data.why[0].photo}
-            title={data.why[0].title}/>
-           <Linkcard  width="20vh"  image={data.why[0].photo}
-            title={data.why[0].title}/>
-           <Linkcard  width="20vh"  image={data.why[0].photo}
-            title={data.why[0].title}/>
-           
-   
-         </div>
+        
          </div>
       </div>)
   

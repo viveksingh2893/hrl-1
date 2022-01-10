@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Menu, Layout, Button, Image, Typography,Divider } from "antd";
 import { useNavigate } from 'react-router-dom';
 import img1 from "../assets/image/IMG 0.2A.jpg";
@@ -12,7 +12,7 @@ import '../assets/css/style.css'
 import axios from 'axios'
 
 import ConceptW from "../components/conceptwhite";
-import ConceptB from "../components/conceptblue";
+import ConceptB from "../components/conceptY";
 
 const homedata = {
   'posterurl':img1,
@@ -24,12 +24,24 @@ const homedata = {
 };
 
 const Home = () => {
+  const [width,setWidth]=useState(0)
   const { Sider, Content, Header, Footer } = Layout;
+ 
   const navigate=useNavigate()
   useEffect(()=>{
     window.scrollTo(0,0)
-  },[])
+    
 
+  },[])
+  useEffect(()=>{
+    setWidth(window.innerWidth)
+    window.addEventListener('resize',(e)=>{
+     console.log("size",e.target)
+     setWidth(window.innerWidth)
+    })
+  },[])
+ 
+ 
   const getData= async ()=>{
   const data=await axios.get('http://192.168.29.198:8000/homepage'
     ).then(response=>response.data).catch(error=>console.log(error))
