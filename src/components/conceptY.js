@@ -55,7 +55,7 @@ const ConceptB = (props) => {
            </div>
       </div>
     
-        <Image width={props.width>500?"30vw":'80vw'} src={props.img} />
+        <Image width={props.width>600?"40vw":'80vw'} src={props.img} />
       </div>
     
     

@@ -27,7 +27,7 @@ const ConceptW=(props)=>{
             alignItems:'flex-end',
             border:'1px solid green'}}> */}
            <Image
-         width={props.width>700?"30vw":'80vw'}
+         width={props.width>600?"40vw":'80vw'}
            
          
              src={props.img}

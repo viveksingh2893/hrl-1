@@ -15,14 +15,23 @@ import ConceptW from "../components/conceptwhite";
 import ConceptB from "../components/conceptY";
 
 const Home = () => {
-  const [width,,setWidth]=useState(0)
+  const [width,setWidth]=useState(0)
   const { Sider, Content, Header, Footer } = Layout;
  
   const navigate=useNavigate()
   useEffect(()=>{
     window.scrollTo(0,0)
+    
 
   },[])
+  useEffect(()=>{
+    setWidth(window.innerWidth)
+    window.addEventListener('resize',(e)=>{
+     console.log("size",e.target)
+     setWidth(window.innerWidth)
+    })
+  },[])
+ 
  
   const getData= async ()=>{
   const data=await axios.get('http://192.168.29.198:8000/homepage'
@@ -65,7 +74,8 @@ const Home = () => {
 
     
     
-      <ConceptW 
+      <ConceptW
+        width={width}  
         title="Mith.AI"  
         text='
         MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a 
@@ -76,7 +86,8 @@ const Home = () => {
         flexsize={4}
         img={img2}navigation={()=>{navigate('concept',{state:'mith'})}}/>
      <Divider/>
-      <ConceptB title='Dhara'
+      <ConceptB
+        width={width}  title='Dhara'
       text='MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a “comprehensive, convergent and customized” (3C) digital platform designed and developed at PHFI Hi Rapid Lab for providing @ home
        universal primary health care.MITH.AI has two components – the DIGITAL HEALTH component and the MOBILITY component.'
        flexsize={4}
@@ -85,7 +96,8 @@ const Home = () => {
       navigation={()=>{navigate('concept',{state:'mith'})}}/>
      <Divider/>
       
-      <ConceptW  title='SkyBridge'
+      <ConceptW
+        width={width}   title='SkyBridge'
       text='MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a “comprehensive, convergent and customized” (3C) digital platform designed and developed at PHFI Hi Rapid Lab for providing @ home
       universal primary health care.MITH.AI has two components – the DIGITAL HEALTH component and the MOBILITY component.'
       flexsize={4}
@@ -93,7 +105,8 @@ const Home = () => {
      btitle='Read More'
       navigation={()=>{navigate('concept',{state:'mith'})}} />
      <Divider/>
-      <ConceptB  
+      <ConceptB
+        width={width}   
        title='Blog'
        text='Checkout our Blog colections.'
       flexsize={1}
@@ -101,14 +114,16 @@ const Home = () => {
       btitle='Discover More'
        navigation={()=>{navigate('blog',{state:'mith'})}}/>
      <Divider/>
-      <ConceptW title='News'
+      <ConceptW
+        width={width}  title='News'
        text='Checkout our News collection.'
       flexsize={1}
       img={img5}
       btitle='Discover More'
        navigation={()=>{navigate('news',{state:'mith'})}}/>
      <Divider/>
-      <ConceptB title='Gallery'
+      <ConceptB
+        width={width}  title='Gallery'
        text='Checkout our Gallery colections.'
       flexsize={1}
       img={img4}
@@ -116,7 +131,8 @@ const Home = () => {
        navigation={()=>{navigate('gallery',{state:'mith'})}}/>
       
 <Divider></Divider>
-      <ConceptW title='News'
+      <ConceptW
+        width={width}  title='CONTACT'
        text='Checkout our News collection.'
       flexsize={1}
       img={img5}

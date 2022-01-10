@@ -101,20 +101,18 @@ const Gallery = () => {
             Clear Results
           </Button>
         </div>
-      ) : (
-        <div></div>
-      )}
+      ) :null}
+      <Divider></Divider>
       <List
+      
         bordered
-        style={{ padding: 100, borderWidth: 0 }}
-        grid={{
-          gutter: 10,
-        }}
+        style={{  border:'2px solid black',width:'82vw' }}
+        
         pagination={{
           onChange: (page) => {
             console.log(page);
           },
-          pageSize: 5,
+          pageSize: 16,
         }}
         dataSource={searchshow == false ? data : searchdata}
         renderItem={(item) => (

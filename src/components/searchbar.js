@@ -2,6 +2,7 @@ import React from "react";
 import "../App.less";
 import { Input } from "antd";
 import { useEffect, useState } from "react";
+import { SearchOutlined} from '@ant-design/icons';
 
 const Searchbar = (props) => {
   const { Search } = Input;
@@ -15,10 +16,14 @@ const Searchbar = (props) => {
   }, []);
   return (
     <Search
+
       style={{ width: `${viewPortWidth > 900 ? "40vw" : "70vw"}` }}
       placeholder="Enter the keyword here"
       onSearch={props.onSearch}
       enterButton
+      
+    
+
     />
   );
 };
