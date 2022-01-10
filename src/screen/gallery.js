@@ -103,11 +103,12 @@ const Gallery = () => {
         </div>
       ) :null}
       <Divider></Divider>
+      <div  style={{display:'flex',justifyContent:'center',alignItems:'center',width:'80vw'}}>
       <List
-      
-        bordered
-        style={{  border:'2px solid black',width:'82vw' }}
-        
+ 
+        grid={{
+          gutter:16,
+         column:viewPortWidth>500?4:1}}
         pagination={{
           onChange: (page) => {
             console.log(page);
@@ -127,6 +128,7 @@ const Gallery = () => {
           </List.Item>
         )}
       />
+      </div>
     </div>
   );
 };
