@@ -12,14 +12,16 @@ import {
   RightOutlined,
   DownloadOutlined,
 } from "@ant-design/icons";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 
 
 const Picpage = () => {
-  const params=useParams();
+  const location=useLocation()
+  console.log(location.state,'params')
   
-  const idgallery=params.id;
-  console.log(idgallery,'aaaaaaaa')
+  const idgallery=location.state.id;
+  console.log(idgallery,'aaaaaaaaaaaa')
   const [viewPortWidth, setWidth] = useState(0);
   const [newdata, setNewData] = useState();
   useEffect(() => {

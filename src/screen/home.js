@@ -6,7 +6,7 @@ import img2 from '../assets/image/IMG 0.3.jpg'
 import img3 from "../assets/image/IMG 0.4.jpg";
 import img4 from "../assets/image/IMG 0.5.jpg";
 import img5 from "../assets/image/blog.jpg";
-import img6 from "../assets/image/news.jpg";
+import img6 from "../assets/image/IMG 0.6.jpg";
 import img7 from "../assets/image/GALLERY-Icon.png";
 import '../assets/css/style.css'
 import axios from 'axios'
@@ -82,15 +82,15 @@ const Home = () => {
       {homedata.concept.length>0?homedata.concept.map((val,index)=>{
         console.log(index,val,homedata[val])
         {
-            return index%2==0 ? <><ConceptW title={val} text={homedata[val].detail} img={homedata[val].image} btitle='Read More'
-              flexsize={4} navigation={() => { navigate('concept', { state: 'mith' }); } } /><Divider /></> : <><ConceptB title={val} text={homedata[val].detail} img={homedata[val].image} btitle='Read More'
+            return index%2==0 ? <><ConceptW width={width} title={val} text={homedata[val].detail} img={homedata[val].image} btitle='Read More'
+              flexsize={4} navigation={() => { navigate('concept', { state: 'mith' }); } } /><Divider /></> : <><ConceptB width={width} title={val} text={homedata[val].detail} img={homedata[val].image} btitle='Read More'
               flexsize={4} navigation={() => { navigate('concept', { state: 'mith' }); } } /><Divider /></>;
         }
         
       }):null}
       
       
-        <ConceptW 
+        {/* <ConceptW width={width} 
           title="Mith.AI"  
           text='
           MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a 
@@ -99,9 +99,9 @@ const Home = () => {
           the DIGITAL HEALTH component and the MOBILITY component.'
           btitle='Read More'
           flexsize={4}
-          img={img2}navigation={()=>{navigate('concept',{state:'mith'})}}/>
-       <Divider/>
-        <ConceptB title='Dhara'
+          img={img2}navigation={()=>{navigate('concept',{state:'mith'})}}/> */}
+       {/* <Divider/>
+        <ConceptB width={width} title='Dhara'
         text='MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a “comprehensive, convergent and customized” (3C) digital platform designed and developed at PHFI Hi Rapid Lab for providing @ home
          universal primary health care.MITH.AI has two components – the DIGITAL HEALTH component and the MOBILITY component.'
          flexsize={4}
@@ -109,16 +109,16 @@ const Home = () => {
         btitle='Read More'
         navigation={()=>{navigate('concept',{state:'mith'})}}/>
        <Divider/>
-        
-        <ConceptW  title='SkyBridge'
+         */}
+        {/* <ConceptW width={width}  title='SkyBridge'
         text='MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a “comprehensive, convergent and customized” (3C) digital platform designed and developed at PHFI Hi Rapid Lab for providing @ home
         universal primary health care.MITH.AI has two components – the DIGITAL HEALTH component and the MOBILITY component.'
         flexsize={4}
        img={img4}
        btitle='Read More'
-        navigation={()=>{navigate('concept',{state:'mith'})}} />
-       <Divider/>
-        <ConceptB  
+        navigation={()=>{navigate('concept',{state:'mith'})}} /> */}
+      
+        <ConceptB width={width}  
          title='Blog'
          text='Checkout our Blog colections.'
         flexsize={1}
@@ -126,19 +126,27 @@ const Home = () => {
         btitle='Discover More'
          navigation={()=>{navigate('blog',{state:'mith'})}}/>
        <Divider/>
-        <ConceptW title='News'
+        <ConceptW width={width} title='News'
          text='Checkout our News collection.'
         flexsize={1}
         img={img6}
         btitle='Discover More'
          navigation={()=>{navigate('news',{state:'mith'})}}/>
        <Divider/>
-        <ConceptB title='Gallery'
+        <ConceptB width={width} title='Gallery'
          text='Checkout our Gallery colections.'
         flexsize={1}
         img={img7}
         btitle='Discover More'
          navigation={()=>{navigate('gallery',{state:'mith'})}}/>
+         <Divider/>
+        <ConceptW width={width} title='Contact Us'
+         text='Checkout our News collection.'
+        flexsize={1}
+        img={img6}
+        btitle='Discover More'
+         navigation={()=>{navigate('news',{state:'mith'})}}/>
+       
       </Content>
   );
 };

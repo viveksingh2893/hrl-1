@@ -127,8 +127,7 @@ const Concept = () => {
     
              <Image width="100vw"  preview={false} src={conceptimg} />
 
-             <h1 className="T1"> {newdata.heading} </h1>
-    
+             <Descard level={3} txt={newdata.heading} /> 
         <div
           style={{
             display: "flex",
