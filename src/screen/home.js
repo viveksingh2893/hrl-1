@@ -79,44 +79,25 @@ const Home = () => {
         <Typography.Title level={4}style={{width:'80vw',margin:10,fontWeight:'400'}}>
         {homedata.detail}
         </Typography.Title>
+        <Divider/>
       {homedata.concept.length>0?homedata.concept.map((val,index)=>{
         console.log(index,val,homedata[val])
         {
-            return index%2==0 ? <><ConceptW width={width} title={val} text={homedata[val].detail} img={homedata[val].image} btitle='Read More'
-              flexsize={4} navigation={() => { navigate('concept', { state: 'mith' }); } } /><Divider /></> : <><ConceptB width={width} title={val} text={homedata[val].detail} img={homedata[val].image} btitle='Read More'
-              flexsize={4} navigation={() => { navigate('concept', { state: 'mith' }); } } /><Divider /></>;
+            return (
+            <><ConceptW 
+              width={width} 
+              title={val} 
+              text={homedata[val].detail} 
+              img={homedata[val].image} 
+              btitle='Read More'
+              flexsize={4} 
+              navigation={() => { navigate('concept', { state: 'mith' }); } } />
+              <Divider /></> 
+            )
+     
         }
         
       }):null}
-      
-      
-        {/* <ConceptW width={width} 
-          title="Mith.AI"  
-          text='
-          MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a 
-          “comprehensive, convergent and customized” (3C) digital platform designed and developed at PHFI Hi Rapid
-          Lab for providing @ home universal primary health care.MITH.AI has two components –
-          the DIGITAL HEALTH component and the MOBILITY component.'
-          btitle='Read More'
-          flexsize={4}
-          img={img2}navigation={()=>{navigate('concept',{state:'mith'})}}/> */}
-       {/* <Divider/>
-        <ConceptB width={width} title='Dhara'
-        text='MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a “comprehensive, convergent and customized” (3C) digital platform designed and developed at PHFI Hi Rapid Lab for providing @ home
-         universal primary health care.MITH.AI has two components – the DIGITAL HEALTH component and the MOBILITY component.'
-         flexsize={4}
-        img={img3}
-        btitle='Read More'
-        navigation={()=>{navigate('concept',{state:'mith'})}}/>
-       <Divider/>
-         */}
-        {/* <ConceptW width={width}  title='SkyBridge'
-        text='MITH.AI or Mass Modular Integrated Transformational Health Care through Artificial Intelligence is a “comprehensive, convergent and customized” (3C) digital platform designed and developed at PHFI Hi Rapid Lab for providing @ home
-        universal primary health care.MITH.AI has two components – the DIGITAL HEALTH component and the MOBILITY component.'
-        flexsize={4}
-       img={img4}
-       btitle='Read More'
-        navigation={()=>{navigate('concept',{state:'mith'})}} /> */}
       
         <ConceptB width={width}  
          title='Blog'

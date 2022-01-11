@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import conceptimg from "../assets/image/IMG 2.1.png";
+import conceptimg from "../assets/image/IMG 2.1.jpg";
 import "../App.less";
 import '../assets/css/style.css'
 import DATA from '../assets/jsn/data'
@@ -16,7 +16,7 @@ import CaraImage from "../components/imageCarousel";
 
 const Concept = () => {
   const galdata=[{
-    href: "https://ant.design",
+    id: 1,
     name: `ant design part 1`,
     avatar: `https://picsum.photos/id/1/300/200`,
     description:
@@ -24,7 +24,7 @@ const Concept = () => {
     content:
       "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
   },{
-    href: "https://ant.design",
+    id: 10,
     name: `ant design part 1`,
     avatar: `https://picsum.photos/id/1/300/200`,
     description:
@@ -32,7 +32,7 @@ const Concept = () => {
     content:
       "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
   },{
-    href: "https://ant.design",
+    id: 15,
     name: `ant design part 1`,
     avatar: `https://picsum.photos/id/1/300/200`,
     description:
@@ -126,8 +126,17 @@ const Concept = () => {
          
     
              <Image width="100vw"  preview={false} src={conceptimg} />
+            <div style={{display:'flex',justifyContent:'center',
+            padding:'1vw',
+            alignItems:'center',
+            flexDirection:'column',
+            }}>
+            <Title>What</Title>
 
-             <Descard level={3} txt={newdata.heading} /> 
+            <Descard level={3} txt={newdata.heading} /> 
+
+            </div>
+        <Divider></Divider>   
         <div
           style={{
             display: "flex",
@@ -137,8 +146,15 @@ const Concept = () => {
             alignItems:'center',
             
           }}
-        >
+        > 
+        <div style={{display:'flex',justifyContent:'center',
+            
+            alignItems:'center',
+            flexDirection:'column',
+            }}>
+          <Title>Demo</Title>
           <Videobox width="80vw" height='40vw' link={data.video}></Videobox>
+        </div>
         </div>
         <Divider></Divider>
         <div
@@ -347,7 +363,7 @@ const Concept = () => {
             name={item.name}
             avatar={item.avatar}
             action={() => {
-              navigate("/picpage");
+              navigate("/picpage",{state:{id:item.id}});
             }}
      ></ProfileCard>
    </List.Item>

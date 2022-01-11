@@ -105,7 +105,7 @@ const Headbar=()=>{
               fontSize:'calc(10px + 0.5vw)',
               fontWeight: "600",
               height:'80px',
-              color: "#666666",
+              color: "#ffcc00",
               fontFamily: "Calibri",
               justifyContent: "flex-end",
               alignItems:'center',

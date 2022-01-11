@@ -30,7 +30,7 @@ const Team = () => {
     });
   }, []);
   return (
-    <div style={{display:'flex',width:'100vw',border:'2px solid red',
+    <div style={{display:'flex',width:'100vw',
     justifyContent: "center",
     alignItems: "center",}}>
     <div
@@ -39,7 +39,6 @@ const Team = () => {
         marginTop: `${viewPortWidth > 500 ? "12.5vh" : "10vh"}`,
         display: "flex",
         flexDirection: "column",
-        border:'2px solid black',
         justifyContent: "center",
         alignItems: "center",
         padding: 10,

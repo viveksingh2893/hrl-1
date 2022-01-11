@@ -7,7 +7,7 @@ const NavMenu=(props)=>{
       fontSize:'calc(10px + 0.5vw)',
       fontWeight:'bolder',
       height:'80px',
-      color:'#666666',
+      
       fontFamily:'Calibri',
       justifyContent: "flex-end",
       backgroundColor: "#666666",
