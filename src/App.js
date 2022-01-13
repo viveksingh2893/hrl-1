@@ -1,4 +1,4 @@
-import { Layout } from "antd";
+import { Layout,Typography} from "antd";
 import "./App.less";
 
 import { Routes, Route } from "react-router-dom";
@@ -17,7 +17,7 @@ function App() {
   const { Footer } = Layout;
 
   return (
-    <div>
+    <div style={{scrollBehavior:'smooth'}} >
       <Layout style={{ backgroundColor: "white" }}>
         <Headbar />
         <Routes>
@@ -31,8 +31,35 @@ function App() {
           <Route path="/member" element={<Member />} />
           <Route path="/picpage" element={<Picpage />} />
         </Routes>
-        <Footer style={{ position: "relative", textAlign: "center" }}>
-          ©2021 Created by Destratum
+
+        <Footer style={{ position: "relative",bottom:'0', marginTop:'2vw',textAlign: "center",backgroundColor:'#F7E279' }}>
+        <div style={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center',padding:'1vw'}}>
+          <Typography.Paragraph>For further information, pls write to <b>contact@hirapidlab.com</b> from your official email id only, stating your query followed by your name and designation. 
+            We will answer your mail. </Typography.Paragraph>
+          <Typography.Paragraph>
+            The content of the website is collated by Hi Rapid Lab and is offered to the
+            viewers for information purposes only. It does not reflect the opinion of Hi Rapid
+            Lab or any of the affiliating institutions of the presenters or participants on the
+            website. The content of the website does not endorse any organization, product
+            or process or service whose names, logos or features which appear in the website
+            content. The content of the website should not be altered in any way, nor should
+            it be used in a way that may distort its meaning. If you wish to apply or expand
+            content, concepts or ideas contained in the website, please understand that you
+            are taking full responsibility for all your actions. While all efforts have been made
+            to ensure that the information given in this website content is correct, the
+            producers, writers, presenters, participants, sponsors, copyright holders, assigned
+            users or anyone associated with the website content shall not be in any event held
+            liable to any party, for any direct, indirect, implied, punitive, special, incidental or
+            other consequential damages arising directly or indirectly from any thought
+            process, social media share or use of the content of the website, which is provided
+            as is without any warranties. As in all cases, viewers should never take any
+            information sources from the website at face value and should always do their
+            due diligence on any viewed material to form their own opinions, judgments and
+            actions. For any further clarifications or suggestions or comments please email to
+            contact@hirapidlab.com 
+          </Typography.Paragraph>
+        </div>
+          ©2021 Created by <b>Destratum</b>
         </Footer>
       </Layout>
     </div>

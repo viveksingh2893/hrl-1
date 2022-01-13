@@ -7,9 +7,9 @@ const Descard = (props) => {
     <div
       style={{
         display: "flex",
-        width: "60vw",
+        width: "80vw",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
        
         // paddingLeft:'5vw',
         // paddingRight:'5vw',
@@ -17,9 +17,9 @@ const Descard = (props) => {
       }}
     >
       
-    <Typography.Title level={4} style={{fontWeight:'400',textAlign:'center'}}>
+    <Typography.Text  style={{fontWeight:'400',fontSize:'1.1rem',lineHeight:'1.5rem'}}>
       {props.txt}
-    </Typography.Title>
+    </Typography.Text>
       
     </div>
   );

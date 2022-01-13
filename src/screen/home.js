@@ -87,11 +87,15 @@ const Home = () => {
             <><ConceptW 
               width={width} 
               title={val} 
-              text={homedata[val].detail} 
+              // text={homedata[val].detail} 
               img={homedata[val].image} 
-              btitle='Read More'
+              b1title='What'
+              b2title='Demo'
+              b3title='How'
+              b4title='Read More'
+              
               flexsize={4} 
-              navigation={() => { navigate('concept', { state: 'mith' }); } } />
+              navigation={() => { navigate('concept#demo', { state: 'mith' }); } } />
               <Divider /></> 
             )
      
@@ -99,7 +103,7 @@ const Home = () => {
         
       }):null}
       
-        <ConceptB width={width}  
+        <ConceptW width={width}  
          title='Blog'
          text='Checkout our Blog colections.'
         flexsize={1}
@@ -114,7 +118,7 @@ const Home = () => {
         btitle='Discover More'
          navigation={()=>{navigate('news',{state:'mith'})}}/>
        <Divider/>
-        <ConceptB width={width} title='Gallery'
+        <ConceptW width={width} title='Gallery'
          text='Checkout our Gallery colections.'
         flexsize={1}
         img={img7}
