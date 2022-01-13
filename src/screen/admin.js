@@ -7,7 +7,7 @@ import GalleryPage1 from "../components/gallerypage.js";
 import ProductPage from '../components/productpage';
 import BioForm from '../components/biopage';
 import {
-  DesktopOutlined,
+  UserAddOutlined,
   PieChartOutlined,
   FileImageOutlined ,
   TeamOutlined,
@@ -38,16 +38,16 @@ console.log(event.key,'event')
 }
     const { collapsed } = state;
     return (
-      <Layout style={{ minHeight: '100vh' ,marginTop:'80px'}}>
+      <Layout style={{ minHeight: '90vh' ,marginTop:'80px'}}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1" icon={<PieChartOutlined />} onClick={menuclick} >
               Statistics
             </Menu.Item>
-            <Menu.Item key="2" onClick={menuclick}>Edit Bio</Menu.Item>
-              <Menu.Item key="3" onClick={menuclick}>Write Blog</Menu.Item>
-              <Menu.Item key="4" onClick={menuclick}>Add News</Menu.Item>
+            <Menu.Item key="2" icon={<UserAddOutlined />}onClick={menuclick}>Edit Bio</Menu.Item>
+              <Menu.Item key="3" icon={<FormOutlined />}onClick={menuclick}>Write Blog</Menu.Item>
+              <Menu.Item key="4" icon={<PicLeftOutlined />}onClick={menuclick}>Add News</Menu.Item>
               
            
            
