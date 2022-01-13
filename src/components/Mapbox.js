@@ -1,6 +1,7 @@
 import React from "react";
-import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
+import { GoogleMap, withScriptjs, withGoogleMap ,Marker} from "react-google-maps";
 import { useEffect, useState } from "react";
+import {FallOutlined,CalendarFilled} from '@ant-design/icons';
 
 const Mapbox = () => {
   const [viewPortWidth, setWidth] = useState(0);
@@ -27,7 +28,16 @@ const Mapbox = () => {
       <GoogleMap
         defaultZoom={zval}
         defaultCenter={{ lat: 23.2, lng: 81.08886 }}
-      />
+      >
+        <Marker position={{lat:23.2,lng:81.08886}} icon={{url:"https://www.hdnicewallpapers.com/Walls/Big/Squirrel/Peanut_Eating_Squirrel_Beautiful_Image.jpg",
+        scaledSize: new window.google.maps.Size(40,40)}}/>
+        <Marker position={{lat:23.2,lng:70}} icon={{url:"https://www.hdnicewallpapers.com/Walls/Big/Squirrel/Peanut_Eating_Squirrel_Beautiful_Image.jpg",
+        scaledSize: new window.google.maps.Size(40,40)}}/>
+        <Marker position={{lat:20,lng:81.08886}} icon={{url:"https://www.hdnicewallpapers.com/Walls/Big/Squirrel/Peanut_Eating_Squirrel_Beautiful_Image.jpg",
+        scaledSize: new window.google.maps.Size(40,40)}}/>
+        <Marker position={{lat:12,lng:78}} icon={{url:"https://www.hdnicewallpapers.com/Walls/Big/Squirrel/Peanut_Eating_Squirrel_Beautiful_Image.jpg",
+        scaledSize: new window.google.maps.Size(40,40)}}/>
+        </GoogleMap>
     );
   };
 
@@ -42,7 +52,7 @@ const Mapbox = () => {
     >
       {/* <div style={{ width: "45vw", height: "75vh" }}> */}
       <WrappedMap
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDOEHa04N_FH70nmh_12NYmzZ8eDzcwbiQ&callback=initMap`}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAOssA6l0DP4CJBqrDQ4Te1_EaJFkpbkhA`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}

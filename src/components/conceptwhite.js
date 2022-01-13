@@ -1,4 +1,4 @@
-import {Menu,Layout,Button,Image, Typography} from 'antd'
+import {Menu,Layout,Button,Image, Typography,Col} from 'antd'
 
 import '../App.less';
 import '../assets/css/style.css'
@@ -27,7 +27,7 @@ const ConceptW=(props)=>{
             alignItems:'flex-end',
             border:'1px solid green'}}> */}
            <Image
-         width={props.width>600?"40vw":'80vw'}
+         width={props.width>576?"40vw":'80vw'}
            
          
              src={props.img}
@@ -39,32 +39,74 @@ const ConceptW=(props)=>{
           flex: props.flexsize,
           flexShrink: 1,
           flexBasis: 300,
-          padding:'2vw',
+          paddingLeft:'1vw',
           justifyContent: "flex-start",
           alignItem: "center",
           flexDirection: "column",
           
         }}>  
            <Title level={2} style={{display:'flex',justifyContent:'flex-start'}}>
-            {props.title}
+            {props.title.toUpperCase()}
            </Title>
            <Text style={{display:'flex',justifyContent:'center'}}>
           {props.text}
            </Text>
         
 
-           <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+           <Col style={{display:'flex',
+           alignItems:'center',
+           justifyContent:'center',
+           flexDirection:'column'}}>
            <Button onClick={props.navigation} 
-             type="primary"
+            
              size='large'
              style={{border:'none',
-             fontFamily:'Calibri',
-             fontWeight:'600',
-             backgroundColor:'#666666'
+             
+             fontWeight:'400',
+             margin:2,
+             hover:{
+               color:'#ffcc00'
+             }
+          
+            
              }}>
-             {props.btitle.toUpperCase()}
+              <Typography.Title level={4}>{props.b1title}</Typography.Title>
           </Button>
-           </div>
+          <Button onClick={props.navigation} 
+             
+             size='large'
+             style={{border:'none',
+             
+             fontWeight:'400',
+             margin:2,
+            
+             }}>
+             <Typography.Title level={4}>{props.b2title}</Typography.Title>
+          </Button>
+           <Button onClick={props.navigation} 
+             
+             size='large'
+             style={{border:'none',
+            
+             fontWeight:'400',margin:2,
+             
+             }}>
+               <Typography.Title level={4}>{props.b3title}</Typography.Title>
+             {/* {props.b3title} */}
+          </Button>
+          <Button onClick={props.navigation} 
+             
+             size='large'
+             style={{border:'none',
+            
+             fontWeight:'400',margin:2,
+             backgroundColor:'#666666',
+             color:'#ffffff'
+             
+             }}>
+             {props.b4title}
+          </Button>
+           </Col>
         </div> 
         </div>
         

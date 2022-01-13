@@ -46,7 +46,7 @@ const Gallery = () => {
 
   for (let i = 0; i < 21; i++) {
     data.push({
-      id:{i},
+      id:i,
       name: `ant design part ${i}`,
       image: `https://picsum.photos/id/${i}/300/200`,
       description:
@@ -121,7 +121,7 @@ const Gallery = () => {
               name={item.name}
               avatar={item.image}
               action={() => {
-                navigate("/picpage",{ id: item.id });
+                navigate("/picpage",{ state:{id: item.id }});
               }}
             ></ProfileCard>
           </List.Item>

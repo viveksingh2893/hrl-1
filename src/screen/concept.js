@@ -1,18 +1,50 @@
-import React, { useEffect } from "react";
-import conceptimg from "../assets/image/IMG 2.1.png";
+import React, { useEffect,useState } from "react";
+import conceptimg from "../assets/image/IMG 2.1.jpg";
+import axios from 'axios'
 import "../App.less";
 import '../assets/css/style.css'
 import DATA from '../assets/jsn/data'
-import { Image, Layout, Typography,Carousel, Divider } from "antd";
+import img2A from '../assets/image/IMG 2.2A.jpg'
+import { Image, Layout,List, Typography,Carousel, Divider } from "antd";
+import ProfileCard from "../components/profilecard";
 
 import Descard from "../components/descard";
 import Videobox from "../components/videobox";
 import Linkcard from "../components/linkcard";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import CaraImage from "../components/imageCarousel";
+import Paragraph from "antd/lib/typography/Paragraph";
+
 
 
 const Concept = () => {
+  const [conceptData,setData]=useState()
+  const galdata=[{
+    id: 1,
+    name: `ant design part 1`,
+    avatar: `https://picsum.photos/id/1/300/200`,
+    description:
+      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+    content:
+      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+  },{
+    id: 10,
+    name: `ant design part 1`,
+    avatar: `https://picsum.photos/id/1/300/200`,
+    description:
+      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+    content:
+      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+  },{
+    id: 15,
+    name: `ant design part 1`,
+    avatar: `https://picsum.photos/id/1/300/200`,
+    description:
+      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+    content:
+      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+  }]
+  const keywords=[]
   const data = {
     posterimage:'',
     what: `WHAT- ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -69,20 +101,42 @@ const Concept = () => {
   const navigate = useNavigate();
   const {Title}=Typography
   const {newdata}=DATA[0]
-  console.log('data',newdata)
+  const getData= async ()=>{
+    const data=await axios.get('http://65.1.254.51:6004/concept/Dhara/'
+      ).then(response=>response.data).catch(error=>console.log(error))
+  
+      console.log("...........data",data)
+      setData(data)
+    
+    }
+  
+    useEffect(()=>{
+  
+      getData();
+    },[])
+
   
 
   function onChange(a, b, c) {
     console.log(a, b, c);
   }
-  
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
 
+  console.log('data',conceptData)
+  
+  // useEffect(()=>{
+  //   window.scrollTo(0,0)
+    
+  // },[])
+
+  
+  if (conceptData==undefined){
+    return null
+
+  }else{
   return (
 
     <div style={{
+      
        
         justifyContent: "center",
       
@@ -92,190 +146,223 @@ const Concept = () => {
         marginTop:80,
         alignItems:'center',
         flexDirection: "column",}}>
+          <div 
+          style={{display:'flex',position:'fixed',
+          zIndex:'2',
+          top:100,
+          left:0,
+         
+          justifyContent:'space-around',
+          padding:10,
+          
+          flexDirection:'column',
+          backgroundColor:'#ffcc'
+          }}>
+           
+            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#what'> What</a></Title>
+            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#demo'> Demo</a></Title> 
+            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#why'> Why </a></Title>
+            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#how'> How </a></Title>
+            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#new'> New </a></Title> 
+            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#model'> Model </a></Title>
+            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#where'> Where </a></Title>
+
+          </div>
          
     
              <Image width="100vw"  preview={false} src={conceptimg} />
+        <div id='what' className='conceptcls'>
+          <div className='sectiontext'>
+            <Title>What</Title>
 
-             <h1 className="T1"> {newdata.heading} </h1>
-    
-        <div
-          style={{
-            display: "flex",
-            width: "100vw",
-            alignItems: "flex-start",
-            justifyContent: "center",
-            alignItems:'center',
-            marginTop: "1vw",
-          }}
-        >
-          <Videobox width="80vw" height='40vw' link={data.video}></Videobox>
+            <Descard level={3} txt={conceptData.what} /> 
+            </div>
+
+        </div>
+        <Divider ></Divider>   
+        <div  
+        id='demo'
+        className='conceptcls'
+        > 
+        <div className='sectiontext'>
+            
+          <Title >Demo</Title>
+          <Videobox width="80vw" height='40vw' link={conceptData.video_url}></Videobox>
+         
+        </div>
         </div>
         <Divider></Divider>
+        <div id='why'
+        className='conceptcls'
+        >
+          <div className='sectiontext'>
+
+         
+          <Title>Why?</Title>
+          
         <div
           style={{
             display: "flex",
             width: "80vw",
-            marginRight:'10vw',
-            marginLeft:'10vw',
+           
             flexDirection: "row",
-            // flexWrap:'wrap',
             justifyContent: "space-between",
             alignItems: "center",
-           
-            overflow:'auto',
-            scrollbarWidth:0,
-          
-          
-       
+            msOverflowStyle:'none',
             
+          
+            overflow:'hidden',
+            scrollbarWidth:0,
           }}
         >
+          
          
-          {newdata.why.map((item,indx)=>{
+          {conceptData.why.map((item,indx)=>{
             return(
-              <Linkcard
-            action={() => {
-              navigate("/");
-            }}
-            width="25vw"
-            
-           
-            id={data.why[0].id}
-            image={data.why[0].photo}
-            title={item.heading}
-            description={item.description}
-          />
+              <div>
+                <Image width='25vw'src={item.image}/>
+              </div>
 
             )
           })}
+           </div>
         
+        </div>
         </div>
         <Divider></Divider>
-        <div style={{display:'flex',width:'100vw',justifyContent:'center',alignItems:'center'}}>
-        
-        <Descard txt={data.what}></Descard>
+        <div className='conceptcls' id='how'>
+        <Title >How?</Title>
+        {conceptData.how.map((item,indx)=>{
+
+          return(
+            <div>
+               <Descard txt={item.description}></Descard>
+                <Image
+                  src={item.image}
+                  preview={false}
+                  style={{ width: "80vw", objectFit: "cover",marginTop:'10px' }}
+                />
+            </div>
+          )
+        })}
+       
+       
         </div>
-        <div
-          style={{
-            display: "flex",
-            border:'2px solid black',
-            width: "100vw",
-           
-            height: "30vw",
-            justifyContent: "center",
-            alignItems:'center',
-            backgroundColor: "white",
-            marginTop: "2vw",
-          }}
+        <Divider></Divider>
+        <div 
+         className='conceptcls' id='new'
         >
-          <Image
-            src={conceptimg}
-            preview={false}
-            style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
-          />
-        </div>
-        <Divider></Divider>
-        <div style={{display:'flex',width:'100vw',justifyContent:'center',alignItems:'center'}}>
-        <Descard txt={data.what}></Descard>
-        </div>
+          <Title >New</Title>
+      
         
         <div 
           style={{
             display: "flex",
             width: "80vw",
             flexDirection: "row",
-            marginTop: "1vw",
+            marginTop:'1vw',
+            
             justifyContent: "space-between",
             alignItems: "center",
             overflow :'auto',
-            scrollbarWidth:'none',
+            
             
           }}
-        >
-          <Linkcard
-            action={() => {
-              navigate("/");
-            }}
-            width="45vh"
-            id={data.why[0].id}
-            image={data.why[0].photo}
-            title={data.why[0].title}
-            description={data.why[0].description}
-          />
-          <Linkcard
-            action={() => {
-              navigate("/");
-            }}
-            width="45vh"
-            id={data.why[0].id}
-            image={data.why[0].photo}
-            title={data.why[0].title}
-            description={data.why[0].description}
-          />
-          <Linkcard
-            action={() => {
-              navigate("/");
-            }}
-            width="45vh"
-            id={data.why[0].id}
-            image={data.why[0].photo}
-            title={data.why[0].title}
-            description={data.why[0].description}
-          />
-        </div>
+          
+        >{conceptData.new.map((item,indx)=>{
+            return(
+              <div>
+                <Image width='25vw'src={item.image}/>
+              </div>
 
-        
+            )
+          })}
+          
+        </div>
+        </div>
           <Divider></Divider>
-    
-        <div
-          style={{
-            // display: "flex",
-            width: "80vw",
-           alignItems:'center',
-            justifyContent: "center",
-            backgroundColor: "white",
-                      }}
+          <div id='model'
+          className="conceptcls"
 
         >
-        <div style={{display:'flex',width:'100vw',justifyContent:'center',alignItems:'center'}}>
-        <Descard txt={data.what}></Descard>
+       
+       
+        <Title >Model</Title>
+        {conceptData.model.map((item,index)=>{
+          return(
+            <div>
+              <Descard txt={item.description}></Descard>
+              <Image
+                src={item.image}
+                preview={false}
+                style={{ width: "80vw", objectFit: "cover" ,marginTop:'1vw'}}
+              />
+              </div>
+          )
+        })}
+       
         </div>
+        <Divider></Divider>
+        <div id='where'
+          className="conceptcls"
+
+        >
+       
         
-          <Image
-            src={conceptimg}
-            preview={false}
-            style={{ width: "80vw", height: "30vw", objectFit: "cover" }}
-          />
+        <Title  >Where?</Title>
+        {conceptData.where.map((item,index)=>{
+          return(
+            <div>
+              <Descard txt={item.description}></Descard>
+              <Image
+                src={item.image}
+                preview={false}
+                style={{ width: "80vw", objectFit: "cover" ,marginTop:'1vw'}}
+              />
+              </div>
+          )
+        })}
         </div>
-      
         <Divider></Divider>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
        
         
-        <Descard txt={data.what}></Descard>
-        
         <div
-          style={{
-            display: "flex",
-            flexDirection:'column',
-            width: "80vw",
-            marginTop:'1vw',
-            
-            justifyContent: "center",
-          
-          }}
+         className='conceptcls'
         >
-       
-        
-          <Image
-            src={conceptimg}
-            preview={false}
-            style={{ width: "80vw", height: "30vw" }}
-          />
+      <List
+ 
+      grid={{
+        gutter:16,
+        xs:1,
+      sm:1,
+      md:2,
+      lg:4
+    }}
+      pagination={{
+        onChange: (page) => {
+          console.log(page);
+        },
+        pageSize: 16,
+      }}
+      dataSource={galdata}
+      renderItem={(item) => (
+        <List.Item>
+          <ProfileCard
+            name={item.name}
+            avatar={item.avatar}
+            action={() => {
+              navigate("/picpage",{state:{id:item.id}});
+            }}
+     ></ProfileCard>
+   </List.Item>
+ )}
+/>
+
          </div>
         
          </div>
-      </div>)
+      </div>)}
   
 };
 

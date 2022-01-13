@@ -23,7 +23,7 @@ const ProfileCard = (props) => {
     >
       <Meta
         style={{ textAlign: "center" }}
-        title={props.name}
+        // title={props.name}
         description="This is the description. 
        I am the Tech Lead of the company."
       />

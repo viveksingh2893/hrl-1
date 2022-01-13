@@ -13,6 +13,14 @@ navigate(`/admin`)
 useEffect(()=>{
   window.scrollTo(0,0)
 },[])
+const [viewPortWidth, setWidth] = useState(0);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener("resize", (e) => {
+      // console.log("size", e.target);
+      setWidth(window.innerWidth);
+    });
+  }, []);
 const updateEmail = (event) => {
     setEmail(event.target.value);
   };
@@ -20,24 +28,27 @@ const updateEmail = (event) => {
     setPasswrd(event.target.value);
   };
     return(
-        <div style={{display:'flex', width: "25vw" ,
-        height:"25vw",
+        <div style={{display:'flex', width: viewPortWidth>576?"25vw":"80vw" ,
+        height:viewPortWidth>576?"25vw":"60vw",
+        borderRadius:'2vw',
         boxShadow:'1vw 1vw  #ffcc00 , -1vw -1vw #1f1f1f',
         alignSelf:'center',
-        margin:'10vw',
-        // backgroundColor:'#e0e0e0',
+        marginTop:'100px',
+
+        backgroundColor:'#F1F0B1',
         justifyContent:'center',
-        alignItems:'center'}}>
-        <Space direction="vertical">
+        alignItems:'center',
+        flexDirection:'column'}}>
+        
           <h1 style={{display:'flex',alignItems:'center',justifyContent:'center'}}>SignIn</h1>
    
-    <Input  style={{fontFamily:'Calibri',fontSize:16,width:'20vw',border:'2px solid #1f1f1f'}}placeholder="Email" value={email} onChange={updateEmail}/>
-    <Input.Password style={{fontFamily:'Calibri',fontSize:16,width:'20vw',border:'2px solid #1f1f1f'}} placeholder="Password" value={passwrd} onChange={updatePasswrd} />
-    <Button  block onClick={sendData} style={{color:'yellow',backgroundColor:'#1f1f1f',fontFamily:'Calibri',fontSize:16,fontWeight:'bold'}}>
+    <Input  style={{width:280,margin:5,border:'2px solid #1f1f1f'}}placeholder="Email" value={email} onChange={updateEmail}/>
+    <Input.Password style={{width:280,border:'2px solid #1f1f1f'}} placeholder="Password" value={passwrd} onChange={updatePasswrd} />
+    <Button   onClick={sendData} style={{margin:5,color:'#ffffff',backgroundColor:'#1f1f1f'}}>
       Login
     </Button>
     <p style={{display:'flex',alignItems:'center',justifyContent:'center',fontSize:'10px'}}>*Only for HiRapid Lab team member's</p>
-  </Space>
+  
   </div>
     )
 }

@@ -7,14 +7,30 @@ import { Typography, Divider, Image, Button } from "antd";
 import { List } from "antd";
 import img1 from "../assets/image/IMG 2.4C.jpg";
 import ProfileCard from "../components/profilecard";
+import axios from 'axios'
 
 const Blog = () => {
   const [viewPortWidth, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
+  const [valuedata, setValue] = useState();
+  const getData=async()=>{
+    const data=await axios.get('http://65.1.254.51:6004/user/blogupload'
+    ).then(response=>response.data).catch(error=>console.log(error))
+    setValue(data)
+
+    console.log("...........data",data)
+  }
+  useEffect(()=>{
+    getData();
+
+
+  },[])
   useEffect(() => {
+ 
+ 
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
-      console.log("size", e.target);
+      // console.log("size", e.target);
       setWidth(window.innerWidth);
       setHeight(window.innerHeight)
     });
@@ -41,7 +57,7 @@ const Blog = () => {
   }
 
   let tlvl = txtlvl();
-
+console.log(valuedata,'gggdata')
   for (let i = 0; i < 21; i++) {
     data.push({
       title: `ant design part ${i}`,
@@ -64,7 +80,11 @@ const Blog = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  if(valuedata==undefined){
+    return null
+  }else{
 
+ 
   return (
     <div className="container-layout">
       <div>
@@ -115,10 +135,10 @@ const Blog = () => {
           },
           pageSize: 5,
         }}
-        dataSource={searchshow?searchdata:data}
+        dataSource={searchshow?searchdata:valuedata.results}
         renderItem={(item) => (
           
-          <List.Item>  
+        <List.Item>  
       <Divider></Divider>
       
       <div 
@@ -131,15 +151,15 @@ const Blog = () => {
           <div style={{display:'flex',flexBasis:'300px',justifyContent:'center',alignItems:'center'}}>
           <Image
               width={viewPortWidth>500?'20vw':'80vw'}
-              alt={item.image.caption}
-              src={item.image.url}/>
+              // alt={item.image.caption}
+              src={img1}/>
           </div>
           <div style={{display:'flex',width:viewPortWidth>500?'30vw':'80vw',paddingLeft:'1vw',flexDirection:'column'}}>
             <Typography.Title level={4}>
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-              {item.description}
+            The basement rock of most of Africa was formed during the Precambrian supereon and is much older than the Atlas Mountains lying on the continent. The Atlas was formed during three subsequent phases of Earth's geology.
             </Typography.Text>
           </div>
       </div>
@@ -151,6 +171,6 @@ const Blog = () => {
       
     </div>
   );
-};
+    }};
 
 export default Blog;

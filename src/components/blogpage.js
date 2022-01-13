@@ -23,7 +23,7 @@ const BlogPage = (props) => {
     const [img,setImg]=useState([])
     const [imglen,setImglen]=useState(0)
     const [textBlock,setTextBlock]=useState([])
-    const [caption,setCaption]=useState()
+    const [description,setdescription]=useState()
     const [visible0,setVisible0]=useState(false)
     const [visible1,setVisible1]=useState(false)
 // useEffect(()=>{
@@ -34,25 +34,23 @@ const BlogPage = (props) => {
 //     console.log('1')
 // },[textBlock]);
 const [form] = Form.useForm();
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log(values,'vahhh');
     console.log(textBlock,'body data');
 var formdata = new FormData();
-console.log(img.length,'length of image list')
-for (let i = 0; i < img.length; i++) {
-  formdata.append("posterimage"+i,img[i].originFileObj);
-} 
-var requestOptions = {
-mode: 'no-cors',
-  method: 'POST',
-  body: formdata,
-  redirect: 'follow'
-};
 
-fetch("http://localhost:8000/homepage", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+formdata.append("title",values.title);
+formdata.append("keyword",values.keywords);
+formdata.append("body",JSON.stringify(textBlock));
+
+const config = {
+  headers: { 'content-type': 'multipart/form-data' }
+}
+
+const data=await axios.post('http://65.1.254.51:6004/user/blogupload',formdata,config
+  ).then(response=>response.data).catch(error=>console.log(error))
+
+  console.log(data)
   };
   const normFile = (e) => {
     console.log('Upload event:', e.fileList);
@@ -72,7 +70,7 @@ type:val,content:'',id:uuid()
     // console.log(img[0].originFileObj.name,'image name')
     // console.log('data3333',e)
     setTextBlock([...textBlock,{
-        type:val,image:e.image,id:uid,caption:e.caption
+        type:val,image:e.image,id:uid,description:e.description
         }])
 }else if(val=='video'){
   // console.log(img[0].originFileObj.name,'image name')
@@ -114,25 +112,25 @@ const editBox=(id,content,type)=>{
       headers: { 'content-type': 'multipart/form-data' }
   }
 
-    const data=await axios.post('http://192.168.29.198:8000/imgupload',body,config
+    const data=await axios.post('http://65.1.254.51:6004/imgupload',body,config
       ).then(response=>response.data).catch(error=>console.log(error))
   
       console.log(data)
-      addText('image',{image:data.image,caption:data.caption},data.uid)
+      addText('image',{image:data.image,description:data.description},data.uid)
     
     }
   const Demo=()=>{
-    console.log(img,'image',caption)
+    console.log(img,'image',description)
     // const data = new FormData();
     // data.append("posterimage0", img[img.length-1].originFileObj);
-    console.log(caption,'before send')
-    if (caption!=undefined){setVisible0(false);
+    console.log(description,'before send')
+    if (description!=undefined){setVisible0(false);
       const data = new FormData();
     data.append("image", img[img.length-1].originFileObj);
     data.append("uid",img[img.length-1].uid);
-    data.append("caption",caption)
+    data.append("description",description)
    postData(data)
-      setCaption()}
+      setdescription()}
   }
  const handleUpload = async({ fileList }) => {
     setImg(fileList)
@@ -151,7 +149,7 @@ const editBox=(id,content,type)=>{
 
   return (
     <Card style={{ alignSelf:'center'  ,backgroundColor: props.color,display:'flex',justifyContent:'center',alignItems:'center' }}>
-      <Modal centered={true} closable={false} destroyOnClose={true} visible={visible0} cancelButtonProps={{ style: { display: 'none' } }} onOk={Demo}><Input placeholder='Enter image caption' onChange={e=>{setCaption(e.target.value)}}/></Modal>
+      <Modal centered={true} closable={false} destroyOnClose={true} visible={visible0} cancelButtonProps={{ style: { display: 'none' } }} onOk={Demo}><Input placeholder='Enter image description' onChange={e=>{setdescription(e.target.value)}}/></Modal>
       <Modal width='80vw' style={{display:'flex',justifyContent:'center',alignItems:'center'}} visible={visible1} closable={false} cancelButtonProps={{ style: { display: 'none' } }} onOk={()=>setVisible1(false)}><PreviewModal data={()=>{const values = form.getFieldsValue(['title','keywords']);return values;}} body={textBlock}/></Modal>
     <Form form={form}  style={{justifyContent:'center',alignItems:'center'}} name="nest-messages" onFinish={onFinish}>
     <Form.Item
