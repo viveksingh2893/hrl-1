@@ -5,6 +5,7 @@ import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
 import { Typography, Divider, Image, Button } from "antd";
 import { List } from "antd";
+import {useNavigate} from 'react-router-dom'
 import img1 from "../assets/image/IMG 2.4C.jpg";
 import ProfileCard from "../components/profilecard";
 import axios from 'axios'
@@ -13,10 +14,14 @@ const Blog = () => {
   const [viewPortWidth, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [valuedata, setValue] = useState();
+  const navigate=useNavigate()
   const getData=async()=>{
     const data=await axios.get('http://65.1.254.51:6004/user/blogupload'
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
+    
+
+    
 
     console.log("...........data",data)
   }
@@ -25,6 +30,8 @@ const Blog = () => {
 
 
   },[])
+
+
   useEffect(() => {
  
  
@@ -75,6 +82,23 @@ console.log(valuedata,'gggdata')
       description:
         "Ant Design, a design language for background applications, is refined by Ant UED Team.",
       });
+  }
+  const getRightData=(item)=>{
+      console.log(item,'---------------------------------')
+    
+      const text=item.filter(ele=>ele.type=='text')
+      const image=item.filter(ele=>ele.type=='image')
+      console.log('text...','image....',text,image)
+
+      return(
+        {image:image[0].image,content:text[0].content}
+      )
+      
+   
+      
+    
+    // console.log('getRightData',data)
+   
   }
 
   useEffect(() => {
@@ -136,7 +160,12 @@ console.log(valuedata,'gggdata')
           pageSize: 5,
         }}
         dataSource={searchshow?searchdata:valuedata.results}
-        renderItem={(item) => (
+        renderItem={(item,index) => {
+        
+
+          return(
+
+     
           
         <List.Item>  
       <Divider></Divider>
@@ -151,20 +180,24 @@ console.log(valuedata,'gggdata')
           <div style={{display:'flex',flexBasis:'300px',justifyContent:'center',alignItems:'center'}}>
           <Image
               width={viewPortWidth>500?'20vw':'80vw'}
-              // alt={item.image.caption}
-              src={img1}/>
+              
+             
+              // alt={()=>Parsedata(item.body)}
+              src={getRightData(item.bodyjson).image}/>
           </div>
           <div style={{display:'flex',width:viewPortWidth>500?'30vw':'80vw',paddingLeft:'1vw',flexDirection:'column'}}>
-            <Typography.Title level={4}>
+            <Typography.Title onClick={()=>{navigate('/readblog',{state:item})}}level={4}>
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-            The basement rock of most of Africa was formed during the Precambrian supereon and is much older than the Atlas Mountains lying on the continent. The Atlas was formed during three subsequent phases of Earth's geology.
+           {getRightData(item.bodyjson).content}<Button style={{border:'none'}}>
+             read more
+           </Button>
             </Typography.Text>
           </div>
       </div>
       </List.Item>
-        )}
+        )}}
       />
       </div>
         </div>
