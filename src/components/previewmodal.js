@@ -1,4 +1,4 @@
-import { Card,Typography,List,Image,Divider} from 'antd';
+import { Card,Typography,Button,Image,Divider,Row} from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import React, { useEffect } from 'react';
 
@@ -11,7 +11,10 @@ console.log(props.body)
     const textData=(content)=>{
         return(
            
-            <Paragraph style={{fontSize:'18px',color:'black'}} copyable={false}>{content}</Paragraph>
+            <Paragraph 
+            style={{fontSize:'1.2rem',color:'black'}} 
+            copyable={false}>{content}
+            </Paragraph>
            
         )
     }
@@ -20,7 +23,7 @@ console.log(props.body)
             <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',
             marginTop:'1vw', marginBottom:'1vw'}}>
             <Image src={image} width='60vw'/>
-            <Text style={{textAlign:'start',fontFamily:'Calibri',fontSize:'14px',width:'60vw',fontWeight:'600'}}>{caption}</Text>
+            <Text style={{textAlign:'start',width:'60vw',fontWeight:'400'}}>{caption}</Text>
             </div>
         )
     }
@@ -62,7 +65,7 @@ return(
                 }else if(val.type=='image'){
                     return(
                         <div>
-                            {imgData({image:val.image,caption:val.caption})}
+                            {imgData({image:val.image,caption:val.description})}
                         </div>
                      )
                 }else if(val.type=='video'){
@@ -76,13 +79,15 @@ return(
             })}
            <Divider>
            </Divider>
-            <div style={{display:'flex',justifyContent:'space-evenly'}}>
+            <Row>
              { keylist.map((value,index)=>{
 
                 return(
-                <div style={{display:'flex',border:'1px solid #666666',padding:'5px',justifyContent:"center",alignItems:'center'}}>
-                    <Text>{value}</Text>
-                </div>
+                <Button style={{border:'2px solid #666666',margin:2}}>
+                     {value.toUpperCase()}
+                </Button>
+                   
+                
 
                 )
                 })
@@ -90,7 +95,7 @@ return(
                  
                  
                  
-        </div>   
+        </Row>   
             
 
         </div>

@@ -5,6 +5,7 @@ import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
 import { Typography, Divider, Image, Button } from "antd";
 import { List } from "antd";
+import {useNavigate} from 'react-router-dom'
 import img1 from "../assets/image/IMG 2.4C.jpg";
 import ProfileCard from "../components/profilecard";
 import axios from 'axios'
@@ -13,10 +14,14 @@ const Blog = () => {
   const [viewPortWidth, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [valuedata, setValue] = useState();
+  const navigate=useNavigate()
   const getData=async()=>{
     const data=await axios.get('http://65.1.254.51:6004/user/blogupload'
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
+    
+
+    
 
     // console.log("...........data",data)
     let aa=data.results[0].body;
@@ -28,6 +33,8 @@ const Blog = () => {
 
 
   },[])
+
+
   useEffect(() => {
  
  
@@ -78,6 +85,23 @@ const Blog = () => {
       description:
         "Ant Design, a design language for background applications, is refined by Ant UED Team.",
       });
+  }
+  const getRightData=(item)=>{
+      console.log(item,'---------------------------------')
+    
+      const text=item.filter(ele=>ele.type=='text')
+      const image=item.filter(ele=>ele.type=='image')
+      console.log('text...','image....',text,image)
+
+      return(
+        {image:image[0].image,content:text[0].content}
+      )
+      
+   
+      
+    
+    // console.log('getRightData',data)
+   
   }
 
   useEffect(() => {
@@ -139,7 +163,12 @@ const Blog = () => {
           pageSize: 5,
         }}
         dataSource={searchshow?searchdata:valuedata.results}
-        renderItem={(item) => (
+        renderItem={(item,index) => {
+        
+
+          return(
+
+     
           
         <List.Item>  
       <Divider></Divider>
@@ -154,20 +183,24 @@ const Blog = () => {
           <div style={{display:'flex',flexBasis:'300px',justifyContent:'center',alignItems:'center'}}>
           <Image
               width={viewPortWidth>500?'20vw':'80vw'}
-              // alt={item.image.caption}
-              src={img1}/>
+              
+             
+              // alt={()=>Parsedata(item.body)}
+              src={getRightData(item.bodyjson).image}/>
           </div>
           <div style={{display:'flex',width:viewPortWidth>500?'30vw':'80vw',paddingLeft:'1vw',flexDirection:'column'}}>
-            <Typography.Title level={4}>
+            <Typography.Title onClick={()=>{navigate('/readblog',{state:item})}}level={4}>
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-           {! item?JSON.parse(item.body)[0]['type']:'hiiii'}
+           {getRightData(item.bodyjson).content.slice(0,200)+'...'}<Button style={{border:'none'}}>
+             read more
+           </Button>
             </Typography.Text>
           </div>
       </div>
       </List.Item>
-        )}
+        )}}
       />
       </div>
         </div>
