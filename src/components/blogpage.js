@@ -7,6 +7,7 @@ import BlogEdit from "../components/blogedit";
 import PreviewModal from './previewmodal';
 import axios from 'axios';
 import ImgCrop from 'antd-img-crop';
+import ipaddress from './url';
 const layout = {
   labelCol: {
     span: 2,
@@ -43,11 +44,12 @@ formdata.append("title",values.title);
 formdata.append("keyword",values.keywords);
 formdata.append("body",JSON.stringify(textBlock));
 
+
 const config = {
   headers: { 'content-type': 'multipart/form-data' }
 }
 
-const data=await axios.post('http://65.1.254.51:6004/user/blogupload',formdata,config
+const data=await axios.post(`${ipaddress}user/${props.url}`,formdata,config
   ).then(response=>response.data).catch(error=>console.log(error))
 
   console.log(data)
@@ -112,7 +114,7 @@ const editBox=(id,content,type)=>{
       headers: { 'content-type': 'multipart/form-data' }
   }
 
-    const data=await axios.post('http://65.1.254.51:6004/imgupload',body,config
+    const data=await axios.post('${ipaddress}imgupload',body,config
       ).then(response=>response.data).catch(error=>console.log(error))
   
       console.log(data)

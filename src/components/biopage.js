@@ -11,7 +11,7 @@ const config = {
     rules: [
       {
         type: 'object',
-        required: true,
+        required: false,
         message: 'Please select year!',
       },
     ],
@@ -20,7 +20,7 @@ const config = {
     rules: [
       {
         type: 'array',
-        required: true,
+        required: false,
         message: 'Please select time!',
       },
     ],
@@ -347,7 +347,7 @@ const BioForm = () => {
                 fontWeight:'600',
                 alignItems:'center',
                 backgroundColor:'#666666'
-                }}>
+                }} htmlType="submit">
                 <Typography.Text style={{color:'#ffffff'}}>
                     Save Change
                 </Typography.Text>

@@ -1,10 +1,6 @@
 import { Layout, Menu, Card } from 'antd';
 import StatisticData from "../components/statistic";
-import AddUser from "../components/adduser";
-import HomePage from "../components/homepage";
 import BlogPage from "../components/blogpage";
-import GalleryPage1 from "../components/gallerypage.js";
-import ProductPage from '../components/productpage';
 import BioForm from '../components/biopage';
 import {
   UserAddOutlined,
@@ -70,8 +66,8 @@ console.log(event.key,'event')
         {/* {key==2?<AddUser/>:null} */}
         {/* {key==3?<HomePage/>:null} */}
         {key==2?<BioForm/>:null}
-        {key==3?<BlogPage />:null}
-        {key==4?<BlogPage/>:null}
+        {key==3?<BlogPage url='blogupload' />:null}
+        {key==4?<BlogPage url='newsupload'/>:null}
         {/* {key==6?<GalleryPage1 color='lightblue'/>:null}
         {key==7?<ProductPage color='lightblue'/>:null}
         {key==8?<ProductPage color='lightyellow'/>:null}

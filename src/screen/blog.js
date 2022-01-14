@@ -18,7 +18,10 @@ const Blog = () => {
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
 
-    console.log("...........data",data)
+    // console.log("...........data",data)
+    let aa=data.results[0].body;
+    let aaa=JSON.parse(aa)
+    console.log(aaa)
   }
   useEffect(()=>{
     getData();
@@ -57,7 +60,7 @@ const Blog = () => {
   }
 
   let tlvl = txtlvl();
-console.log(valuedata,'gggdata')
+
   for (let i = 0; i < 21; i++) {
     data.push({
       title: `ant design part ${i}`,
@@ -159,7 +162,7 @@ console.log(valuedata,'gggdata')
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-            The basement rock of most of Africa was formed during the Precambrian supereon and is much older than the Atlas Mountains lying on the continent. The Atlas was formed during three subsequent phases of Earth's geology.
+           {! item?JSON.parse(item.body)[0]['type']:'hiiii'}
             </Typography.Text>
           </div>
       </div>
