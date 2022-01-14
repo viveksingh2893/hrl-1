@@ -190,7 +190,7 @@ console.log(valuedata,'gggdata')
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-           {getRightData(item.bodyjson).content}<Button style={{border:'none'}}>
+           {getRightData(item.bodyjson).content.slice(0,200)+'...'}<Button style={{border:'none'}}>
              read more
            </Button>
             </Typography.Text>
