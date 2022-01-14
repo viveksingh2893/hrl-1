@@ -12,6 +12,7 @@ import Admin from "./screen/admin";
 import Team from "./screen/team";
 import Member from "./screen/member";
 import Picpage from "./screen/picpage";
+import ReadBlog from "./screen/readblog";
 
 function App() {
   const { Footer } = Layout;
@@ -30,6 +31,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/member" element={<Member />} />
           <Route path="/picpage" element={<Picpage />} />
+          <Route path="/readblog" element={<ReadBlog/>} />
         </Routes>
 
         <Footer style={{ position: "relative",bottom:'0', marginTop:'2vw',textAlign: "center",backgroundColor:'#F7E279' }}>
