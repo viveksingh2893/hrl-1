@@ -2,11 +2,13 @@ import React from "react";
 import "../App.less";
 import { useEffect, useState } from "react";
 import { Typography, List, Divider } from "antd";
+import axios from 'axios';
 import ProfileCard from "../components/profilecard";
 import { useNavigate } from "react-router-dom";
 
 const Team = () => {
   const navigate = useNavigate();
+  const [teamData,setData]=useState()
   const data = [];
   for (let i = 0; i < 21; i++) {
     data.push({
@@ -28,7 +30,23 @@ const Team = () => {
       console.log("size", e.target);
       setWidth(window.innerWidth);
     });
+    return ()=>setWidth()
   }, []);
+  const getData= async ()=>{
+    const data=await axios.get('http://65.1.254.51:6004/api/team'
+      ).then(response=>response.data).catch(error=>console.log(error))
+  
+      console.log("...........data",data)
+      setData(data)
+    
+    }
+  
+    useEffect(()=>{
+  
+      getData();
+      return () => {
+        setData()}
+    },[])
   return (
     <div style={{display:'flex',width:'100vw',
     justifyContent: "center",
@@ -52,23 +70,13 @@ const Team = () => {
       </Title>
       <Divider></Divider>
    
-      <List 
+      {teamData?<List 
      
       
         grid={{
-          gutter: 16,
-          column:viewPortWidth>500?4:1,
-
-          // xs: 1,
-          // sm: 2,
-          // md: 4,
-          // lg: 4,
-          // xl: 5,
-          //xxl: 4,
-          //   // md: `${Object.keys(data).length < 3 ? 2 : 4}`,
-          //   // lg: `${Object.keys(data).length < 3 ? 2 : 4}`,
-          //   // xl: `${Object.keys(data).length < 3 ? 2 : 5}`,
-          //   // xxl: `${Object.keys(data).length < 3 ? 2 : 5}`,
+          gutter:5,
+          xs:1,
+          sm:4
         }}
         pagination={{
           onChange: (page) => {
@@ -76,19 +84,20 @@ const Team = () => {
           },
           pageSize: 8,
         }}
-        dataSource={data}
-        renderItem={(item) => (
+        dataSource={teamData.results}
+        renderItem={(item,index) => (
           <List.Item >
             <ProfileCard
               name={item.name}
-              avatar={item.avatar}
+              avatar={item.image}
+              viewPortWidth={viewPortWidth}
               action={() => {
-                navigate("/member");
+                navigate("/member",{state:{item:item,result:teamData.results,index:index}});
               }}
             ></ProfileCard>
           </List.Item>
         )}
-      />
+      />:null}
     </div>
      </div>
   );

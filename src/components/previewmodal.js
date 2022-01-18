@@ -83,9 +83,15 @@ return(
              { keylist.map((value,index)=>{
 
                 return(
-                <Button style={{border:'2px solid #666666',margin:2}}>
-                     {value.toUpperCase()}
-                </Button>
+                    <Button  size='middle'
+                    style={{
+                    fontFamily:'Calibri',
+                    fontWeight:'600',
+                    border:'2px solid #666666',
+                    margin:'0.2vw'
+                    }}>
+                    {value.toUpperCase()}
+                    </Button>
                    
                 
 

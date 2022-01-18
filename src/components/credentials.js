@@ -8,6 +8,82 @@ import { LeftOutlined, RightOutlined, IdcardFilled } from "@ant-design/icons";
 
 const Credentials = (props) => {
   const { Title,Paragraph } = Typography;
+  const showData=()=>{
+
+    if(props.education){
+      return props.education.map((item,ind)=>{
+        return(
+          <Paragraph>
+            {item.degree+' '+item.university+' '+item.year}
+          </Paragraph>
+        )
+
+      })
+    }else if(props.patent){
+      return props.patent.map((item,ind)=>{
+        return(
+          <Paragraph>
+            {item.description}
+          </Paragraph>
+        )
+
+      })
+    }else if(props.publication){
+      return props.publication.map((item,ind)=>{
+        return(
+          <Paragraph>
+              {item.description}
+          </Paragraph>
+        )
+
+      })
+    }else if(props.project){
+      return props.project.map((item,ind)=>{
+        return(
+          <div>
+            <Title level={5}>{item.title}</Title>
+          <Paragraph>
+              {item.description}
+          </Paragraph>
+          </div>
+        )
+
+      })
+    }else if(props.bio){
+      return (
+          <div>
+          
+          <Paragraph>
+              {props.bio}
+          </Paragraph>
+          </div>
+        )
+
+      }else if(props.current){
+        return (
+            <div>
+            
+            <Paragraph>
+                {props.current}
+            </Paragraph>
+            </div>
+          )
+  
+        }else if(props.previous){
+          return props.previous.map((item,ind)=>{
+            return(
+              <div>
+                
+              <Paragraph>
+                  {item.designation+' '+item.start_year+ ' to ' +item.end_year}
+              </Paragraph>
+              </div>
+            )
+    
+          })
+        }
+    }
+  
   return (
     <div
     style={{
@@ -28,10 +104,8 @@ const Credentials = (props) => {
     <Title level={4}>
       {props.title}
     </Title>
-   
-    <Paragraph >
-      {props.txt}
-    </Paragraph>
+  
+   {showData()}
   </div>
   );
 };

@@ -19,6 +19,14 @@ import Paragraph from "antd/lib/typography/Paragraph";
 
 const Concept = () => {
   const [conceptData,setData]=useState()
+  const [viewPortWidth, setWidth] = useState(0);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener("resize", (e) => {
+      // console.log("size", e.target);
+      setWidth(window.innerWidth);
+    });
+  }, []);
   const galdata=[{
     id: 1,
     name: `ant design part 1`,
@@ -99,7 +107,7 @@ const Concept = () => {
   };
 
   const navigate = useNavigate();
-  const {Title}=Typography
+  const {Title,Text}=Typography
   const {newdata}=DATA[0]
   const getData= async ()=>{
     const data=await axios.get('http://65.1.254.51:6004/concept/Dhara/'
@@ -148,24 +156,27 @@ const Concept = () => {
         flexDirection: "column",}}>
           <div 
           style={{display:'flex',position:'fixed',
+          flexDirection: "column",
           zIndex:'2',
-          top:100,
-          left:0,
+          top:80,
+          right:'0vw',
+         
+         
          
           justifyContent:'space-around',
-          padding:10,
+          padding:5,
           
-          flexDirection:'column',
-          backgroundColor:'#ffcc'
+          // flexDirection:'column',
+          backgroundColor:'#666666'
           }}>
            
-            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#what'> What</a></Title>
-            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#demo'> Demo</a></Title> 
-            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#why'> Why </a></Title>
-            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#how'> How </a></Title>
-            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#new'> New </a></Title> 
-            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#model'> Model </a></Title>
-            <Title style={{fontWeight:'400',fontFamily:'Calibri'}} level={4}><a href='#where'> Where </a></Title>
+            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#what' style={{color:'#ffcc00'}}> What</a></Title>
+            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#demo' style={{color:'#ffcc00'}}> Demo</a></Title> 
+            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#why' style={{color:'#ffcc00'}}> Why </a></Title>
+            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#how' style={{color:'#ffcc00'}}> How </a></Title>
+            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#new' style={{color:'#ffcc00'}}> New </a></Title> 
+            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#model' style={{color:'#ffcc00'}}> Model </a></Title>
+            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#where' style={{color:'#ffcc00'}}> Where </a></Title>
 
           </div>
          
@@ -335,9 +346,8 @@ const Concept = () => {
       grid={{
         gutter:16,
         xs:1,
-      sm:1,
-      md:2,
-      lg:4
+      sm:4,
+     
     }}
       pagination={{
         onChange: (page) => {
@@ -351,6 +361,7 @@ const Concept = () => {
           <ProfileCard
             name={item.name}
             avatar={item.avatar}
+            viewPortWidth={viewPortWidth}
             action={() => {
               navigate("/picpage",{state:{id:item.id}});
             }}
