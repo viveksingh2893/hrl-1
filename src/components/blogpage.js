@@ -150,15 +150,36 @@ const editBox=(id,content,type)=>{
   };
 
   return (
-    <Card style={{ alignSelf:'center'  ,backgroundColor: props.color,display:'flex',justifyContent:'center',alignItems:'center' }}>
-      <Modal centered={true} closable={false} destroyOnClose={true} visible={visible0} cancelButtonProps={{ style: { display: 'none' } }} onOk={Demo}><Input placeholder='Enter image description' onChange={e=>{setdescription(e.target.value)}}/></Modal>
-      <Modal width='80vw' style={{display:'flex',justifyContent:'center',alignItems:'center'}} visible={visible1} closable={false} cancelButtonProps={{ style: { display: 'none' } }} onOk={()=>setVisible1(false)}>
+    <Card 
+        style={{ alignSelf:'center',
+        backgroundColor: props.color,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center' }}>
+      <Modal 
+          centered={true} 
+          closable={false} 
+          destroyOnClose={true} 
+          visible={visible0} 
+          cancelButtonProps={{ style: { display: 'none' } }} 
+          onOk={Demo}>
+          <Input 
+              placeholder='Enter image description' 
+              onChange={e=>{setdescription(e.target.value)}}/>
+        </Modal>
+        <Modal width='80vw' style={{display:'flex',justifyContent:'center',alignItems:'center'}} visible={visible1} closable={false} cancelButtonProps={{ style: { display: 'none' } }} onOk={()=>setVisible1(false)}>
         <PreviewModal 
-        data={()=>{
+          data={()=>{
           const values = form.getFieldsValue(['title','keywords']);
           console.log("................",values)
-          return values;}} body={textBlock}/></Modal>
-    <Form form={form}  style={{justifyContent:'center',alignItems:'center'}} name="nest-messages" onFinish={onFinish}>
+          return values;}} body={textBlock}/>
+        </Modal>
+    <Form 
+      form={form}  
+      style={{justifyContent:'center',
+      alignItems:'center'}} 
+      name="nest-messages" 
+      onFinish={onFinish}>
     <Form.Item
         // label="Title"
         name="title"

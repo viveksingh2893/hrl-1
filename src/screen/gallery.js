@@ -6,12 +6,28 @@ import Searchbar from "../components/searchbar";
 import Mapbox from "../components/Mapbox";
 import { Typography, Divider, List, Button } from "antd";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import ProfileCard from "../components/profilecard";
 
 const Gallery = () => {
+  const [galleryData,setData]=useState()
+ 
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const getData=async()=>{
+    const data=await axios.get('http://65.1.254.51:6004/api/gallery'
+    ).then(response=>response.data).catch(error=>console.log(error))
+    setData(data)
+  }
+  useEffect(()=>{
+    getData();
+
+
+  },[])
+
+  console.log(galleryData,'Gallery Data...............')
   const [viewPortWidth, setWidth] = useState(0);
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -101,10 +117,10 @@ const Gallery = () => {
       ) :null}
       <Divider></Divider>
       <div  style={{display:'flex',justifyContent:'center',alignItems:'center',width:'80vw'}}>
-      <List
+      {galleryData?<List
  
         grid={{
-          gutter:5,
+          gutter:10,
           xs:1,
           sm:4
          }}
@@ -114,19 +130,20 @@ const Gallery = () => {
           },
           pageSize: 10,
         }}
-        dataSource={searchshow ? searchdata : data}
-        renderItem={(item) => (
+        dataSource={searchshow ? searchdata : galleryData.results}
+        renderItem={(item,index) => (
           <List.Item>
             <ProfileCard
-              name={item.name}
+              name={item.description}
               avatar={item.image}
+              viewPortWidth={viewPortWidth}
               action={() => {
-                navigate("/picpage",{ state:{id: item.id }});
+                navigate("/picpage",{ state:{results:galleryData.results,index:index,item:item}});
               }}
             ></ProfileCard>
           </List.Item>
         )}
-      />
+      />:null}
       </div>
     </div>
   );

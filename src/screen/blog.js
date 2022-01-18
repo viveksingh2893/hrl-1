@@ -19,14 +19,6 @@ const Blog = () => {
     const data=await axios.get('http://65.1.254.51:6004/user/blogupload'
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
-    
-
-    
-
-    // console.log("...........data",data)
-    let aa=data.results[0].body;
-    let aaa=JSON.parse(aa)
-    console.log(aaa)
   }
   useEffect(()=>{
     getData();

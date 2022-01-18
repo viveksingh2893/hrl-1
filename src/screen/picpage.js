@@ -19,10 +19,47 @@ import { useLocation } from "react-router-dom";
 const Picpage = () => {
   const location=useLocation()
   console.log(location.state,'params')
+  const galleryData=useLocation()
+  console.log(galleryData.state,'memeber screen')
+  const [currentdata,setCurrent]=useState(galleryData.state.item)
+  const [currentIndex,setIndx]=useState(galleryData.state.index)
+  const [viewPortWidth, setWidth] = useState(0);
+  
+  var width=viewPortWidth>576?'20vw':'80vw'
+
+  const prevdata = () => {
+    
+    console.log("index value......",currentIndex)
+    if(currentIndex>0){
+    var result=galleryData.state.results[currentIndex-1]
+    setIndx(currentIndex-1)
+    
+    console.log("result...........",result)
+    setCurrent(result)
+  }
+
+  };
+
+  const nextdata = () => {
+    console.log("Fetch next member");
+    
+    console.log("index value......",currentIndex)
+   
+    if (currentIndex<galleryData.state.results.length-1){
+
+   
+    var result=galleryData.state.results[currentIndex+1]
+    setIndx(currentIndex+1)
+    
+    console.log("result...........",result)
+    setCurrent(result)
+  }
+
+  };
   
   const idgallery=location.state.id;
   console.log(idgallery,'aaaaaaaaaaaa')
-  const [viewPortWidth, setWidth] = useState(0);
+  
   const [newdata, setNewData] = useState();
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -32,14 +69,7 @@ const Picpage = () => {
     });
   }, []);
   const { Title, Text } = Typography;
-  const prevdata = () => {
-    console.log("Fetch previous member");
-    setNewData({image:`https://picsum.photos/id/${idgallery+100}/300/200`})
-  };
 
-  const nextdata = () => {
-    console.log("Fetch next member");
-  };
 
   const picdata = {
     location: "Hyderabad, India",
@@ -56,7 +86,7 @@ const Picpage = () => {
       <Wordcloud data={['hjh','ghgh','hggj']}></Wordcloud>
       <Divider></Divider>
       <div style={{display:'flex',
-      width:viewPortWidth > 500 ? "80vw" : "80vw",
+      width:'80vw',
       flexWrap:'wrap',
   
       justifyContent:'flex-start',
@@ -70,7 +100,7 @@ const Picpage = () => {
           
          
            
-          <div
+          <div id='gallery'
             style={{
              
               flexbasis:'250px',
@@ -84,8 +114,8 @@ const Picpage = () => {
             }}
           > 
           <Image
-          src={picdata.avatar}
-          width={`${viewPortWidth > 500 ? "40vw" : "80vw"}`}
+          src={currentdata.image}
+          width={viewPortWidth>576?'40vw':'80vw'}
         />
           
           </div>
@@ -95,34 +125,30 @@ const Picpage = () => {
               display: "flex",
               marginLeft:'0.5vw',
               
-              width:viewPortWidth > 500 ? "20vw" :"80vw",
+              width:width,
               flexDirection: "column",
               justifyContent: "flex-start",
-              alignItems: "center",
+              alignItems: "flex-start",
               backgroundColor: "white",
-              
-             
-              // borderRadius: "1vw",
-              // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-              // padding: 10,
             }}
           >
-             <Text style={{fontWeight:'400',width:viewPortWidth > 500 ? "20vw" :"80vw"}}>
+             <Text style={{fontWeight:'400',width:width}}>
               Location
+            
             </Text>
-            <Text style={{width:viewPortWidth > 500 ? "20vw" :"80vw",fontWeight:'700',fontSize:'1.1rem'}}>
-            {picdata.location}
+            <Text style={{width:width,fontWeight:'600'}}>
+            {(currentdata.district+', ' + currentdata.state).toUpperCase()}
             </Text>
-            <Text >
-               {picdata.description}
+            <Text style={{width:width,fontWeight:'400',fontSize:'1rem'}}>
+               {currentdata.description}
             </Text>
             <Divider/>
-            <Text style={{fontWeight:'700',width:viewPortWidth > 500 ? "20vw" :"80vw"}}>
+            <Text style={{fontWeight:'700',width:width}}>
               KEYWORDS
             </Text >
           <Row >
               {
-              picdata.kword.split(',').map((item,indx)=>{
+              currentdata.keyword.split(',').map((item,indx)=>{
 
                 return(
                
@@ -168,16 +194,15 @@ const Picpage = () => {
       </div>
       <Divider></Divider>
       <div style={{display:'flex',width:viewPortWidth > 500 ? "20vw" : "80vw",justifyContent:'space-between'}}>
-        <Button 
+     <Button 
+        
                   size='large'
                   type="primary"
                   icon={<LeftOutlined/>}
                   style={{
                   border:'none',
-                  fontFamily:'Calibri',
-                  fontWeight:'600',
                   alignItems:'center',
-                  backgroundColor:'#666666'
+                  backgroundColor:currentIndex==0?'#c2c2c2':'#666666'
                   }}
                   onClick={prevdata}>
                 
@@ -188,10 +213,8 @@ const Picpage = () => {
                  icon={<RightOutlined/>}
                 style={{
                 border:'none',
-                fontFamily:'Calibri',
-                fontWeight:'600',
                 alignItems:'center',
-                backgroundColor:'#666666'
+                backgroundColor:currentIndex==(galleryData.state.results.length-1)?'#c2c2c2':'#666666'
                 }}
                 onClick={nextdata}>
                
