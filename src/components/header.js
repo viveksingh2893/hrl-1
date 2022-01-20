@@ -105,10 +105,8 @@ const Headbar=()=>{
             <NavMenu viewPortWidth={viewPortWidth} 
             style={{
               fontSize:'calc(10px + 0.5vw)',
-              fontWeight: "600",
               height:'80px',
               color: "#ffcc00",
-              fontFamily: "Calibri",
               justifyContent: "flex-end",
               alignItems:'center',
               backgroundColor: "#666666",

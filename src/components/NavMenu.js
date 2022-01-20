@@ -15,19 +15,19 @@ const NavMenu=(props)=>{
     const navstyle= props.style?props.style:DEFAULTSTYLE
     const data = [
         {
-          title: "ABOUT",
+          title: "About",
           link: ["details", "team", "admin", "contact"],
-          item: ["HRL DETAILS", "TEAM", "ADMIN", "CONTACT"],
+          item: ["Hrl details", "Team", "Admin", "Contact"],
         },
         {
-          title: "CONCEPT",
+          title: "Concept",
           link: ["concept", "concept", "concept"],
-          item: ["MITH.AI", "DHARA", "SKY BRIDGE"],
+          item: ["Mith.AI", "Dhara", "Skybridge"],
         },
         {
-          title: "RESOURCE",
+          title: "Resource",
           link: ["blog", "gallery", "news"],
-          item: ["BLOG", "GALLERY", "NEWS"],
+          item: ["Blog", "Gallery", "News"],
         },
         // { title: "LOGIN/REGISTER", link: ['login'], item: ['LOGIN'] },
       ];
@@ -59,7 +59,7 @@ const NavMenu=(props)=>{
                 
             );
           })}
-          <SubMenu key={`login`} title='LOGIN'
+          <SubMenu key={`login`} title='Login'
                 onTitleClick={() =>
                   navigate(`/login`)
                 }
