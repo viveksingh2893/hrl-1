@@ -1,14 +1,22 @@
 import { Input, Space,Card,Button } from 'antd';
 import {useEffect,useState} from 'react'
 import {useNavigate} from "react-router-dom";
-
+import ipaddress from '../components/url';
+import axios from 'axios';
 const Login=()=>{
     const navigate = useNavigate();
     const [email,setEmail]=useState('')
     const [passwrd,setPasswrd]=useState('')
-const sendData=()=>{
-console.log(email,'email data',passwrd,'password')
-navigate(`/admin`)
+const sendData=async()=>{
+// console.log(email,'email data',passwrd,'password')
+const config = {
+  headers: { 'content-type': 'application/json' }
+}
+const data=await axios.post(`${ipaddress}api/token/`,{'email':email,'password':passwrd},config
+  ).then(response=>response.data).catch(error=>console.log(error,'error'))
+  console.log(data,'data')
+  if(data){
+navigate(`/admin`,{state:{token:data.access}})}else{alert('Wrong Credentials...')}
 }
 useEffect(()=>{
   window.scrollTo(0,0)
@@ -50,6 +58,6 @@ const updateEmail = (event) => {
     <p style={{display:'flex',alignItems:'center',justifyContent:'center',fontSize:'10px'}}>*Only for HiRapid Lab team member's</p>
   
   </div>
-    )
+    );
 }
 export default Login;

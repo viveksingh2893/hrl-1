@@ -46,7 +46,7 @@ formdata.append("body",JSON.stringify(textBlock));
 
 
 const config = {
-  headers: { 'content-type': 'multipart/form-data' }
+  headers: { 'content-type': 'multipart/form-data',Authorization: `Bearer ${props.token}` }
 }
 
 const data=await axios.post(`${ipaddress}user/${props.url}`,formdata,config
@@ -111,7 +111,7 @@ const editBox=(id,content,type)=>{
   // }
   const postData= async (body)=>{
     const config = {
-      headers: { 'content-type': 'multipart/form-data' }
+      headers: { 'content-type': 'multipart/form-data',Authorization: `Bearer ${props.token}` }
   }
 
     const data=await axios.post('${ipaddress}imgupload',body,config

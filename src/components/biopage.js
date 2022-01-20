@@ -24,7 +24,7 @@ const config = {
       },
     ],
   };
-const BioForm = ({data}) => {
+const BioForm = ({data,token}) => {
 
     // const [loading,setLoading]=useState(false)
     const [imgloaded,setimg]=useState('n')
@@ -36,7 +36,7 @@ const BioForm = ({data}) => {
   const onFinish = async(values) => {
     console.log(values); 
     const config = {
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json',Authorization: `Bearer ${token}` }
     }
     //multipart/form-data
     // var formdata = new FormData();
@@ -85,31 +85,30 @@ const BioForm = ({data}) => {
     };
   });
   const onChangeimg = ({ fileList: newFileList }) => {
-    console.log(newFileList)
-    // setimg(atob(newFileList[0].origin))
+    
     setFileList(newFileList);
-    // if (newFileList[0].response){
-    //   setimg('y')
-    //   console.log('y')
-    // }console.log('n',fileList,newFileList)
+    if (newFileList[0].response){
+      setimg('y')
+      console.log('y')
+    }console.log('n',fileList,newFileList)
     // setimg('y')
   };
   return (
     <div style={{display:'flex',width:'80vw',backgroundColor:'#ffffff',justifyContent:'center',alignItems:'center'}}>
       <Form onFinish={onFinish}>
           
-          <Form.Item name="image"  initialValue={data.image} style={{display:'flex',marginTop:'1vw',justifyContent:'center',alignItems:'center'}}>
+          <Form.Item name="image_logo"  initialValue={data.image} style={{display:'flex',marginTop:'1vw',justifyContent:'center',alignItems:'center'}}>
           <ImgCrop>
                 <Upload name="image" 
-                 listType="picture"
+                 listType="picture-card"
                  fileList={fileList}
                  onChange={onChangeimg}
-                //  action={`http://65.1.254.51:6004/api/team/${data.id}`}
+                 action={`http://65.1.254.51:6004/api/team/${data.id}`}
                 maxCount={1}
-                 beforeUpload={()=>false}
-                showUploadList={true} >
-                {/* {data.image&&imgloaded=='n' ?<img src={data.image} alt="avatar" style={{ width: '100%' }} />  :fileList.length==1&&fileList[0].response?<img src={fileList[0].response.image} alt="avatar" style={{ width: '100%' }} />: <PlusOutlined/>} */}
-               {data.image?<img src={data.image} alt="avatar" style={{ width: '100%' }} /> :<PlusOutlined/>}
+                //  beforeUpload={()=>false}
+                showUploadList={false} >
+                {data.image&&imgloaded=='n' ?<img src={data.image} alt="avatar" style={{ width: '100%' }} />  :fileList.length==1&&fileList[0].response?<img src={fileList[0].response.image} alt="avatar" style={{ width: '100%' }} />: <PlusOutlined/>}
+               
                
                 </Upload>
                 </ImgCrop>
