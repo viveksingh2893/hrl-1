@@ -8,11 +8,16 @@ import img4 from "../assets/image/IMG 0.5.jpg";
 import img5 from "../assets/image/blog.jpg";
 import img6 from "../assets/image/IMG 0.6.jpg";
 import img7 from "../assets/image/GALLERY-Icon.png";
+import skybridge from '../assets/image/SKYBRIDGE.jpg';
+import mith from '../assets/image/MITHAI.jpg';
+import dhara from '../assets/image/DHARA.jpg';
+
+
 import '../assets/css/style.css'
 import axios from 'axios'
 
 import ConceptW from "../components/conceptwhite";
-import ConceptB from "../components/conceptY";
+const imageList=[mith,dhara,skybridge]
 
 const homedata = {
   'posterurl':img1,
@@ -26,6 +31,7 @@ const homedata = {
 const Home = () => {
   const [width,setWidth]=useState(0)
   const { Sider, Content, Header, Footer } = Layout;
+ 
  
   const navigate=useNavigate()
   useEffect(()=>{
@@ -76,10 +82,10 @@ const Home = () => {
 
         
     
-        <Typography.Title level={4}style={{width:'80vw',margin:10,fontWeight:'400'}}>
+        <Typography.Title level={4}style={{width:'80vw',marginTop:'2vw',marginBottom:'2vw',fontWeight:'400'}}>
         {homedata.detail}
         </Typography.Title>
-        <Divider/>
+      
       {homedata.concept.length>0?homedata.concept.map((val,index)=>{
         console.log(index,val,homedata[val])
         {
@@ -89,6 +95,7 @@ const Home = () => {
               title={val} 
               // text={homedata[val].detail} 
               img={homedata[val].image} 
+              img2={imageList[index]}
               b1title='What'
               b2title='Demo'
               b3title='How'
