@@ -1,16 +1,24 @@
-import {Menu,Layout,Button,Image,Form, Typography,Col, Input} from 'antd'
+import {Menu,Layout,Button,Image,Form, Typography,Col, Input, Alert} from 'antd'
+import axios from 'axios';
 
 import { useState } from 'react';
 
 import '../App.less';
 import '../assets/css/style.css'
+import ipaddress from './url';
 
 const ConceptW=(props)=>{
     const {Title,Text} =Typography
     
-    const onFinish=(values)=>{
+    const onFinish=async (values)=>{
+      const ip=ipaddress
+     const config={headers:{
+       'content-type':'application/json'
+     }}
 
-      console.log(values)
+      await axios.post(`${ip}api/contactus`,values,config)
+      .then(response=>console.log(response.data)
+      )
     }
     
 
