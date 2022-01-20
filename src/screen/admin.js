@@ -2,6 +2,7 @@ import { Layout, Menu, Card } from 'antd';
 import StatisticData from "../components/statistic";
 import BlogPage from "../components/blogpage";
 import BioForm from '../components/biopage';
+import axios from 'axios';
 import {
   UserAddOutlined,
   PieChartOutlined,
@@ -20,9 +21,18 @@ const { SubMenu } = Menu;
 const Admin=()=> {
   const [state,setState]=useState({collapsed:false})
   const [key,setKey]=useState(1)
-
+  const [dataval,setValue]=useState([])
   useEffect(()=>{
     window.scrollTo(0,0)
+  },[])
+  const getData=async()=>{
+    const data=await axios.get('http://65.1.254.51:6004/api/member'
+    ).then(response=>response.data).catch(error=>console.log(error))
+    setValue(data)
+    console.log(data,'$$$$$')
+  };
+  useEffect(()=>{
+    getData();
   },[])
   const onCollapse = (collapsed) => {
     console.log(collapsed);
@@ -65,7 +75,7 @@ console.log(event.key,'event')
         {key==1?<StatisticData/>:null}
         {/* {key==2?<AddUser/>:null} */}
         {/* {key==3?<HomePage/>:null} */}
-        {key==2?<BioForm/>:null}
+        {key==2?<BioForm data={dataval}/>:null}
         {key==3?<BlogPage url='blogupload' />:null}
         {key==4?<BlogPage url='newsupload'/>:null}
         {/* {key==6?<GalleryPage1 color='lightblue'/>:null}
