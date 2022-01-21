@@ -10,6 +10,8 @@ const Descard = (props) => {
         width: "80vw",
         alignItems: "center",
         justifyContent: "flex-start",
+        marginTop:5,
+        marginBottom:5
        
         // paddingLeft:'5vw',
         // paddingRight:'5vw',
@@ -17,9 +19,9 @@ const Descard = (props) => {
       }}
     >
       
-    <Typography.Text  style={{fontWeight:'400',fontSize:'1.1rem',lineHeight:'1.5rem'}}>
+    <Typography.Paragraph  style={{fontWeight:'400'}}>
       {props.txt}
-    </Typography.Text>
+    </Typography.Paragraph>
       
     </div>
   );

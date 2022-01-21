@@ -2,6 +2,7 @@ import {Menu,Layout,Button,Image,Form, Typography,Col, Input, Alert} from 'antd'
 import axios from 'axios';
 
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import '../App.less';
 import '../assets/css/style.css'
@@ -9,6 +10,10 @@ import ipaddress from './url';
 
 const ConceptW=(props)=>{
     const {Title,Text} =Typography
+    const[visible,setVisible]=useState(false)
+    const handleClose=()=>{
+      setVisible(!visible)
+    }
     
     const onFinish=async (values)=>{
       const ip=ipaddress
@@ -17,8 +22,21 @@ const ConceptW=(props)=>{
      }}
 
       await axios.post(`${ip}api/contactus`,values,config)
-      .then(response=>console.log(response.data)
-      )
+      .then(response=>{
+        if (response.status==200){
+          setVisible(!visible)
+          console.log('.....................')
+        
+
+        }
+      })
+        
+      
+      // <Alert
+      //   message="Alert Message Text" type="success" closable afterClose={handleClose}
+
+      //   />})
+     
     }
     
 
@@ -32,58 +50,33 @@ const ConceptW=(props)=>{
       flexWrap:'wrap',
       justifyContent:'flex-start',
       alignItems:'center',
-    
       overflow:'hidden',
-      
-
-     
       width:'80vw'}}>
-      
-      {/* <div style={{display:'flex',flex:1,
-      flexBasis:200,
-      justifyContent:'center',
-      alignItems:'flex-end',
-      border:'1px solid green'}}> */}
       <div style={{width:props.width>576?"39vw":'80vw',
         height:props.width>576?"26vw":'54vw'}}>
      <Image
-        
         src={props.img}
-     /></div>
- {/* </div>  */}
-  {/* <div 
-  style={{
-    display: "flex",
-    flex: props.flexsize,
-    flexShrink: 1,
-    flexBasis: 300,
-    paddingLeft:'1vw',
-    justifyContent: "flex-start",
-    alignItem: "center",
-    flexDirection: "column",
-    
-  }}>   */}
-   {props.title=='mith.ai'||props.title=='skybridge'||props.title=='dhara'? 
+     />
+     </div>
+
+   {props.conceptname? 
    <div style={{position:'relative',
   
   
    width:props.width>576?"39vw":'80vw',
    height:props.width>576?"26vw":'54vw'}}>
      <Image
-     
-        
         preview={false}
         style={{objectFit:'cover'}}
-       
         src={props.img2}
      />
-      <Button onClick={props.navigation} 
+      <Button  
        className='homebtn'
        block
        type='primary'
        size='large'
       >
-       <Title level={5}>{props.b4title}</Title>
+      <NavLink to={`/concept/${props.conceptname}`}><Title level={5}>{props.b4title}</Title></NavLink> 
     </Button>
      </div>:
      <div  style={{position:'relative',
@@ -100,8 +93,7 @@ const ConceptW=(props)=>{
        <Form 
        onFinish={onFinish}
        >
-
-      
+        
        <Form.Item
         name="name"
         rules={[
@@ -140,9 +132,14 @@ const ConceptW=(props)=>{
         <Input.TextArea bordered={false}size='large'  style={{border:'none',backgroundColor:'#F1F0B1'}}placeholder='Message'/>
 
         </Form.Item>
-  
+        
+       
        <Button block htmlType='submit' size='large' style={{border:'none',backgroundColor:'#666666',color:'#ffffff'}}>Submit</Button>
        </Form>
+       {visible?<Alert 
+            message="We will in touch soon, thank you" type="success" closable afterClose={handleClose}
+              />:null}
+      
      </div>:null}
 
       
@@ -151,69 +148,9 @@ const ConceptW=(props)=>{
      
      
      }
-     {/* <Title level={2} style={{display:'flex',justifyContent:'flex-start'}}>
-      {props.title.toUpperCase()}
-     </Title>
-     <Text style={{display:'flex',justifyContent:'center'}}>
-    {props.text}
-     </Text>
-   */}
-
-     {/* <Col style={{display:'flex',
-     alignItems:'center',
-     justifyContent:'center',
-     flexDirection:'column'}}>
-     <Button onClick={props.navigation} 
-      
-       size='large'
-       style={{border:'none',
-       
-       fontWeight:'400',
-       margin:2,
-       hover:{
-         color:'#ffcc00'
-       }
-    
-      
-       }}>
-        <Typography.Title level={4}>{props.b1title}</Typography.Title>
-    </Button>
-    <Button onClick={props.navigation} 
-       
-       size='large'
-       style={{border:'none',
-       
-       fontWeight:'400',
-       margin:2,
-      
-       }}>
-       <Typography.Title level={4}>{props.b2title}</Typography.Title>
-    </Button>
-     <Button onClick={props.navigation} 
-       
-       size='large'
-       style={{border:'none',
-      
-       fontWeight:'400',margin:2,
-       
-       }}>
-         <Typography.Title level={4}>{props.b3title}</Typography.Title>
      
-    </Button>
-    <Button onClick={props.navigation} 
-       
-       size='large'
-       style={{border:'none',
-      
-       fontWeight:'400',margin:2,
-       backgroundColor:'#666666',
-       color:'#ffffff'
-       
-       }}>
-       {props.b4title}
-    </Button>
-     </Col> */}
-  {/* </div>  */}
+
+  
   </div>
   
 
