@@ -12,21 +12,21 @@ const Blog = () => {
   const [viewPortWidth, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [valuedata, setValue] = useState();
+  const [searchdata, setSearch] = useState();
+  const [searchString, setsearchString] = useState();
+  const [searchshow, setSearchShow] = useState(false);
   const navigate=useNavigate()
   const {rname}=useParams()
   const getData=async()=>{
-<<<<<<< HEAD
-    const data=await axios.get('http://65.1.254.51:6004/user/getblog'
-=======
     const data=await axios.get(`http://65.1.254.51:6004/user/get${rname}`
->>>>>>> refs/remotes/origin/main
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
   }
   useEffect(()=>{
     getData();
-
-
+setSearch()
+setSearchShow(false)
+setsearchString('')
   },[rname])
 
 
@@ -40,19 +40,24 @@ const Blog = () => {
       setHeight(window.innerHeight)
     });
   }, []);
-  const [srchres, setSrchres] = useState("none");
-  const onSearch = (value) => {
-    setSrchres(value);
+  
+  const onSearch = async(value) => {
+    console.log(value)
+    const data=await axios.get(`http://65.1.254.51:6004/api/${rname}/search/?search=${value}`
+    ).then(response=>response.data).catch(error=>console.log(error))
+    console.log(data,'////////')
+    setSearch(data)
+    setsearchString(value);
     setSearchShow(true);
   };
   const clearSearch = () => {
     setSearchShow(false);
+    setsearchString()
   };
   const { Title, Text } = Typography;
-  const [searchshow, setSearchShow] = useState(false);
-  const data = [];
+  
   const keywords = [];
-  const searchdata = [];
+  
   function txtlvl() {
     if (viewPortWidth > 600) {
       return 3;
@@ -63,24 +68,6 @@ const Blog = () => {
 
   let tlvl = txtlvl();
 
-  for (let i = 0; i < 21; i++) {
-    data.push({
-      title: `ant design part ${i}`,
-      image: {url:`https://images.pexels.com/photos/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`,caption:'caption of image'},
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      });
-    keywords.push({
-      id: i,
-      keyword: `word ${String(i)}`,
-    });
-    searchdata.push({
-      title: `ant design search data ${i}`,
-      image: {url:`https://images.pexels.com/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`,caption:'caption of image'},
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      });
-  }
   const getRightData=(item)=>{
       console.log(item,typeof(item),'---------------------------------')
      
@@ -136,7 +123,7 @@ const Blog = () => {
             // style={{ marginLeft: "10vw" }}
             level={tlvl}
             style={{ fontFamily: "calibri" }}
-          >{`${searchdata.length} SEARCH RESULTS FOR "${srchres}"`}</Typography.Title>
+          >{`${searchdata.results.length} SEARCH RESULTS FOR "${searchString}"`}</Typography.Title>
           <Button onClick={clearSearch} 
              type="primary"
              size='large'
@@ -159,7 +146,7 @@ const Blog = () => {
           },
           pageSize: 5,
         }}
-        dataSource={searchshow?searchdata:valuedata.results}
+        dataSource={searchshow?searchdata.results:valuedata.results}
         renderItem={(item) => {
         
 
