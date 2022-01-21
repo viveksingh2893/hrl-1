@@ -80,8 +80,8 @@ const Blog = () => {
       });
   }
   const getRightData=(item)=>{
-      console.log(item,'---------------------------------')
-    
+      console.log(item,typeof(item),'---------------------------------')
+     
       const text=item.filter(ele=>ele.type=='text')
       const image=item.filter(ele=>ele.type=='image')
       console.log('text...','image....',text,image)
@@ -101,7 +101,13 @@ const Blog = () => {
     window.scrollTo(0, 0);
   }, []);
   if(valuedata==undefined){
-    return null
+    return(
+    <div style={{display:'flex',marginTop:100,width:'100vw',height:'100vh',justifyContent:'center',alignItems:'center'}}>
+
+    
+    <h1>Loading.............</h1>
+    </div>)
+
   }else{
 
  
@@ -179,14 +185,14 @@ const Blog = () => {
               
              
               // alt={()=>Parsedata(item.body)}
-              src={getRightData(item.bodyjson).image}/>
+              src={getRightData(item.body).image}/>
           </div>
           <div style={{display:'flex',width:viewPortWidth>500?'30vw':'80vw',paddingLeft:'1vw',flexDirection:'column'}}>
             <Typography.Title onClick={()=>{navigate('/readblog',{state:item})}}level={4}>
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-           {getRightData(item.bodyjson).content.slice(0,200)+'...'}<Button size='medium'style={{border:'none'}}>
+           {getRightData(item.body).content.slice(0,200)+'...'}<Button size='medium'style={{border:'none'}}>
              read more
            </Button>
             </Typography.Text>
