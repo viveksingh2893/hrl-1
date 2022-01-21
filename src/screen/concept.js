@@ -4,9 +4,7 @@ import axios from 'axios'
 import {MailOutlined} from '@ant-design/icons'
 import "../App.less";
 import '../assets/css/style.css'
-import DATA from '../assets/jsn/data'
-import img2A from '../assets/image/IMG 2.2A.jpg'
-import { Image, Layout,List, Typography,Carousel, Divider, Menu } from "antd";
+import { Image,List, Typography, Divider, Menu } from "antd";
 import ProfileCard from "../components/profilecard";
 
 
@@ -17,6 +15,7 @@ import Linkcard from "../components/linkcard";
 import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import CaraImage from "../components/imageCarousel";
 import Paragraph from "antd/lib/typography/Paragraph";
+import Loader from "../components/spinner";
 
 
 
@@ -126,6 +125,7 @@ const Concept = () => {
     useEffect(()=>{
   
       getData();
+      window.scrollTo(0,0)
     },[name])
 
   
@@ -144,11 +144,7 @@ const Concept = () => {
   
   if (conceptData==undefined){
     return (
-      <div style={{display:'flex',marginTop:100,width:'100vw',height:'100vh',justifyContent:'center',alignItems:'center'}}>
-
-    
-      <h1>Loading.............</h1>
-      </div>
+      <Loader/>
     )
 
   }else{
@@ -393,7 +389,7 @@ const Concept = () => {
         <div
          className='conceptcls'
         >
-      <List
+      {conceptData.gallery.length!=0?<List
  
       grid={{
         gutter:16,
@@ -420,7 +416,7 @@ const Concept = () => {
      ></ProfileCard>
    </List.Item>
  )}
-/>
+/>:null}
 
          </div>
         

@@ -1,14 +1,12 @@
-import React, { Component } from "react";
 import "../App.less";
 import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
-import { Typography, Divider, Image, Button } from "antd";
+import { Typography, Divider, Image, Button} from "antd";
 import { List } from "antd";
 import {useNavigate, useParams} from 'react-router-dom'
-import img1 from "../assets/image/IMG 2.4C.jpg";
-import ProfileCard from "../components/profilecard";
 import axios from 'axios'
+import Loader from "../components/spinner";
 
 const Blog = () => {
   const [viewPortWidth, setWidth] = useState(0);
@@ -102,16 +100,12 @@ const Blog = () => {
   }, []);
   if(valuedata==undefined){
     return(
-    <div style={{display:'flex',marginTop:100,width:'100vw',height:'100vh',justifyContent:'center',alignItems:'center'}}>
-
-    
-    <h1>Loading.............</h1>
-    </div>)
+      <Loader/>
+    )
 
   }else{
 
- 
-  return (
+    return(
     <div className="container-layout">
       <div>
         <Wordcloud data={keywords}></Wordcloud>
@@ -162,7 +156,7 @@ const Blog = () => {
           pageSize: 5,
         }}
         dataSource={searchshow?searchdata:valuedata.results}
-        renderItem={(item,index) => {
+        renderItem={(item) => {
         
 
           return(
@@ -206,6 +200,6 @@ const Blog = () => {
       
     </div>
   );
-    }};
+}};
 
 export default Blog;

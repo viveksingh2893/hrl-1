@@ -19,7 +19,7 @@ const Descard = (props) => {
       }}
     >
       
-    <Typography.Paragraph  style={{fontWeight:'400'}}>
+    <Typography.Paragraph  style={{fontWeight:'400',fontSize:'1.1rem'}}>
       {props.txt}
     </Typography.Paragraph>
       
