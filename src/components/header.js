@@ -5,10 +5,11 @@ import { MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import NavMenu from "./NavMenu";
 import { useNavigate } from "react-router-dom";
+import { OmitProps } from "antd/lib/transfer/ListBody";
 
 
 
-const Headbar=()=>{
+const Headbar=(props)=>{
     const [visible,setVisible]=useState(false)
     const {Header} = Layout;
     const [viewPortWidth,setWidth]=useState(0)
@@ -102,7 +103,7 @@ const Headbar=()=>{
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
           {viewPortWidth >700? (
-            <NavMenu viewPortWidth={viewPortWidth} 
+            <NavMenu viewPortWidth={viewPortWidth} concept={props.concept}
             style={{
               fontSize:'calc(10px + 0.5vw)',
               height:'80px',
@@ -134,6 +135,7 @@ const Headbar=()=>{
         >
           <NavMenu
             viewPortWidth={viewPortWidth}
+            concept={props.concept}
             style={{
               fontSize: "12px",
               fontWeight: "600",

@@ -13,19 +13,34 @@ import Team from "./screen/team";
 import Member from "./screen/member";
 import Picpage from "./screen/picpage";
 import ReadBlog from "./screen/readblog";
+import axios from "axios";
+import ipaddress from "./components/url";
+import { useEffect } from "react/cjs/react.development";
+import { useState } from "react";
 
 function App() {
   const { Footer } = Layout;
+  const [concept,setConcept]=useState()
+  const getData=async()=>{
+    const ip=ipaddress
 
+    const data=await axios.get(`${ip}api/header`).then(response=>response.data)
+    console.log("headerdata......",data.concept)
+    setConcept(data.concept)
+
+  }
+  useEffect(()=>{
+    getData()
+  },[])
   return (
     <div style={{scrollBehavior:'smooth'}} >
       <Layout style={{ backgroundColor: "white" }}>
-        <Headbar />
+        <Headbar concept={concept}/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog page="blog" />} />
+          <Route path="/resource/:rname" element={<Blog/>} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/concept" element={<Concept />} />
+          <Route path="/concept/:name" element={<Concept />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/team" element={<Team />} />

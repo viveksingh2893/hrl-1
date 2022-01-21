@@ -30,7 +30,8 @@ const homedata = {
 
 const Home = () => {
   const [width,setWidth]=useState(0)
-  const { Sider, Content, Header, Footer } = Layout;
+  const [homeData, setHome]=useState()
+  const {Content} = Layout;
  
  
   const navigate=useNavigate()
@@ -51,16 +52,18 @@ const Home = () => {
   const getData= async ()=>{
   const data=await axios.get('http://65.1.254.51:6004/homepage'
     ).then(response=>response.data).catch(error=>console.log(error))
-
-    console.log(data)
+    console.log("homedata.............",data)
+    setHome(data)
   
   }
 
   useEffect(()=>{
 
     getData();
+    return ()=>{setHome()}
   },[])
 
+  if (homeData){
 
   return (
       <Content
@@ -78,37 +81,31 @@ const Home = () => {
        
         <Image 
          width="100vw" 
-         preview={false} src={homedata.posterurl} />
-
-        
-    
+         preview={false} src={homeData.image} />
         <Typography.Title level={4}style={{width:'80vw',marginTop:'2vw',marginBottom:'2vw',fontWeight:'400'}}>
-        {homedata.detail}
+        {homeData.what}
         </Typography.Title>
       
-      {homedata.concept.length>0?homedata.concept.map((val,index)=>{
+      {homeData.concept.map((val,index)=>{
         console.log(index,val,homedata[val])
         {
             return (
             <><ConceptW 
               width={width} 
-              title={val} 
+              conceptname={val.conceptname} 
               // text={homedata[val].detail} 
-              img={homedata[val].image} 
-              img2={imageList[index]}
-              b1title='What'
-              b2title='Demo'
-              b3title='How'
+              img={val.homepageimage1} 
+              img2={val.homepageimage2}
+             
               b4title='Read More'
-              
               flexsize={4} 
-              navigation={() => { navigate('concept#demo', { state: 'mith' }); } } />
+               />
               <Divider /></> 
             )
      
         }
         
-      }):null}
+      })}
       
         <ConceptW width={width}  
          title='Blog'
@@ -141,5 +138,14 @@ const Home = () => {
        
       </Content>
   );
-};
+}else{
+  return(
+    <div style={{display:'flex',marginTop:100,width:'100vw',height:'100vh',justifyContent:'center',alignItems:'center'}}>
+
+    
+    <h1>Loading.............</h1>
+    </div>
+  )
+
+}}
 export default Home;

@@ -5,7 +5,7 @@ import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
 import { Typography, Divider, Image, Button } from "antd";
 import { List } from "antd";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import img1 from "../assets/image/IMG 2.4C.jpg";
 import ProfileCard from "../components/profilecard";
 import axios from 'axios'
@@ -15,8 +15,13 @@ const Blog = () => {
   const [height, setHeight] = useState(0);
   const [valuedata, setValue] = useState();
   const navigate=useNavigate()
+  const {rname}=useParams()
   const getData=async()=>{
+<<<<<<< HEAD
     const data=await axios.get('http://65.1.254.51:6004/user/getblog'
+=======
+    const data=await axios.get(`http://65.1.254.51:6004/user/get${rname}`
+>>>>>>> refs/remotes/origin/main
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
   }
@@ -24,7 +29,7 @@ const Blog = () => {
     getData();
 
 
-  },[])
+  },[rname])
 
 
   useEffect(() => {
@@ -79,8 +84,8 @@ const Blog = () => {
       });
   }
   const getRightData=(item)=>{
-      console.log(item,'---------------------------------')
-    
+      console.log(item,typeof(item),'---------------------------------')
+     
       const text=item.filter(ele=>ele.type=='text')
       const image=item.filter(ele=>ele.type=='image')
       console.log('text...','image....',text,image)
@@ -100,7 +105,13 @@ const Blog = () => {
     window.scrollTo(0, 0);
   }, []);
   if(valuedata==undefined){
-    return null
+    return(
+    <div style={{display:'flex',marginTop:100,width:'100vw',height:'100vh',justifyContent:'center',alignItems:'center'}}>
+
+    
+    <h1>Loading.............</h1>
+    </div>)
+
   }else{
 
  
@@ -178,14 +189,14 @@ const Blog = () => {
               
              
               // alt={()=>Parsedata(item.body)}
-              src={getRightData(item.bodyjson).image}/>
+              src={getRightData(item.body).image}/>
           </div>
           <div style={{display:'flex',width:viewPortWidth>500?'30vw':'80vw',paddingLeft:'1vw',flexDirection:'column'}}>
             <Typography.Title onClick={()=>{navigate('/readblog',{state:item})}}level={4}>
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-           {getRightData(item.bodyjson).content.slice(0,200)+'...'}<Button style={{border:'none'}}>
+           {getRightData(item.body).content.slice(0,200)+'...'}<Button size='medium'style={{border:'none'}}>
              read more
            </Button>
             </Typography.Text>
