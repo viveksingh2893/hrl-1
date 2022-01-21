@@ -114,7 +114,7 @@ const editBox=(id,content,type)=>{
       headers: { 'content-type': 'multipart/form-data',Authorization: `Bearer ${props.token}` }
   }
 
-    const data=await axios.post('${ipaddress}imgupload',body,config
+    const data=await axios.post(`${ipaddress}imgupload`,body,config
       ).then(response=>response.data).catch(error=>console.log(error))
   
       console.log(data)

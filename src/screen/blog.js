@@ -15,7 +15,11 @@ const Blog = () => {
   const navigate=useNavigate()
   const {rname}=useParams()
   const getData=async()=>{
+<<<<<<< HEAD
+    const data=await axios.get('http://65.1.254.51:6004/user/getblog'
+=======
     const data=await axios.get(`http://65.1.254.51:6004/user/get${rname}`
+>>>>>>> refs/remotes/origin/main
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
   }
