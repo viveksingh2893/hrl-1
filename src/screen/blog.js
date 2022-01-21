@@ -5,7 +5,7 @@ import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
 import { Typography, Divider, Image, Button } from "antd";
 import { List } from "antd";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import img1 from "../assets/image/IMG 2.4C.jpg";
 import ProfileCard from "../components/profilecard";
 import axios from 'axios'
@@ -15,8 +15,9 @@ const Blog = () => {
   const [height, setHeight] = useState(0);
   const [valuedata, setValue] = useState();
   const navigate=useNavigate()
+  const {rname}=useParams()
   const getData=async()=>{
-    const data=await axios.get('http://65.1.254.51:6004/user/blogupload'
+    const data=await axios.get(`http://65.1.254.51:6004/user/get${rname}`
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
   }
@@ -24,7 +25,7 @@ const Blog = () => {
     getData();
 
 
-  },[])
+  },[rname])
 
 
   useEffect(() => {
@@ -185,7 +186,7 @@ const Blog = () => {
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-           {getRightData(item.bodyjson).content.slice(0,200)+'...'}<Button style={{border:'none'}}>
+           {getRightData(item.bodyjson).content.slice(0,200)+'...'}<Button size='medium'style={{border:'none'}}>
              read more
            </Button>
             </Typography.Text>

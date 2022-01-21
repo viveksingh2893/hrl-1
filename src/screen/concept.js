@@ -1,17 +1,20 @@
 import React, { useEffect,useState } from "react";
 import conceptimg from "../assets/image/IMG 2.1.jpg";
 import axios from 'axios'
+import {MailOutlined} from '@ant-design/icons'
 import "../App.less";
 import '../assets/css/style.css'
 import DATA from '../assets/jsn/data'
 import img2A from '../assets/image/IMG 2.2A.jpg'
-import { Image, Layout,List, Typography,Carousel, Divider } from "antd";
+import { Image, Layout,List, Typography,Carousel, Divider, Menu } from "antd";
 import ProfileCard from "../components/profilecard";
+
+
 
 import Descard from "../components/descard";
 import Videobox from "../components/videobox";
 import Linkcard from "../components/linkcard";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import CaraImage from "../components/imageCarousel";
 import Paragraph from "antd/lib/typography/Paragraph";
 
@@ -20,6 +23,9 @@ import Paragraph from "antd/lib/typography/Paragraph";
 const Concept = () => {
   const [conceptData,setData]=useState()
   const [viewPortWidth, setWidth] = useState(0);
+  const conceptname=useLocation()
+  const {name}=useParams()
+  console.log('concept name.....',conceptname.state)
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
@@ -108,9 +114,8 @@ const Concept = () => {
 
   const navigate = useNavigate();
   const {Title,Text}=Typography
-  const {newdata}=DATA[0]
   const getData= async ()=>{
-    const data=await axios.get('http://65.1.254.51:6004/concept/Dhara/'
+    const data=await axios.get(`http://65.1.254.51:6004/concept/${name}/`
       ).then(response=>response.data).catch(error=>console.log(error))
   
       console.log("...........data",data)
@@ -121,7 +126,7 @@ const Concept = () => {
     useEffect(()=>{
   
       getData();
-    },[])
+    },[name])
 
   
 
@@ -138,7 +143,13 @@ const Concept = () => {
 
   
   if (conceptData==undefined){
-    return null
+    return (
+      <div style={{display:'flex',marginTop:100,width:'100vw',height:'100vh',justifyContent:'center',alignItems:'center'}}>
+
+    
+      <h1>Loading.............</h1>
+      </div>
+    )
 
   }else{
   return (
@@ -156,32 +167,74 @@ const Concept = () => {
         flexDirection: "column",}}>
           <div 
           style={{display:'flex',position:'fixed',
-          flexDirection: "column",
           zIndex:'2',
           top:80,
           right:'0vw',
-         
-         
-         
-          justifyContent:'space-around',
-          padding:5,
-          
-          // flexDirection:'column',
-          backgroundColor:'#666666'
           }}>
-           
-            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#what' style={{color:'#ffcc00'}}> What</a></Title>
-            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#demo' style={{color:'#ffcc00'}}> Demo</a></Title> 
-            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#why' style={{color:'#ffcc00'}}> Why </a></Title>
-            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#how' style={{color:'#ffcc00'}}> How </a></Title>
-            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#new' style={{color:'#ffcc00'}}> New </a></Title> 
-            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#model' style={{color:'#ffcc00'}}> Model </a></Title>
-            <Title style={{fontWeight:'400',margin:10}} level={4}><a href='#where' style={{color:'#ffcc00'}}> Where </a></Title>
+           <Menu 
+           mode='inline'
+           >
 
+             <Menu.SubMenu
+             key="sub1"
+             >
+             <Menu.Item 
+             onClick={()=>{
+               window.location='#what'
+             }}>
+              What
+
+             </Menu.Item>
+             <Menu.Item
+             onClick={()=>{
+              window.location='#demo'
+            }}>
+             Demo
+
+             </Menu.Item>
+
+             <Menu.Item
+             onClick={()=>{
+              window.location='#why'
+            }}>
+               Why 
+
+             </Menu.Item>
+
+             <Menu.Item
+              onClick={()=>{
+              window.location='#how'}}
+              >
+               How 
+
+             </Menu.Item>
+             <Menu.Item
+              onClick={()=>{
+              window.location='#new'}}>
+              New  
+
+             </Menu.Item>
+             <Menu.Item
+                onClick={()=>{
+                window.location='#model'}}
+             >
+              Model 
+
+             </Menu.Item>
+             <Menu.Item
+                onClick={()=>{
+                window.location='#where'}}
+             >
+              Where 
+
+             </Menu.Item>
+             </Menu.SubMenu>
+             
+           </Menu>
           </div>
          
     
-             <Image width="100vw"  preview={false} src={conceptimg} />
+        <Image width="100vw" style={{marginBottom:10}} preview={false} src={conceptimg} />
         <div id='what' className='conceptcls'>
           <div className='sectiontext'>
             <Title>What</Title>
@@ -223,7 +276,7 @@ const Concept = () => {
             
           
             overflow:'hidden',
-            scrollbarWidth:0,
+           
           }}
         >
           
@@ -251,7 +304,7 @@ const Concept = () => {
                 <Image
                   src={item.image}
                   preview={false}
-                  style={{ width: "80vw", objectFit: "cover",marginTop:'10px' }}
+                  style={{ width: "80vw", objectFit: "cover",marginTop:5 }}
                 />
             </div>
           )
@@ -271,7 +324,7 @@ const Concept = () => {
             display: "flex",
             width: "80vw",
             flexDirection: "row",
-            marginTop:'1vw',
+            marginTop:10,
             
             justifyContent: "space-between",
             alignItems: "center",
@@ -306,7 +359,7 @@ const Concept = () => {
               <Image
                 src={item.image}
                 preview={false}
-                style={{ width: "80vw", objectFit: "cover" ,marginTop:'1vw'}}
+                style={{ width: "80vw", objectFit: "cover" ,marginTop:5}}
               />
               </div>
           )
@@ -318,8 +371,7 @@ const Concept = () => {
           className="conceptcls"
 
         >
-       
-        
+
         <Title  >Where?</Title>
         {conceptData.where.map((item,index)=>{
           return(
@@ -328,7 +380,7 @@ const Concept = () => {
               <Image
                 src={item.image}
                 preview={false}
-                style={{ width: "80vw", objectFit: "cover" ,marginTop:'1vw'}}
+                style={{ width: "80vw", objectFit: "cover" ,marginTop:5}}
               />
               </div>
           )
@@ -355,16 +407,16 @@ const Concept = () => {
         },
         pageSize: 16,
       }}
-      dataSource={galdata}
+      dataSource={conceptData.gallery}
       renderItem={(item) => (
         <List.Item>
           <ProfileCard
             name={item.name}
-            avatar={item.avatar}
+            avatar={item.image}
             viewPortWidth={viewPortWidth}
-            action={() => {
-              navigate("/picpage",{state:{id:item.id}});
-            }}
+            // action={() => {
+            //   navigate("/picpage",{state:{id:item.id}});
+            // }}
      ></ProfileCard>
    </List.Item>
  )}
