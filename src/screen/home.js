@@ -49,7 +49,7 @@ const Home = () => {
  
  
   const getData= async ()=>{
-  const data=await axios.get('http://192.168.29.198:8000/homepage'
+  const data=await axios.get('http://65.1.254.51:6004/homepage'
     ).then(response=>response.data).catch(error=>console.log(error))
 
     console.log(data)

@@ -16,7 +16,7 @@ const Blog = () => {
   const [valuedata, setValue] = useState();
   const navigate=useNavigate()
   const getData=async()=>{
-    const data=await axios.get('http://65.1.254.51:6004/user/blogupload'
+    const data=await axios.get('http://65.1.254.51:6004/user/getblog'
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
   }

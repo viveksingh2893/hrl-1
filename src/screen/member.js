@@ -10,8 +10,12 @@ import {
   DownloadOutlined,
 } from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
-
+import { jsPDF } from "jspdf";
+import Resume from "../components/resume";
+// import PDFDownloadLink from '@react-pdf/renderer';
+import { PDFDownloadLink } from "@react-pdf/renderer";
 const Member = () => {
+  
   const { Title, Text,Paragraph } = Typography;
 
   const memberData=useLocation()
@@ -83,8 +87,19 @@ const Member = () => {
       setWidth(window.innerWidth);
     });
   }, []);
-
-
+  const pdfDownload1 = e => {
+    e.preventDefault()
+    let doc = new jsPDF("landscape", 'pt', 'A4');
+    doc.html(document.getElementById('pdf-view'), {
+      callback: () => {
+        doc.save('test.pdf');
+      }
+    });
+}
+const pdfDownload=()=>{
+  console.log('1');
+ <PDFDownloadLink document={<Resume />} fileName="resume.pdf"></PDFDownloadLink>
+}
 
   const prevdata = () => {
     
@@ -115,8 +130,8 @@ const Member = () => {
 
   };
 
-  return (
-    <div style={{
+  return (<div>
+  <div style={{
       width: "100vw",
       // backgroundColor: "orange",
       marginTop:'80px',
@@ -182,7 +197,15 @@ const Member = () => {
               <b>Phone Number:</b> {currentdata.contact}
             </Text>
             <Divider></Divider>
-          <Button
+            <PDFDownloadLink style={{
+              border:'none',
+              fontFamily:'Calibri',
+              fontWeight:'600',
+              backgroundColor:'#666666',
+              padding:'10px',
+            color:'#ffffff'}}
+             document={<Resume data={currentdata} />} fileName="resume.pdf">{<DownloadOutlined />} Download CV</PDFDownloadLink>
+          {/* <Button onClick={pdfDownload}
             style={{
               border:'none',
               fontFamily:'Calibri',
@@ -193,7 +216,7 @@ const Member = () => {
             size="large" 
           >
             Download CV
-          </Button>
+          </Button> */}
           </div>
           
               <Divider/>
@@ -292,7 +315,7 @@ const Member = () => {
         <Credentials title="ARTICLES" txt={currentdata.art} /> */}
          
       </div>
-    </div>
+    </div></div>
   );
 };
 export default Member;
