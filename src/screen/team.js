@@ -47,6 +47,11 @@ const Team = () => {
       return () => {
         setData()}
     },[])
+    const paginationdata=async(page)=>{
+      console.log(page);
+      const data=await axios.get(`http://65.1.254.51:6004/api/team?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
+      setData(data);
+    };
   return (
     <div style={{display:'flex',width:'100vw',
     justifyContent: "center",
@@ -80,9 +85,10 @@ const Team = () => {
         }}
         pagination={{
           onChange: (page) => {
-            console.log(page);
+            paginationdata(page)
           },
-          pageSize: 8,
+          pageSize: 5,
+          total:teamData.count,
         }}
         dataSource={teamData.results}
         renderItem={(item,index) => (

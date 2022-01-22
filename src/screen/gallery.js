@@ -59,28 +59,11 @@ const Gallery = () => {
   }
 
   let tlvl = txtlvl();
-
-  for (let i = 0; i < 21; i++) {
-    data.push({
-      id:i,
-      name: `ant design part ${i}`,
-      image: `https://picsum.photos/id/${i}/300/200`,
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-     });
-    keywords.push({
-      id: i,
-      keyword: `word ${String(i)}`,
-    });
-    searchdata.push({
-      id:{i},
-      name: `ant design part ${i}`,
-      image: `https://picsum.photos/id/${i + 100}/300/200`,
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      });
-  }
-
+  const paginationdata=async(page)=>{
+    console.log(page);
+    const data=await axios.get(`http://65.1.254.51:6004/api/gallery?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
+    setData(data);
+  };
   return (
     <div className="container-layout">
       <Wordcloud data={keywords}></Wordcloud>
@@ -124,13 +107,14 @@ const Gallery = () => {
           xs:1,
           sm:4
          }}
-        pagination={{
+         pagination={{
           onChange: (page) => {
-            console.log(page);
+            paginationdata(page)
           },
-          pageSize: 10,
+          pageSize: 5,
+          total:searchshow?searchdata.count:galleryData.count,
         }}
-        dataSource={searchshow ? searchdata : galleryData.results}
+        dataSource={searchshow ? searchdata.results : galleryData.results}
         renderItem={(item,index) => (
           <List.Item>
             <ProfileCard

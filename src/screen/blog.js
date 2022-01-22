@@ -17,11 +17,7 @@ const Blog = () => {
   const navigate=useNavigate()
   const {rname}=useParams()
   const getData=async()=>{
-<<<<<<< HEAD
-    const data=await axios.get('http://65.1.254.51:6004/user/getblog'
-=======
     const data=await axios.get(`http://65.1.254.51:6004/user/get${rname}`
->>>>>>> refs/remotes/origin/main
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
   }
@@ -65,24 +61,6 @@ const Blog = () => {
 
   let tlvl = txtlvl();
 
-  for (let i = 0; i < 21; i++) {
-    data.push({
-      title: `ant design part ${i}`,
-      image: {url:`https://images.pexels.com/photos/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`,caption:'caption of image'},
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      });
-    keywords.push({
-      id: i,
-      keyword: `word ${String(i)}`,
-    });
-    searchdata.push({
-      title: `ant design search data ${i}`,
-      image: {url:`https://images.pexels.com/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`,caption:'caption of image'},
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      });
-  }
   const getRightData=(item)=>{
       console.log(item,typeof(item),'---------------------------------')
      
@@ -93,14 +71,14 @@ const Blog = () => {
       return(
         {image:image[0].image,content:text[0].content}
       )
-      
-   
-      
-    
     // console.log('getRightData',data)
    
   }
-
+const paginationdata=async(page)=>{
+  console.log(page);
+  const data=await axios.get(`http://65.1.254.51:6004/user/get${rname}?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
+  setValue(data);
+};
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -161,11 +139,12 @@ const Blog = () => {
         }}
         pagination={{
           onChange: (page) => {
-            console.log(page);
+            paginationdata(page)
           },
           pageSize: 5,
+          total:searchshow?searchdata.count:valuedata.count,
         }}
-        dataSource={searchshow?searchdata:valuedata.results}
+        dataSource={searchshow?searchdata.results:valuedata.results}
         renderItem={(item,index) => {
         
 
