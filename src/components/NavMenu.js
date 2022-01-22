@@ -15,24 +15,6 @@ const NavMenu=(props)=>{
       backgroundColor: "#666666",
     }
     const navstyle= props.style?props.style:DEFAULTSTYLE
-    const data = [
-        {
-          title: "About",
-          link: ["details", "team", "admin", "contact"],
-          item: ["Hrl details", "Team", "Admin", "Contact"],
-        },
-        {
-          title: "Concept",
-          link: ["concept", "concept", "concept"],
-          item: ["Mith.AI", "Dhara", "Skybridge"],
-        },
-        {
-          title: "Resource",
-          link: ["blog", "gallery", "news"],
-          item: ["Blog", "Gallery", "News"],
-        },
-        // { title: "LOGIN/REGISTER", link: ['login'], item: ['LOGIN'] },
-      ];
     return (
 
         <Menu
@@ -45,11 +27,10 @@ const NavMenu=(props)=>{
               <SubMenu  key='about' title='About'>
               
                     <Menu.Item key='detail'
-                      onClick={() =>
-                        navigate(`/detail`)
-                      }
+                      onClick={()=>navigate('/detail')
+                    }
                     >
-                      Hrl details
+                     Hrl details
                     </Menu.Item>
                     <Menu.Item key='team'
                       onClick={() =>
@@ -59,11 +40,11 @@ const NavMenu=(props)=>{
                      Team
                     </Menu.Item>
                     <Menu.Item key='contact'
-                      onClick={() =>
-                        navigate(`/contact`)
-                      }
+                   onClick={()=>navigate('/contact')
+                  }
+                    
                     >
-                     Contact
+                    Contact
                     </Menu.Item>
                   
                

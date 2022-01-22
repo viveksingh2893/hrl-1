@@ -32,10 +32,6 @@ const ConceptW=(props)=>{
       })
         
       
-      // <Alert
-      //   message="Alert Message Text" type="success" closable afterClose={handleClose}
-
-      //   />})
      
     }
     
@@ -48,16 +44,16 @@ const ConceptW=(props)=>{
       {{display:'flex',
       flex:1,
       flexWrap:'wrap',
-      justifyContent:'flex-start',
+      justifyContent:'center',
       alignItems:'center',
       overflow:'hidden',
       width:'80vw'}}>
-      <div style={{width:props.width>576?"39vw":'80vw',
+    {props.img ? <div style={{width:props.width>576?"39vw":'80vw',
         height:props.width>576?"26vw":'54vw'}}>
      <Image
         src={props.img}
      />
-     </div>
+     </div>:null}
 
    {props.conceptname? 
    <div style={{position:'relative',
@@ -82,6 +78,7 @@ const ConceptW=(props)=>{
      <div  style={{position:'relative',
      width:props.width>576?"39vw":'80vw',
      height:props.width>576?"26vw":"auto",
+   
     
      
     }}>

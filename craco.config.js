@@ -15,7 +15,7 @@ module.exports = {
 '@menu-dark-danger-color':'red',
 '@menu-dark-bg':'#ffffff' ,
 // '@menu-dark-arrow-color':'' ,
-'@menu-dark-inline-submenu-bg':'#0ff' ,
+'@menu-dark-inline-submenu-bg':'#ffffff' ,
 '@menu-dark-highlight-color':'#ffffff',
 '@menu-dark-item-active-bg':'#666666' ,
 // '@menu-dark-item-active-danger-bg':'#000fff',

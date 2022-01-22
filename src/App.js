@@ -17,6 +17,8 @@ import axios from "axios";
 import ipaddress from "./components/url";
 import { useEffect } from "react/cjs/react.development";
 import { useState } from "react";
+import HrlDetail from "./screen/hrldetail";
+import Contact from "./screen/contact";
 
 function App() {
   const { Footer } = Layout;
@@ -47,6 +49,8 @@ function App() {
           <Route path="/member" element={<Member />} />
           <Route path="/picpage" element={<Picpage />} />
           <Route path="/readblog" element={<ReadBlog/>} />
+          <Route path="/detail" element={<HrlDetail/>} />
+          <Route path="/contact" element={<Contact/>} />
         </Routes>
 
         <Footer style={{ position: "relative",bottom:'0', marginTop:'2vw',textAlign: "center",backgroundColor:'#F7E279' }}>

@@ -101,7 +101,7 @@ const Credentials = (props) => {
       // padding: 10,
     }}
   >
-    <Title level={4}>
+    <Title level={4} style={{border:'0.1px solid white'}}>
       {props.title}
     </Title>
   
