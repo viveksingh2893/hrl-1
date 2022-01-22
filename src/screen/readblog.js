@@ -13,7 +13,7 @@ const ReadBlog=()=>{
                 return (
                 {title:incomingData.state.title,
                 keywords:incomingData.state.keyword})}}
-            body={incomingData.state.bodyjson}/>
+            body={incomingData.state.body}/>
             </div>
         )
 

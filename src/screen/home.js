@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { Menu, Layout, Button, Image, Typography,Divider } from "antd";
+import { Menu, Layout, Button, Image, Typography,Divider, Spin } from "antd";
 import { useNavigate } from 'react-router-dom';
 import img1 from "../assets/image/IMG 0.2A.jpg";
 import img2 from '../assets/image/IMG 0.3.jpg'
@@ -17,6 +17,8 @@ import '../assets/css/style.css'
 import axios from 'axios'
 
 import ConceptW from "../components/conceptwhite";
+import Title from 'antd/lib/typography/Title';
+import Loader from '../components/spinner';
 const imageList=[mith,dhara,skybridge]
 
 const homedata = {
@@ -140,11 +142,8 @@ const Home = () => {
   );
 }else{
   return(
-    <div style={{display:'flex',marginTop:100,width:'100vw',height:'100vh',justifyContent:'center',alignItems:'center'}}>
-
+    <Loader/>
     
-    <h1>Loading.............</h1>
-    </div>
   )
 
 }}

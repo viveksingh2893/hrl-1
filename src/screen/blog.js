@@ -1,19 +1,20 @@
-import React, { Component } from "react";
 import "../App.less";
 import Wordcloud from "../components/wordcloud";
 import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
-import { Typography, Divider, Image, Button } from "antd";
+import { Typography, Divider, Image, Button} from "antd";
 import { List } from "antd";
 import {useNavigate, useParams} from 'react-router-dom'
-import img1 from "../assets/image/IMG 2.4C.jpg";
-import ProfileCard from "../components/profilecard";
 import axios from 'axios'
+import Loader from "../components/spinner";
 
 const Blog = () => {
   const [viewPortWidth, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [valuedata, setValue] = useState();
+  const [searchdata, setSearch] = useState();
+  const [searchString, setsearchString] = useState();
+  const [searchshow, setSearchShow] = useState(false);
   const navigate=useNavigate()
   const {rname}=useParams()
   const getData=async()=>{
@@ -23,8 +24,9 @@ const Blog = () => {
   }
   useEffect(()=>{
     getData();
-
-
+setSearch()
+setSearchShow(false)
+setsearchString('')
   },[rname])
 
 
@@ -38,19 +40,24 @@ const Blog = () => {
       setHeight(window.innerHeight)
     });
   }, []);
-  const [srchres, setSrchres] = useState("none");
-  const onSearch = (value) => {
-    setSrchres(value);
+  
+  const onSearch = async(value) => {
+    console.log(value)
+    const data=await axios.get(`http://65.1.254.51:6004/api/${rname}/search/?search=${value}`
+    ).then(response=>response.data).catch(error=>console.log(error))
+    console.log(data,'////////')
+    setSearch(data)
+    setsearchString(value);
     setSearchShow(true);
   };
   const clearSearch = () => {
     setSearchShow(false);
+    setsearchString()
   };
   const { Title, Text } = Typography;
-  const [searchshow, setSearchShow] = useState(false);
-  const data = [];
+  
   const keywords = [];
-  const searchdata = [];
+  
   function txtlvl() {
     if (viewPortWidth > 600) {
       return 3;
@@ -84,16 +91,12 @@ const paginationdata=async(page)=>{
   }, []);
   if(valuedata==undefined){
     return(
-    <div style={{display:'flex',marginTop:100,width:'100vw',height:'100vh',justifyContent:'center',alignItems:'center'}}>
-
-    
-    <h1>Loading.............</h1>
-    </div>)
+      <Loader/>
+    )
 
   }else{
 
- 
-  return (
+    return(
     <div className="container-layout">
       <div>
         <Wordcloud data={keywords}></Wordcloud>
@@ -120,7 +123,7 @@ const paginationdata=async(page)=>{
             // style={{ marginLeft: "10vw" }}
             level={tlvl}
             style={{ fontFamily: "calibri" }}
-          >{`${searchdata.length} SEARCH RESULTS FOR "${srchres}"`}</Typography.Title>
+          >{`${searchdata.results.length} SEARCH RESULTS FOR "${searchString}"`}</Typography.Title>
           <Button onClick={clearSearch} 
              type="primary"
              size='large'
@@ -145,7 +148,7 @@ const paginationdata=async(page)=>{
           total:searchshow?searchdata.count:valuedata.count,
         }}
         dataSource={searchshow?searchdata.results:valuedata.results}
-        renderItem={(item,index) => {
+        renderItem={(item) => {
         
 
           return(
@@ -189,6 +192,6 @@ const paginationdata=async(page)=>{
       
     </div>
   );
-    }};
+}};
 
 export default Blog;
