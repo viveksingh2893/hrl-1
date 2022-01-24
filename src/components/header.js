@@ -1,4 +1,4 @@
-import logo from "../assets/image/IMG 0.1.png";
+import logo from "../assets/image/IMG 0.1.webp";
 import { Layout, Drawer, Image,Typography } from "antd";
 
 import { MenuOutlined } from "@ant-design/icons";
