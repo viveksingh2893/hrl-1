@@ -20,6 +20,9 @@ const HrlDetail = () => {
 
   // },[])
   useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+  useEffect(()=>{
     setWidth(window.innerWidth)
     window.addEventListener('resize',(e)=>{
      console.log("size",e.target)

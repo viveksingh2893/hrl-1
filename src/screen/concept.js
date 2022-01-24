@@ -16,7 +16,7 @@ import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router
 import CaraImage from "../components/imageCarousel";
 import Paragraph from "antd/lib/typography/Paragraph";
 import Loader from "../components/spinner";
-
+import ipaddress from '../components/url';
 
 
 const Concept = () => {
@@ -32,89 +32,10 @@ const Concept = () => {
       setWidth(window.innerWidth);
     });
   }, []);
-  const galdata=[{
-    id: 1,
-    name: `ant design part 1`,
-    avatar: `https://picsum.photos/id/1/300/200`,
-    description:
-      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-    content:
-      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-  },{
-    id: 10,
-    name: `ant design part 1`,
-    avatar: `https://picsum.photos/id/1/300/200`,
-    description:
-      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-    content:
-      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-  },{
-    id: 15,
-    name: `ant design part 1`,
-    avatar: `https://picsum.photos/id/1/300/200`,
-    description:
-      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-    content:
-      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-  }]
-  const keywords=[]
-  const data = {
-    posterimage:'',
-    what: `WHAT- ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-  nisi ut aliquip ex ea commodo consequat.`,
-    video: "https://www.youtube.com/watch?v=ctJFwgh4yds",
-    why: [
-      {
-        id: "",
-        photo:
-          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-        title: "First Card",
-        description: "OP index as measure of Primary Health Care service uptake is 0.4 for India versus 13 for ad",
-      },
-    ],
-    how: [
-      {
-        id: "",
-        photo:
-          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-        title: "First Card",
-        description: "Random Description",
-      },
-    ],
-    new: [
-      {
-        id: "",
-        photo:
-          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-        title: "First Card",
-        description: "Random Description",
-      },
-    ],
-    model: [
-      {
-        id: "",
-        photo:
-          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-        title: "First Card",
-        description: "Random Description",
-      },
-    ],
-    where: [
-      {
-        id: "",
-        photo:
-          "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-        title: "First Card",
-        description: "Random Description",
-      },
-    ],
-  };
 
-  const navigate = useNavigate();
   const {Title,Text}=Typography
   const getData= async ()=>{
-    const data=await axios.get(`http://65.1.254.51:6004/concept/${name}/`
+    const data=await axios.get(`${ipaddress}concept/${name}/`
       ).then(response=>response.data).catch(error=>console.log(error))
   
       console.log("...........data",data)

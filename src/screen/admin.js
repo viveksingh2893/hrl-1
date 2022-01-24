@@ -15,8 +15,11 @@ import {
 } from '@ant-design/icons';
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import ipaddress from '../components/url';
+import Loader from "../components/spinner";
 const { Content,  Sider } = Layout;
 const { SubMenu } = Menu;
+
 
 
 const Admin=()=> {
@@ -25,17 +28,21 @@ const Admin=()=> {
   const [dataval,setValue]=useState([])
   useEffect(()=>{
     window.scrollTo(0,0)
-  },[])
+  },[dataval])
   const keytoken=useLocation()
   const getData=async(token)=>{
     const config = {
       headers: { Authorization: `Bearer ${token}` }
   };
-    const data=await axios.get('http://65.1.254.51:6004/api/member',config
+    const data=await axios.get(`${ipaddress}api/member`,config
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
     console.log(data,'$$$$$')
   };
+  const onBiochange=(data)=>{
+setValue(data)
+console.log(data,'biodata')
+  }
   useEffect(()=>{
     getData(keytoken.state.token);
   },[])
@@ -48,7 +55,7 @@ console.log(event.key,'event')
     setKey(event.key)
 }
     const { collapsed } = state;
-    return (
+   if(dataval){ return (
       <Layout style={{ minHeight: '90vh' ,marginTop:'80px'}}>
         <Sider style={{marginTop:'120px', background:'#666666'}} collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
@@ -60,21 +67,21 @@ console.log(event.key,'event')
               <Menu.Item key="3" icon={<FormOutlined />}onClick={menuclick}>Write Blog</Menu.Item>
               <Menu.Item key="4" icon={<PicLeftOutlined />}onClick={menuclick}>Add News</Menu.Item>
             <Menu.Item key="5" icon={<LogoutOutlined />} onClick={menuclick}>
-            <a href="http://65.1.254.51:6004/admin" target="_blank">Admin Panel</a>
+            Logout
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
           <Content style={{ margin: '0 16px' }}>
         {key==1?<StatisticData/>:null}
-        {key==2?<BioForm data={dataval} token={keytoken.state.token}/>:null}
-        {key==3?<BlogPage url='blogupload' token={keytoken.state.token}/>:null}
-        {key==4?<BlogPage url='newsupload' token={keytoken.state.token}/>:null}
+        {key==2?<BioForm data={dataval} onBiochange={onBiochange}token={keytoken.state.token}/>:null}
+        {key==3?<BlogPage author={dataval.name} url='blogupload' token={keytoken.state.token}/>:null}
+        {key==4?<BlogPage author={dataval.name}url='newsupload' token={keytoken.state.token}/>:null}
         {key==4?<b>LogOut</b>:null}
           </Content>
         </Layout>
       </Layout>
-    );
+    );}else{return(<Loader/>)}
   }
 
 export default Admin;

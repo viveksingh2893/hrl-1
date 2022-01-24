@@ -5,42 +5,31 @@ import { Typography, List, Divider } from "antd";
 import axios from 'axios';
 import ProfileCard from "../components/profilecard";
 import { useNavigate } from "react-router-dom";
+import ipaddress from '../components/url';
+import Loader from "../components/spinner";
 
 const Team = () => {
   const navigate = useNavigate();
   const [teamData,setData]=useState()
-  const data = [];
-  for (let i = 0; i < 21; i++) {
-    data.push({
-      href: "https://ant.design",
-      name: `ant design part ${i}`,
-      avatar: "https://joeschmoe.io/api/v1/random",
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      content:
-        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-    });
-  }
 
   const { Title, Text } = Typography;
   const [viewPortWidth, setWidth] = useState(0);
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
-      console.log("size", e.target);
       setWidth(window.innerWidth);
     });
     return ()=>setWidth()
   }, []);
   const getData= async ()=>{
-    const data=await axios.get('http://65.1.254.51:6004/api/team'
+    const data=await axios.get(`${ipaddress}api/team`
       ).then(response=>response.data).catch(error=>console.log(error))
-  
-      console.log("...........data",data)
       setData(data)
     
     }
-  
+    useEffect(()=>{
+      window.scrollTo(0,0)
+    },[]);
     useEffect(()=>{
   
       getData();
@@ -49,10 +38,10 @@ const Team = () => {
     },[])
     const paginationdata=async(page)=>{
       console.log(page);
-      const data=await axios.get(`http://65.1.254.51:6004/api/team?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
+      const data=await axios.get(`${ipaddress}api/team?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
       setData(data);
     };
-  return (
+  if(teamData!=undefined){return (
     <div style={{display:'flex',width:'100vw',
     justifyContent: "center",
     alignItems: "center",}}>
@@ -106,7 +95,9 @@ const Team = () => {
       />:null}
     </div>
      </div>
-  );
+  );}else{return(
+    <Loader/>
+  )}
 };
 
 export default Team;

@@ -7,7 +7,7 @@ import { List } from "antd";
 import {useNavigate, useParams} from 'react-router-dom'
 import axios from 'axios'
 import Loader from "../components/spinner";
-
+import ipaddress from '../components/url';
 const Blog = () => {
   const [viewPortWidth, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -18,7 +18,7 @@ const Blog = () => {
   const navigate=useNavigate()
   const {rname}=useParams()
   const getData=async()=>{
-    const data=await axios.get(`http://65.1.254.51:6004/user/get${rname}`
+    const data=await axios.get(`${ipaddress}user/get${rname}`
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
   }
@@ -27,12 +27,13 @@ const Blog = () => {
 setSearch()
 setSearchShow(false)
 setsearchString('')
+window.scrollTo(0, 0);
   },[rname])
 
 
   useEffect(() => {
  
- 
+    
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
       // console.log("size", e.target);
@@ -43,7 +44,7 @@ setsearchString('')
   
   const onSearch = async(value) => {
     console.log(value)
-    const data=await axios.get(`http://65.1.254.51:6004/api/${rname}/search/?search=${value}`
+    const data=await axios.get(`${ipaddress}api/${rname}/search/?search=${value}`
     ).then(response=>response.data).catch(error=>console.log(error))
     console.log(data,'////////')
     setSearch(data)
@@ -56,7 +57,7 @@ setsearchString('')
   };
   const { Title, Text } = Typography;
   
-  const keywords = [];
+  const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
   
   function txtlvl() {
     if (viewPortWidth > 600) {
@@ -83,7 +84,7 @@ setsearchString('')
   }
 const paginationdata=async(page)=>{
   console.log(page);
-  const data=await axios.get(`http://65.1.254.51:6004/user/get${rname}?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
+  const data=await axios.get(`${ipaddress}user/get${rname}?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
   setValue(data);
 };
   useEffect(() => {
