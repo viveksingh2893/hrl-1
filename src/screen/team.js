@@ -5,6 +5,7 @@ import { Typography, List, Divider } from "antd";
 import axios from 'axios';
 import ProfileCard from "../components/profilecard";
 import { useNavigate } from "react-router-dom";
+import ipaddress from '../components/url';
 
 const Team = () => {
   const navigate = useNavigate();
@@ -33,10 +34,8 @@ const Team = () => {
     return ()=>setWidth()
   }, []);
   const getData= async ()=>{
-    const data=await axios.get('http://65.1.254.51:6004/api/team'
+    const data=await axios.get(`${ipaddress}api/team`
       ).then(response=>response.data).catch(error=>console.log(error))
-  
-      console.log("...........data",data)
       setData(data)
     
     }
@@ -49,7 +48,7 @@ const Team = () => {
     },[])
     const paginationdata=async(page)=>{
       console.log(page);
-      const data=await axios.get(`http://65.1.254.51:6004/api/team?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
+      const data=await axios.get(`${ipaddress}api/team?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
       setData(data);
     };
   return (

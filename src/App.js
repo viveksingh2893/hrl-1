@@ -76,7 +76,7 @@ function App() {
             contact@hirapidlab.com 
           </Typography.Paragraph>
         </div>
-          ©2021 Created by <b>Destratum</b>
+          ©2021 Created and Maintained by <b>Destratum</b>
         </Footer>
       </Layout>
     </div>

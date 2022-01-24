@@ -17,6 +17,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
 const { Content,  Sider } = Layout;
 const { SubMenu } = Menu;
+import ipaddress from '../components/url';
 
 
 const Admin=()=> {
@@ -31,7 +32,7 @@ const Admin=()=> {
     const config = {
       headers: { Authorization: `Bearer ${token}` }
   };
-    const data=await axios.get('http://65.1.254.51:6004/api/member',config
+    const data=await axios.get(`${ipaddress}api/member`,config
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
     console.log(data,'$$$$$')
@@ -60,7 +61,7 @@ console.log(event.key,'event')
               <Menu.Item key="3" icon={<FormOutlined />}onClick={menuclick}>Write Blog</Menu.Item>
               <Menu.Item key="4" icon={<PicLeftOutlined />}onClick={menuclick}>Add News</Menu.Item>
             <Menu.Item key="5" icon={<LogoutOutlined />} onClick={menuclick}>
-            <a href="http://65.1.254.51:6004/admin" target="_blank">Admin Panel</a>
+            Logout
             </Menu.Item>
           </Menu>
         </Sider>

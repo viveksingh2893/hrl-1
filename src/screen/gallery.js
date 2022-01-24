@@ -8,6 +8,7 @@ import { Typography, Divider, List, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ProfileCard from "../components/profilecard";
+import ipaddress from '../components/url';
 
 const Gallery = () => {
   const [galleryData,setData]=useState()
@@ -17,7 +18,7 @@ const Gallery = () => {
     window.scrollTo(0, 0);
   }, []);
   const getData=async()=>{
-    const data=await axios.get('http://65.1.254.51:6004/api/gallery'
+    const data=await axios.get(`${ipaddress}api/gallery`
     ).then(response=>response.data).catch(error=>console.log(error))
     setData(data)
   }
@@ -48,7 +49,7 @@ const Gallery = () => {
   const [searchshow, setSearchShow] = useState(false);
   const navigate = useNavigate();
   const data = [];
-  const keywords = [];
+  const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
   const searchdata = [];
   function txtlvl() {
     if (viewPortWidth > 600) {
@@ -61,7 +62,7 @@ const Gallery = () => {
   let tlvl = txtlvl();
   const paginationdata=async(page)=>{
     console.log(page);
-    const data=await axios.get(`http://65.1.254.51:6004/api/gallery?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
+    const data=await axios.get(`${ipaddress}api/gallery?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
     setData(data);
   };
   return (
