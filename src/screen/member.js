@@ -14,69 +14,14 @@ import { jsPDF } from "jspdf";
 import Resume from "../components/resume";
 // import PDFDownloadLink from '@react-pdf/renderer';
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import Loader from "../components/spinner";
+
 const Member = () => {
   
   const { Title, Text,Paragraph } = Typography;
 
   const memberData=useLocation()
   console.log(memberData.state,'memeber screen')
-
-  const memberdata = {
-    image:
-    "https://images.pexels.com/photos/1493111/pexels-photo-1493111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    membname: "ROHIT JHA",
-    desig: "Researcher",
-    email: "researcher@hirapidlab.com",
-    phone: "+xx-xxxxxxxxxx",
-    bio: `Contact dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-    edu: `Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-    pres: `Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-    prev: `Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-    proj: `Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-    pat: `Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-    pub: `Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-    eve: `Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-    art: `Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.Dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.`,
-  };
   const [viewPortWidth, setWidth] = useState(0);
   const [currentdata,setCurrent]=useState(memberData.state.item)
   const [currentIndex,setIndx]=useState(memberData.state.index)
@@ -130,7 +75,7 @@ const pdfDownload=()=>{
 
   };
 
-  return (<div>
+  if(memberData.state){return (<div>
   <div style={{
       width: "100vw",
       // backgroundColor: "orange",
@@ -316,6 +261,8 @@ const pdfDownload=()=>{
          
       </div>
     </div></div>
-  );
+  );}else{return(
+    <Loader/>
+  )}
 };
 export default Member;

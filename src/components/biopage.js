@@ -1,11 +1,13 @@
 import { Form, Input, Button,Typography, Space,Upload, Divider, Col,
-    Row, DatePicker} from "antd";
+    Row, DatePicker,Spin} from "antd";
 import { MinusCircleOutlined,LoadingOutlined,PlusOutlined} from "@ant-design/icons";
 import React,{useState,useEffect} from "react";
 import ImgCrop from 'antd-img-crop';
 import moment from 'moment';
 import ipaddress from "./url";
 import axios from "axios";
+
+
 const config = {
     rules: [
       {
@@ -24,29 +26,34 @@ const config = {
       },
     ],
   };
-const BioForm = ({data,token}) => {
+const BioForm = ({data,token,onBiochange}) => {
 
     // const [loading,setLoading]=useState(false)
     const [imgloaded,setimg]=useState('n')
     const [fileList, setFileList] = useState([])
+    const [progress, setProgress] = useState(true)
     const {TextArea}=Input;
     const {RangePicker}=DatePicker;
-
+    useEffect(()=>{
+  window.scrollTo(0, 0);
+    },[data])
 
   const onFinish = async(values) => {
     console.log(values); 
     const config = {
-      headers: { 'content-type': 'application/json',Authorization: `Bearer ${token}` }
+      headers: { 'content-type': 'application/json',Authorization: `Bearer ${token}` },
     }
     //multipart/form-data
     // var formdata = new FormData();
 
     // formdata.append("name",values.name);
-
     const data=await axios.post(`${ipaddress}api/member`,values,config
       ).then(response=>response.data).catch(error=>console.log(error))
     
-      console.log(data)
+    {data?alert("Successfully submitted..."):alert('Upload failed...')}
+    {data?onBiochange(data):console.log('1')}
+    
+    // setProgress(false)
       };
     //values.education[0].year.get('year')
   function onChange(date, dateString) {
@@ -93,7 +100,7 @@ const BioForm = ({data,token}) => {
     }console.log('n',fileList,newFileList)
     // setimg('y')
   };
-  return (
+  if(progress){return (
     <div style={{display:'flex',width:'80vw',backgroundColor:'#ffffff',justifyContent:'center',alignItems:'center'}}>
       <Form onFinish={onFinish}>
           
@@ -103,7 +110,7 @@ const BioForm = ({data,token}) => {
                  listType="picture-card"
                  fileList={fileList}
                  onChange={onChangeimg}
-                 action={`http://65.1.254.51:6004/api/team/${data.id}`}
+                 action={`${ipaddress}api/team/${data.id}`}
                 maxCount={1}
                 //  beforeUpload={()=>false}
                 showUploadList={false} >
@@ -401,7 +408,7 @@ const BioForm = ({data,token}) => {
         </Form.Item>
       </Form>
     </div>
-  );
+  );}else{return(<></>)}
 };
 
 export default BioForm;

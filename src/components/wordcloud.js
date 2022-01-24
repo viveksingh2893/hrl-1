@@ -6,20 +6,10 @@ import { useEffect, useState } from "react";
 
 const Wordcloud = (props) => {
   const data = props.data;
-  // const initalState = 0;
-  // const [count, setCount] = useState(initalState);
-
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setCount((old) => old + 1);
-  //   }, 3000);
-  // }, []);
-
   const [viewPortWidth, setWidth] = useState(0);
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
-      console.log("size", e.target);
       setWidth(window.innerWidth);
     });
   }, []);
@@ -40,7 +30,7 @@ const Wordcloud = (props) => {
           }}
         >
           {data.map((item, i) => (
-            <div key={i}>{item.keyword}</div>
+            <div key={i}>{item}</div>
           ))}
         </TagCloud>
       </div>

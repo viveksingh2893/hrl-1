@@ -27,12 +27,13 @@ const Blog = () => {
 setSearch()
 setSearchShow(false)
 setsearchString('')
+window.scrollTo(0, 0);
   },[rname])
 
 
   useEffect(() => {
  
- 
+    
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
       // console.log("size", e.target);
@@ -56,7 +57,7 @@ setsearchString('')
   };
   const { Title, Text } = Typography;
   
-  const keywords = [];
+  const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
   
   function txtlvl() {
     if (viewPortWidth > 600) {

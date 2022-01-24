@@ -1,4 +1,4 @@
-import { Form, Card, Button,Upload ,Input,Divider,Modal, Typography} from 'antd';
+import { Form, Card, Button,Upload ,Input,Divider,Modal, Typography,Popconfirm, message} from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import { useState} from 'react';
 import React from 'react';
@@ -36,14 +36,10 @@ const BlogPage = (props) => {
 // },[textBlock]);
 const [form] = Form.useForm();
   const onFinish = async (values) => {
-    console.log(values,'vahhh');
-    console.log(textBlock,'body data');
 var formdata = new FormData();
-
 formdata.append("title",values.title);
 formdata.append("keyword",values.keywords);
 formdata.append("body",JSON.stringify(textBlock));
-
 
 const config = {
   headers: { 'content-type': 'multipart/form-data',Authorization: `Bearer ${props.token}` }
@@ -51,13 +47,11 @@ const config = {
 
 const data=await axios.post(`${ipaddress}user/${props.url}`,formdata,config
   ).then(response=>response.data).catch(error=>console.log(error))
-
-  console.log(data)
+  {data?message.success("Successfully submitted..."):message.error('Upload failed...')}
+  // console.log(data)
   };
   const normFile = (e) => {
-    console.log('Upload event:', e.fileList);
     if (Array.isArray(e)) {
-        console.log('Upload event1111:', e);
       return e;
     }
   
@@ -75,8 +69,6 @@ type:val,content:'',id:uuid()
         type:val,image:e.image,id:uid,description:e.description
         }])
 }else if(val=='video'){
-  // console.log(img[0].originFileObj.name,'image name')
-  console.log('video link')
   setTextBlock([...textBlock,{
       type:val,video:'',id:uuid()
       }])
@@ -97,7 +89,6 @@ const editBox=(id,content,type)=>{
 }
   const deleteBox=(id)=>{
      const textArr= textBlock.filter(item=>item.id!=id)
-     console.log('after delete',textArr)
      setTextBlock(textArr)
   }
   // function getBase64(file) {
@@ -116,9 +107,8 @@ const editBox=(id,content,type)=>{
 
     const data=await axios.post(`${ipaddress}imgupload`,body,config
       ).then(response=>response.data).catch(error=>console.log(error))
-  
-      console.log(data)
       addText('image',{image:data.image,description:data.description},data.uid)
+      {data?message.success("Successfully updated image."):message.error('Upload failed...')}
     
     }
   const Demo=()=>{
@@ -148,7 +138,15 @@ const editBox=(id,content,type)=>{
     const textArr= textBlock.filter(item=>item.id!=uid)
      setTextBlock(textArr)
   };
-
+  function confirm(e) {
+    message.success('Click on Yes');
+    form.submit()
+  }
+  
+  function cancel(e) {
+    console.log(e);
+    message.error('Click on No');
+  }
   return (
     <Card 
         style={{ alignSelf:'center',
@@ -171,10 +169,10 @@ const editBox=(id,content,type)=>{
         <PreviewModal 
           data={()=>{
           const values = form.getFieldsValue(['title','keywords']);
-          console.log("................",values)
-          return values;}} body={textBlock}/>
+          return values;}} body={textBlock} author={props.author}/>
         </Modal>
     <Form 
+      name='userForm'
       form={form}  
       style={{justifyContent:'center',
       alignItems:'center'}} 
@@ -261,7 +259,10 @@ const editBox=(id,content,type)=>{
           justifyContent:'space-between',
           alignItems:'center'}}>
         <Button 
-        onClick={()=>{setVisible1(true)}}
+        onClick={()=>{const values = form.getFieldsValue(['title','keywords']);
+        const {title,keywords}=values;if(title&&keywords){setVisible1(true)}else{
+          message.error('Enter title,keywords and body.')
+        }}}
                 type="primary"
                 size='large'
                 style={{border:'none',
@@ -271,16 +272,25 @@ const editBox=(id,content,type)=>{
                 }}>
                 <Typography.Text style={{color:'#ffffff'}}>PREVIEW</Typography.Text>
         </Button>
-
+        <Popconfirm
+    title={`Are you sure to submit this ${props.url.substring(0,4)}?`}
+    onConfirm={confirm}
+    
+    
+    onCancel={cancel}
+    okText="Yes"
+    cancelText="No"
+  >
         <Button type="primary" 
+        ht
         style={{
               border:'none',
               fontFamily:'Calibri',
               fontWeight:'600',
               backgroundColor:'#666666'}} 
-          size="large" htmlType="submit">
+          size="large" >
          <Typography.Text style={{color:'#ffffff'}}>SUBMIT</Typography.Text>
-        </Button>
+        </Button></Popconfirm>
         </div>
         </Form.Item>
       

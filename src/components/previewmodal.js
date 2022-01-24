@@ -51,7 +51,7 @@ return(
     <div style={{display:'flex',flexDirection:'column',justifyContent:'center' ,alignItems:'center',width:'60vw'}}>
         <div style={{display:'flex',flexDirection:'column',width:'60vw'}}>
             <Title style={{textAlign:'left'}}>{title}</Title>
-            <Text style={{textAlign:'left',fontFamily:'Calibri',fontWeight:'700',fontSize:'14px'}}>By Maharaja</Text>
+            <Text style={{textAlign:'left',fontFamily:'Calibri',fontWeight:'700',fontSize:'14px'}}>By {props.author}</Text>
             <Text style={{textAlign:'left',fontFamily:'Calibri',fontWeight:'600',fontSize:'12px'}}>January 03,2022</Text>
             <Divider></Divider>
             {props.body.map((val,index)=>{

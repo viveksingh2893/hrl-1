@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ProfileCard from "../components/profilecard";
 import ipaddress from '../components/url';
+import Loader from "../components/spinner";
 
 const Gallery = () => {
   const [galleryData,setData]=useState()
@@ -65,6 +66,12 @@ const Gallery = () => {
     const data=await axios.get(`${ipaddress}api/gallery?page=${page}`).then(response=>response.data).catch(error=>console.log(error));
     setData(data);
   };
+  if(galleryData==undefined){
+    return(
+      <Loader/>
+    )
+
+  }else{
   return (
     <div className="container-layout">
       <Wordcloud data={keywords}></Wordcloud>
@@ -131,7 +138,7 @@ const Gallery = () => {
       />:null}
       </div>
     </div>
-  );
+  );}
 };
 
 export default Gallery;
