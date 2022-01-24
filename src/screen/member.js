@@ -261,7 +261,7 @@ const pdfDownload=()=>{
          <div 
          style={{
             display:'flex',
-            width:viewPortWidth > 500 ? "20vw" : "85vw",
+            width:viewPortWidth > 500 ? "20vw" : "80vw",
             
             justifyContent:'space-between',
             alignItems:'flex-start',
