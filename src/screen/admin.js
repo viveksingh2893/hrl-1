@@ -60,9 +60,7 @@ console.log(event.key,'event')
         <Sider style={{marginTop:'120px', background:'#666666'}} collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<PieChartOutlined />} onClick={menuclick} >
-              Statistics
-            </Menu.Item>
+         
             <Menu.Item key="2" icon={<UserAddOutlined />}onClick={menuclick}>Edit Bio</Menu.Item>
               <Menu.Item key="3" icon={<FormOutlined />}onClick={menuclick}>Write Blog</Menu.Item>
               <Menu.Item key="4" icon={<PicLeftOutlined />}onClick={menuclick}>Add News</Menu.Item>
@@ -73,11 +71,11 @@ console.log(event.key,'event')
         </Sider>
         <Layout className="site-layout">
           <Content style={{ margin: '0 16px' }}>
-        {key==1?<StatisticData/>:null}
+        
         {key==2?<BioForm data={dataval} onBiochange={onBiochange}token={keytoken.state.token}/>:null}
         {key==3?<BlogPage author={dataval.name} url='blogupload' token={keytoken.state.token}/>:null}
         {key==4?<BlogPage author={dataval.name}url='newsupload' token={keytoken.state.token}/>:null}
-        {key==4?<b>LogOut</b>:null}
+        
           </Content>
         </Layout>
       </Layout>

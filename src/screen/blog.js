@@ -179,9 +179,10 @@ const paginationdata=async(page)=>{
              {item.title}
             </Typography.Title>
             <Typography.Text style={{fontSize:'1.1rem'}}>
-           {getRightData(item.body).content.slice(0,200)+'...'}<Button size='medium'style={{border:'none'}}>
-             read more
-           </Button>
+           {getRightData(item.body).content.slice(0,200)+'...'}
+           <Typography.Text style={{fontWeight:'bolder'}} onClick={()=>{navigate('/readblog',{state:item})}}>
+             Read more
+           </Typography.Text>
             </Typography.Text>
           </div>
       </div>

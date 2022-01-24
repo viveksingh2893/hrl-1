@@ -3,12 +3,12 @@ import {useLocation} from 'react-router-dom'
 import PreviewModal from '../components/previewmodal'
 const ReadBlog=()=>{
     const incomingData=useLocation()
-    console.log("item value",incomingData.state)
     if (incomingData.state){
         return(
             // <h1>Welcome to Blog</h1>
             <div style={{display:'flex',marginTop:100,justifyContent:'center',alignItems:'center'}}>
             <PreviewModal 
+            author={incomingData.state.author}
             data={()=>{
                 return (
                 {title:incomingData.state.title,
