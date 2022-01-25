@@ -13,12 +13,16 @@ import Loader from "../components/spinner";
 
 const Gallery = () => {
   const [galleryData,setData]=useState()
+  const [keywords, setKey] = useState(['Science','Technology','Healthcare','Medicals','Information System']);
  
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const getData=async()=>{
+    const key=await axios.get(`${ipaddress}api/keyword`
+    ).then(response=>response.data).catch(error=>console.log(error))
+    {key?setKey(key.keywords.split(',')):console.log('keywords error')}
     const data=await axios.get(`${ipaddress}api/gallery`
     ).then(response=>response.data).catch(error=>console.log(error))
     setData(data)
@@ -50,7 +54,7 @@ const Gallery = () => {
   const [searchshow, setSearchShow] = useState(false);
   const navigate = useNavigate();
   const data = [];
-  const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
+  // const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
   const searchdata = [];
   function txtlvl() {
     if (viewPortWidth > 600) {

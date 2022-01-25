@@ -1,14 +1,18 @@
 import { Card,Typography,Button,Image,Divider,Row} from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const PreviewModal=(props)=>{
     const {Title,Text,Paragraph}=Typography;
-    const TDate=new Date()
+        let TDate=new Date()
+        // let date = new Date( Date.parse(props.date) );
+
+// console.log('aa',TDate,date)
+    
 const {title,keywords}=props.data()
 const keylist=keywords.split(',')
-console.log(props.body)
+console.log(TDate)
     const textData=(content)=>{
         return(
            
@@ -53,7 +57,9 @@ return(
         <div style={{display:'flex',flexDirection:'column',width:'60vw'}}>
             <Title style={{textAlign:'left'}}>{title}</Title>
             <Text style={{textAlign:'left',fontFamily:'Calibri',fontWeight:'700',fontSize:'14px'}}>By {props.author}</Text>
-            <Text style={{textAlign:'left',fontFamily:'Calibri',fontWeight:'600',fontSize:'12px'}}>{`${months[TDate.getMonth()]} ${TDate.getDay()} ${TDate.getFullYear()}`}</Text>
+            <Text style={{textAlign:'left',fontFamily:'Calibri',fontWeight:'600',fontSize:'12px'}}>
+                {props.date?`${months[props.date.getMonth()]} ${props.date.getDate()} ${props.date.getFullYear()}`:`${months[TDate.getMonth()]} ${TDate.getDate()} ${TDate.getFullYear()}`}
+                </Text>
             <Divider></Divider>
             {props.body.map((val,index)=>{
                 if(val.type=='text'){

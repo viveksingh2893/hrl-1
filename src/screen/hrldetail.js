@@ -6,6 +6,7 @@ import axios from 'axios'
 import ConceptW from "../components/conceptwhite";
 import Loader from '../components/spinner';
 import Title from 'antd/lib/skeleton/Title';
+import ipaddress from '../components/url';
 
 const HrlDetail = () => {
   const [width,setWidth]=useState(0)
@@ -32,7 +33,7 @@ const HrlDetail = () => {
  
  
   const getData= async ()=>{
-  const data=await axios.get('http://65.1.254.51:6004/homepage'
+  const data=await axios.get(`${ipaddress}homepage`
     ).then(response=>response.data).catch(error=>console.log(error))
     console.log("homedata.............",data)
     setHome(data)
