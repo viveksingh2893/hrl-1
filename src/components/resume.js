@@ -98,7 +98,10 @@ const Resume=({data})=>{
     <Page size="A4" style={{...styles.page}} wrap>
     <View style={{...styles.container}}>
         <View style={{display:'flex',flexDirection:'row'}}>
-            <View><Image style={{...styles.image,width:'100px',height:'100px'}}src={data.image} /></View>
+            <View><Image style={{...styles.image,width:'100px',height:'100px'}}
+            src={{uri:data.image,method:'GET',
+            headers:{'Cache-Control':'no-cache'
+            }}} /></View>
             <View style={{display:'flex',flexDirection:'column',padding:'10px'}}>
             <Text>Name : {data.name} </Text>
             <Text>Designation : {data.designation}</Text>
