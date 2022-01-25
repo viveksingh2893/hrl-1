@@ -5,7 +5,7 @@ import '../assets/css/style.css'
 import axios from 'axios'
 import ConceptW from "../components/conceptwhite";
 import Loader from '../components/spinner';
-
+import ipaddress from '../components/url';
 const Home = () => {
   const [width,setWidth]=useState(0)
   const [homeData, setHome]=useState()
@@ -28,7 +28,7 @@ const Home = () => {
  
  
   const getData= async ()=>{
-  const data=await axios.get('http://65.1.254.51:6004/homepage'
+  const data=await axios.get(`${ipaddress}homepage`
     ).then(response=>response.data).catch(error=>console.log(error))
     console.log("homedata.............",data)
     setHome(data)
@@ -71,7 +71,7 @@ const Home = () => {
             return (
             <><ConceptW 
               width={width} 
-              conceptname={val.conceptname} 
+              conceptname={'/concept/'+val.conceptname} 
               img={val.homepageimage1} 
               img2={val.homepageimage2}
              
@@ -86,24 +86,26 @@ const Home = () => {
       })}
       
         <ConceptW width={width}  
-         title='Blog'
-         text='Checkout our Blog colections.'
+        conceptname="/resource/blog"
         flexsize={1}
-        img={homeData.blog_image}
+        img={homeData.blog_image1}
+        img2={homeData.blog_image2}
         btitle='Discover More'
          navigation={()=>{navigate('blog',{state:'mith'})}}/>
        <Divider/>
-        <ConceptW width={width} title='News'
-         text='Checkout our News collection.'
+        <ConceptW width={width} 
+        conceptname="/resource/news"
         flexsize={1}
-        img={homeData.news_image}
+        img={homeData.news_image1}
+        img2={homeData.news_image2}
         btitle='Discover More'
          navigation={()=>{navigate('news',{state:'mith'})}}/>
        <Divider/>
-        <ConceptW width={width} title='Gallery'
-         text='Checkout our Gallery colections.'
+        <ConceptW width={width} 
+        conceptname="gallery"
         flexsize={1}
-        img={homeData.gallery_image}
+        img={homeData.gallery_image1}
+        img2={homeData.gallery_image2}
         btitle='Discover More'
          navigation={()=>{navigate('gallery',{state:'mith'})}}/>
          <Divider/>

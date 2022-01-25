@@ -12,12 +12,16 @@ const Blog = () => {
   const [viewPortWidth, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [valuedata, setValue] = useState();
+  const [keywords, setKey] = useState(['Science','Technology','Healthcare','Medicals','Information System']);
   const [searchdata, setSearch] = useState();
   const [searchString, setsearchString] = useState();
   const [searchshow, setSearchShow] = useState(false);
   const navigate=useNavigate()
   const {rname}=useParams()
   const getData=async()=>{
+    const key=await axios.get(`${ipaddress}api/keyword`
+    ).then(response=>response.data).catch(error=>console.log(error))
+    {key?setKey(key.keywords.split(',')):console.log('keywords error')}
     const data=await axios.get(`${ipaddress}user/get${rname}`
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)
@@ -57,7 +61,7 @@ window.scrollTo(0, 0);
   };
   const { Title, Text } = Typography;
   
-  const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
+  // const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
   
   function txtlvl() {
     if (viewPortWidth > 600) {

@@ -72,7 +72,7 @@ const ConceptW=(props)=>{
        type='primary'
        size='large'
       >
-      <NavLink to={`/concept/${props.conceptname}`}><Title level={5}>{props.b4title}</Title></NavLink> 
+      <NavLink to={`${props.conceptname}`}><Title level={5}>{props.b4title}</Title></NavLink> 
     </Button>
      </div>:
      <div  style={{position:'relative',
@@ -82,11 +82,11 @@ const ConceptW=(props)=>{
     
      
     }}>
-       <Title level={2} style={{display:'flex',justifyContent:'flex-start',marginLeft:20}}>
+       <Title level={3} style={{display:'flex',justifyContent:'flex-start',marginLeft:20}}>
       {props.title.toUpperCase()}
      </Title>
      {props.title==='Contact Us'?
-     <div style={{margin:20}}>
+     <div style={{marginRight:20,marginLeft:20,marginBottom:10}}>
        <Form 
        onFinish={onFinish}
        >
@@ -131,7 +131,7 @@ const ConceptW=(props)=>{
         </Form.Item>
         
        
-       <Button block htmlType='submit' size='large' style={{border:'none',backgroundColor:'#666666',color:'#ffffff'}}>Submit</Button>
+       <Button block htmlType='submit' size='medium' style={{border:'none',backgroundColor:'#666666',color:'#ffffff'}}>Submit</Button>
        </Form>
        {visible?<Alert 
             message="We will in touch soon, thank you" type="success" closable afterClose={handleClose}
