@@ -131,8 +131,8 @@ const pdfDownload=()=>{
               marginLeft:'1vw',
             }}
           >
-            <Title level={2} style={{fontFamily:'Calibri',color:'#333333'}}>{currentdata.name}</Title>
-            <Text style={{fontFamily:'Calibri',color:'#333333'}}>
+            <Title level={2} style={{color:'#333333'}}>{currentdata.name}</Title>
+            <Text style={{color:'#333333'}}>
               <b>Designation:</b> {currentdata.designation}
             </Text>
             <Text>
@@ -144,7 +144,6 @@ const pdfDownload=()=>{
             <Divider></Divider>
             <PDFDownloadLink style={{
               border:'none',
-              fontFamily:'Calibri',
               fontWeight:'600',
               backgroundColor:'#666666',
               padding:'10px',
@@ -153,7 +152,7 @@ const pdfDownload=()=>{
           {/* <Button onClick={pdfDownload}
             style={{
               border:'none',
-              fontFamily:'Calibri',
+              
               fontWeight:'600',
               backgroundColor:'#666666',
             color:'#ffffff'}}

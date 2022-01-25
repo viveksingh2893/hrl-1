@@ -47,7 +47,8 @@ const ConceptW=(props)=>{
       justifyContent:'center',
       alignItems:'center',
       overflow:'hidden',
-      width:'80vw'}}>
+      
+      width:'79vw'}}>
     {props.img ? <div style={{width:props.width>576?"39vw":'80vw',
         height:props.width>576?"26vw":'54vw'}}>
      <Image

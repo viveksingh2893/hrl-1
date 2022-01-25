@@ -1,7 +1,8 @@
-import { cloneElement } from 'react'
+
 import {useLocation} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import PreviewModal from '../components/previewmodal'
+import Loader from '../components/spinner'
 const ReadBlog=()=>{
     const incomingData=useLocation()
     useEffect(()=>{
@@ -24,7 +25,7 @@ const ReadBlog=()=>{
 
     }else{
         return (
-            <h1>Hello</h1>
+            <Loader/>
         )
     }
     

@@ -61,7 +61,14 @@ const Home = () => {
         <Image 
          width="100vw" 
          preview={false} src={homeData.image} />
-        <Typography.Title level={4}style={{width:'80vw',marginTop:'2vw',marginBottom:'2vw',fontWeight:'400'}}>
+        <Typography.Title 
+        level={4}
+        style={
+          {width:'78vw',
+          marginTop:'2vw',
+          marginBottom:'2vw',
+          textAlign:'justify',
+          fontWeight:'400'}}>
         {homeData.what}
         </Typography.Title>
       
@@ -90,23 +97,23 @@ const Home = () => {
         flexsize={1}
         img={homeData.blog_image1}
         img2={homeData.blog_image2}
-        btitle='Discover More'
-         navigation={()=>{navigate('blog',{state:'mith'})}}/>
+        b4title='Discover More'
+         />
        <Divider/>
         <ConceptW width={width} 
         conceptname="/resource/news"
         flexsize={1}
         img={homeData.news_image1}
         img2={homeData.news_image2}
-        btitle='Discover More'
-         navigation={()=>{navigate('news',{state:'mith'})}}/>
+        b4title='Discover More'
+        />
        <Divider/>
         <ConceptW width={width} 
         conceptname="gallery"
         flexsize={1}
         img={homeData.gallery_image1}
         img2={homeData.gallery_image2}
-        btitle='Discover More'
+        b4title='Discover More'
          navigation={()=>{navigate('gallery',{state:'mith'})}}/>
          <Divider/>
          <div id='contactus'>
@@ -114,8 +121,8 @@ const Home = () => {
          text='Checkout our News collection.'
         flexsize={1}
         img={homeData.contact_image}
-        btitle='Discover More'
-         navigation={()=>{navigate('news',{state:'mith'})}}/>
+        b4title='Discover More'
+         />
          </div>
        
       </Content>

@@ -17,7 +17,7 @@ console.log(TDate)
         return(
            
             <Paragraph 
-            style={{fontSize:'1.2rem',color:'black'}} 
+            style={{textAlign:'justify',fontSize:'1.2rem',color:'black'}} 
             copyable={false}>{content}
             </Paragraph>
            
@@ -55,9 +55,9 @@ console.log(TDate)
 return(
     <div style={{display:'flex',flexDirection:'column',justifyContent:'center' ,alignItems:'center',width:'60vw'}}>
         <div style={{display:'flex',flexDirection:'column',width:'60vw'}}>
-            <Title style={{textAlign:'left'}}>{title}</Title>
-            <Text style={{textAlign:'left',fontFamily:'Calibri',fontWeight:'700',fontSize:'14px'}}>By {props.author}</Text>
-            <Text style={{textAlign:'left',fontFamily:'Calibri',fontWeight:'600',fontSize:'12px'}}>
+            <Title style={{textAlign:'justify'}}>{title}</Title>
+            <Text style={{textAlign:'justify',fontWeight:'700',fontSize:'14px'}}>By {props.author}</Text>
+            <Text style={{textAlign:'justify',fontWeight:'600',fontSize:'12px'}}>
                 {props.date?`${months[props.date.getMonth()]} ${props.date.getDate()} ${props.date.getFullYear()}`:`${months[TDate.getMonth()]} ${TDate.getDate()} ${TDate.getFullYear()}`}
                 </Text>
             <Divider></Divider>
@@ -92,7 +92,7 @@ return(
                 return(
                     <Button  size='middle'
                     style={{
-                    fontFamily:'Calibri',
+                    
                     fontWeight:'600',
                     border:'2px solid #666666',
                     margin:'0.2vw'

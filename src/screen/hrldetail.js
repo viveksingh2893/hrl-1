@@ -69,7 +69,7 @@ const HrlDetail = () => {
         
         <Typography.Title level={1} style={{width:'80vw',marginTop:'20px'}}>About us</Typography.Title>
         
-        <Typography.Title level={4}style={{width:'80vw',marginTop:0,marginBottom:'2vw',fontWeight:'400'}}>
+        <Typography.Title level={4}style={{textAlign:'justify',width:'80vw',marginTop:0,marginBottom:'2vw',fontWeight:'400'}}>
         {homeData.what}
         </Typography.Title>       
       </Content>

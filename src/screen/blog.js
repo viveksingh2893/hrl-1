@@ -182,7 +182,7 @@ const paginationdata=async(page)=>{
             <Typography.Title onClick={()=>{navigate('/readblog',{state:item})}}level={4}>
              {item.title}
             </Typography.Title>
-            <Typography.Text style={{fontSize:'1.1rem'}}>
+            <Typography.Text style={{fontSize:'1.1rem', textAlign:'justify'}}>
            {getRightData(item.body).content.slice(0,200)+'...'}
            <Typography.Text style={{fontWeight:'bolder'}} onClick={()=>{navigate('/readblog',{state:item})}}>
              Read more
