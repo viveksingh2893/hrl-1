@@ -67,6 +67,7 @@ const Headbar=(props)=>{
        
         <Image
         height='200px'
+        width='100px'
         preview={false}
         
         src={logo}
@@ -91,7 +92,8 @@ const Headbar=(props)=>{
             }}
           >
             <Image
-              height="60px"
+              height="80px"
+              width='43'
               preview={false}
               style={{ aspectRatio: 1 }}
               src={logo}
