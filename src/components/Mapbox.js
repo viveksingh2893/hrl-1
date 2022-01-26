@@ -3,9 +3,10 @@ import { GoogleMap, withScriptjs, withGoogleMap ,Marker} from "react-google-maps
 import { useEffect, useState } from "react";
 import {FallOutlined,CalendarFilled} from '@ant-design/icons';
 
-const Mapbox = () => {
+const Mapbox = ({data}) => {
   const [viewPortWidth, setWidth] = useState(0);
   useEffect(() => {
+    {data.map((item,index)=>{console.log(typeof(item.latitude),typeof(parseFloat(item.latitude)))})}
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
       console.log("size", e.target);
@@ -24,19 +25,16 @@ const Mapbox = () => {
   let zval = zoomval();
 
   const Map = () => {
+    console.log(data,'data')
     return (
       <GoogleMap
         defaultZoom={zval}
         defaultCenter={{ lat: 23.2, lng: 81.08886 }}
       >
-        <Marker position={{lat:23.2,lng:81.08886}} icon={{url:"https://www.hdnicewallpapers.com/Walls/Big/Squirrel/Peanut_Eating_Squirrel_Beautiful_Image.jpg",
-        scaledSize: new window.google.maps.Size(40,40)}}/>
-        <Marker position={{lat:23.2,lng:70}} icon={{url:"https://www.hdnicewallpapers.com/Walls/Big/Squirrel/Peanut_Eating_Squirrel_Beautiful_Image.jpg",
-        scaledSize: new window.google.maps.Size(40,40)}}/>
-        <Marker position={{lat:20,lng:81.08886}} icon={{url:"https://www.hdnicewallpapers.com/Walls/Big/Squirrel/Peanut_Eating_Squirrel_Beautiful_Image.jpg",
-        scaledSize: new window.google.maps.Size(40,40)}}/>
-        <Marker position={{lat:12,lng:78}} icon={{url:"https://www.hdnicewallpapers.com/Walls/Big/Squirrel/Peanut_Eating_Squirrel_Beautiful_Image.jpg",
-        scaledSize: new window.google.maps.Size(40,40)}}/>
+        {data.map((item,index)=>{const lat=parseFloat(item.latitude);const lng=parseFloat(item.longitude);
+        return(<Marker position={{lat:lat,lng:lng}} icon={{url:item.image,
+        scaledSize: new window.google.maps.Size(40,40)}}/>)})}
+
         </GoogleMap>
     );
   };
@@ -52,7 +50,7 @@ const Mapbox = () => {
     >
       {/* <div style={{ width: "45vw", height: "75vh" }}> */}
       <WrappedMap
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAOssA6l0DP4CJBqrDQ4Te1_EaJFkpbkhA`}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAAeevHomCYJ8jF9Wg2ojzL1Vr4oU4qrRI`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}

@@ -13,6 +13,7 @@ import Loader from "../components/spinner";
 
 const Gallery = () => {
   const [galleryData,setData]=useState()
+  const [mapData,setMap]=useState([{image:'',latitude:22.15,longitude:81}])
   const [keywords, setKey] = useState(['Science','Technology','Healthcare','Medicals','Information System']);
  
 
@@ -23,6 +24,10 @@ const Gallery = () => {
     const key=await axios.get(`${ipaddress}api/keyword`
     ).then(response=>response.data).catch(error=>console.log(error))
     {key?setKey(key.keywords.split(',')):console.log('keywords error')}
+    const map=await axios.get(`${ipaddress}api/map`
+    ).then(response=>response.data).catch(error=>console.log(error))
+    console.log(map,'mapfetch')
+    {map?setMap(map):console.log('keywords error')}
     const data=await axios.get(`${ipaddress}api/gallery`
     ).then(response=>response.data).catch(error=>console.log(error))
     setData(data)
@@ -80,7 +85,7 @@ const Gallery = () => {
     <div className="container-layout">
       <Wordcloud data={keywords}></Wordcloud>
 
-      <Mapbox></Mapbox>
+      <Mapbox data={mapData}></Mapbox>
       <Divider/>
       <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
       {searchshow ? (
