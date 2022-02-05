@@ -91,6 +91,18 @@ const BioForm = ({data,token,onBiochange}) => {
       year: moment(item.year,'YYYY')
     };
   });
+  const eventInputs =data.event.map((item) => {
+    return {
+      description: item.description,
+      year: moment(item.year,'YYYY')
+    };
+  });
+  const articleInputs =data.article.map((item) => {
+    return {
+      description: item.description,
+      year: moment(item.year,'YYYY')
+    };
+  });
   const onChangeimg = ({ fileList: newFileList }) => {
     
     setFileList(newFileList);
@@ -347,6 +359,90 @@ const BioForm = ({data,token,onBiochange}) => {
         <Divider/>
         <b>Publications</b>
         <Form.List name="publication" initialValue={publicationInputs}>
+          {(fields, { add, remove }) => (
+            <>
+              {fields.map((field) => (
+                <Space
+                  key={field.key}
+                  style={{ display: "flex", marginBottom: 8 }}
+                  align="start"
+                >
+                  <Form.Item
+                    {...field}
+                    name={[field.name, "description"]}
+                    fieldKey={[field.fieldKey, "description"]}
+                  >
+                    <TextArea placeholder="Desciption" />
+                  </Form.Item>
+                  <Form.Item
+                    {...field}{...config}
+                    name={[field.name, "year"]}
+                    fieldKey={[field.fieldKey, "year"]}
+                  >
+                   <DatePicker  picker="year" />
+                  </Form.Item>
+                  
+                  <MinusCircleOutlined onClick={() => remove(field.name)} />
+                </Space>
+              ))}
+              <Form.Item>
+                <Button
+                  type="dashed"
+                  onClick={() => add()}
+                  block
+                  icon={<PlusOutlined />}
+                >
+                  Add item
+                </Button>
+              </Form.Item>
+            </>
+          )}
+        </Form.List>
+        <Divider/>
+        <b>Events</b>
+        <Form.List name="event" initialValue={eventInputs}>
+          {(fields, { add, remove }) => (
+            <>
+              {fields.map((field) => (
+                <Space
+                  key={field.key}
+                  style={{ display: "flex", marginBottom: 8 }}
+                  align="start"
+                >
+                  <Form.Item
+                    {...field}
+                    name={[field.name, "description"]}
+                    fieldKey={[field.fieldKey, "description"]}
+                  >
+                    <TextArea placeholder="Desciption" />
+                  </Form.Item>
+                  <Form.Item
+                    {...field}{...config}
+                    name={[field.name, "year"]}
+                    fieldKey={[field.fieldKey, "year"]}
+                  >
+                   <DatePicker  picker="year" />
+                  </Form.Item>
+                  
+                  <MinusCircleOutlined onClick={() => remove(field.name)} />
+                </Space>
+              ))}
+              <Form.Item>
+                <Button
+                  type="dashed"
+                  onClick={() => add()}
+                  block
+                  icon={<PlusOutlined />}
+                >
+                  Add item
+                </Button>
+              </Form.Item>
+            </>
+          )}
+        </Form.List>
+        <Divider/>
+        <b>Articles</b>
+        <Form.List name="article" initialValue={articleInputs}>
           {(fields, { add, remove }) => (
             <>
               {fields.map((field) => (

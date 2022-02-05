@@ -21,7 +21,7 @@ const Blog = () => {
   const getData=async()=>{
     const key=await axios.get(`${ipaddress}api/keyword`
     ).then(response=>response.data).catch(error=>console.log(error))
-    {key?setKey(key.keywords.split(',')):console.log('keywords error')}
+    {key?setKey(key[`${rname}`].split(',')):console.log('keywords error')}
     const data=await axios.get(`${ipaddress}user/get${rname}`
     ).then(response=>response.data).catch(error=>console.log(error))
     setValue(data)

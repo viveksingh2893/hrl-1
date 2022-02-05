@@ -70,13 +70,13 @@ const Team = () => {
         grid={{
           gutter:5,
           xs:1,
-          sm:4
+          sm:8
         }}
         pagination={{
           onChange: (page) => {
             paginationdata(page)
           },
-          pageSize: 5,
+          pageSize: 50,
           total:teamData.count,
         }}
         dataSource={teamData.results}

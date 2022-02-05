@@ -1,8 +1,9 @@
-import { Layout, Menu, Card } from 'antd';
+import { Layout, Menu } from 'antd';
 import StatisticData from "../components/statistic";
 import BlogPage from "../components/blogpage";
 import BioForm from '../components/biopage';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 import {
   UserAddOutlined,
   PieChartOutlined,
@@ -14,7 +15,7 @@ import {
   LogoutOutlined
 } from '@ant-design/icons';
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useEffect, useState,Text } from 'react';
 import ipaddress from '../components/url';
 import Loader from "../components/spinner";
 const { Content,  Sider } = Layout;
@@ -23,13 +24,16 @@ const { SubMenu } = Menu;
 
 
 const Admin=()=> {
+  const navigate = useNavigate();
   const [state,setState]=useState({collapsed:false})
   const [key,setKey]=useState(1)
   const [dataval,setValue]=useState([])
+  const keytoken=useLocation()
   useEffect(()=>{
     window.scrollTo(0,0)
+
   },[dataval])
-  const keytoken=useLocation()
+ 
   const getData=async(token)=>{
     const config = {
       headers: { Authorization: `Bearer ${token}` }
@@ -44,7 +48,10 @@ setValue(data)
 console.log(data,'biodata')
   }
   useEffect(()=>{
-    getData(keytoken.state.token);
+    try{
+      getData(keytoken.state.token);
+    }catch{navigate(`/login`)}
+    
   },[])
   const onCollapse = (collapsed) => {
     console.log(collapsed);
@@ -71,11 +78,11 @@ console.log(event.key,'event')
         </Sider>
         <Layout className="site-layout">
           <Content style={{ margin: '0 16px' }}>
-        
+        {key==1?<><h1 style={{fontSize:'30px'}}>HiRapidLab DashBoard</h1></>:null}
         {key==2?<BioForm data={dataval} onBiochange={onBiochange}token={keytoken.state.token}/>:null}
         {key==3?<BlogPage author={dataval.name} url='blogupload' token={keytoken.state.token}/>:null}
         {key==4?<BlogPage author={dataval.name}url='newsupload' token={keytoken.state.token}/>:null}
-        
+        {key==5?navigate(`/login`):null}
           </Content>
         </Layout>
       </Layout>
