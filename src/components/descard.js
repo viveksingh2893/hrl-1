@@ -7,15 +7,11 @@ const Descard = (props) => {
     <div
       style={{
         display: "flex",
-        width: "80vw",
+        width: "60vw",
         alignItems: "center",
         justifyContent: "flex-start",
         marginTop:5,
         marginBottom:5
-       
-        // paddingLeft:'5vw',
-        // paddingRight:'5vw',
-        
       }}
     >
       

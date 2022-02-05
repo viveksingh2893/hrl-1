@@ -11,10 +11,7 @@ import ProfileCard from "../components/profilecard";
 
 import Descard from "../components/descard";
 import Videobox from "../components/videobox";
-import Linkcard from "../components/linkcard";
 import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
-import CaraImage from "../components/imageCarousel";
-import Paragraph from "antd/lib/typography/Paragraph";
 import Loader from "../components/spinner";
 import ipaddress from '../components/url';
 
@@ -24,6 +21,7 @@ const Concept = () => {
   const [viewPortWidth, setWidth] = useState(0);
   const conceptname=useLocation()
   const {name}=useParams()
+  const navigate=useNavigate()
   console.log('concept name.....',conceptname.state)
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -75,6 +73,7 @@ const Concept = () => {
       
        
         justifyContent: "center",
+        
       
         background:'#fffbeb',
         display: "flex",
@@ -168,7 +167,7 @@ const Concept = () => {
         <div className='sectiontext'>
             
           <Title >Demo</Title>
-          <Videobox width="80vw" height='40vw' link={conceptData.video_url}></Videobox>
+          <Videobox width="60vw"  link={conceptData.video_url}></Videobox>
          
         </div>
         </div>
@@ -184,7 +183,7 @@ const Concept = () => {
         <div
           style={{
             display: "flex",
-            width: "80vw",
+            width: "60vw",
            
             flexDirection: "row",
             justifyContent: "space-between",
@@ -201,7 +200,7 @@ const Concept = () => {
           {conceptData.why.map((item,indx)=>{
             return(
               <div>
-                <Image width='25vw'src={item.image}/>
+                <Image width='17vw'src={item.image}/>
               </div>
 
             )
@@ -212,7 +211,8 @@ const Concept = () => {
         </div>
         <Divider></Divider>
         <div className='conceptcls' id='how'>
-        <Title >How?</Title>
+        <div className="sectionR">
+        <Title>How?</Title>
         {conceptData.how.map((item,indx)=>{
 
           return(
@@ -221,25 +221,26 @@ const Concept = () => {
                 <Image
                   src={item.image}
                   preview={false}
-                  style={{ width: "80vw", objectFit: "cover",marginTop:5 }}
+                  style={{ width: "60vw", objectFit: "cover",marginTop:5 }}
                 />
             </div>
           )
         })}
        
-       
+       </div>
         </div>
         <Divider></Divider>
         <div 
          className='conceptcls' id='new'
-        >
+        > 
+          <div className="sectionR">
           <Title >New</Title>
       
         
         <div 
           style={{
             display: "flex",
-            width: "80vw",
+            width: "60vw",
             flexDirection: "row",
             marginTop:10,
             
@@ -253,12 +254,12 @@ const Concept = () => {
         >{conceptData.new.map((item,indx)=>{
             return(
               <div>
-                <Image width='25vw'src={item.image}/>
+                <Image width='17vw'src={item.image}/>
               </div>
 
             )
           })}
-          
+          </div>
         </div>
         </div>
           <Divider></Divider>
@@ -266,7 +267,9 @@ const Concept = () => {
           className="conceptcls"
 
         >
-       
+            <div className="sectionR">
+
+      
        
         <Title >Model</Title>
         {conceptData.model.map((item,index)=>{
@@ -276,18 +279,20 @@ const Concept = () => {
               <Image
                 src={item.image}
                 preview={false}
-                style={{ width: "80vw", objectFit: "cover" ,marginTop:5}}
+                style={{ width: "60vw", objectFit: "cover" ,marginTop:5}}
               />
               </div>
           )
         })}
-       
+       </div>
         </div>
         <Divider></Divider>
         <div id='where'
           className="conceptcls"
-
         >
+           <div className="sectionR">
+
+        
 
         <Title  >Where?</Title>
         {conceptData.where.map((item,index)=>{
@@ -297,19 +302,24 @@ const Concept = () => {
               <Image
                 src={item.image}
                 preview={false}
-                style={{ width: "80vw", objectFit: "cover" ,marginTop:5}}
+                style={{ width: "60vw", objectFit: "cover" ,marginTop:5}}
               />
               </div>
           )
         })}
         </div>
+        </div>
         <Divider></Divider>
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+        <div style={{display:'flex',
+        flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
        
         
         <div
          className='conceptcls'
         >
+           <div className="sectionR">
+
+          <Title>Gallery</Title>
       {conceptData.gallery.length!=0?<List
  
       grid={{
@@ -327,18 +337,21 @@ const Concept = () => {
       dataSource={conceptData.gallery}
       renderItem={(item) => (
         <List.Item>
+         
           <ProfileCard
             name={item.name}
             avatar={item.image}
             viewPortWidth={viewPortWidth}
-            // action={() => {
-            //   navigate("/picpage",{state:{id:item.id}});
-            // }}
+            action={() => {
+              navigate("/picpage",{state:{id:item.id}});
+            }}
      ></ProfileCard>
+     
    </List.Item>
  )}
 />:null}
 
+         </div>
          </div>
         
          </div>

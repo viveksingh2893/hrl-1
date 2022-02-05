@@ -20,8 +20,13 @@ Font.register({
   const styles = StyleSheet.create({
     title: {
       fontFamily: 'Lato Bold',
-      fontSize: 11,
+      fontSize: 9,
       marginBottom: 10,
+    },
+    text: {
+      fontFamily: 'Lato Bold',
+      fontSize: 10,
+      marginBottom: 2,
     },
     skills: {
       fontFamily: 'Lato',
@@ -29,26 +34,38 @@ Font.register({
       marginBottom: 10,
     },
     page: {
-        padding: 50,
+        padding:50,
       },
       container: {
         flex: 1,
+        margin:10,
         flexDirection: 'column',
         '@media max-width: 400': {
           flexDirection: 'column',
         },
       },
       image: {
-        marginBottom: 10,
+        marginRight: 10,
+        marginBottom:10,
       },
       itemContent: {
         flex: 1,
         fontSize: 10,
         fontFamily: 'Lato',
       },
+      footer: {
+        position: 'absolute',
+    fontSize: 12,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    textAlign: 'right',
+    color: 'grey',
+      },
   });
 const Resume=({data})=>{
     console.log('resume')
+    var dateval=new Date().toLocaleString();
     const EducationEntry = ({ name, skills }) => (
         <View>
           <Text style={styles.title}>{name}</Text>
@@ -97,16 +114,17 @@ const Resume=({data})=>{
         <Document>
     <Page size="A4" style={{...styles.page}} wrap>
     <View style={{...styles.container}}>
-        <View style={{display:'flex',flexDirection:'row'}}>
+        <View style={{display:'flex',flexDirection:'row',padding:'10px',marginRight:'10px'}}>
             <View><Image style={{...styles.image,width:'100px',height:'100px'}}
             src={{uri:data.image,method:'GET',
             headers:{'Cache-Control':'no-cache'
             }}} /></View>
-            <View style={{display:'flex',flexDirection:'column',padding:'10px'}}>
-            <Text>Name : {data.name} </Text>
-            <Text>Designation : {data.designation}</Text>
-            <Text>Email : {data.email}</Text>
-            <Text>Phone : {data.contact}</Text>
+            <View style={{display:'flex',flexDirection:'column',padding:'10px',marginHorizontal:'10px'}}>
+            <Text style={styles.text}>Name : {data.name} </Text>
+            <Text style={styles.text}>Designation : {data.designation}</Text>
+            <Text style={styles.text}>Email : {data.email}</Text>
+            <Text style={styles.text}>Phone : {data.contact}</Text>
+            {data.linkedin?<Text style={styles.text}>LinkedIn : {data.linkedin}</Text>:<></>}
             </View></View>
             <View style={{display:'flex',flexDirection:'column'}}>
                 <View><Text style={styles.title}>Bio Sketch</Text><List><Item>{data.bio_sketch}</Item></List></View>
@@ -123,9 +141,15 @@ const Resume=({data})=>{
       skills={data.patent}/>
       <PatentPubEntry name="Publications"
       skills={data.publication}/>
-            </View>
-        
-    </View>
+      <PatentPubEntry name="Events"
+      skills={data.event}/>
+      <PatentPubEntry name="Articles"
+      skills={data.article}/>
+      <Text style={styles.footer}>Timestamp : {dateval}</Text>
+           </View> 
+
+</View>
+    
     </Page>
     </Document>
     )

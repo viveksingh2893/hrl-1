@@ -32,6 +32,9 @@ const Member = () => {
       setWidth(window.innerWidth);
     });
   }, []);
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[]);
   const pdfDownload1 = e => {
     e.preventDefault()
     let doc = new jsPDF("landscape", 'pt', 'A4');
@@ -141,6 +144,9 @@ const pdfDownload=()=>{
             <Text>
               <b>Phone Number:</b> {currentdata.contact}
             </Text>
+            {currentdata.linkedin?<Text>
+              <b>LinkedIn Profile:</b> <a href={currentdata.linkedin}>{currentdata.linkedin}</a>
+            </Text>:<></>}
             <Divider></Divider>
             <PDFDownloadLink style={{
               border:'none',
@@ -253,6 +259,10 @@ const pdfDownload=()=>{
         <Credentials title="PATENTS" patent={currentdata.patent} />
          <Divider></Divider>
         <Credentials title="PUBLICATIONS" publication={currentdata.publication} />
+        <Divider></Divider>
+        <Credentials title="EVENTS" event={currentdata.event} />
+        <Divider></Divider>
+        <Credentials title="ARTICLES" article={currentdata.article} />
          {/* <Divider></Divider>
         <Credentials title="EVENTS" txt={currentdata.event} />
          <Divider></Divider>

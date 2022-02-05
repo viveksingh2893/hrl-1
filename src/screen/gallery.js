@@ -13,6 +13,8 @@ import Loader from "../components/spinner";
 
 const Gallery = () => {
   const [galleryData,setData]=useState()
+  const [srchres, setSrchres] = useState("none");
+  const [searchdata,setSearch]= useState();
   const [mapData,setMap]=useState([{image:'',latitude:22.15,longitude:81}])
   const [keywords, setKey] = useState(['Science','Technology','Healthcare','Medicals','Information System']);
  
@@ -23,7 +25,7 @@ const Gallery = () => {
   const getData=async()=>{
     const key=await axios.get(`${ipaddress}api/keyword`
     ).then(response=>response.data).catch(error=>console.log(error))
-    {key?setKey(key.keywords.split(',')):console.log('keywords error')}
+    {key?setKey(key.gallery.split(',')):console.log('keywords error')}
     const map=await axios.get(`${ipaddress}api/map`
     ).then(response=>response.data).catch(error=>console.log(error))
     console.log(map,'mapfetch')
@@ -47,20 +49,21 @@ const Gallery = () => {
       setWidth(window.innerWidth);
     });
   }, []);
-  const [srchres, setSrchres] = useState("none");
-  const onSearch = (value) => {
+
+  const onSearch = async(value) => {
+    const data=await axios.get(`${ipaddress}api/gallery/search/?search=${value}`
+    ).then(response=>response.data).catch(error=>console.log(error))
     setSrchres(value);
+    setSearch(data);
     setSearchShow(true);
   };
   const clearSearch = () => {
     setSearchShow(false);
+    setSrchres()
   };
-  const { Title, Text } = Typography;
   const [searchshow, setSearchShow] = useState(false);
   const navigate = useNavigate();
-  const data = [];
-  // const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
-  const searchdata = [];
+
   function txtlvl() {
     if (viewPortWidth > 600) {
       return 3;

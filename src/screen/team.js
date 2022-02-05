@@ -3,7 +3,7 @@ import "../App.less";
 import { useEffect, useState } from "react";
 import { Typography, List, Divider } from "antd";
 import axios from 'axios';
-import ProfileCard from "../components/profilecard";
+import  defaultImage from '../assets/image/default.png';
 import { useNavigate } from "react-router-dom";
 import ipaddress from '../components/url';
 import Loader from "../components/spinner";
@@ -47,13 +47,14 @@ const Team = () => {
     alignItems: "center",}}>
     <div
       style={{
-        width: "80vw",
+        width: "70vw",
         marginTop: `${viewPortWidth > 500 ? "12.5vh" : "10vh"}`,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         padding: 10,
+        border:'1px solid black'
       }}
     >
       <Title
@@ -65,31 +66,47 @@ const Team = () => {
       <Divider></Divider>
    
       {teamData?<List 
+      style={{display:'flex',flexDirection:'column',border:'1px solid black',alignItems:'center'}}
      
-      
         grid={{
-          gutter:5,
+          gutter:16,
+
           xs:1,
-          sm:4
+          sm:8
         }}
         pagination={{
           onChange: (page) => {
             paginationdata(page)
           },
-          pageSize: 5,
+          pageSize: 50,
           total:teamData.count,
         }}
         dataSource={teamData.results}
         renderItem={(item,index) => (
-          <List.Item >
-            <ProfileCard
-              name={item.name}
-              avatar={item.image}
-              viewPortWidth={viewPortWidth}
-              action={() => {
-                navigate("/member",{state:{item:item,result:teamData.results,index:index}});
-              }}
-            ></ProfileCard>
+          <List.Item key={index}>
+            <div style={{display:'flex',
+            width:150,height:'auto',
+            border:'1px solid black',
+            justifyContent:'center',
+            
+
+            flexDirection:'column'}}
+              // name={item.name}
+              // avatar={item.image}
+              // viewPortWidth={viewPortWidth}
+              // action={() => {
+              //   navigate("/member",{state:{item:item,result:teamData.results,index:index}});
+              // }}
+            >
+              
+              <img src={item.image?item.image:defaultImage}
+              style={{objectFit:'contain'}}
+              />
+              <Title style={{width:150,textAlign:'center'}}level={5}>
+                {item.name}
+              </Title>
+              
+            </div>
           </List.Item>
         )}
       />:null}

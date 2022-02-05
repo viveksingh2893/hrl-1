@@ -37,6 +37,24 @@ const Credentials = (props) => {
         )
 
       })
+    }else if(props.event){
+      return props.event.map((item,ind)=>{
+        return(
+          <Paragraph>
+              {item.description}
+          </Paragraph>
+        )
+
+      })
+    }else if(props.article){
+      return props.article.map((item,ind)=>{
+        return(
+          <Paragraph>
+              {item.description}
+          </Paragraph>
+        )
+
+      })
     }else if(props.project){
       return props.project.map((item,ind)=>{
         return(
@@ -85,13 +103,17 @@ const Credentials = (props) => {
     }
   
   return (
+    <><Title level={4} style={{border:'0.1px solid white'}}>
+    {props.title}
+  </Title>
     <div
     style={{
       // width: `${viewPortWidth > 850 ? "70%" : "90%"}`,
       width:'75vw',
+      maxHeight:'30vh',
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       alignItems: "flex-start",
       backgroundColor: "white",
       overflowY:'scroll'
@@ -100,13 +122,9 @@ const Credentials = (props) => {
       // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
       // padding: 10,
     }}
-  >
-    <Title level={4} style={{border:'0.1px solid white'}}>
-      {props.title}
-    </Title>
-  
+  >  
    {showData()}
-  </div>
+  </div></>
   );
 };
 export default Credentials;
