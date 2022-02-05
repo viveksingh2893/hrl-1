@@ -55,11 +55,8 @@ const Gallery = () => {
   const clearSearch = () => {
     setSearchShow(false);
   };
-  const { Title, Text } = Typography;
   const [searchshow, setSearchShow] = useState(false);
   const navigate = useNavigate();
-  const data = [];
-  // const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
   const searchdata = [];
   function txtlvl() {
     if (viewPortWidth > 600) {
