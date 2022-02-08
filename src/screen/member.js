@@ -22,10 +22,11 @@ const Member = () => {
   
   const { Title, Text } = Typography;
   const memberData=useLocation()
+  console.log("memberdata......",memberData)
   const {id,membername} =useParams()
   const [viewPortWidth, setWidth] = useState(0);
   const [currentdata,setCurrent]=useState()
-  const [currentIndex,setIndx]=useState(memberData.state.index)
+  const [currentIndex,setIndx]=useState(memberData.state==null?0:memberData.state.index)
   useEffect(() => {
     setWidth(window.innerWidth);
       window.addEventListener("resize", (e) => {
@@ -95,7 +96,6 @@ const pdfDownload=()=>{
   if(currentdata){
     return (<div>
   <div style={{
-      width: "100vw",
       marginTop:'80px',
       display: "flex",
       flexDirection: "column",
@@ -103,16 +103,7 @@ const pdfDownload=()=>{
       alignItems: "center",
       
     }}>
-      <div style={{display:'flex',
-      width:'80vw',
-      flexWrap:'wrap',
-      paddingTop:'1vw',
-      justifyContent:'flex-start',
-      alignItems:'flex-start',
-     
-      flexDirection:'row'}}
-        
-      >
+      <div className='member-main'>
  
           
          
@@ -120,7 +111,7 @@ const pdfDownload=()=>{
           <div
             style={{
              
-              flexbasis:'300px',
+              flexbasis:'250px',
               
               backgroundColor: "black",
               display: "flex",
@@ -132,22 +123,12 @@ const pdfDownload=()=>{
           > 
           <Image
           src={currentdata.image}
-          width={`${viewPortWidth > 500 ? "20vw" : "75vw"}`}
+          width={`${viewPortWidth > 500 ? "20vw" : "60vw"}`}
         />
           
           </div>
-          <div
-            style={{
-              flexbasis:'300px',
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              backgroundColor: "white",
-              marginLeft:'1vw',
-            }}
-          >
-            <Title level={2} style={{color:'#333333'}}>{currentdata.name}</Title>
+          <div className="member-child-section2">
+            <Title level={3} style={{color:'#333333'}}>{currentdata.name}</Title>
             <Text style={{color:'#333333'}}>
               <b>Designation:</b> {currentdata.designation}
             </Text>
@@ -168,44 +149,21 @@ const pdfDownload=()=>{
               padding:'10px',
             color:'#ffffff'}}
              document={<Resume data={currentdata} />} fileName="resume.pdf">{<DownloadOutlined />} Download CV</PDFDownloadLink>
-          {/* <Button onClick={pdfDownload}
-            style={{
-              border:'none',
-              
-              fontWeight:'600',
-              backgroundColor:'#666666',
-            color:'#ffffff'}}
-            icon={<DownloadOutlined />}
-            size="large" 
-          >
-            Download CV
-          </Button> */}
           </div>
           
-              <Divider/>
+        {memberData.state===null?null:<Divider/>}
         <div
           style={{
-            flexBasis: 305,
+            flexBasis: 300,
             display: "flex",
             alignItems: "flex-start",
             flexDirection: "column",
         
           }}
         >
-          
-       
-         
         </div>
       </div>
-      <div
-        style={{
-          width: "80vw",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          display: "flex",
-          flexDirection: "column",
-                  }}
-      >
+      <div className="member-biosection">
         
       
          <div style={{display:'flex',
@@ -215,14 +173,14 @@ const pdfDownload=()=>{
          <div 
             style={{
                 display:'flex',
-                width:viewPortWidth > 500 ? "20vw" : "85vw",
+                width:viewPortWidth > 500 ? "20vw" : "80vw",
                 justifyContent:'space-between',
                 alignItems:'flex-start',
            
          }}>
-           <NavLink to={`/member/${
+         {currentIndex==0 && memberData.state==null?null:<NavLink to={`/member/${
           currentIndex==0?
-          memberData.state.result[currentIndex].id 
+          memberData.state.result[currentIndex].id  
           +`/${memberData.state.result[currentIndex].name}`
           :memberData.state.result[currentIndex-1].id 
           +`/${memberData.state.result[currentIndex-1].name}`}`}  
@@ -241,17 +199,17 @@ const pdfDownload=()=>{
                   }}>
                 
         </Button>
-        </NavLink>
-        <NavLink to={`/member/${
+        </NavLink>}
+       { currentIndex==0 && memberData.state==null?null: <NavLink to={`/member/${
           currentIndex==memberData.state.result.length-1?
           memberData.state.result[currentIndex].id +
           `/${memberData.state.result[currentIndex].name}`
           :memberData.state.result[currentIndex+1].id +
           `/${memberData.state.result[currentIndex+1].name}`}`}  
-         state={{item:currentdata,result:memberData.state.result,index:currentIndex}}
+          state={{item:currentdata,result:memberData.state.result,index:currentIndex}}
           onClick={nextdata}
-           >
-        <Button 
+        >
+       <Button 
                
                 size='small'
                 type="primary"
@@ -263,7 +221,7 @@ const pdfDownload=()=>{
                
         </Button>
        
-        </NavLink>
+        </NavLink>}
 
 
       </div>

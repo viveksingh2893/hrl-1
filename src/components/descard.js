@@ -8,7 +8,7 @@ const Descard = (props) => {
       className="descard"
     >
       
-    <Typography.Paragraph  style={{fontWeight:'400', textAlign:'justify'}}>
+    <Typography.Paragraph  className="body-text">
       {props.txt}
     </Typography.Paragraph>
       

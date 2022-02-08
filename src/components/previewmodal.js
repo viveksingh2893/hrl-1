@@ -1,5 +1,5 @@
 import { Card, Typography, Button, Image, Divider, Row } from "antd";
-import { CloudUploadOutlined } from "@ant-design/icons";
+import '../App.less'
 import React, { useEffect, useState } from "react";
 
 const months = [
@@ -19,17 +19,13 @@ const months = [
 const PreviewModal = (props) => {
   const { Title, Text, Paragraph } = Typography;
   let TDate = new Date();
-  // let date = new Date( Date.parse(props.date) );
-
-  // console.log('aa',TDate,date)
 
   const { title, keywords } = props.data();
   const keylist = keywords.split(",");
-  console.log(TDate);
   const textData = (content) => {
     return (
       <Paragraph
-        style={{ textAlign: "justify", fontSize: "1.2rem", color: "black" }}
+        className="body-text"
         copyable={false}
       >
         {content}
@@ -38,18 +34,9 @@ const PreviewModal = (props) => {
   };
   const imgData = ({ image, caption }) => {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "1vw",
-          marginBottom: "1vw",
-        }}
-      >
-        <Image src={image} width="60vw" preview={false} />
-        <Text style={{ textAlign: "start", width: "60vw", fontWeight: "400" }}>
+      <div className='child2-preview-model'>
+        <Image src={image} className='image-preview-model' />
+        <Text style={{ textAlign: "start", fontWeight: "400",fontStyle:'italic' }}>
           {caption}
         </Text>
       </div>
@@ -58,50 +45,26 @@ const PreviewModal = (props) => {
   const vidData = (content) => {
     return (
       <div
-        style={{
-          position: "relative",
-          width: "100%",
-          overFlow: "hidden",
-          paddingTop: "56.25%",
-          marginTop: "1vw",
-          marginBottom: "1vw",
-        }}
+        className="video-preview-model"
       >
         <iframe
           src={content}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            width: "100%",
-            height: "100%",
-            border: "none",
-          }}
+          className='video-iframe'
         />
       </div>
     );
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "60vw",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column", width: "60vw" }}>
-        <Title style={{ textAlign: "justify" }}>{title}</Title>
+    <div className='main-preview-model'>
+      <div className="child1-preview-model">
+        <Title level={2}style={{ textAlign: "left" }}>{title}</Title>
         <Text
-          style={{ textAlign: "justify", fontWeight: "700", fontSize: "14px" }}
+          style={{ textAlign: "justify", fontWeight: "700", fontSize: "0.8rem" }}
         >
           By {props.author}
         </Text>
         <Text
-          style={{ textAlign: "justify", fontWeight: "600", fontSize: "12px" }}
+          style={{ textAlign: "justify", fontWeight: "400",fontSize:'0.8rem' }}
         >
           {props.date
             ? `${

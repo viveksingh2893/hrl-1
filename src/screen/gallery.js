@@ -103,6 +103,7 @@ const Gallery = () => {
   } else {
     return (
       <div className="container-layout">
+        <div className='child-container'>
         <Wordcloud data={keywords} searchfor={onSearch}></Wordcloud>
 
         {!searchshow ? <Mapbox data={mapData}></Mapbox> : null}
@@ -111,9 +112,10 @@ const Gallery = () => {
         {searchshow ? (
           <div
             style={{
-              width: "100vw",
+              width: "70vw",
               display: "flex",
               justifyContent: "center",
+              border:'5px solid black',
               alignItems: "center",
               marginTop: "5vw",
               flexDirection: "column",
@@ -139,26 +141,24 @@ const Gallery = () => {
           </div>
         ) : null}
         <Divider></Divider>
+        <div className="conceptcls">
         <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "80vw",
-          }}
-        >
+         className="sectionR"
+        > <Typography.Title >Gallery</Typography.Title>
           {galleryData ? (
             <List
+           
               grid={{
-                gutter: 10,
-                xs: 1,
-                sm: 4,
+                gutter: 16,
+                xs: 2,
+                sm: 5,
+              
               }}
               pagination={{
                 onChange: (page) => {
                   paginationdata(page);
                 },
-                pageSize: 40,
+                pageSize: 16,
                 total: searchshow ? searchdata.count : galleryData.count,
               }}
               dataSource={searchshow ? searchdata.results : galleryData.results}
@@ -183,6 +183,8 @@ const Gallery = () => {
             />
           ) : null}
         </div>
+      </div>
+      </div>
       </div>
     );
   }

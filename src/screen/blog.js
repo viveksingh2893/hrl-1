@@ -110,23 +110,15 @@ const Blog = () => {
   } else {
     return (
       <div className="container-layout">
+        <div className="child-container">
         <div>
           <Wordcloud data={keywords} searchfor={onSearch}></Wordcloud>
         </div>
-        <div>
+       
           <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
-        </div>
-        <div
-          style={{
-            width: "100vw",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "5vw",
-            flexDirection: "column",
-          }}
-        >
-          <div style={{ width: "80vw" }}>
+        
+        
+          <div className="child-bloglist-container">
             {searchshow ? (
               <div
                 style={{
@@ -137,7 +129,6 @@ const Blog = () => {
                 }}
               >
                 <Typography.Title
-                  // style={{ marginLeft: "10vw" }}
                   level={tlvl}
                   style={{ fontFamily: "calibri" }}
                 >{`${searchdata.results.length} SEARCH RESULTS FOR "${searchString}"`}</Typography.Title>
@@ -147,7 +138,7 @@ const Blog = () => {
                   size="large"
                   style={{
                     border: "none",
-                    fontFamily: "Calibri",
+                    
                     fontWeight: "600",
                     backgroundColor: "#666666",
                   }}
@@ -172,30 +163,31 @@ const Blog = () => {
               dataSource={searchshow ? searchdata.results : valuedata.results}
               renderItem={(item) => {
                 return (
-                  <List.Item>
+                  <List.Item  >
                     <Divider></Divider>
-                    <NavLink to={`/readblog/${item.title}`}
+                    <NavLink to={`/read/${item.id}/${item.title}`}
                     state={{state:item}}
                     >
                     <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        flexWrap: "wrap",
-                        alignItems: "flex-start",
-                      }}
+                    style={{
+                      display:'flex',
+                  
+                  flexBasis:'300px',
+                  justifyContent: "flex-start",
+                  flexWrap: "wrap",
+                  alignItems: "flex-start",
+                }}
+                     
                     >
                       <div
                         style={{
                           display: "flex",
-                          flexBasis: "300px",
+                          
                           justifyContent: "center",
                           alignItems: "center",
                           cursor: "pointer",
                         }}
-                        // onClick={() => {
-                        //   navigate("/readblog", { state: item });
-                        // }}
+                    
                       >
                         <Image
                           width={viewPortWidth > 500 ? "20vw" : "80vw"}
@@ -206,33 +198,26 @@ const Blog = () => {
                       <div
                         style={{
                           display: "flex",
-                          width: viewPortWidth > 500 ? "30vw" : "80vw",
+                          width: viewPortWidth > 500 ? "25vw" : "80vw",
                           paddingLeft: "1vw",
                           flexDirection: "column",
                           cursor: "pointer",
                         }}
-                        // onClick={() => {
-                        //   navigate("/readblog", { state: item });
-                        // }}
+                   
                       >
                         <Typography.Title
-                          // onClick={() => {
-                          //   navigate("/readblog", { state: item });
-                          // }}
+                        
                           level={4}
                         >
                           {item.title}
                         </Typography.Title>
                         <Typography.Text
-                          style={{ fontSize: "1.1rem", textAlign: "justify" }}
+                          style={{ fontSize: "1.1rem", textAlign: "justify"}}
                         >
                           {getRightData(item.body).content.slice(0, 200) +
                             "..."}
                           <Typography.Text
                             style={{ fontWeight: "bolder" }}
-                            // onClick={() => {
-                            //   navigate("/readblog", { state: item });
-                            // }}
                           >
                             Read more
                           </Typography.Text>
@@ -246,7 +231,8 @@ const Blog = () => {
             />
           </div>
         </div>
-      </div>
+        </div>
+   
     );
   }
 };

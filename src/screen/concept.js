@@ -292,14 +292,15 @@ const Concept = () => {
         >
            <div className="sectionR">
 
-          <Title style={{border:'1px solid black'}}>Gallery</Title>
+          <Title >Gallery</Title>
           <Descard level={3} txt={conceptData.gallerytext} /> 
-      {conceptData.gallery.length!=0?<List
+      {conceptData.gallery.length!=0?
+      <List
  
       grid={{
         gutter:16,
         xs:2,
-      sm:4,
+      sm:5,
      
     }}
       pagination={{

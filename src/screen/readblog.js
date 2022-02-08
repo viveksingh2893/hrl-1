@@ -11,7 +11,6 @@ const ReadBlog=()=>{
       },[]);
     if (incomingData.state.state){
         return(
-            // <h1>Welcome to Blog</h1>
             <div style={{display:'flex',marginTop:100,justifyContent:'center',alignItems:'center'}}>
             <PreviewModal 
             author={incomingData.state.state.author}

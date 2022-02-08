@@ -60,12 +60,7 @@ const Mapbox = ({ data }) => {
   const WrappedMap = withScriptjs(withGoogleMap(Map));
 
   return (
-    <div
-      style={{
-        width: `${viewPortWidth > 850 ? "45vw" : "80vw"}`,
-        height: `${viewPortWidth > 450 ? "75vh" : "50vh"}`,
-      }}
-    >
+    <div className="map-main-container">
       {/* <div style={{ width: "45vw", height: "75vh" }}> */}
       <WrappedMap
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDOEHa04N_FH70nmh_12NYmzZ8eDzcwbiQ`}

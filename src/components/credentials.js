@@ -1,10 +1,8 @@
 import React from "react";
 import "../App.less";
 import { useEffect, useState } from "react";
-import { Image, Typography } from "antd";
-import { Text } from "react";
-import { Button } from "antd";
-import { LeftOutlined, RightOutlined, IdcardFilled } from "@ant-design/icons";
+import {  Typography } from "antd";
+
 
 const Credentials = (props) => {
   const { Title,Paragraph } = Typography;
@@ -103,26 +101,10 @@ const Credentials = (props) => {
     }
   
   return (
-    <><Title level={4} style={{border:'0.1px solid white'}}>
+    <><Title level={4} style={{maxWidth:"250px"}}>
     {props.title}
   </Title>
-    <div
-    style={{
-      // width: `${viewPortWidth > 850 ? "70%" : "90%"}`,
-      width:'75vw',
-      maxHeight:'30vh',
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-start",
-      alignItems: "flex-start",
-      backgroundColor: "white",
-      overflowY:'scroll'
-     
-      // borderRadius: "1vw",
-      // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-      // padding: 10,
-    }}
-  >  
+    <div className="member-cred">  
    {showData()}
   </div></>
   );
