@@ -5,17 +5,10 @@ import '../assets/css/style.css'
 const Descard = (props) => {
   return (
     <div
-      style={{
-        display: "flex",
-        width: "60vw",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        marginTop:5,
-        marginBottom:5
-      }}
+      className="descard"
     >
       
-    <Typography.Paragraph  style={{fontWeight:'400',fontSize:'1.1rem', textAlign:'justify'}}>
+    <Typography.Paragraph  style={{fontWeight:'400', textAlign:'justify'}}>
       {props.txt}
     </Typography.Paragraph>
       

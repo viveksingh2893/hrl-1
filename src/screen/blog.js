@@ -4,7 +4,7 @@ import Searchbar from "../components/searchbar";
 import { useEffect, useState } from "react";
 import { Typography, Divider, Image, Button} from "antd";
 import { List } from "antd";
-import {useNavigate, useParams} from 'react-router-dom'
+import {NavLink, useNavigate, useParams} from 'react-router-dom'
 import axios from 'axios'
 import Loader from "../components/spinner";
 import ipaddress from '../components/url';
@@ -162,6 +162,7 @@ const paginationdata=async(page)=>{
           
         <List.Item>  
       <Divider></Divider>
+      <NavLink to={`/readblog/${item.title}`} state={{state:item}}>
       
       <div 
       style={{
@@ -190,6 +191,7 @@ const paginationdata=async(page)=>{
             </Typography.Text>
           </div>
       </div>
+      </NavLink>
       </List.Item>
         )}}
       />

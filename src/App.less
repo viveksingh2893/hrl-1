@@ -88,23 +88,98 @@
   flex-direction:column;
   justify-content: center;
   align-items:center;
+  border:1px solid green;
   background: "white";
 
   
 }
 .sectionR{
-  display:"flex";
-  align-items:'flex-start';
-  flex-direction:'column';
-}
-.sectiontext{
-          display:'flex';
-          flex-direction:'column';
-          justify-content:'center';
-          align-items:'flex-start';
-          
+  display:flex;
+  width:60vw;
+  align-items:flex-start;
+  justify-content: center;
+  border:1px solid black;
+  flex-direction:column;
+  
 }
 
+.sectiontext{
+          display:flex;
+          
+          flex-direction:column;
+          justify-content:center;
+          align-items:flex-start;
+          
+}
+.descard{
+        display: flex;
+        width: 60vw;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top:5;
+        margin-bottom:5
+
+
+}
+.conceptimage{
+  width: 60vw;
+   object-fit: cover;
+   margin-top:5x
+  
+}
+.concept-three-section{
+  display: flex;
+  width: 60vw;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow:'hidden';
+}
+.concept-three-image{
+  width: 18vw;
+}
+@media all and (max-width: 576px){
+  .conceptcls{
+    width: 100vw;
+  }
+  .sectionR{
+    width:80vw;
+  }
+  .video-container{
+    width:80%;
+  }
+  .sectiontext{
+    width:80vw;
+  }
+  .descard{
+    width: 80vw
+  }
+  .conceptimage{
+    width:80vw
+  }
+  .concept-three-image{
+    width: 25vw;
+  }
+  .concept-three-section{
+    width:80vw;
+  }
+}
+//profile card css//
+.profilecard{
+    display:'flex';
+    justify-content:'center';
+    align-items:'center';
+    width:150px;
+    height:150px;
+    overflow:hidden;
+    
+}
+
+.profilecard img:hover {
+  opacity: 0.6;
+  background-color: #ffcc00;
+  
+}
 
 .homebtn{
   position:absolute;
@@ -135,4 +210,35 @@
     height:80vh;
     justify-content:center;
     align-items:center
+}
+
+.teamlistItem{
+            display: flex;
+            width:150px;
+            height:auto;
+            justify-content:center;
+            flex-direction:column;
+            
+            
+}
+
+.teamlistImage{
+  height: 150px;
+  // object-fit: contain;
+  object-position: 0%;
+  
+ 
+}
+
+.teamlistItem:hover{
+opacity: 0.6;
+cursor: pointer;
+
+
+}
+
+.teamlistTitle{
+  padding:5px;
+  width:150px;
+  text-align:center;
 }

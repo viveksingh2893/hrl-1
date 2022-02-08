@@ -22,7 +22,7 @@ const Credentials = (props) => {
     }else if(props.patent){
       return props.patent.map((item,ind)=>{
         return(
-          <Paragraph>
+          <Paragraph key={ind}>
             {item.description}
           </Paragraph>
         )
@@ -31,7 +31,7 @@ const Credentials = (props) => {
     }else if(props.publication){
       return props.publication.map((item,ind)=>{
         return(
-          <Paragraph>
+          <Paragraph key={ind}>
               {item.description}
           </Paragraph>
         )
@@ -40,7 +40,7 @@ const Credentials = (props) => {
     }else if(props.event){
       return props.event.map((item,ind)=>{
         return(
-          <Paragraph>
+          <Paragraph key={ind}>
               {item.description}
           </Paragraph>
         )
@@ -49,7 +49,7 @@ const Credentials = (props) => {
     }else if(props.article){
       return props.article.map((item,ind)=>{
         return(
-          <Paragraph>
+          <Paragraph key={ind}>
               {item.description}
           </Paragraph>
         )
@@ -58,7 +58,7 @@ const Credentials = (props) => {
     }else if(props.project){
       return props.project.map((item,ind)=>{
         return(
-          <div>
+          <div key={ind}>
             <Title level={5}>{item.title}</Title>
           <Paragraph>
               {item.description}
@@ -69,7 +69,7 @@ const Credentials = (props) => {
       })
     }else if(props.bio){
       return (
-          <div>
+          <div >
           
           <Paragraph>
               {props.bio}
@@ -79,7 +79,7 @@ const Credentials = (props) => {
 
       }else if(props.current){
         return (
-            <div>
+            <div >
             
             <Paragraph>
                 {props.current}
@@ -90,7 +90,7 @@ const Credentials = (props) => {
         }else if(props.previous){
           return props.previous.map((item,ind)=>{
             return(
-              <div>
+              <div key={ind}>
                 
               <Paragraph>
                   {item.designation+' '+item.start_year+ ' to ' +item.end_year}

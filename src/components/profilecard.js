@@ -8,21 +8,15 @@ const ProfileCard = (props) => {
   return (
     <div>
       <a>
-    <div style={{display:'flex',justifyContent:'center',alignItem:'center',
-    
-    width:120,height:120,overflow:'hidden'}}>
+    <div className="profilecard" onClick={props.action}>
      <img alt={props.avatar} src={props.avatar}
-     
-      style={{objectFit:'contain'}}
-      
-      
       />
     </div>
     </a>
     </div>
     // <Card
     //   hoverable
-    //   onClick={props.action}
+    //   
     //   style={{width:props.viewPortWidth>576?'18vw':'80vw '}}
     //   cover={<Image alt="example" src={props.avatar}
     //   preview={false}
