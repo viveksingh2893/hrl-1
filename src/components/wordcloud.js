@@ -30,7 +30,15 @@ const Wordcloud = (props) => {
           }}
         >
           {data.map((item, i) => (
-            <div key={i}>{item}</div>
+            <div
+              key={i}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                props.searchfor(item);
+              }}
+            >
+              {item}
+            </div>
           ))}
         </TagCloud>
       </div>
