@@ -9,32 +9,31 @@ import {
   RightOutlined,
   DownloadOutlined,
 } from "@ant-design/icons";
-import { useLocation } from "react-router-dom";
+import axios from 'axios'
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import Resume from "../components/resume";
 // import PDFDownloadLink from '@react-pdf/renderer';
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Loader from "../components/spinner";
+import ipaddress from "../components/url";
 
 const Member = () => {
   
-  const { Title, Text,Paragraph } = Typography;
-
+  const { Title, Text } = Typography;
   const memberData=useLocation()
-  console.log(memberData.state,'memeber screen')
+  const {id,membername} =useParams()
   const [viewPortWidth, setWidth] = useState(0);
-  const [currentdata,setCurrent]=useState(memberData.state.item)
+  const [currentdata,setCurrent]=useState()
   const [currentIndex,setIndx]=useState(memberData.state.index)
   useEffect(() => {
     setWidth(window.innerWidth);
-    window.addEventListener("resize", (e) => {
+      window.addEventListener("resize", (e) => {
       console.log("size", e.target);
       setWidth(window.innerWidth);
     });
   }, []);
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[]);
+
   const pdfDownload1 = e => {
     e.preventDefault()
     let doc = new jsPDF("landscape", 'pt', 'A4');
@@ -51,42 +50,56 @@ const pdfDownload=()=>{
 
   const prevdata = () => {
     
+    
     console.log("index value......",currentIndex)
     if(currentIndex>0){
-    var result=memberData.state.result[currentIndex-1]
     setIndx(currentIndex-1)
     
-    console.log("result...........",result)
-    setCurrent(result)
   }
 
   };
+  
+  //GET request to fetch member data//
+  const getData= async ()=>{
+    setCurrent()
+    const data=await axios.get(`${ipaddress}api/team/${id}/${membername}`
+      )
+      .then(response=>response.data)
+      .catch(error=>console.log(error))
+      console.log("memberData.............",data)
+      setCurrent(data)
+      
+    
+    }
+    
+  
+    useEffect(()=>{
+      if(membername){
+       
+        getData();
+        window.scrollTo(0,0)
+
+      }
+      
+      // return ()=>{setHome()}
+    },[membername])
 
   const nextdata = () => {
-    console.log("Fetch next member");
-    
-    console.log("index value......",currentIndex)
     if (currentIndex<memberData.state.result.length-1){
-
-   
-    var result=memberData.state.result[currentIndex+1]
-    setIndx(currentIndex+1)
-    
-    console.log("result...........",result)
-    setCurrent(result)
+        setIndx(currentIndex+1)
+    // setCurrent(result)
   }
 
   };
 
-  if(memberData.state){return (<div>
+  if(currentdata){
+    return (<div>
   <div style={{
       width: "100vw",
-      // backgroundColor: "orange",
       marginTop:'80px',
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      // flexWrap: "wrap",
       alignItems: "center",
       
     }}>
@@ -172,13 +185,8 @@ const pdfDownload=()=>{
               <Divider/>
         <div
           style={{
-            
-         
-          
-            // flexShrink: 1,
             flexBasis: 305,
             display: "flex",
-            // justifyContent: "flex-start",
             alignItems: "flex-start",
             flexDirection: "column",
         
@@ -194,7 +202,6 @@ const pdfDownload=()=>{
           width: "80vw",
           justifyContent: "center",
           alignItems: "flex-start",
-      
           display: "flex",
           flexDirection: "column",
                   }}
@@ -204,21 +211,27 @@ const pdfDownload=()=>{
          <div style={{display:'flex',
          justifyContent:'flex-start',
          alignItems:'stretch',
-         
-         
-        
          }}>
          <div 
-         style={{
-            display:'flex',
-            width:viewPortWidth > 500 ? "20vw" : "85vw",
-            
-            justifyContent:'space-between',
-            alignItems:'flex-start',
+            style={{
+                display:'flex',
+                width:viewPortWidth > 500 ? "20vw" : "85vw",
+                justifyContent:'space-between',
+                alignItems:'flex-start',
            
          }}>
+           <NavLink to={`/member/${
+          currentIndex==0?
+          memberData.state.result[currentIndex].id 
+          +`/${memberData.state.result[currentIndex].name}`
+          :memberData.state.result[currentIndex-1].id 
+          +`/${memberData.state.result[currentIndex-1].name}`}`}  
+         state={{item:currentdata,
+          result:memberData.state.result,
+          index:currentIndex}}
+          onClick={prevdata}
+           >
         <Button 
-              onClick={prevdata}
               size='small'
                   type="primary"
                   icon={<LeftOutlined/>}
@@ -228,8 +241,18 @@ const pdfDownload=()=>{
                   }}>
                 
         </Button>
+        </NavLink>
+        <NavLink to={`/member/${
+          currentIndex==memberData.state.result.length-1?
+          memberData.state.result[currentIndex].id +
+          `/${memberData.state.result[currentIndex].name}`
+          :memberData.state.result[currentIndex+1].id +
+          `/${memberData.state.result[currentIndex+1].name}`}`}  
+         state={{item:currentdata,result:memberData.state.result,index:currentIndex}}
+          onClick={nextdata}
+           >
         <Button 
-                onClick={nextdata}
+               
                 size='small'
                 type="primary"
                 icon={<RightOutlined/>}
@@ -239,7 +262,8 @@ const pdfDownload=()=>{
                 }}>
                
         </Button>
-
+       
+        </NavLink>
 
 
       </div>

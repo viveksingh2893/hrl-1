@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Typography, List, Divider } from "antd";
 import axios from 'axios';
 import  defaultImage from '../assets/image/default.png';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ipaddress from '../components/url';
 import Loader from "../components/spinner";
 
@@ -47,14 +47,14 @@ const Team = () => {
     alignItems: "center",}}>
     <div
       style={{
-        width: "70vw",
-        marginTop: `${viewPortWidth > 500 ? "12.5vh" : "10vh"}`,
+        width: viewPortWidth>576?"67vw":"80vw",
+        marginTop: 100,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: 10,
-        border:'1px solid black'
+     
+        
       }}
     >
       <Title
@@ -66,13 +66,15 @@ const Team = () => {
       <Divider></Divider>
    
       {teamData?<List 
-      style={{display:'flex',flexDirection:'column',border:'1px solid black',alignItems:'center'}}
+      style={{display:'flex',
+      justifyContent:'center',flexDirection:'column',alignItems:'center'}}
      
         grid={{
-          gutter:16,
+          gutter:viewPortWidth>576?25:30,
+          
 
-          xs:1,
-          sm:8
+          xs:2,
+          sm:6
         }}
         pagination={{
           onChange: (page) => {
@@ -84,35 +86,31 @@ const Team = () => {
         dataSource={teamData.results}
         renderItem={(item,index) => (
           <List.Item key={index}>
-            <div style={{display:'flex',
-            width:150,height:'auto',
-            border:'1px solid black',
-            justifyContent:'center',
+            <NavLink to={`/member/${item.id}/${item.name}`}
             
-
-            flexDirection:'column'}}
-              // name={item.name}
-              // avatar={item.image}
-              // viewPortWidth={viewPortWidth}
-              // action={() => {
-              //   navigate("/member",{state:{item:item,result:teamData.results,index:index}});
-              // }}
-            >
+             state={{item:item,result:teamData.results,index:index}}>
+            <div className="teamlistItem">
               
               <img src={item.image?item.image:defaultImage}
-              style={{objectFit:'contain'}}
+              className='teamlistImage'
+              
               />
-              <Title style={{width:150,textAlign:'center'}}level={5}>
+              <Title 
+              className='teamlistTitle'
+              
+              level={5}>
                 {item.name}
               </Title>
               
             </div>
+            </NavLink>
           </List.Item>
         )}
       />:null}
     </div>
      </div>
-  );}else{return(
+  );}else{
+    return(
     <Loader/>
   )}
 };
