@@ -122,7 +122,7 @@ const pdfDownload=()=>{
             }}
           > 
           <Image
-          src={currentdata.image}
+          src={currentdata.image} preview={false}
           width={`${viewPortWidth > 500 ? "20vw" : "60vw"}`}
         />
           
