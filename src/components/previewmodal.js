@@ -17,15 +17,15 @@ const months = [
   "December",
 ];
 const PreviewModal = (props) => {
-  const { Title, Text, Paragraph } = Typography;
+  const { Title, Text, Paragraph ,Link} = Typography;
   let TDate = new Date();
   // let date = new Date( Date.parse(props.date) );
 
   // console.log('aa',TDate,date)
 
-  const { title, keywords } = props.data();
+  const { title, keywords,url_source,source_title } = props.data();
   const keylist = keywords.split(",");
-  console.log(TDate);
+  // console.log(TDate);
   const textData = (content) => {
     return (
       <Paragraph
@@ -126,7 +126,12 @@ const PreviewModal = (props) => {
             return <div>{vidData(val.video)}</div>;
           }
         })}
-        <Divider></Divider>
+        {url_source?<div style={{display:'flex'}}><Paragraph
+        style={{ textAlign: "justify", fontSize: "1.2rem", color: "black" }}
+        copyable={false}
+      >Source : <a href={url_source} target="_blank" >
+    {source_title}</a></Paragraph></div>:null}
+    <Divider/>
         <Row>
           {keylist.map((value, index) => {
             return (

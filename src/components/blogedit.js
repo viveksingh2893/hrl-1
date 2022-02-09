@@ -64,7 +64,7 @@ setVisible0(false)
     visible={visible0} 
     cancelButtonProps={{ style: { display: 'none' } }} 
     onOk={()=>{if(vidurl.includes('=')){let a=vidurl.split('=');editText('https://www.youtube.com/embed/'+a[1]);setVidurl('https://www.youtube.com/embed/'+a[1]);}}}>
-    <Input placeholder='Enter embed video URL' 
+    <Input placeholder='Enter youtube video URL' 
     onChange={e=>{setVidurl(e.target.value)}}/></Modal>}
     <Paragraph editable={{onChange:editTextvid}} mark={true} >{props.data.video?props.data.video:vidurl}</Paragraph>
    <DeleteOutlined onClick={()=>removeText(props.data.id)} style={{color:'red' ,marginLeft:10}}/></div>

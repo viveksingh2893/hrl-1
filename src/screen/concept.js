@@ -320,6 +320,7 @@ const Concept = () => {
            <div className="sectionR">
 
           <Title>Gallery</Title>
+          {conceptData.gallery.length!=0?<Descard txt={conceptData.gallerytext}/>:null}
       {conceptData.gallery.length!=0?<List
  
       grid={{

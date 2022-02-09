@@ -18,7 +18,9 @@ const ReadBlog=()=>{
             data={()=>{
                 return (
                 {title:incomingData.state.title,
-                keywords:incomingData.state.keyword})}}
+                keywords:incomingData.state.keyword,
+                url_source:incomingData.state.url_source,
+                source_title:incomingData.state.source_title})}}
             body={incomingData.state.body}/>
             </div>
         )

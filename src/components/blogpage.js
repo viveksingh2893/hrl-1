@@ -124,15 +124,12 @@ const editBox=(id,content,type)=>{
    postData(data)
       setdescription()}
   }
- const handleUpload = async({ fileList }) => {
-    setImg(fileList)
-    console.log(fileList,'ind upload',fileList.length,imglen)
-    if(fileList.length>imglen){
+ const handleUpload = async({ fileList: newFileList   }) => {
+    setImg(newFileList )
+    console.log(newFileList,'ind upload',newFileList.length,imglen)
+    if(newFileList.length>imglen){
     setVisible0(true)}
-    setImglen(fileList.length)
-
-    
-  
+    setImglen(newFileList.length)
   };
   const handleRemove = (uid) => {
     const textArr= textBlock.filter(item=>item.id!=uid)
@@ -168,7 +165,7 @@ const editBox=(id,content,type)=>{
         <Modal width='80vw' style={{display:'flex',justifyContent:'center',alignItems:'center'}} visible={visible1} closable={false} cancelButtonProps={{ style: { display: 'none' } }} onOk={()=>setVisible1(false)}>
         <PreviewModal 
           data={()=>{
-          const values = form.getFieldsValue(['title','keywords']);
+          const values = form.getFieldsValue(['title','keywords','url_source','source_title']);
           return values;}} body={textBlock} author={props.author}/>
         </Modal>
     <Form 
@@ -205,6 +202,19 @@ const editBox=(id,content,type)=>{
       </Form.Item>
       <Typography.Text style={{fontSize:'11px',fontWeight:'bold'}}>*please use COMMA(,) to seperate keywords </Typography.Text>
       <Divider/>
+      <Form.Item
+        name="source_title"
+      >
+        <Input.TextArea multiple={true} style={{height:'5vh',fontFamily:'Calibri',fontSize:'14px'}} placeholder='Write page source url here'/>
+        
+      </Form.Item>
+      <Form.Item
+        name="url_source"
+      >
+        <Input.TextArea multiple={true} style={{height:'5vh',fontFamily:'Calibri',fontSize:'14px'}} placeholder='Write page source url here'/>
+        
+      </Form.Item>
+      <Divider/>
     {textBlock.length>0? textBlock.map((e,index)=><div><Divider></Divider><BlogEdit
   key={index}
   data={e}
@@ -237,7 +247,7 @@ const editBox=(id,content,type)=>{
           Add Youtube Link
         </Button>
        <ImgCrop aspect={16/9}>
-        <Upload name="logo" maxCount={20} listType="picture" beforeUpload={()=>false} onChange={handleUpload} onRemove={handleRemove}
+        <Upload name="logo" maxCount={20} listType="picture"  onChange={handleUpload} onRemove={handleRemove}
         showUploadList={false} >
           <Button icon={<CloudUploadOutlined />} >Upload Image</Button>
         </Upload>
