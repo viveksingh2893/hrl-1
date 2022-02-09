@@ -48,7 +48,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/member/:id/:membername" element={<Member />} />
           <Route path="/picpage" element={<Picpage />} />
-          <Route path="/read/:bID/:blogID" element={<ReadBlog/>} />
+          <Route path="/read/:name/:bID/:blogID" element={<ReadBlog/>} />
           <Route path="/detail" element={<HrlDetail/>} />
           <Route path="/contact" element={<Contact/>} />
         </Routes>

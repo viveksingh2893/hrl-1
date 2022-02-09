@@ -165,7 +165,7 @@ const Blog = () => {
                 return (
                   <List.Item  >
                     <Divider></Divider>
-                    <NavLink to={`/read/${item.id}/${item.title}`}
+                    <NavLink to={`/read/${rname}/${item.id}/${item.title}`}
                     state={{state:item}}
                     >
                     <div
