@@ -180,27 +180,13 @@ const Concept = () => {
          
           <Title>Why?</Title>
           
-        <div
-          style={{
-            display: "flex",
-            width: "60vw",
-           
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            msOverflowStyle:'none',
-            
-          
-            overflow:'hidden',
-           
-          }}
-        >
+        <div className="concept-three-section">
           
          
           {conceptData.why.map((item,indx)=>{
             return(
               <div>
-                <Image width='17vw'src={item.image}/>
+                <Image className='concept-three-image'src={item.image}/>
               </div>
 
             )
@@ -221,7 +207,7 @@ const Concept = () => {
                 <Image
                   src={item.image}
                   preview={false}
-                  style={{ width: "60vw", objectFit: "cover",marginTop:5 }}
+                  className='conceptimage'
                 />
             </div>
           )
@@ -237,24 +223,11 @@ const Concept = () => {
           <Title >New</Title>
       
         
-        <div 
-          style={{
-            display: "flex",
-            width: "60vw",
-            flexDirection: "row",
-            marginTop:10,
-            
-            justifyContent: "space-between",
-            alignItems: "center",
-            overflow :'auto',
-            
-            
-          }}
-          
-        >{conceptData.new.map((item,indx)=>{
+        <div className="concept-three-section">
+          {conceptData.new.map((item,indx)=>{
             return(
               <div>
-                <Image width='17vw'src={item.image}/>
+                <Image className='concept-three-image'src={item.image}/>
               </div>
 
             )
@@ -279,7 +252,7 @@ const Concept = () => {
               <Image
                 src={item.image}
                 preview={false}
-                style={{ width: "60vw", objectFit: "cover" ,marginTop:5}}
+                className='conceptimage'
               />
               </div>
           )
@@ -300,9 +273,10 @@ const Concept = () => {
             <div>
               <Descard txt={item.description}></Descard>
               <Image
+                className='conceptimage'
                 src={item.image}
                 preview={false}
-                style={{ width: "60vw", objectFit: "cover" ,marginTop:5}}
+                
               />
               </div>
           )
@@ -310,8 +284,7 @@ const Concept = () => {
         </div>
         </div>
         <Divider></Divider>
-        <div style={{display:'flex',
-        flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+       
        
         
         <div
@@ -325,8 +298,8 @@ const Concept = () => {
  
       grid={{
         gutter:16,
-        xs:1,
-      sm:4,
+        xs:2,
+      sm:5,
      
     }}
       pagination={{
@@ -355,7 +328,7 @@ const Concept = () => {
          </div>
          </div>
         
-         </div>
+       
       </div>)}
   
 };

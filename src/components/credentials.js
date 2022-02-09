@@ -1,10 +1,8 @@
 import React from "react";
 import "../App.less";
 import { useEffect, useState } from "react";
-import { Image, Typography } from "antd";
-import { Text } from "react";
-import { Button } from "antd";
-import { LeftOutlined, RightOutlined, IdcardFilled } from "@ant-design/icons";
+import {  Typography } from "antd";
+
 
 const Credentials = (props) => {
   const { Title,Paragraph } = Typography;
@@ -22,7 +20,7 @@ const Credentials = (props) => {
     }else if(props.patent){
       return props.patent.map((item,ind)=>{
         return(
-          <Paragraph>
+          <Paragraph key={ind}>
             {item.description}
           </Paragraph>
         )
@@ -31,7 +29,7 @@ const Credentials = (props) => {
     }else if(props.publication){
       return props.publication.map((item,ind)=>{
         return(
-          <Paragraph>
+          <Paragraph key={ind}>
               {item.description}
           </Paragraph>
         )
@@ -40,7 +38,7 @@ const Credentials = (props) => {
     }else if(props.event){
       return props.event.map((item,ind)=>{
         return(
-          <Paragraph>
+          <Paragraph key={ind}>
               {item.description}
           </Paragraph>
         )
@@ -49,7 +47,7 @@ const Credentials = (props) => {
     }else if(props.article){
       return props.article.map((item,ind)=>{
         return(
-          <Paragraph>
+          <Paragraph key={ind}>
               {item.description}
           </Paragraph>
         )
@@ -58,7 +56,7 @@ const Credentials = (props) => {
     }else if(props.project){
       return props.project.map((item,ind)=>{
         return(
-          <div>
+          <div key={ind}>
             <Title level={5}>{item.title}</Title>
           <Paragraph>
               {item.description}
@@ -69,7 +67,7 @@ const Credentials = (props) => {
       })
     }else if(props.bio){
       return (
-          <div>
+          <div >
           
           <Paragraph>
               {props.bio}
@@ -79,7 +77,7 @@ const Credentials = (props) => {
 
       }else if(props.current){
         return (
-            <div>
+            <div >
             
             <Paragraph>
                 {props.current}
@@ -90,7 +88,7 @@ const Credentials = (props) => {
         }else if(props.previous){
           return props.previous.map((item,ind)=>{
             return(
-              <div>
+              <div key={ind}>
                 
               <Paragraph>
                   {item.designation+' '+item.start_year+ ' to ' +item.end_year}
@@ -103,26 +101,10 @@ const Credentials = (props) => {
     }
   
   return (
-    <><Title level={4} style={{border:'0.1px solid white'}}>
+    <><Title level={4} style={{width:"100%"}}>
     {props.title}
   </Title>
-    <div
-    style={{
-      // width: `${viewPortWidth > 850 ? "70%" : "90%"}`,
-      width:'75vw',
-      maxHeight:'30vh',
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-start",
-      alignItems: "flex-start",
-      backgroundColor: "white",
-      overflowY:'scroll'
-     
-      // borderRadius: "1vw",
-      // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-      // padding: 10,
-    }}
-  >  
+    <div className="member-cred">  
    {showData()}
   </div></>
   );

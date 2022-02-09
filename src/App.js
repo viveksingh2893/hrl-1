@@ -46,17 +46,20 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/member/:membername" element={<Member />} />
+          <Route path="/member/:id/:membername" element={<Member />} />
           <Route path="/picpage" element={<Picpage />} />
-          <Route path="/readblog" element={<ReadBlog/>} />
+          <Route path="/read/:name/:bID/:blogID" element={<ReadBlog/>} />
           <Route path="/detail" element={<HrlDetail/>} />
           <Route path="/contact" element={<Contact/>} />
         </Routes>
 
-        <Footer style={{ position: "relative",bottom:'0', marginTop:'2vw',textAlign: "center",backgroundColor:'#F7E279' }}>
-        <div style={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center',padding:'1vw'}}>
-          <Typography.Paragraph>For further information, pls write to <b>contact@hirapidlab.com</b> from your official email id only, stating your query followed by your name and designation. 
-            We will answer your mail. </Typography.Paragraph>
+        <Footer className="footer">
+        <div className="footer-child">
+          <Typography.Paragraph>
+            For further information, pls write to <b>contact@hirapidlab.com</b> from your official email id only, stating your query 
+            followed by your name and designation. 
+            We will answer your mail. 
+          </Typography.Paragraph>
           <Typography.Paragraph>
             The content of the website is collated by Hi Rapid Lab and is offered to the
             viewers for information purposes only. It does not reflect the opinion of Hi Rapid
@@ -79,7 +82,8 @@ function App() {
             actions. For any further clarifications or suggestions or comments please email to
             contact@hirapidlab.com 
           </Typography.Paragraph>
-        </div>
+           
+          </div>
           ©2021 Created and Maintained by <b>Destratum</b>
         </Footer>
       </Layout>

@@ -5,7 +5,6 @@ import { MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import NavMenu from "./NavMenu";
 import { useNavigate } from "react-router-dom";
-import { OmitProps } from "antd/lib/transfer/ListBody";
 
 const Headbar = (props) => {
   const [visible, setVisible] = useState(false);
