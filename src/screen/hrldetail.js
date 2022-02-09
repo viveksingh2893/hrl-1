@@ -191,7 +191,7 @@ const HrlDetail = () => {
         display: "flex",
         flexDirection:'column',
         width: "60vw",
-        alignItems: "center",
+        alignItems: "flex-start",
         justifyContent: "flex-start",
         marginTop:5,
         marginBottom:5
@@ -200,7 +200,7 @@ const HrlDetail = () => {
       
        {hrldata?     hrldata.progress.map((item,ind)=>{
         return(
-          <div>
+          <div style={{border:'1px solid red'}}>
             <Title level={5}>{item.title}</Title>
           <Paragraph>
               {item.subtext}

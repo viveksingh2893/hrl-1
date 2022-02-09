@@ -21,6 +21,7 @@ const PreviewModal = (props) => {
   let TDate = new Date();
 
   const { title, keywords,url_source,source_title } = props.data();
+  console.log(props,'@@@@')
   const keylist = keywords.split(",");
   // console.log(TDate);
   const textData = (content) => {

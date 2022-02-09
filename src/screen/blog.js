@@ -37,7 +37,6 @@ const Blog = () => {
       .then((response) => response.data)
       .catch((error) => console.log(error));
     setValue(data);
-    console.log(data,'####')
   };
   useEffect(() => {
     getData();
@@ -71,9 +70,7 @@ const Blog = () => {
     setSearchShow(false);
     setsearchString();
   };
-  const { Title, Text ,Link} = Typography;
-
-  // const keywords = ['dna','hello','summary','hi there','hrlabs','science'];
+  const { Title, Text } = Typography; 
 
   function txtlvl() {
     if (viewPortWidth > 600) {
@@ -102,7 +99,6 @@ const Blog = () => {
       .then((response) => response.data)
       .catch((error) => console.log(error));
     setValue(data);
-    console.log(data,'@@@@@@@@#####')
   };
   useEffect(() => {
     window.scrollTo(0, 0);

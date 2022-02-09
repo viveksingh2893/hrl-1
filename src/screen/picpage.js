@@ -2,25 +2,22 @@ import React, { Component } from "react";
 import "../App.less";
 import { useEffect, useState } from "react";
 import Wordcloud from "../components/wordcloud";
-import Searchbar from "../components/searchbar";
 import { Divider, Row } from "antd";
 import { Image, Typography } from "antd";
-import { Text } from "react";
-import { Button,List} from "antd";
+import { Button} from "antd";
 import {
   LeftOutlined,
   RightOutlined,
-  DownloadOutlined,
 } from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
 
 
 
 const Picpage = () => {
-  const location=useLocation()
-  console.log(location.state,'params')
+
+
   const galleryData=useLocation()
-  console.log(galleryData.state,'memeber screen')
+  console.log(galleryData,'memeber screen')
   const [currentdata,setCurrent]=useState(galleryData.state.item)
   const [currentIndex,setIndx]=useState(galleryData.state.index)
   const [viewPortWidth, setWidth] = useState(0);
@@ -57,33 +54,27 @@ const Picpage = () => {
 
   };
   
-  const idgallery=location.state.id;
+  const idgallery=galleryData.state.id;
   console.log(idgallery,'aaaaaaaaaaaa')
   
   const [newdata, setNewData] = useState();
   useEffect(() => {
+    window.scrollTo(0, 0);
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
       // console.log("size", e.target);
       setWidth(window.innerWidth);
     });
   }, []);
-  const { Title, Text } = Typography;
+  const {  Text } = Typography;
 
 
-  const picdata = {
-    location: "Hyderabad, India",
-    avatar: `https://picsum.photos/id/${idgallery}/600/400`,
-    description:
-      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-    kword:
-      "hello,my frnd, enjoy,nature ",
-  };
+
   
 
   return (
     <div className="container-layout">
-      <Wordcloud data={['hjh','ghgh','hggj']}></Wordcloud>
+      {/* <Wordcloud data={['hjh','ghgh','hggj']}></Wordcloud> */}
       <Divider></Divider>
       <div style={{display:'flex',
       width:'80vw',
@@ -93,24 +84,14 @@ const Picpage = () => {
       alignItems:'flex-start',
       
      
-      flexDirection:'row'}}
-        
-      >
- 
-          
-         
-           
+      flexDirection:'row'}}>
           <div id='gallery'
             style={{
-             
               flexbasis:'250px',
               backgroundColor: "black",
               display: "flex",
               justifyContent: "center",
               alignItems:'flex-start',
-             
-              
-              
             }}
           > 
           <Image
@@ -124,17 +105,14 @@ const Picpage = () => {
               flexbasis:'400px',
               display: "flex",
               marginLeft:'0.5vw',
-              
               width:width,
               flexDirection: "column",
               justifyContent: "flex-start",
               alignItems: "flex-start",
               backgroundColor: "white",
-            }}
-          >
+            }}>
              <Text style={{fontWeight:'400',width:width}}>
               Location
-            
             </Text>
             <Text style={{width:width,fontWeight:'600'}}>
             {(currentdata.district+', ' + currentdata.state).toUpperCase()}
@@ -146,7 +124,7 @@ const Picpage = () => {
             <Text style={{fontWeight:'700',width:width}}>
               KEYWORDS
             </Text >
-          <Row >
+          <Row>
               {
               currentdata.keyword.split(',').map((item,indx)=>{
 

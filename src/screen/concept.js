@@ -309,7 +309,7 @@ const Concept = () => {
         pageSize: 16,
       }}
       dataSource={conceptData.gallery}
-      renderItem={(item) => (
+      renderItem={(item,index) => (
         <List.Item>
          
           <ProfileCard
@@ -317,7 +317,14 @@ const Concept = () => {
             avatar={item.image}
             viewPortWidth={viewPortWidth}
             action={() => {
-              navigate("/picpage",{state:{id:item.id}});
+              navigate("/picpage",
+              {
+                state: {
+                  results: conceptData.gallery,
+                  index: index,
+                  item: item,
+                },
+              });
             }}
      ></ProfileCard>
      
