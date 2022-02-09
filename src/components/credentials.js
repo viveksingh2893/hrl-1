@@ -101,7 +101,7 @@ const Credentials = (props) => {
     }
   
   return (
-    <><Title level={4} style={{maxWidth:"250px"}}>
+    <><Title level={4} style={{width:"100%"}}>
     {props.title}
   </Title>
     <div className="member-cred">  
