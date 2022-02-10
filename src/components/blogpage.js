@@ -205,13 +205,13 @@ const editBox=(id,content,type)=>{
       <Form.Item
         name="source_title"
       >
-        <Input.TextArea multiple={true} style={{height:'5vh',fontFamily:'Calibri',fontSize:'14px'}} placeholder='Write page source url here'/>
+        <Input.TextArea multiple={true} style={{height:'5vh',fontFamily:'Calibri',fontSize:'14px'}} placeholder='source text here'/>
         
       </Form.Item>
       <Form.Item
         name="url_source"
       >
-        <Input.TextArea multiple={true} style={{height:'5vh',fontFamily:'Calibri',fontSize:'14px'}} placeholder='Write page source url here'/>
+        <Input.TextArea multiple={true} style={{height:'5vh',fontFamily:'Calibri',fontSize:'14px'}} placeholder=' source url here'/>
         
       </Form.Item>
       <Divider/>

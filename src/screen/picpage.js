@@ -5,10 +5,7 @@ import Wordcloud from "../components/wordcloud";
 import { Divider, Row } from "antd";
 import { Image, Typography } from "antd";
 import { Button} from "antd";
-import {
-  LeftOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+import {LeftOutlined,RightOutlined} from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
 
 
@@ -67,11 +64,6 @@ const Picpage = () => {
     });
   }, []);
   const {  Text } = Typography;
-
-
-
-  
-
   return (
     <div className="container-layout">
       {/* <Wordcloud data={['hjh','ghgh','hggj']}></Wordcloud> */}

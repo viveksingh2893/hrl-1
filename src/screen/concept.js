@@ -150,7 +150,7 @@ const Concept = () => {
           </div>
          
     
-        <Image width="100vw" style={{marginBottom:10}} preview={false} src={conceptimg} />
+        <Image width="100vw" style={{marginBottom:10}} preview={false} src={conceptData.image} />
         <div id='what' className='conceptcls'>
           <div className='sectiontext'>
             <Title>What</Title>

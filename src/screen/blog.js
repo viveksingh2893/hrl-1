@@ -89,7 +89,7 @@ const Blog = () => {
     const image = item.filter((ele) => ele.type == "image");
     console.log("text...", "image....", text, image);
 
-    return { image: image[0].image, content: text[0].content };
+    return { image: image.length==0?null:image[0].image, content: text[0].content };
     // console.log('getRightData',data)
   };
   const paginationdata = async (page) => {
