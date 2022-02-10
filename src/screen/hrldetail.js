@@ -200,7 +200,7 @@ const HrlDetail = () => {
       
        {hrldata?     hrldata.progress.map((item,ind)=>{
         return(
-          <div style={{border:'1px solid red'}}>
+          <div >
             <Title level={5}>{item.title}</Title>
           <Paragraph>
               {item.subtext}
@@ -231,9 +231,9 @@ const HrlDetail = () => {
           }}
           
         >
-            <Image width='17vw'src={hrldata.lab_image1}/>
-            <Image width='17vw'src={hrldata.lab_image2}/>
-            <Image width='17vw'src={hrldata.lab_image3}/>
+            <Image preview={false} width='17vw'src={hrldata.lab_image1}/>
+            <Image preview={false} width='17vw'src={hrldata.lab_image2}/>
+            <Image preview={false} width='17vw'src={hrldata.lab_image3}/>
             </div></div>
 
         </div>

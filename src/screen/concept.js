@@ -186,7 +186,7 @@ const Concept = () => {
           {conceptData.why.map((item,indx)=>{
             return(
               <div>
-                <Image className='concept-three-image'src={item.image}/>
+                <Image preview={false} className='concept-three-image'src={item.image}/>
               </div>
 
             )
@@ -227,7 +227,7 @@ const Concept = () => {
           {conceptData.new.map((item,indx)=>{
             return(
               <div>
-                <Image className='concept-three-image'src={item.image}/>
+                <Image preview={false} className='concept-three-image'src={item.image}/>
               </div>
 
             )

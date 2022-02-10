@@ -87,7 +87,7 @@ const Picpage = () => {
             }}
           > 
           <Image
-          src={currentdata.image}
+          src={currentdata.image} preview={false}
           width={viewPortWidth>576?'40vw':'80vw'}
         />
           
