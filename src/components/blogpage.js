@@ -40,6 +40,8 @@ var formdata = new FormData();
 formdata.append("title",values.title);
 formdata.append("keyword",values.keywords);
 formdata.append("body",JSON.stringify(textBlock));
+formdata.append('source_title',values.source_title)
+formdata.append('url_source',values.url_source)
 
 const config = {
   headers: { 'content-type': 'multipart/form-data',Authorization: `Bearer ${props.token}` }

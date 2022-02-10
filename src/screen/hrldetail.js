@@ -152,13 +152,13 @@ const HrlDetail = () => {
           <Image
                   src={hrldata.progress_image1}
                   preview={false}
-                  style={{ width: "60vw", objectFit: "cover",marginTop:5,marginBottom:5 }}
+                  className='conceptimage'
                 />
           <Descard txt={hrldata.progress_text2}/>
           <Image
                   src={hrldata.progress_image2}
                   preview={false}
-                  style={{ width: "60vw", objectFit: "cover",marginTop:5,marginBottom:5 }}
+                  className='conceptimage'
                 />
           <Descard txt={hrldata.progress_text3}/>
           <Descard txt={hrldata.progress_text4}/>
@@ -166,7 +166,7 @@ const HrlDetail = () => {
           <Image
                   src={hrldata.progress_image3}
                   preview={false}
-                  style={{ width: "60vw", objectFit: "cover",marginTop:5,marginBottom:5 }}
+                  className='conceptimage'
                 />
           <Descard txt={hrldata.progress_text6}/>
           <Descard txt={hrldata.progress_text7}/>
@@ -178,7 +178,7 @@ const HrlDetail = () => {
           <Image
                   src={hrldata.progress_image4}
                   preview={false}
-                  style={{ width: "60vw", objectFit: "cover",marginTop:5,marginBottom:5 }}
+                  className='conceptimage'
                 />
         </div>
         </div>

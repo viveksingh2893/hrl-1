@@ -148,6 +148,11 @@ const BioForm = ({data,token,onBiochange}) => {
               <Input placeholder={data.designation?data.designation:'Enter your designation'}style={{ width: "25vw" }} />
               
               </Form.Item>
+              <Form.Item name="linkedin" initialValue={data.linkedin}>
+              
+              <Input placeholder={data.linkedin?data.linkedin:'Enter your linkedin url'}style={{ width: "25vw" }} />
+              
+              </Form.Item>
               <Form.Item name="Phone" >
               
               <Input.Group size="large">
