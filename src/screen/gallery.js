@@ -60,7 +60,6 @@ const Gallery = () => {
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener("resize", (e) => {
-      // console.log("size", e.target);
       setWidth(window.innerWidth);
     });
   }, []);
@@ -104,7 +103,7 @@ const Gallery = () => {
     return (
       <div className="container-layout">
         <div className='child-container'>
-        <Wordcloud data={keywords} searchfor={onSearch}></Wordcloud>
+        {/* <Wordcloud data={keywords} searchfor={onSearch}></Wordcloud> */}
 
         {!searchshow ? <Mapbox data={mapData}></Mapbox> : null}
         <Divider />
@@ -142,9 +141,8 @@ const Gallery = () => {
         ) : null}
         <Divider></Divider>
         <div className="conceptcls">
-        <div
-         className="sectionR"
-        > <Typography.Title >Gallery</Typography.Title>
+        <div className="sectionR"> 
+        <Typography.Title >Gallery</Typography.Title>
           {galleryData ? (
             <List
            
@@ -158,7 +156,7 @@ const Gallery = () => {
                 onChange: (page) => {
                   paginationdata(page);
                 },
-                pageSize: 16,
+                pageSize: 20,
                 total: searchshow ? searchdata.count : galleryData.count,
               }}
               dataSource={searchshow ? searchdata.results : galleryData.results}

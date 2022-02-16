@@ -248,12 +248,12 @@ const editBox=(id,content,type)=>{
         <Button type="link"  onClick={()=>addText('video')}>
           Add Youtube Link
         </Button>
-       <ImgCrop aspect={16/9}>
+       {/* <ImgCrop aspect={16/9}> */}
         <Upload name="logo" maxCount={20} listType="picture"  onChange={handleUpload} onRemove={handleRemove}
         showUploadList={false} >
           <Button icon={<CloudUploadOutlined />} >Upload Image</Button>
         </Upload>
-        </ImgCrop>
+        {/* </ImgCrop> */}
         </div>
 
         </Form.Item>

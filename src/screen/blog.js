@@ -109,11 +109,10 @@ const Blog = () => {
     return (
       <div className="container-layout">
         <div className="child-container">
-        <div>
-          <Wordcloud data={keywords} searchfor={onSearch}></Wordcloud>
-        </div>
-       
+        
+        <div className='searchdiv' >
           <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+          </div>
         
         
           <div className="child-bloglist-container">
