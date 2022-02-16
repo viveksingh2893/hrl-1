@@ -94,7 +94,7 @@ const mapData=[{"image": "https://hrl-assets.s3.ap-south-1.amazonaws.com/media/i
           <div id='email' className='conceptcls'>
           <div className='sectiontext'>
           <Title>Email</Title>
-          <Descard level={3} txt="Email : contact@hirapidlb.com" />
+          <Descard level={3} txt="Email : contact@hirapidlab.com" />
           </div></div>
         </div>
         <Divider ></Divider>
