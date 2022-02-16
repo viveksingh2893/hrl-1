@@ -105,7 +105,10 @@ const Gallery = () => {
         <div className='child-container'>
         {/* <Wordcloud data={keywords} searchfor={onSearch}></Wordcloud> */}
 
-        {!searchshow ? <Mapbox data={mapData}></Mapbox> : null}
+        {!searchshow ?<div style={{marginTop:20}}> 
+          <Mapbox data={mapData}>
+            </Mapbox> 
+          </div>: null}
         <Divider />
         <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
         {searchshow ? (

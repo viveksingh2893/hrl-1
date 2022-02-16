@@ -111,9 +111,8 @@ const Blog = () => {
         <div className="child-container">
         
         <div className='searchdiv' >
-          <Searchbar width="40vw" onSearch={onSearch}></Searchbar>
+          <Searchbar width="60vw" onSearch={onSearch}></Searchbar>
           </div>
-        
         
           <div className="child-bloglist-container">
             {searchshow ? (
