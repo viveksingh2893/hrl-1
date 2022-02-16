@@ -43,7 +43,7 @@ const Gallery = () => {
       .catch((error) => console.log(error));
     console.log(map, "mapfetch");
     {
-      map ? setMap(map.slice(0,10)) : console.log("keywords error");
+      map ? setMap(map) : console.log("keywords error");
     }
     const data = await axios
       .get(`${ipaddress}api/gallery`)
@@ -167,7 +167,7 @@ const Gallery = () => {
                 <List.Item>
                   <ProfileCard
                     name={item.description}
-                    avatar={item.image}
+                    avatar={'https://d3delrbk7jp8n8.cloudfront.net/150x100'+item.image.split('https://hrl-assets.s3.ap-south-1.amazonaws.com')[1]}
                     viewPortWidth={viewPortWidth}
                     action={() => {
                       navigate("/picpage", {

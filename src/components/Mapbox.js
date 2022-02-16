@@ -47,7 +47,7 @@ const Mapbox = ({ data }) => {
             <Marker
               position={{ lat: lat, lng: lng }}
               icon={{
-                url: item.image,
+                url: 'https://d3delrbk7jp8n8.cloudfront.net/40x40'+item.image.split('https://hrl-assets.s3.ap-south-1.amazonaws.com')[1],
                 scaledSize: new window.google.maps.Size(40, 40),
               }}
             />
