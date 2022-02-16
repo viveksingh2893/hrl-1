@@ -1,14 +1,10 @@
 import React, { useEffect,useState } from "react";
-import conceptimg from "../assets/image/IMG 2.1.jpg";
 import axios from 'axios'
 import {MailOutlined} from '@ant-design/icons'
 import "../App.less";
 import '../assets/css/style.css'
 import { Image,List, Typography, Divider, Menu } from "antd";
 import ProfileCard from "../components/profilecard";
-
-
-
 import Descard from "../components/descard";
 import Videobox from "../components/videobox";
 import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
