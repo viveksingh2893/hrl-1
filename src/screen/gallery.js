@@ -43,7 +43,7 @@ const Gallery = () => {
       .catch((error) => console.log(error));
     console.log(map, "mapfetch");
     {
-      map ? setMap(map) : console.log("keywords error");
+      map ? setMap(map.slice(0,10)) : console.log("keywords error");
     }
     const data = await axios
       .get(`${ipaddress}api/gallery`)
@@ -114,7 +114,7 @@ const Gallery = () => {
               width: "70vw",
               display: "flex",
               justifyContent: "center",
-              border:'5px solid black',
+         
               alignItems: "center",
               marginTop: "5vw",
               flexDirection: "column",

@@ -9,7 +9,7 @@ const ProfileCard = (props) => {
     <div>
       <a>
     <div className="profilecard" onClick={props.action}>
-     <img alt={props.avatar} src={props.avatar}
+     <img alt={props.avatar} src={props.avatar} width="150"height="100" loading="lazy"
       />
     </div>
     </a>
